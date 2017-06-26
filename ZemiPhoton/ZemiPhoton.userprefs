@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Ik\LineSet.cs">
+    <Files>
+      <File FileName="Assets\Ik\CubeScript.cs" Line="24" Column="21" />
+      <File FileName="Assets\Ik\PhotonManager.cs" Line="50" Column="1" />
+      <File FileName="Assets\Ik\PlayerMove.cs" Line="36" Column="15" />
+      <File FileName="Assets\Ik\LineSet.cs" Line="35" Column="16" />
+      <File FileName="..\..\unit\Hairetu 2\Hairetu\Assets\Scripts\Buggs\AI_Bugg.cs" Line="19" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
