@@ -46,8 +46,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		GameObject.Find ("StatusText").GetComponent<Text> ().text
 		= "OnJoinedRoom";
+		float Pos_x = Random.Range (-1f, 1f);
+		Vector3 initPos = new Vector3 (Pos_x, 3f, 7.17f);
 
-		Vector3 initPos = new Vector3 (6.34f, 3f, 7.17f);
 		cube = PhotonNetwork.Instantiate ("Cube", initPos,
 			Quaternion.Euler (Vector3.zero), 0);
 	}

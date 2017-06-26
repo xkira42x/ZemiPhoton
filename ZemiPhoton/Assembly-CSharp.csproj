@@ -46,11 +46,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\Hasegawa\Script\Bullet.cs" />
      <Compile Include="Assets\Hasegawa\Script\Gun.cs" />
      <Compile Include="Assets\Hasegawa\Script\Player.cs" />
      <Compile Include="Assets\Ik\CubeScript.cs" />
      <Compile Include="Assets\Ik\Move.cs" />
+=======
+>>>>>>> aikei
      <Compile Include="Assets\Ik\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
      <Compile Include="Assets\Ik\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
      <Compile Include="Assets\Ik\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -111,8 +114,17 @@
      <Compile Include="Assets\Ik\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs" />
      <Compile Include="Assets\Ik\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
      <Compile Include="Assets\Ik\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Ik\PhotonManager.cs" />
      <Compile Include="Assets\Ik\Plugins\WebSocket\WebSocket.cs" />
+=======
+     <Compile Include="Assets\Ik\Plugins\WebSocket\WebSocket.cs" />
+     <Compile Include="Assets\Ik\Scripts\CubeScript.cs" />
+     <Compile Include="Assets\Ik\Scripts\LineSet.cs" />
+     <Compile Include="Assets\Ik\Scripts\Move.cs" />
+     <Compile Include="Assets\Ik\Scripts\PhotonManager.cs" />
+     <Compile Include="Assets\Ik\Scripts\PlayerMove.cs" />
+>>>>>>> aikei
      <None Include="Assets\Ik\Photon Unity Networking\link.xml" />
      <None Include="Assets\Ik\Plugins\Photon3Unity3D.xml" />
      <None Include="Assets\Ik\Plugins\release_history.txt" />
