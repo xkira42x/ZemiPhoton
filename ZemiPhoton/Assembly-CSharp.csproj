@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Hasegawa\Script\Bullet.cs" />
+     <Compile Include="Assets\Hasegawa\Script\Gun.cs" />
      <Compile Include="Assets\Hasegawa\Script\Player.cs" />
      <Compile Include="Assets\Ik\CubeScript.cs" />
      <Compile Include="Assets\Ik\Move.cs" />
