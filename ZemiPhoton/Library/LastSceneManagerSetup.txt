@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Ik/main.unity
+- path: Assets/Kaede/Scene/PlayRoom.unity
   isLoaded: 1
   isActive: 1
