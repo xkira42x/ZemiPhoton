@@ -46,9 +46,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Ik\CubeScript.cs" />
-     <Compile Include="Assets\Ik\Move.cs" />
-     <Compile Include="Assets\Ik\PhotonManager.cs" />
+     <Compile Include="Assets\Hasegawa\Script\Bullet.cs" />
+     <Compile Include="Assets\Hasegawa\Script\Gun.cs" />
+     <Compile Include="Assets\Hasegawa\Script\Player.cs" />
+     <Compile Include="Assets\Ik\Scripts\CubeScript.cs" />
+     <Compile Include="Assets\Ik\Scripts\LineSet.cs" />
+     <Compile Include="Assets\Ik\Scripts\Move.cs" />
+     <Compile Include="Assets\Ik\Scripts\PhotonManager.cs" />
+     <Compile Include="Assets\Ik\Scripts\PlayerMove.cs" />
      <Compile Include="Assets\Kaede\Scripts\FirstPersonController.cs" />
      <Compile Include="Assets\Kaede\Scripts\PhotonManager_ver2.cs" />
      <Compile Include="Assets\Kaede\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
@@ -208,6 +213,10 @@
  <Reference Include="websocket-sharp">
  <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{1BBBFCDC-538B-4668-D2B0-32A0468BFC3F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
