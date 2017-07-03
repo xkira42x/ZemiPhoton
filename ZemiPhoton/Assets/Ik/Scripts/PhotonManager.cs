@@ -4,6 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PhotonManager : Photon.MonoBehaviour {
+	private Vector3[] initPos = new Vector3[4]{
+		new Vector3(5,0,5),
+		new Vector3(-5,0,5),
+		new Vector3(-5,0,-5),
+		new Vector3(5,0,-5)
+	};
+
+	private GameObject cnvs;
+	void Start(){
+		cnvs = GameObject.Find ("Canvas");
+	}
+		
 
 	public void ConnectPhoton(){
 		PhotonNetwork.ConnectUsingSettings("v1.0");
@@ -34,22 +46,23 @@ public class PhotonManager : Photon.MonoBehaviour {
 		roomOptions.maxPlayers = 3; //部屋の最大人数
 		roomOptions.isOpen = true; //入室許可する
 		roomOptions.isVisible = true; //ロビーから見えるようにする
-		//userIdが名前のルームがなければ作って入室、あれば普通に入室する。
+		//userIdが名@前のルームがなければ作って入室、あれば普通に入室する。
 		PhotonNetwork.JoinOrCreateRoom (userId, roomOptions, null);
 	}
+		
 	public void JoinRoom(){
 		PhotonNetwork.JoinRoom("user1");
 	}
 	private GameObject cube;
 	//ルーム入室した時に呼ばれるコールバックメソッド
 	void OnJoinedRoom() {
+		Destroy (cnvs);
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		GameObject.Find ("StatusText").GetComponent<Text> ().text
 		= "OnJoinedRoom";
-		float Pos_x = Random.Range (-1f, 1f);
-		Vector3 initPos = new Vector3 (Pos_x, 3f, 7.17f);
+		Vector3 Pos = initPos [PhotonNetwork.countOfPlayersInRooms];
 
-		cube = PhotonNetwork.Instantiate ("Cube", initPos,
+		cube = PhotonNetwork.Instantiate ("Cube", Pos,
 			Quaternion.Euler (Vector3.zero), 0);
 	}
 }
