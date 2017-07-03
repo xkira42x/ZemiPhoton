@@ -46,7 +46,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		roomOptions.maxPlayers = 3; //部屋の最大人数
 		roomOptions.isOpen = true; //入室許可する
 		roomOptions.isVisible = true; //ロビーから見えるようにする
-		//userIdが名前のルームがなければ作って入室、あれば普通に入室する。
+		//userIdが名@前のルームがなければ作って入室、あれば普通に入室する。
 		PhotonNetwork.JoinOrCreateRoom (userId, roomOptions, null);
 	}
 		
