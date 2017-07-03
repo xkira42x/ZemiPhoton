@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//コンポーネントの追加だけでおｋ
 public class N3_CubeScript : Photon.MonoBehaviour {
 
 	private PhotonView N_photonView;
