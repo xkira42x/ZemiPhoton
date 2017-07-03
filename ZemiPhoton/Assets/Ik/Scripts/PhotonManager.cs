@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PhotonManager : Photon.MonoBehaviour {
+	private Vector3[] initPos = new Vector3[4]{
+		new Vector3(5,0,5),
+		new Vector3(-5,0,5),
+		new Vector3(-5,0,-5),
+		new Vector3(5,0,-5)
+	};
+
 
 	public void ConnectPhoton(){
 		PhotonNetwork.ConnectUsingSettings("v1.0");
@@ -37,6 +44,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		//userIdが名前のルームがなければ作って入室、あれば普通に入室する。
 		PhotonNetwork.JoinOrCreateRoom (userId, roomOptions, null);
 	}
+		
 	public void JoinRoom(){
 		PhotonNetwork.JoinRoom("user1");
 	}
@@ -46,10 +54,14 @@ public class PhotonManager : Photon.MonoBehaviour {
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		GameObject.Find ("StatusText").GetComponent<Text> ().text
 		= "OnJoinedRoom";
-		float Pos_x = Random.Range (-1f, 1f);
-		Vector3 initPos = new Vector3 (Pos_x, 3f, 7.17f);
+//		float Pos_x = Random.Range (-10f, 10f);
+		Debug.Log (PhotonNetwork.countOfPlayers);
+		Debug.Log (PhotonNetwork.countOfPlayersInRooms);
 
-		cube = PhotonNetwork.Instantiate ("Cube", initPos,
+//		float Pos_x=0f;
+		Vector3 Pos = initPos [PhotonNetwork.countOfPlayersInRooms];
+
+		cube = PhotonNetwork.Instantiate ("Cube", Pos,
 			Quaternion.Euler (Vector3.zero), 0);
 	}
 }
