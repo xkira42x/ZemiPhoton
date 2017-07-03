@@ -11,6 +11,11 @@ public class PhotonManager : Photon.MonoBehaviour {
 		new Vector3(5,0,-5)
 	};
 
+	private GameObject cnvs;
+	void Start(){
+		cnvs = GameObject.Find ("Canvas");
+	}
+		
 
 	public void ConnectPhoton(){
 		PhotonNetwork.ConnectUsingSettings("v1.0");
@@ -51,14 +56,10 @@ public class PhotonManager : Photon.MonoBehaviour {
 	private GameObject cube;
 	//ルーム入室した時に呼ばれるコールバックメソッド
 	void OnJoinedRoom() {
+		Destroy (cnvs);
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		GameObject.Find ("StatusText").GetComponent<Text> ().text
 		= "OnJoinedRoom";
-//		float Pos_x = Random.Range (-10f, 10f);
-		Debug.Log (PhotonNetwork.countOfPlayers);
-		Debug.Log (PhotonNetwork.countOfPlayersInRooms);
-
-//		float Pos_x=0f;
 		Vector3 Pos = initPos [PhotonNetwork.countOfPlayersInRooms];
 
 		cube = PhotonNetwork.Instantiate ("Cube", Pos,
