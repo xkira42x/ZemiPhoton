@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-	float angle;
-	float speed = 0.1f;
-	byte type = 0;
-	bool move = false;
-	Vector3 mouseAngle = Vector3.zero;
-	Quaternion mainAngle;
+	float S_Speed = 0.1f;
+	byte S_Type = 0;
+	bool S_Move = false;
+	Vector3 S_MouseAngle = Vector3.zero;
+	Quaternion S_MainAngle;
 
 	[SerializeField]
-	GameObject myBullet;
+	GameObject S_Bullet;
 	[SerializeField]
-	Transform muzzle;
+	Transform S_Muzzle;
 	[SerializeField]
-	Transform Head;
+	Transform S_Collection;
 	[SerializeField]
-	Transform myCollection;
-	[SerializeField]
-	Animator animator;
+	Animator S_Animator;
 
-	float motion = 0;
+	float S_Motion = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +28,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 		// 視線移動
 		Eye ();
+		// キー移動
 		KeyMove ();
 		// ショット
 		if (Input.GetMouseButton (0)) {
@@ -47,18 +45,20 @@ public class Player : MonoBehaviour {
 	// 視線移動
 	void Eye(){
 		// マウス移動量を保存
-		mouseAngle += new Vector3 (-(Input.GetAxis ("Mouse Y")), (Input.GetAxis ("Mouse X")), 0);
-		if (mouseAngle.x <= -10)
-			mouseAngle.x = -10;
+		S_MouseAngle += new Vector3 (-(Input.GetAxis ("Mouse Y")), (Input.GetAxis ("Mouse X")), 0);
+		if (S_MouseAngle.x <= -10)
+			S_MouseAngle.x = -10;
+		else if (S_MouseAngle.x >= 30)
+			S_MouseAngle.x = 30;
 		// 角度に変換
-		mainAngle = Quaternion.Euler (mouseAngle);
+		S_MainAngle = Quaternion.Euler (S_MouseAngle);
 
-		transform.localRotation = new Quaternion (0, mainAngle.y, 0, mainAngle.w);
-		myCollection.localRotation = new Quaternion (mainAngle.x, myCollection.localRotation.y, myCollection.localRotation.z, myCollection.localRotation.w);
+		transform.localRotation = new Quaternion (0, S_MainAngle.y, 0, S_MainAngle.w);
+		S_Collection.localRotation = new Quaternion (S_MainAngle.x, S_Collection.localRotation.y, S_Collection.localRotation.z, S_Collection.localRotation.w);
 	}
 	// 撃つ
 	void Shot(){
-		Instantiate (myBullet, muzzle.position, transform.localRotation);
+		Instantiate (S_Bullet, S_Muzzle.position, transform.localRotation);
 	}
 	// ジャンプ
 	void Jump(){
@@ -66,92 +66,81 @@ public class Player : MonoBehaviour {
 	}
 	// ジャンプの中身
 	IEnumerator Jumping(){
-		Vector3 move = new Vector3 (0, 0.1f, 0);
+		Vector3 S_Jump = new Vector3 (0, 0.1f, 0);
 		while (true) {
-			transform.position += move;
-			move.y -= 0.001f;
-			if (move.y <= 0)
+			transform.position += S_Jump;
+			S_Jump.y -= 0.001f;
+			if (S_Jump.y <= 0)
 				break;
 			yield return new WaitForSeconds (0.01f);
 		}
 	}
 	// Unityちゃんモーション
 	void UnityChanAnimation(){
-		animator.SetFloat ("Speed", motion);
+		S_Animator.SetFloat ("Speed", S_Motion);
 	}
 
 	// キー移動判定
 	void KeyMove(){
-		type = Key.NONE;
+		S_Type = Key.NONE;
 		// 走る
 		if (Input.GetKey (KeyCode.LeftShift))
-			speed = 0.2f;
+			S_Speed = 0.15f;
 		else
-			speed = 0.1f;
+			S_Speed = 0.1f;
 		// 移動
-		if (Input.GetKey (KeyCode.A)) {
-			type += Key.LEFT;
-		}
-		if (Input.GetKey (KeyCode.D)) {
-			type += Key.RIGHT;
-		}
 		if (Input.GetKey (KeyCode.W)) {
-			type += Key.UP;
+			S_Type += Key.FORWARD;
 		}
 		if (Input.GetKey (KeyCode.S)) {
-			type += Key.DOWN;
+			S_Type += Key.BACK;
 		}
-
-		switch (type) {
-		case Key.UP:
-			angle = 0;
+		if (Input.GetKey (KeyCode.A)) {
+			S_Type += Key.LEFT;
+		}
+		if (Input.GetKey (KeyCode.D)) {
+			S_Type += Key.RIGHT;
+		}
+		// 角度設定
+		switch (S_Type) {
+		case Key.FORWARD:
+			transform.localPosition += transform.forward * S_Speed;
 			break;
-		case Key.DOWN:
-			angle = 180;
+		case Key.BACK:
+			transform.localPosition += -(transform.forward * S_Speed);
 			break;
 		case Key.RIGHT:
-			angle = 90;
+			transform.localPosition += transform.right * S_Speed;
 			break;
 		case Key.LEFT:
-			angle = 270;
+			transform.localPosition += -(transform.right * S_Speed);
 			break;
-		case Key.UPLEFT:
-			angle = 315;
+		case Key.FORWARDLEFT:
+			transform.localPosition += transform.forward * S_Speed;
+			transform.localPosition += -(transform.right * S_Speed);
 			break;
-		case Key.UPRIGHT:
-			angle = 45;
+		case Key.FORWARDRIGHT:
+			transform.localPosition += transform.forward * S_Speed;
+			transform.localPosition += transform.right * S_Speed;
 			break;
-		case Key.DOWNLEFT:
-			angle = 225;
+		case Key.BACKLEFT:
+			transform.localPosition += -(transform.forward * S_Speed);
+			transform.localPosition += -(transform.right * S_Speed);
 			break;
-		case Key.DOWNRIGHT:
-			angle = 135;
+		case Key.BACKRIGHT:
+			transform.localPosition += -(transform.forward * S_Speed);
+			transform.localPosition += transform.right * S_Speed;
 			break;
 		case Key.NONE:
 			break;
 		default:
-			Debug.Log ("Error :: Player move type");
+			Debug.Log ("Error :: Player move S_Type");
 			break;
 		}
-		if (type != 0)
-			move = true;
-
-		Move ();
+		// モーション更新
+		if (S_Type != Key.NONE)
+			S_Motion = 1;
+		else
+			S_Motion = 0;
 	}
-
-	// 移動
-	void Move(){
-		Vector3 movement = Vector3.zero;
-		if (move) {
-			movement = new Vector3 (
-				Mathf.Sin ((transform.localEulerAngles.y + angle) * 3.14f / 180) * speed, 
-				0, 
-				Mathf.Cos ((transform.localEulerAngles.y + angle) * 3.14f / 180) * speed);
-			transform.position += movement;
-			move = false;
-			motion = 1;
-		} else
-			motion = 0;
-	}
-
 }
