@@ -15,6 +15,8 @@ public class N3_PlayerMove : Photon.MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		//キー入力は操作プレイヤーのみにしたいので、isMineで制御する
 		if (photonView.isMine) {
 			if (Input.GetKey (KeyCode.D)) {
 				transform.position += new Vector3 (0.1f, 0, 0);
