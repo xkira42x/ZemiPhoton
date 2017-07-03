@@ -2,70 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S123_Player : MonoBehaviour {
+public class S1_Move : MonoBehaviour {
 	float S_Speed = 0.1f;
 	byte S_Type = 0;
-	bool S_Move = false;
-	Vector3 S_MouseAngle = Vector3.zero;
-	Quaternion S_MainAngle;
 
-	[SerializeField]
-	GameObject S_Bullet;
-	[SerializeField]
-	Transform S_Muzzle;
-	[SerializeField]
-	Transform S_Collection;
 	[SerializeField]
 	Animator S_Animator;
-
 	float S_Motion = 0;
-
-	// Use this for initialization
-	void Start () {
-	}
 	
 	// Update is called once per frame
 	void Update () {
-		// 視線移動
-		Eye ();
 		// キー移動
-		KeyMove ();
-		// ショット
-		if (Input.GetMouseButton (0)) {
-			Shot ();
-		}
+		S_KeyMove ();
 		// ジャンプ
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			Jump ();
+			S_Jump ();
 		}
-
-		UnityChanAnimation ();
+		// アニメーション
+		S_UnityChanAnimation ();
 	}
 
-	// 視線移動
-	void Eye(){
-		// マウス移動量を保存
-		S_MouseAngle += new Vector3 (-(Input.GetAxis ("Mouse Y")), (Input.GetAxis ("Mouse X")), 0);
-		if (S_MouseAngle.x <= -10)
-			S_MouseAngle.x = -10;
-		else if (S_MouseAngle.x >= 30)
-			S_MouseAngle.x = 30;
-		// 角度に変換
-		S_MainAngle = Quaternion.Euler (S_MouseAngle);
-
-		transform.localRotation = new Quaternion (0, S_MainAngle.y, 0, S_MainAngle.w);
-		S_Collection.localRotation = new Quaternion (S_MainAngle.x, S_Collection.localRotation.y, S_Collection.localRotation.z, S_Collection.localRotation.w);
-	}
-	// 撃つ
-	void Shot(){
-		Instantiate (S_Bullet, S_Muzzle.position, transform.localRotation);
-	}
 	// ジャンプ
-	void Jump(){
-		StartCoroutine (Jumping ());
+	void S_Jump(){
+		StartCoroutine (S_Jumping ());
 	}
 	// ジャンプの中身
-	IEnumerator Jumping(){
+	IEnumerator S_Jumping(){
 		Vector3 S_Jump = new Vector3 (0, 0.1f, 0);
 		while (true) {
 			transform.position += S_Jump;
@@ -76,12 +38,11 @@ public class S123_Player : MonoBehaviour {
 		}
 	}
 	// Unityちゃんモーション
-	void UnityChanAnimation(){
+	void S_UnityChanAnimation(){
 		S_Animator.SetFloat ("Speed", S_Motion);
 	}
-
 	// キー移動判定
-	void KeyMove(){
+	void S_KeyMove(){
 		S_Type = Key.NONE;
 		// 走る
 		if (Input.GetKey (KeyCode.LeftShift))
