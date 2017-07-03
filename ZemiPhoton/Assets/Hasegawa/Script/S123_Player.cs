@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class S123_Player : MonoBehaviour {
 	float S_Speed = 0.1f;
 	byte S_Type = 0;
 	bool S_Move = false;
