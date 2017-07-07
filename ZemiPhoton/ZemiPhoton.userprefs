@@ -1,22 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Hasegawa\Script\GunBase.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Hasegawa\Script\S1_Move.cs">
     <Files>
-      <File FileName="Assets\Hasegawa\Script\S1_Move.cs" Line="73" Column="6" />
-      <File FileName="Assets\Hasegawa\Script\S2_Angle.cs" Line="18" Column="9" />
-      <File FileName="Assets\Hasegawa\Script\S3_Shot.cs" Line="20" Column="7" />
-      <File FileName="Assets\Hasegawa\Script\GunBase.cs" Line="23" Column="44" />
-      <File FileName="Assets\Hasegawa\Script\Gun.cs" Line="1" Column="1" NotebookId="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Hasegawa\Script\S123_Player.cs">
-    <Files>
-      <File FileName="Assets\Hasegawa\Script\S123_Player.cs" Line="1" Column="22" />
-      <File FileName="Assets\Ik\Scripts\N3_CubeScript.cs" Line="6" Column="18" />
-      <File FileName="Assets\Ik\Scripts\PhotonManager.cs" Line="63" Column="52" />
-      <File FileName="Assets\Ik\Scripts\N3_OnGUI.cs" Line="18" Column="38" />
-      <File FileName="Assets\Ik\Scripts\N3_PlayerMove.cs" Line="13" Column="46" />
->>>>>>> Aikei
+      <File FileName="Assets\Hasegawa\Script\N3_SyncMove.cs" Line="31" Column="1" />
+      <File FileName="Assets\Hasegawa\Script\N2_NetworkSetting.cs" Line="1" Column="1" />
+      <File FileName="Assets\Ik\Scripts\PhotonManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hasegawa\Script\S1_Move.cs" Line="26" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
