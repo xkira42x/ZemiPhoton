@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S3_Shot : MonoBehaviour {
+public class S3_Shot : Photon.MonoBehaviour {
 	[SerializeField]
 	GameObject S_Bullet;
 	[SerializeField]
@@ -12,9 +12,12 @@ public class S3_Shot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// ショット
-		if (Input.GetMouseButton (0)) {
-			S_Shot ();
+		// プレイヤーコントロール設定
+		if (photonView.isMine) {
+			// ショット
+			if (Input.GetMouseButton (0)) {
+				S_Shot ();
+			}
 		}
 	}
 	// 撃つ
