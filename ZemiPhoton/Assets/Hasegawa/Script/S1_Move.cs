@@ -2,30 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S1_Move : MonoBehaviour {
+public class S1_Move : Photon.MonoBehaviour {
+	// 同期スクリプト参照
+	N3_SyncMove N_syncMove;
+	Vector3 N_SyncPos = Vector3.zero;
+
 	float S_Speed = 0.1f;
 	byte S_Type = 0;
 
 	[SerializeField]
 	Animator S_Animator;
 	float S_Motion = 0;
-	
+
+	void Start(){
+		// 同期処理の呼び出し
+		if (!photonView.isMine)
+			StartCoroutine ("SyncPosition");
+	}
+
 	// Update is called once per frame
 	void Update () {
 		// キー移動
-		S_KeyMove ();
+		if (photonView.isMine)
+			S_KeyMove ();
+		else
+			N_SyncPos = N_syncMove.GetSyncPos ();
+		
 		// ジャンプ
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			S_Jump ();
 		}
+
 		// アニメーション
 		S_UnityChanAnimation ();
 	}
+
+
 
 	// ジャンプ
 	void S_Jump(){
 		StartCoroutine (S_Jumping ());
 	}
+
 	// ジャンプの中身
 	IEnumerator S_Jumping(){
 		Vector3 S_Jump = new Vector3 (0, 0.1f, 0);
@@ -37,10 +55,12 @@ public class S1_Move : MonoBehaviour {
 			yield return new WaitForSeconds (0.01f);
 		}
 	}
+
 	// Unityちゃんモーション
 	void S_UnityChanAnimation(){
 		S_Animator.SetFloat ("Speed", S_Motion);
 	}
+
 	// キー移動判定
 	void S_KeyMove(){
 		S_Type = Key.NONE;
@@ -49,7 +69,7 @@ public class S1_Move : MonoBehaviour {
 			S_Speed = 0.15f;
 		else
 			S_Speed = 0.1f;
-		// 移動
+		// キー判定
 		if (Input.GetKey (KeyCode.W)) {
 			S_Type += Key.FORWARD;
 		}
@@ -62,35 +82,41 @@ public class S1_Move : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			S_Type += Key.RIGHT;
 		}
-		// 角度設定
+		S_Move ();
+	}
+
+	// 移動
+	void S_Move(){
+		Vector3 pos = Vector3.zero;
+		// 移動
 		switch (S_Type) {
 		case Key.FORWARD:
-			transform.localPosition += transform.forward * S_Speed;
+			pos += transform.forward * S_Speed;
 			break;
 		case Key.BACK:
-			transform.localPosition += -(transform.forward * S_Speed);
+			pos += -(transform.forward * S_Speed);
 			break;
 		case Key.RIGHT:
-			transform.localPosition += transform.right * S_Speed;
+			pos += transform.right * S_Speed;
 			break;
 		case Key.LEFT:
-			transform.localPosition += -(transform.right * S_Speed);
+			pos += -(transform.right * S_Speed);
 			break;
 		case Key.FORWARDLEFT:
-			transform.localPosition += transform.forward * S_Speed;
-			transform.localPosition += -(transform.right * S_Speed);
+			pos += transform.forward * S_Speed;
+			pos += -(transform.right * S_Speed);
 			break;
 		case Key.FORWARDRIGHT:
-			transform.localPosition += transform.forward * S_Speed;
-			transform.localPosition += transform.right * S_Speed;
+			pos += transform.forward * S_Speed;
+			pos += transform.right * S_Speed;
 			break;
 		case Key.BACKLEFT:
-			transform.localPosition += -(transform.forward * S_Speed);
-			transform.localPosition += -(transform.right * S_Speed);
+			pos += -(transform.forward * S_Speed);
+			pos += -(transform.right * S_Speed);
 			break;
 		case Key.BACKRIGHT:
-			transform.localPosition += -(transform.forward * S_Speed);
-			transform.localPosition += transform.right * S_Speed;
+			pos += -(transform.forward * S_Speed);
+			pos += transform.right * S_Speed;
 			break;
 		case Key.NONE:
 			break;
@@ -98,10 +124,25 @@ public class S1_Move : MonoBehaviour {
 			Debug.Log ("Error :: Player move S_Type");
 			break;
 		}
+		transform.localPosition += pos;
 		// モーション更新
 		if (S_Type != Key.NONE)
 			S_Motion = 1;
 		else
 			S_Motion = 0;
+	}
+
+	// 座標同期
+	IEnumerator SyncPosition(){
+		while (true) {
+			// 移動処理とアニメーション処理
+			if (N_SyncPos.x != 0 || N_SyncPos.y != 0 || N_SyncPos.z != 0) {
+				S_Motion = 1;
+				transform.localPosition += N_SyncPos * S_Speed;
+			} else
+				S_Motion = 0;
+			//
+			yield return new WaitForSeconds(0.01655f);
+		}
 	}
 }

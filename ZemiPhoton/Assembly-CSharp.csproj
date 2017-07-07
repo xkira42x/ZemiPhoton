@@ -50,6 +50,8 @@
      <Compile Include="Assets\Hasegawa\Script\Gun.cs" />
      <Compile Include="Assets\Hasegawa\Script\GunBase.cs" />
      <Compile Include="Assets\Hasegawa\Script\Key.cs" />
+     <Compile Include="Assets\Hasegawa\Script\N2_NetworkSetting.cs" />
+     <Compile Include="Assets\Hasegawa\Script\N3_SyncMove.cs" />
      <Compile Include="Assets\Hasegawa\Script\S1_Move.cs" />
      <Compile Include="Assets\Hasegawa\Script\S2_Angle.cs" />
      <Compile Include="Assets\Hasegawa\Script\S3_Shot.cs" />
