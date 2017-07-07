@@ -9,12 +9,6 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 	Vector3 N_syncPos = Vector3.zero;
 	Vector3 N_nowPos = Vector3.zero;
 
-	float startTime = 0;
-	float endTime = 0;
-	bool start = true;
-	bool Activ = true;
-
-
 	public Vector3 GetSyncPos(){return N_syncPos;}
 
 	void Awake(){
@@ -46,15 +40,6 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 		} else {
 			//データの受信
 			N_syncPos = (Vector3)stream.ReceiveNext ();
-			// 通信時間
-			if (Activ) {
-				if (start) {
-					startTime = DateTime.Now.Millisecond;start = false;
-				} else {
-					endTime = DateTime.Now.Millisecond;Activ = false;
-				}
-				Debug.Log (endTime - startTime);
-			}
 		}
 	}
 }

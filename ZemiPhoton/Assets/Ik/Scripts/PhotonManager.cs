@@ -62,7 +62,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		= "OnJoinedRoom";
 		Vector3 Pos = initPos [PhotonNetwork.countOfPlayersInRooms];
 
-		cube = PhotonNetwork.Instantiate ("Cube", Pos,
+		cube = PhotonNetwork.Instantiate ("myPlayer", Pos,
 			Quaternion.Euler (Vector3.zero), 0);
 	}
 }
