@@ -29,8 +29,6 @@ public class N3_CubeScript : Photon.MonoBehaviour {
 		}
 	}
 
-
-
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (stream.isWriting) {
 			//座標の差分値を送信

@@ -15,7 +15,7 @@ public class N3_OnGUI : Photon.MonoBehaviour {
 		var textObject = new GameObject ("Text");
 		textObject.transform.parent= GameObject.Find("Canvas").transform;
 		var text = textObject.AddComponent<Text> ();
-		text.rectTransform.anchoredPosition
+//		text.rectTransform.anchoredPosition;
 		text.rectTransform.sizeDelta = Vector2.zero;
 		text.rectTransform.anchorMin = Vector2.zero;
 		text.rectTransform.anchorMax = Vector2.one;

@@ -48,16 +48,11 @@
   <ItemGroup>
      <Compile Include="Assets\Hasegawa\Script\Bullet.cs" />
      <Compile Include="Assets\Hasegawa\Script\Gun.cs" />
-<<<<<<< HEAD
      <Compile Include="Assets\Hasegawa\Script\GunBase.cs" />
      <Compile Include="Assets\Hasegawa\Script\Key.cs" />
      <Compile Include="Assets\Hasegawa\Script\S1_Move.cs" />
      <Compile Include="Assets\Hasegawa\Script\S2_Angle.cs" />
      <Compile Include="Assets\Hasegawa\Script\S3_Shot.cs" />
-=======
-     <Compile Include="Assets\Hasegawa\Script\Key.cs" />
-     <Compile Include="Assets\Hasegawa\Script\S123_Player.cs" />
->>>>>>> Aikei
      <Compile Include="Assets\Ik\Scripts\N3_CubeScript.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_LineSet.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_OnGUI.cs" />
