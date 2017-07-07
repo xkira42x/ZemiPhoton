@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class PhotonTest : Photon.MonoBehaviour {
+public class PhotonNetworkTest : Photon.MonoBehaviour {
 	Text Result;
 
 	// 同期する際のポオストの様な役割
@@ -47,24 +47,26 @@ public class PhotonTest : Photon.MonoBehaviour {
 	[SerializeField]
 	bool testCommunicationInterval = false;
 	bool RunOnce = false;
-	int startTime,endTime;
+	float startTime,endTime;
 	void TestCommunicationInterval(){
-		if (!RunOnce) {
 			if (stream.isWriting) {
 				// 通信開始の時間を同期
-				startTime = System.DateTime.Now.Second;
+				startTime = System.DateTime.Now.Millisecond;
 				stream.SendNext (startTime);
 				RunOnce = true;
 			} else {
 				// 送信物を受け取った時間
-				endTime = System.DateTime.Now.Second;
-				startTime = (int)stream.ReceiveNext ();
+				endTime = System.DateTime.Now.Millisecond;
+				startTime = (float)stream.ReceiveNext ();
 				RunOnce = true;
 			}
-			Result.text += "Communication interval : " + (endTime - startTime).ToString() + "\n";
-			if (endTime == 0)
-				Result.text += "Communication interval : It is not a correct result.";
-		}
+			if (!photonView.isMine) {
+			// 秒値で結果を出す
+				Result.text = "Communication interval : " + ((endTime - startTime) / 1000).ToString () + "s\n";
+			Result.text += "Start : " + (startTime / 1000).ToString () + "s\n";
+			Result.text += "End : " + (endTime / 1000).ToString () + "s\n";
+			Result.text += "now : " + System.DateTime.Now.Millisecond.ToString() + "\n";
+			}
 	}
 	//******************************************************************//
 	//******************************************************************//
