@@ -33,13 +33,22 @@ public class PhotonManager_ver2 : Photon.MonoBehaviour {
 		roomOptions.customRoomProperties = customProp;
 		//ロビーで見えるルーム情報としてカスタムプロパティのuserName,userIdを使いますよという宣言
 		roomOptions.customRoomPropertiesForLobby = new string[]{ "userName","userId"};
-		roomOptions.maxPlayers = 8; //部屋の最大人数
+		roomOptions.maxPlayers = 4; //部屋の最大人数
 		roomOptions.isOpen = true; //入室許可する
 		roomOptions.isVisible = true; //ロビーから見えるようにする
 		//userIdが名前のルームがなければ作って入室、あれば普通に入室する。
 		PhotonNetwork.JoinOrCreateRoom (userId, roomOptions, null);
+
+		GameObject.Find ("CreateRoomB").GetComponent<Button> ().interactable = false;
+		GameObject.Find ("JoinRoomB").GetComponent<Button> ().interactable = false;
+
 	}
 	public void JoinRoom(){
+
+		GameObject.Find ("CreateRoomB").GetComponent<Button> ().interactable = false;
+		GameObject.Find ("JoinRoomB").GetComponent<Button> ().interactable = false;
+
+//		PhotonNetwork.JoinRoom("user"+ cnt);
 		PhotonNetwork.JoinRoom("user1");
 	}
 
@@ -56,5 +65,6 @@ public class PhotonManager_ver2 : Photon.MonoBehaviour {
 		GameObject.Find ("FirstPersonCharacter").GetComponent<Camera>().enabled = true;
 
 	}
+
 
 }
