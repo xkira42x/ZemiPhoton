@@ -141,9 +141,9 @@ public class S1_Move : Photon.MonoBehaviour {
 		while (true) {
 			Debug.Log ("Sync position  " + N_SyncPos);
 			// 移動処理とアニメーション処理
-			if (N_SyncPos.x != 0 || N_SyncPos.y != 0 || N_SyncPos.z != 0) {
+			if (N_SyncPos != Vector3.zero) {//N_SyncPos.x != 0 || N_SyncPos.y != 0 || N_SyncPos.z != 0) {
 				S_Motion = 1;
-				transform.position += new Vector3 (N_SyncPos.x, 0, N_SyncPos.z);
+				transform.position += new Vector3 (N_SyncPos.x * S_Speed, 0, N_SyncPos.z * S_Speed);
 			} else
 				S_Motion = 0;
 			//

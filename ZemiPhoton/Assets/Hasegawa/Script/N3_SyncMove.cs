@@ -21,10 +21,6 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 		//ネットワーク
 		PhotonNetwork.NetworkStatisticsEnabled = true;
 		N_photonView = PhotonView.Get(this);
-		//カメラ設定
-		if (photonView.isMine) {
-			transform.FindChild ("Camera").GetComponent<Camera> ().depth = 1;
-		}
 	}
 
 	void Update(){
@@ -39,7 +35,7 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 			N_nowPos = transform.position;
 		} else {
 			//データの受信
-			N_syncPos = (Vector3)stream.ReceiveNext ();
+			N_syncPos = -((Vector3)stream.ReceiveNext ());
 		}
 	}
 }
