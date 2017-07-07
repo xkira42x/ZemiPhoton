@@ -17,7 +17,6 @@ public class S2_Angle : Photon.MonoBehaviour {
 			S_Eye ();
 		}
 	}
-	PhotonNetwork
 	// 視線移動
 	void S_Eye(){
 		// マウス移動量を保存

@@ -139,7 +139,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	// 座標同期
 	IEnumerator SyncPosition(){
 		while (true) {
-			Debug.Log ("Sync position  " + N_SyncPos);
+//			Debug.Log ("Sync position  " + N_SyncPos);
 			// 移動処理とアニメーション処理
 			if (N_SyncPos != Vector3.zero) {//N_SyncPos.x != 0 || N_SyncPos.y != 0 || N_SyncPos.z != 0) {
 				S_Motion = 1;

@@ -11,13 +11,13 @@ public class N4_SyncAngle : Photon.MonoBehaviour {
 	private Quaternion N4_PlayerAngle=new Quaternion(0,0,0,0);
 
 	[SerializeField]
-	Transform N4_Camera;
+	Transform N4_Collection;
 
-	void Uppdate(){
-		this.transform.rotation = N4_PlayerAngle;
-
+	void Update(){
+		if(!photonView.isMine)
 		transform.localRotation = new Quaternion (0, N4_PlayerAngle.y, 0, N4_PlayerAngle.w);
-		N4_Camera.localRotation = new Quaternion (N4_PlayerAngle.x, N4_Camera.localRotation.y, N4_Camera.localRotation.z, N4_Camera.localRotation.w);
+		N4_Collection.localRotation = new Quaternion (N4_PlayerAngle.x, N4_Collection.localRotation.y, N4_Collection.localRotation.z, N4_Collection.localRotation.w);
+
 	}
 
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
