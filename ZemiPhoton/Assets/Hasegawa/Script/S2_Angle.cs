@@ -5,6 +5,7 @@ using UnityEngine;
 public class S2_Angle : MonoBehaviour {
 	Vector3 S_MouseAngle = Vector3.zero;
 	Quaternion S_MainAngle;
+	public Quaternion S_GetMainAngle(){return S_MainAngle;}
 
 	[SerializeField]
 	Transform S_Collection;
@@ -14,6 +15,7 @@ public class S2_Angle : MonoBehaviour {
 		// 視線移動
 		S_Eye ();
 	}
+	PhotonNetwork
 	// 視線移動
 	void S_Eye(){
 		// マウス移動量を保存

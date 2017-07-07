@@ -59,6 +59,7 @@
      <Compile Include="Assets\Ik\Scripts\N3_LineSet.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_OnGUI.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_PlayerMove.cs" />
+     <Compile Include="Assets\Ik\Scripts\N4_SyncAngle.cs" />
      <Compile Include="Assets\Ik\Scripts\PhotonManager.cs" />
      <Compile Include="Assets\Ik\Unuses\N3_CorutinSave.cs" />
      <Compile Include="Assets\Ik\Unuses\N3_PlayerVecSave.cs" />
