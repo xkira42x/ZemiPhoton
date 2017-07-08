@@ -11,6 +11,7 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 
 	public Vector3 GetSyncPos(){return N_syncPos;}
 
+
 	void Awake(){
 		//初期生成時にも同期が起きてしまうため、前回の座標を生成時の座標へ
 		N_nowPos = transform.position;
@@ -22,20 +23,15 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 		PhotonNetwork.NetworkStatisticsEnabled = true;
 		N_photonView = PhotonView.Get(this);
 	}
-
-	void Update(){
 		
-	}
-	
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (stream.isWriting) {
 			//座標の差分値を送信
 			stream.SendNext (transform.position - N_nowPos);
-			//今回の送信で送った座標を更新
 			N_nowPos = transform.position;
 		} else {
 			//データの受信
-			N_syncPos = -((Vector3)stream.ReceiveNext ());
+			N_syncPos = (Vector3)stream.ReceiveNext ();
 		}
 	}
 }

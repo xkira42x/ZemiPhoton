@@ -20,11 +20,13 @@ public class S1_Move : Photon.MonoBehaviour {
 		if (!photonView.isMine) {
 			N_syncMove = GetComponent<N3_SyncMove> ();
 			StartCoroutine ("SyncPosition");
+			StartCoroutine ("Main");
 		}
 	}
 
 	// Update is called once per frame
 	void Update () {
+		/*
 		// キー移動
 		if (photonView.isMine) {
 			S_KeyMove ();
@@ -38,7 +40,7 @@ public class S1_Move : Photon.MonoBehaviour {
 
 		// アニメーション
 		S_UnityChanAnimation ();
-
+		*/
 	}
 
 
@@ -140,13 +142,35 @@ public class S1_Move : Photon.MonoBehaviour {
 	IEnumerator SyncPosition(){
 		while (true) {
 			// 移動処理とアニメーション処理
-			if (N_SyncPos != Vector3.zero) {//N_SyncPos.x != 0 || N_SyncPos.y != 0 || N_SyncPos.z != 0) {
+			if (N_SyncPos != Vector3.zero) {
 				S_Motion = 1;
 				transform.position += new Vector3 (N_SyncPos.x * S_Speed, 0, N_SyncPos.z * S_Speed);
 			} else
 				S_Motion = 0;
 			//
 			yield return new WaitForSeconds(0.01655f);
+		}
+	}
+
+	// メイン処理
+	IEnumerator Main(){
+		while (true) {
+
+			// キー移動
+			if (photonView.isMine) {
+				S_KeyMove ();
+
+				// ジャンプ
+				if (Input.GetKeyDown (KeyCode.Space)) {
+					S_Jump ();
+				}
+			} else
+				N_SyncPos = N_syncMove.GetSyncPos ();
+
+			// アニメーション
+			S_UnityChanAnimation ();
+
+			yield return new WaitForSeconds (0.01655f);
 		}
 	}
 }
