@@ -15,35 +15,14 @@ public class S1_Move : Photon.MonoBehaviour {
 	float S_Motion = 0;
 
 	void Start(){
-		
-		// 同期処理の呼び出し
-		if (!photonView.isMine) {
+		if (photonView.isMine) {
+			StartCoroutine ("MyMain");
+		} else {
 			N_syncMove = GetComponent<N3_SyncMove> ();
+			// 同期処理の呼び出し
 			StartCoroutine ("SyncPosition");
-			StartCoroutine ("Main");
 		}
 	}
-
-	// Update is called once per frame
-	void Update () {
-		/*
-		// キー移動
-		if (photonView.isMine) {
-			S_KeyMove ();
-		
-			// ジャンプ
-			if (Input.GetKeyDown (KeyCode.Space)) {
-				S_Jump ();
-			}
-		} else
-			N_SyncPos = N_syncMove.GetSyncPos ();
-
-		// アニメーション
-		S_UnityChanAnimation ();
-		*/
-	}
-
-
 
 	// ジャンプ
 	void S_Jump(){
@@ -141,10 +120,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	// 座標同期
 	IEnumerator SyncPosition(){
 		while (true) {
-<<<<<<< HEAD
-//			Debug.Log ("Sync position  " + N_SyncPos);
-=======
->>>>>>> origin/Hasegawa
+			N_SyncPos = N_syncMove.GetSyncPos ();
 			// 移動処理とアニメーション処理
 			if (N_SyncPos != Vector3.zero) {
 				S_Motion = 1;
@@ -157,19 +133,14 @@ public class S1_Move : Photon.MonoBehaviour {
 	}
 
 	// メイン処理
-	IEnumerator Main(){
+	IEnumerator MyMain(){
 		while (true) {
-
+			
 			// キー移動
-			if (photonView.isMine) {
-				S_KeyMove ();
-
-				// ジャンプ
-				if (Input.GetKeyDown (KeyCode.Space)) {
-					S_Jump ();
-				}
-			} else
-				N_SyncPos = N_syncMove.GetSyncPos ();
+			S_KeyMove ();
+			// ジャンプ
+			if (Input.GetKeyDown (KeyCode.Space))
+				S_Jump ();
 
 			// アニメーション
 			S_UnityChanAnimation ();

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class N2_NetworkSetting : Photon.MonoBehaviour {
 	[SerializeField]
-	Camera camera;
+	Camera myCamera;
 
 	// Use this for initialization
 	void Start () {
 		if (photonView.isMine) {
-			camera.gameObject.SetActive (true);
+			myCamera.gameObject.SetActive (true);
 		}
 	}
 	

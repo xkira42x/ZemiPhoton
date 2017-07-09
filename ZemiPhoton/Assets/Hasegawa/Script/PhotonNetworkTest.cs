@@ -38,6 +38,10 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 		// 通信同期リクエストを送ってから届くまでの時間を計る
 		if (useCommunicationIntervalTest)
 			CommunicationIntervalTest ();
+
+		// 通信するデータ量の最大値のテスト
+		if (useStressTest)
+			StressTest ();
 		
 	}
 	//******************************************************************//
@@ -55,15 +59,16 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	float startTime,endTime,toWait;
 	public float GetWaitTime(){return toWait;}
 	void CommunicationIntervalTest(){
-			if (stream.isWriting) {
-				// 通信開始の時間を同期
-				startTime = System.DateTime.Now.Millisecond;
-				stream.SendNext (startTime);
-			} else {
-				// 送信物を受け取った時間
-				endTime = System.DateTime.Now.Millisecond;
-				startTime = (float)stream.ReceiveNext ();
-			}
+		// 同期処理
+		if (stream.isWriting) {
+			// 通信開始の時間を同期
+			startTime = System.DateTime.Now.Millisecond;
+			stream.SendNext (startTime);
+		} else {
+			// 送信物を受け取った時間
+			endTime = System.DateTime.Now.Millisecond;
+			startTime = (float)stream.ReceiveNext ();
+		}
 		if (!photonView.isMine) {
 			// 秒値で結果を出す
 			toWait = ((Mathf.Abs (endTime - startTime)) / 1000);
@@ -85,14 +90,27 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	bool useStressTest = false;
 	// 負荷値
 	[SerializeField]
-	int LoadValue;
+	int LoadValue = 10;
 	List<string> syncList = new List<string>();
 	string addString;
 	void StressTest(){
-		for (int i = 0; i < LoadValue; i++) {
-			addString = "Data" + i.ToString ();
-			syncList.Add (addString);
+		// 送信データの準備
+		if (photonView.isMine) {
+			for (int i = 0; i < LoadValue; i++) {
+				addString = "Data" + i.ToString () + "\n";
+				syncList.Add (addString);
+			}
 		}
+		// 同期処理
+		/*if (stream.isWriting) {
+			// 送信
+			stream.SendNext (syncList);
+		} else {
+			// 受信
+			syncList = (List<string>)stream.ReceiveNext ();
+		}
+		if (!photonView.isMine)
+			Result.text += syncList;*/
 	}
 	//******************************************************************//
 	//******************************************************************//
@@ -100,15 +118,16 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 
 	string hello = "";
 	void Hello(){
+		// 同期処理
 		if (stream.isWriting) {
-			// 通信開始の時間を同期
+			// 送信
 			stream.SendNext ("Hello\n");
 		} else {
-			// 送信物を受け取った時間
+			// 受信
 			hello = (string)stream.ReceiveNext ();
 		}
 		if (!photonView.isMine)
-			Result.text = hello;
+			Result.text = hello.ToString();
 	}
 		
 }
