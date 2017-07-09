@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Kaede/Scene/PlayRoom.unity
+- path: Assets/Hasegawa/Scene/TestScene.unity
   isLoaded: 1
   isActive: 1
