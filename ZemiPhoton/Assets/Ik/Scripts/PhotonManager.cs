@@ -12,8 +12,14 @@ public class PhotonManager : Photon.MonoBehaviour {
 	};
 
 	private GameObject cnvs;
+	GameObject createRoom;
+	GameObject connectPhoton;
+	GameObject joinRoom;
 	void Start(){
 		cnvs = GameObject.Find ("Canvas");
+		createRoom = GameObject.Find ("CreateRoomB");
+		connectPhoton = GameObject.Find ("PhotonConnectB");
+		joinRoom = GameObject.Find ("JoinRoomB");
 	}
 		
 
@@ -25,7 +31,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 	{
 		Debug.Log ("PhotonManager OnJoinedLobby");
 		//ボタンを押せるようにする
-		GameObject.Find ("CreateRoomB").GetComponent<Button> ().interactable = true;
+		createRoom.GetComponent<Button> ().interactable = true;
 	}
 
 	//ルーム作成
@@ -56,7 +62,8 @@ public class PhotonManager : Photon.MonoBehaviour {
 	private GameObject cube;
 	//ルーム入室した時に呼ばれるコールバックメソッド
 	void OnJoinedRoom() {
-		Destroy (cnvs);
+		//Destroy (cnvs);
+		DestroyButton();
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		GameObject.Find ("StatusText").GetComponent<Text> ().text
 		= "OnJoinedRoom";
@@ -64,5 +71,12 @@ public class PhotonManager : Photon.MonoBehaviour {
 
 		cube = PhotonNetwork.Instantiate ("myPlayer", Pos,
 			Quaternion.Euler (Vector3.zero), 0);
+	}
+
+	// ボタン削除
+	void DestroyButton(){
+		Destroy(createRoom);
+		Destroy (connectPhoton);
+		Destroy (joinRoom);
 	}
 }
