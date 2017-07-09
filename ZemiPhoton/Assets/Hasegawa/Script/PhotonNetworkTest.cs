@@ -36,8 +36,8 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 		Hello ();
 
 		// 通信同期リクエストを送ってから届くまでの時間を計る
-		if (testCommunicationInterval)
-			TestCommunicationInterval ();
+		if (useCommunicationIntervalTest)
+			CommunicationIntervalTest ();
 		
 	}
 	//******************************************************************//
@@ -48,11 +48,13 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	//通信同期リクエストを送ってから届くまでの時間を計る					//
 	//受信側でのみ結果が出る（受信した時間から計算をするため）			//
 	//******************************************************************//
+	// 関数アクティブスイッチ
 	[SerializeField]
-	bool testCommunicationInterval = false;
+	bool useCommunicationIntervalTest = false;
+	// 始めの時間/終わりの時間/待ち時間
 	float startTime,endTime,toWait;
 	public float GetWaitTime(){return toWait;}
-	void TestCommunicationInterval(){
+	void CommunicationIntervalTest(){
 			if (stream.isWriting) {
 				// 通信開始の時間を同期
 				startTime = System.DateTime.Now.Millisecond;
@@ -72,6 +74,30 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	}
 	//******************************************************************//
 	//******************************************************************//
+
+
+	//******************************************************************//
+	//可変長配列を用いて、一度の通信量の負荷を与えるテスト				//
+	//																	//
+	//******************************************************************//
+	// 関数アクティブスイッチ
+	[SerializeField]
+	bool useStressTest = false;
+	// 負荷値
+	[SerializeField]
+	int LoadValue;
+	List<string> syncList = new List<string>();
+	string addString;
+	void StressTest(){
+		for (int i = 0; i < LoadValue; i++) {
+			addString = "Data" + i.ToString ();
+			syncList.Add (addString);
+		}
+	}
+	//******************************************************************//
+	//******************************************************************//
+
+
 	string hello = "";
 	void Hello(){
 		if (stream.isWriting) {
