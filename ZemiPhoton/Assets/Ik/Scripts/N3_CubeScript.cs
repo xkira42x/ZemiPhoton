@@ -11,6 +11,7 @@ public class N3_CubeScript : Photon.MonoBehaviour {
 	public Vector3 N_hensu1=Vector3.zero;
 	private Vector3 N_OutVec=Vector3.zero;
 
+	public bool N_deltaSyncFlg;
 
 	void Awake(){
 		//初期生成時にも同期が起きてしまうため、前回の座標を生成時の座標へ
@@ -31,11 +32,20 @@ public class N3_CubeScript : Photon.MonoBehaviour {
 
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (stream.isWriting) {
-			//座標の差分値を送信
-			stream.SendNext (this.transform.position-N_OutVec);
+			if (N_deltaSyncFlg == true) {
+				//座標の差分値を送信
+				stream.SendNext (this.transform.position - N_OutVec);
 
-			//今回の送信で送った座標を更新
-			N_OutVec = this.transform.position;
+				//今回の送信で送った座標を更新
+				N_OutVec = this.transform.position;
+			} else {
+				//座標を直接送信
+				stream.SendNext (this.transform.position);
+
+				//今回の送信で送った座標を更新
+				N_OutVec = this.transform.position;
+			}
+
 		} else {
 //			Debug.Log ("Serialize Juu"+Time.time);
 			//データの受信

@@ -14,9 +14,10 @@ public class N4_SyncAngle : Photon.MonoBehaviour {
 	Transform N4_Collection;
 
 	void Update(){
-		if(!photonView.isMine)
-		transform.localRotation = new Quaternion (0, N4_PlayerAngle.y, 0, N4_PlayerAngle.w);
-		N4_Collection.localRotation = new Quaternion (N4_PlayerAngle.x, N4_Collection.localRotation.y, N4_Collection.localRotation.z, N4_Collection.localRotation.w);
+		if (!photonView.isMine) {
+			transform.localRotation = new Quaternion (0, N4_PlayerAngle.y, 0, N4_PlayerAngle.w);
+			N4_Collection.localRotation = new Quaternion (N4_PlayerAngle.x, N4_Collection.localRotation.y, N4_Collection.localRotation.z, N4_Collection.localRotation.w);
+		}
 
 	}
 
