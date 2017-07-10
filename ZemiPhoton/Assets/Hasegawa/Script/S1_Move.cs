@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class S1_Move : Photon.MonoBehaviour {
 	// 同期スクリプト参照
@@ -14,6 +15,10 @@ public class S1_Move : Photon.MonoBehaviour {
 	Animator S_Animator;
 	float S_Motion = 0;
 
+	struct a{float x,y,z;}
+	a aa;
+
+
 	void Start(){
 		if (photonView.isMine) {
 			StartCoroutine ("MyMain");
@@ -22,6 +27,9 @@ public class S1_Move : Photon.MonoBehaviour {
 			// 同期処理の呼び出し
 			StartCoroutine ("SyncPosition");
 		}
+		int b = Marshal.SizeOf (typeof(a));
+
+		Debug.Log (b +"  " + sizeof(float));
 	}
 
 	// ジャンプ
