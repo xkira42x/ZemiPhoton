@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class PhotonManager : Photon.MonoBehaviour {
 	private Vector3[] initPos = new Vector3[4]{
-		new Vector3(5,0,5),
-		new Vector3(-5,0,5),
-		new Vector3(-5,0,-5),
-		new Vector3(5,0,-5)
+		new Vector3(5,-50,5),
+		new Vector3(-5,-50,5),
+		new Vector3(-5,-50,-5),
+		new Vector3(5,-50,-5)
 	};
 
 	private GameObject cnvs;
 	GameObject createRoom;
 	GameObject connectPhoton;
 	GameObject joinRoom;
+
+	//体力表示ＵＩ
+	public GameObject suppoters;
+
 	void Start(){
 		cnvs = GameObject.Find ("Canvas");
 		createRoom = GameObject.Find ("CreateRoomB");
@@ -64,6 +68,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 	void OnJoinedRoom() {
 		//Destroy (cnvs);
 		DestroyButton();
+		ShowSuppotersButton ();
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		GameObject.Find ("StatusText").GetComponent<Text> ().text
 		= "OnJoinedRoom";
@@ -78,5 +83,12 @@ public class PhotonManager : Photon.MonoBehaviour {
 		Destroy(createRoom);
 		Destroy (connectPhoton);
 		Destroy (joinRoom);
+	}
+
+	//体力表示ＵＩを表示
+	void ShowSuppotersButton(){
+		GameObject ss;
+		ss=Instantiate (suppoters);
+		ss.transform.parent=cnvs.transform;
 	}
 }

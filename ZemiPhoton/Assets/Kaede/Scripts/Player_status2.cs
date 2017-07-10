@@ -40,6 +40,7 @@ public class Player_status2 : Photon.MonoBehaviour {
 		} else {
 			userid2 = (int)stream.ReceiveNext ();
 			hp2 = (int)stream.ReceiveNext ();
+			Debug.Log ("Receive: " + hp2);
 
 		}
 	}

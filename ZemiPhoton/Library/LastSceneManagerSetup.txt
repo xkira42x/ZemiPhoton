@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Ik/Scenes/main.unity
-=======
-- path: Assets/Hasegawa/Scene/TestScene.unity
->>>>>>> origin/Kaedechan
   isLoaded: 1
   isActive: 1

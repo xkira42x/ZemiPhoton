@@ -6,11 +6,17 @@ public class N3_PlayerMove : Photon.MonoBehaviour {
 
 	private Vector3 N_hensu2=new Vector3(0,0,0);
 
+	public bool N_deltaSyncFlg;
+
 	N3_CubeScript N_CS;
 	// Use this for initialization
 	void Start () {
-		StartCoroutine ("move");
 		N_CS = this.GetComponent<N3_CubeScript> ();
+		if (N_deltaSyncFlg == true) {
+			StartCoroutine ("move");
+		} else {
+			N3_syncMove ();
+		}
 	}
 
 	// Update is called once per frame
@@ -41,5 +47,9 @@ public class N3_PlayerMove : Photon.MonoBehaviour {
 			//移動呼び出しは微調整 PCスペックにより左右される可能性有
 			yield return new WaitForSeconds(0.01655f);
 		}		
+	}
+
+	void N3_syncMove(){
+		this.transform.position = N_hensu2;
 	}
 }
