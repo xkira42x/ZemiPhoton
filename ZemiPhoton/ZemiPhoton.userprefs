@@ -3,10 +3,11 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Hasegawa\Script\PhotonNetworkTest.cs">
     <Files>
       <File FileName="Assets\Hasegawa\Script\S1_Move.cs" Line="1" Column="1" />
-      <File FileName="Assets\Hasegawa\Script\PhotonNetworkTest.cs" Line="130" Column="35" />
+      <File FileName="Assets\Hasegawa\Script\PhotonNetworkTest.cs" Line="107" Column="63" />
       <File FileName="Assets\Hasegawa\Script\N2_NetworkSetting.cs" Line="1" Column="1" />
       <File FileName="Assets\Hasegawa\Script\N3_SyncMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Ik\Scripts\N4_SyncAngle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Ik\Scripts\N4_SyncAngle.cs" Line="10" Column="2" />
+      <File FileName="Assets\Hasegawa\Script\S2_Angle.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

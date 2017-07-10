@@ -91,26 +91,22 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	// 負荷値
 	[SerializeField]
 	int LoadValue = 10;
-	List<string> syncList = new List<string>();
 	string addString;
 	void StressTest(){
 		// 送信データの準備
 		if (photonView.isMine) {
-			for (int i = 0; i < LoadValue; i++) {
-				addString = "Data" + i.ToString () + "\n";
-				syncList.Add (addString);
-			}
+
 		}
 		// 同期処理
-		/*if (stream.isWriting) {
-			// 送信
-			stream.SendNext (syncList);
-		} else {
-			// 受信
-			syncList = (List<string>)stream.ReceiveNext ();
+		for (int i = 0; i < LoadValue; i++) {
+			if (stream.isWriting) {
+				// 送信
+				stream.SendNext ("Data" + i.ToString () + "\n");
+			} else {
+				// 受信
+				Result.text += ((string)stream.ReceiveNext ()).ToString();
+			}
 		}
-		if (!photonView.isMine)
-			Result.text += syncList;*/
 	}
 	//******************************************************************//
 	//******************************************************************//
