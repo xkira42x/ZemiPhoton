@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//サイズオブ使用まとめ
+//using System.Runtime.InteropServices;
+//Marshal.SizeOf();
+//URL->https://msdn.microsoft.com/ja-jp/library/dn261467(v=vs.110).aspx
 
 //コンポーネントの追加だけでおｋ
 public class N3_CubeScript : Photon.MonoBehaviour {
@@ -13,9 +17,11 @@ public class N3_CubeScript : Photon.MonoBehaviour {
 
 	public bool N_deltaSyncFlg;
 
+
 	void Awake(){
 		//初期生成時にも同期が起きてしまうため、前回の座標を生成時の座標へ
 		N_OutVec = this.transform.position;
+
 	}
 	// Use this for initialization
 	void Start () {
