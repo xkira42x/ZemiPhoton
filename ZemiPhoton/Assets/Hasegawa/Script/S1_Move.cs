@@ -15,10 +15,6 @@ public class S1_Move : Photon.MonoBehaviour {
 	Animator S_Animator;
 	float S_Motion = 0;
 
-	struct a{float x,y,z;}
-	a aa;
-
-
 	void Start(){
 		if (photonView.isMine) {
 			StartCoroutine ("MyMain");
@@ -27,9 +23,6 @@ public class S1_Move : Photon.MonoBehaviour {
 			// 同期処理の呼び出し
 			StartCoroutine ("SyncPosition");
 		}
-		int b = Marshal.SizeOf (typeof(a));
-
-		Debug.Log (b +"  " + sizeof(float));
 	}
 
 	// ジャンプ
@@ -123,18 +116,25 @@ public class S1_Move : Photon.MonoBehaviour {
 			S_Motion = 1;
 		else
 			S_Motion = 0;
+
 	}
 
 	// 座標同期
 	IEnumerator SyncPosition(){
 		while (true) {
 			N_SyncPos = N_syncMove.GetSyncPos ();
+			Vector3 movement = (N_SyncPos - transform.position) * 0.5f;
+
 			// 移動処理とアニメーション処理
-			if (N_SyncPos != Vector3.zero) {
+			if (movement != Vector3.zero) {
 				S_Motion = 1;
-				transform.position += new Vector3 (N_SyncPos.x * S_Speed, 0, N_SyncPos.z * S_Speed);
+				//transform.position += new Vector3 (N_SyncPos.x , 0, N_SyncPos.z );
+				transform.position += movement;
 			} else
 				S_Motion = 0;
+			// アニメーション
+			S_UnityChanAnimation ();
+
 			//
 			yield return new WaitForSeconds(0.01655f);
 		}
