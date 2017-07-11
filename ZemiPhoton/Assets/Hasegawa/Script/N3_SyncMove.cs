@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Runtime.InteropServices;
 
 public class N3_SyncMove : Photon.MonoBehaviour {
 
@@ -30,8 +31,11 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 			stream.SendNext (transform.position - N_nowPos);
 			N_nowPos = transform.position;
 		} else {
+			object obj;
 			//データの受信
-			N_syncPos = (Vector3)stream.ReceiveNext ();
+			//N_syncPos = (Vector3)stream.ReceiveNext ();
+			obj = stream.ReceiveNext();
+			N_syncPos = (Vector3)obj;
 		}
 	}
 }
