@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 public class S1_Move : Photon.MonoBehaviour {
 	// 同期スクリプト参照
 	N3_SyncMove N_syncMove;
-	Vector3 N_SyncPos = Vector3.zero;
+	Vector3 N_SyncPos;
 
 	float S_Speed = 0.1f;
 	byte S_Type = 0;
@@ -16,6 +16,8 @@ public class S1_Move : Photon.MonoBehaviour {
 	float S_Motion = 0;
 
 	void Start(){
+		N_SyncPos = transform.position;
+		// 操作パターン分岐
 		if (photonView.isMine) {
 			StartCoroutine ("MyMain");
 		} else {
@@ -122,7 +124,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	// 座標同期
 	IEnumerator SyncPosition(){
 		while (true) {
-			N_SyncPos = N_syncMove.GetSyncPos ();
+			N_SyncPos += N_syncMove.GetSyncPos ();
 			Vector3 movement = (N_SyncPos - transform.position) * 0.5f;
 
 			// 移動処理とアニメーション処理

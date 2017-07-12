@@ -11,8 +11,12 @@ public class Player_status2 : Photon.MonoBehaviour {
 	private int userid2;
 	private int hp2;
 
-	void Start(){
+	private Text p1Text;
+	private Text p2Text;
 
+	void Start(){
+		p1Text = GameObject.Find ("Suppoter1").GetComponent<Text> ();
+		p2Text = GameObject.Find ("Suppoter2").GetComponent<Text> ();
 		if (photonView.isMine) {
 			userid = PhotonNetwork.player.ID;
 		}
@@ -21,8 +25,8 @@ public class Player_status2 : Photon.MonoBehaviour {
 
 	void Update(){
 
-		GameObject.Find ("Suppoter1").GetComponent<Text> ().text = "自分： " + hp;
-		GameObject.Find ("Suppoter2").GetComponent<Text> ().text = "仲間： " + hp2;
+		p1Text.text = "自分： " + hp;
+		p2Text.text = "仲間： " + hp2;
 
 
 		if (Input.GetKeyUp (KeyCode.B)) {
@@ -40,7 +44,7 @@ public class Player_status2 : Photon.MonoBehaviour {
 		} else {
 			userid2 = (int)stream.ReceiveNext ();
 			hp2 = (int)stream.ReceiveNext ();
-			Debug.Log ("Receive: " + hp2);
+			//Debug.Log ("Receive: " + hp2);
 
 		}
 	}

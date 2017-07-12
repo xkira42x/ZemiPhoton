@@ -28,9 +28,9 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (stream.isWriting) {
 			//座標の差分値を送信
-			//stream.SendNext (transform.position - N_nowPos);
-			//N_nowPos = transform.position;
-			stream.SendNext(transform.position);
+			stream.SendNext (transform.position - N_nowPos);
+			N_nowPos = transform.position;
+			//stream.SendNext(transform.position);
 		} else {
 			//データの受信
 			N_syncPos = (Vector3)stream.ReceiveNext ();
