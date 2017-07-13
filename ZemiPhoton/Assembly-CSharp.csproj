@@ -65,6 +65,9 @@
      <Compile Include="Assets\Ik\Scripts\PhotonManager.cs" />
      <Compile Include="Assets\Ik\Unuses\N3_CorutinSave.cs" />
      <Compile Include="Assets\Ik\Unuses\N3_PlayerVecSave.cs" />
+     <Compile Include="Assets\Iki\EnemySpawn.cs" />
+     <Compile Include="Assets\Iki\EnemySpawn3.cs" />
+     <Compile Include="Assets\Iki\EnemySpown_2.cs" />
      <Compile Include="Assets\Kaede\Scripts\FirstPersonController.cs" />
      <Compile Include="Assets\Kaede\Scripts\PhotonManager_ver2.cs" />
      <Compile Include="Assets\Kaede\Scripts\Player_Status.cs" />
