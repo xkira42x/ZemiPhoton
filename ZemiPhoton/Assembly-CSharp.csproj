@@ -53,10 +53,12 @@
      <Compile Include="Assets\Hasegawa\Script\Key.cs" />
      <Compile Include="Assets\Hasegawa\Script\N2_NetworkSetting.cs" />
      <Compile Include="Assets\Hasegawa\Script\N3_SyncMove.cs" />
+     <Compile Include="Assets\Hasegawa\Script\N6_SyncShot.cs" />
      <Compile Include="Assets\Hasegawa\Script\PhotonNetworkTest.cs" />
      <Compile Include="Assets\Hasegawa\Script\S1_Move.cs" />
      <Compile Include="Assets\Hasegawa\Script\S2_Angle.cs" />
      <Compile Include="Assets\Hasegawa\Script\S3_Shot.cs" />
+     <Compile Include="Assets\Hasegawa\Script\myNamespace.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_CubeScript.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_LineSet.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_OnGUI.cs" />

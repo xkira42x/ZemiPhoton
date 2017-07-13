@@ -6,48 +6,40 @@ using System.Runtime.InteropServices;
 public class S1_Move : Photon.MonoBehaviour {
 	// 同期スクリプト参照
 	N3_SyncMove N_syncMove;
-	Vector3 N_SyncPos = Vector3.zero;
-
+	// 同期座標
+	Vector3 N_SyncPos;
+	// 移動速度
 	float S_Speed = 0.1f;
+	// 移動方向
 	byte S_Type = 0;
 
 	[SerializeField]
 	Animator S_Animator;
 	float S_Motion = 0;
 
-	struct a{float x,y,z;}
-	a aa;
+	const byte NONE=0,UP=1,DOWN=2;
+	byte S_Jtype = NONE;
+	int count = 0;
 
+	bool isGround;
+	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 1.6f);}
 
 	void Start(){
-		if (photonView.isMine) {
-			StartCoroutine ("MyMain");
-		} else {
+		N_SyncPos = transform.position;
+		if (!photonView.isMine)
 			N_syncMove = GetComponent<N3_SyncMove> ();
+
+	}
+
+	void Update(){
+		if (photonView.isMine) {
+			MyMain ();
+		} else {
 			// 同期処理の呼び出し
-			StartCoroutine ("SyncPosition");
-		}
-		int b = Marshal.SizeOf (typeof(a));
-
-		Debug.Log (b +"  " + sizeof(float));
-	}
-
-	// ジャンプ
-	void S_Jump(){
-		StartCoroutine (S_Jumping ());
-	}
-
-	// ジャンプの中身
-	IEnumerator S_Jumping(){
-		Vector3 S_Jump = new Vector3 (0, 0.1f, 0);
-		while (true) {
-			transform.position += S_Jump;
-			S_Jump.y -= 0.001f;
-			if (S_Jump.y <= 0)
-				break;
-			yield return new WaitForSeconds (0.01f);
+			SyncPosition();
 		}
 	}
+
 
 	// Unityちゃんモーション
 	void S_UnityChanAnimation(){
@@ -123,37 +115,68 @@ public class S1_Move : Photon.MonoBehaviour {
 			S_Motion = 1;
 		else
 			S_Motion = 0;
+
 	}
 
-	// 座標同期
-	IEnumerator SyncPosition(){
-		while (true) {
-			N_SyncPos = N_syncMove.GetSyncPos ();
-			// 移動処理とアニメーション処理
-			if (N_SyncPos != Vector3.zero) {
-				S_Motion = 1;
-				transform.position += new Vector3 (N_SyncPos.x * S_Speed, 0, N_SyncPos.z * S_Speed);
-			} else
-				S_Motion = 0;
-			//
-			yield return new WaitForSeconds(0.01655f);
+	void S_Jump(){
+		if (isGround && Input.GetKeyDown (KeyCode.Space)) {
+			S_Jtype = UP;
 		}
+		switch (S_Jtype) {
+		case UP:
+			S_ToJump ();
+			break;
+		case DOWN:
+			S_DropDown ();
+			break;
+		}
+	}
+
+	IEnumerator S_ToJump(){
+		while (true) {
+			if (count < 10)
+				count++;
+			else {
+				S_Jtype = DOWN;
+				break;
+			}
+			transform.position += Vector3.up * 0.1f;
+			yield return new WaitForSeconds (1f);
+		}
+	}
+	void S_DropDown(){
+		if (!isGround)
+			transform.position += Vector3.down * 0.5f;
+		else
+			S_Jtype = NONE;
 	}
 
 	// メイン処理
-	IEnumerator MyMain(){
-		while (true) {
-			
-			// キー移動
-			S_KeyMove ();
-			// ジャンプ
-			if (Input.GetKeyDown (KeyCode.Space))
-				S_Jump ();
+	void MyMain(){
 
-			// アニメーション
-			S_UnityChanAnimation ();
+		// キー移動
+		S_KeyMove ();
 
-			yield return new WaitForSeconds (0.01655f);
-		}
+		// ジャンプ
+		S_Jump();
+
+		// アニメーション
+		S_UnityChanAnimation ();
+	}
+
+	// 座標同期
+	void SyncPosition(){
+		// 同期座標取得
+		N_SyncPos += N_syncMove.GetSyncPos ();
+		Vector3 movement = (N_SyncPos - transform.position) * 0.5f;
+
+		// 移動処理とアニメーション処理
+		if (movement != Vector3.zero) {
+			S_Motion = 1;
+			transform.position += movement;
+		} else
+			S_Motion = 0;
+		// アニメーション
+		S_UnityChanAnimation ();
 	}
 }

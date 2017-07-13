@@ -23,7 +23,6 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	//******************************************************************//
@@ -82,7 +81,7 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 
 
 	//******************************************************************//
-	//可変長配列を用いて、一度の通信量の負荷を与えるテスト				//
+	//一度の通信量の負荷を与えるテスト									//
 	//																	//
 	//******************************************************************//
 	// 関数アクティブスイッチ
@@ -95,18 +94,20 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	void StressTest(){
 		// 送信データの準備
 		if (photonView.isMine) {
-
-		}
-		// 同期処理
-		for (int i = 0; i < LoadValue; i++) {
-			if (stream.isWriting) {
-				// 送信
-				stream.SendNext ("Data" + i.ToString () + "\n");
-			} else {
-				// 受信
-				Result.text += ((string)stream.ReceiveNext ()).ToString();
+			for (int i = 0; i < LoadValue; i++) {
+				addString = ("Data" + i + "\n").ToString ();
 			}
 		}
+		// 同期処理
+
+		if (stream.isWriting) {
+			// 送信
+			stream.SendNext (addString);
+		} else {
+			// 受信
+			Result.text += ((string)stream.ReceiveNext ()).ToString ();
+		}
+
 	}
 	//******************************************************************//
 	//******************************************************************//
