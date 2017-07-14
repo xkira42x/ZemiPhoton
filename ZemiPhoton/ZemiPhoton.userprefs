@@ -1,10 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Hasegawa\Script\S1_Move.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Hasegawa\Script\move_test.cs">
     <Files>
-      <File FileName="Assets\Hasegawa\Script\N6_SyncShot.cs" Line="13" Column="42" />
-      <File FileName="Assets\Hasegawa\Script\N3_SyncMove.cs" Line="25" Column="41" />
-      <File FileName="Assets\Hasegawa\Script\S1_Move.cs" Line="12" Column="23" />
+      <File FileName="Assets\Hasegawa\Script\N6_SyncShot.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hasegawa\Script\N3_SyncMove.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hasegawa\Script\move_test.cs" Line="112" Column="26" />
+      <File FileName="Assets\Hasegawa\Script\MyLOD.cs" Line="17" Column="21" />
+      <File FileName="Assets\Hasegawa\Script\myNamespace.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hasegawa\Script\TestCube.cs" Line="18" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
