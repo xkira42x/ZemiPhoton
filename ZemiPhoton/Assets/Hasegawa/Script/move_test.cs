@@ -90,12 +90,14 @@ public class move_test : MonoBehaviour {
 		}
 		transform.localPosition += pos;
 	}
-
+	// ジャンプ
 	void S_Jump(){
+		// ジャンプスイッチ
 		if (isGround && Input.GetKeyDown (KeyCode.Space)) {
 			S_Jtype = UP;
-			JumpGravity = 0.1f;
+			JumpGravity = 0.3f;
 		}
+		// 判定分岐
 		switch (S_Jtype) {
 		case UP:
 			S_ToJump ();
@@ -105,18 +107,27 @@ public class move_test : MonoBehaviour {
 			break;
 		}
 	}
-
+	// 上昇処理
 	void S_ToJump(){
-		transform.position += Vector3.up * JumpGravity;
-		JumpGravity *= 0.98f;
-		if (JumpGravity <= 0.07f)
+		// 重力
+		AddGravity ();
+		// 頂点判定
+		if (JumpGravity <= 0.1f)
 			S_Jtype = DOWN;
 	}
-
+	// 下降処理
 	void S_DropDown(){
+		// 床判定
 		if (!isGround)
-			transform.position += Vector3.down * 0.1f;
+			// 重力
+			AddGravity ();
 	}
+	// 重力を加える
+	void AddGravity(){
+		transform.position += Vector3.up * JumpGravity;
+		JumpGravity -= 0.98f * Time.deltaTime;		
+	}
+
 
 	// メイン処理
 	void MyMain(){

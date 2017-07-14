@@ -17,12 +17,16 @@ public class S1_Move : Photon.MonoBehaviour {
 	Animator S_Animator;
 	float S_Motion = 0;
 
+	// ジャンプ判定群
 	const byte NONE=0,UP=1,DOWN=2;
 	byte S_Jtype = NONE;
-	int count = 0;
-
+	// 重力
+	float JumpGravity;
+	// ジャンプしている
+	bool isJumping = false;
+	[SerializeField]
 	bool isGround;
-	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 1.6f);}
+	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 0.6f);}
 
 	void Start(){
 		N_SyncPos = transform.position;
@@ -44,6 +48,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	// Unityちゃんモーション
 	void S_UnityChanAnimation(){
 		S_Animator.SetFloat ("Speed", S_Motion);
+		S_Animator.SetBool ("IsJumping",isJumping);
 	}
 
 	// キー移動判定
@@ -118,10 +123,14 @@ public class S1_Move : Photon.MonoBehaviour {
 
 	}
 
+	// ジャンプ
 	void S_Jump(){
+		// ジャンプスイッチ
 		if (isGround && Input.GetKeyDown (KeyCode.Space)) {
-			S_Jtype = UP;
+			StartCoroutine (DelayForJumping ());
+			isJumping = true;
 		}
+		// 判定分岐
 		switch (S_Jtype) {
 		case UP:
 			S_ToJump ();
@@ -131,24 +140,35 @@ public class S1_Move : Photon.MonoBehaviour {
 			break;
 		}
 	}
-
-	IEnumerator S_ToJump(){
-		while (true) {
-			if (count < 10)
-				count++;
-			else {
-				S_Jtype = DOWN;
-				break;
-			}
-			transform.position += Vector3.up * 0.1f;
-			yield return new WaitForSeconds (1f);
+	// ジャンプアニメーション用の遅延
+	IEnumerator DelayForJumping(){
+		yield return new WaitForSeconds (0.3f);
+		S_Jtype = UP;
+		JumpGravity = 0.3f;
+	}
+	// 上昇処理
+	void S_ToJump(){
+		// 重力
+		AddGravity ();
+		// 頂点判定
+		if (JumpGravity <= 0.1f)
+			S_Jtype = DOWN;
+	}
+	// 下降処理
+	void S_DropDown(){
+		// 床判定
+		if (!isGround)
+			// 重力
+			AddGravity ();
+		else {
+			isJumping = false;
+			S_Jtype = NONE;
 		}
 	}
-	void S_DropDown(){
-		if (!isGround)
-			transform.position += Vector3.down * 0.5f;
-		else
-			S_Jtype = NONE;
+	// 重力を加える
+	void AddGravity(){
+		transform.position += Vector3.up * JumpGravity;
+		JumpGravity -= 0.98f * Time.deltaTime;		
 	}
 
 	// メイン処理
@@ -160,8 +180,11 @@ public class S1_Move : Photon.MonoBehaviour {
 		// ジャンプ
 		S_Jump();
 
+		IsGround ();
+
 		// アニメーション
 		S_UnityChanAnimation ();
+		Debug.Log (isJumping);
 	}
 
 	// 座標同期
