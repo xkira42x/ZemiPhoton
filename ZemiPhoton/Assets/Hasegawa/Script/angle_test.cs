@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S2_Angle : Photon.MonoBehaviour {
+public class angle_test : MonoBehaviour {
+
 	Vector3 S_MouseAngle = Vector3.zero;
 	Quaternion S_MainAngle;
-	public Quaternion S_mainAngle{ get { return S_MainAngle; } set { S_MainAngle = value; } }
 	Quaternion S_CameraAngle;
-	public Quaternion S_cameraAngle{ get { return S_CameraAngle; } set { S_CameraAngle = value; } }
 
 	[SerializeField]
 	Transform S_Collection;
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (photonView.isMine) {
 			// 視線移動
 			S_Eye ();
-		}
 	}
 	// 視線移動
 	void S_Eye(){

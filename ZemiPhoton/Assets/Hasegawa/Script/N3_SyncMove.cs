@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 public class N3_SyncMove : Photon.MonoBehaviour {
 
-	PhotonView N_photonView;
+	//PhotonView N_photonView;
 	Vector3 N_syncPos = Vector3.zero;
 	Vector3 N_nowPos = Vector3.zero;
 	public Vector3 GetSyncPos(){return N_syncPos;}
@@ -22,7 +22,7 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 	void Start () {
 		//ネットワーク
 		PhotonNetwork.NetworkStatisticsEnabled = true;
-		N_photonView = PhotonView.Get(this);
+		//N_photonView = PhotonView.Get(this);
 	}
 
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){

@@ -7,16 +7,26 @@ using UnityEngine;
 public class N4_SyncAngle : Photon.MonoBehaviour {
 
 	private PhotonView N_photonView;
-
-	private Quaternion N4_PlayerAngle=new Quaternion(0,0,0,0);
+	// 更新する角度の保存
+	private Quaternion N_MainAngle;
+	private Quaternion N_CameraAngle;
 
 	[SerializeField]
-	Transform N4_Collection;
+	Transform N_Collection;
+	// 角度制御のクラス取得
+	S2_Angle S_Angle;
+
+	void Start(){
+		S_Angle = GetComponent<S2_Angle> ();
+		N_CameraAngle = Quaternion.identity;
+		N_MainAngle = Quaternion.identity;
+	}
 
 	void Update(){
 		if (!photonView.isMine) {
-			transform.localRotation = new Quaternion (0, N4_PlayerAngle.y, 0, N4_PlayerAngle.w);
-			N4_Collection.localRotation = new Quaternion (N4_PlayerAngle.x, N4_Collection.localRotation.y, N4_Collection.localRotation.z, N4_Collection.localRotation.w);
+			// 角度の更新
+			transform.localRotation = N_MainAngle;
+			N_Collection.localRotation = N_CameraAngle;
 		}
 
 	}
@@ -24,12 +34,14 @@ public class N4_SyncAngle : Photon.MonoBehaviour {
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (stream.isWriting) {
 			//座標の差分値を送信
-			stream.SendNext (this.GetComponent<S2_Angle>().S_GetMainAngle());
+			stream.SendNext (S_Angle.S_mainAngle);
+			stream.SendNext (S_Angle.S_cameraAngle);
 
 		} else {
 			//データの受信
 			//移動後の座標が送られてくる 例：(0.1,0,0.1)
-			this.N4_PlayerAngle = (Quaternion)stream.ReceiveNext ();
+			N_MainAngle = (Quaternion)stream.ReceiveNext ();
+			N_CameraAngle = (Quaternion)stream.ReceiveNext ();
 		}
 	}
 }
