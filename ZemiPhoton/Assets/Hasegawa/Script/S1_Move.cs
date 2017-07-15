@@ -184,7 +184,6 @@ public class S1_Move : Photon.MonoBehaviour {
 
 		// アニメーション
 		S_UnityChanAnimation ();
-		Debug.Log (isJumping);
 	}
 
 	// 座標同期

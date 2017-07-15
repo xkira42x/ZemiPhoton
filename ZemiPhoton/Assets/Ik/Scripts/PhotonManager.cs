@@ -5,37 +5,37 @@ using UnityEngine.UI;
 
 public class PhotonManager : Photon.MonoBehaviour {
 	private Vector3[] initPos = new Vector3[4]{
-		new Vector3(5,-50,5),
-		new Vector3(-5,-50,5),
-		new Vector3(-5,-50,-5),
-		new Vector3(5,-50,-5)
+		new Vector3(5,0,5),
+		new Vector3(-5,0,5),
+		new Vector3(-5,0,-5),
+		new Vector3(5,0,-5)
 	};
 
-	private GameObject cnvs;
-	GameObject createRoom;
-	GameObject connectPhoton;
-	GameObject joinRoom;
+	[SerializeField]
+	GameObject[] MenuItems;
 
 	//体力表示ＵＩ
 	public GameObject suppoters;
+	// 接続状況表示用テキスト
+	Text ConnectResult;
 
 	void Start(){
-		cnvs = GameObject.Find ("Canvas");
-		createRoom = GameObject.Find ("CreateRoomB");
-		connectPhoton = GameObject.Find ("PhotonConnectB");
-		joinRoom = GameObject.Find ("JoinRoomB");
+		ConnectResult = GameObject.Find ("ConnectResult").GetComponent<Text> ();
+		// 初期接続
+		ConnectPhoton ();
 	}
 		
 
 	public void ConnectPhoton(){
-		PhotonNetwork.ConnectUsingSettings("v1.0");
+		PhotonNetwork.ConnectUsingSettings ("v1.0");
 	}
 
 	void OnJoinedLobby ()
 	{
+		ConnectResult.text = "Connection success";
 		Debug.Log ("PhotonManager OnJoinedLobby");
 		//ボタンを押せるようにする
-		createRoom.GetComponent<Button> ().interactable = true;
+		GameObject.Find ("CreateRoomB").GetComponent<Button> ().interactable = true;
 	}
 
 	//ルーム作成
@@ -58,37 +58,37 @@ public class PhotonManager : Photon.MonoBehaviour {
 		roomOptions.isVisible = true; //ロビーから見えるようにする
 		//userIdが名@前のルームがなければ作って入室、あれば普通に入室する。
 		PhotonNetwork.JoinOrCreateRoom (userId, roomOptions, null);
+		ConnectResult.text = "";
 	}
 		
 	public void JoinRoom(){
 		PhotonNetwork.JoinRoom("user1");
 	}
-	private GameObject cube;
+	private GameObject Player;
 	//ルーム入室した時に呼ばれるコールバックメソッド
 	void OnJoinedRoom() {
-		//Destroy (cnvs);
-		DestroyButton();
-		ShowSuppotersButton ();
+		// メニュー項目の削除
+		foreach (GameObject g in MenuItems)	Destroy (g);
+		//ShowSuppotersButton ();
 		Debug.Log ("PhotonManager OnJoinedRoom");
-		GameObject.Find ("StatusText").GetComponent<Text> ().text
-		= "OnJoinedRoom";
+		GameObject.Find ("StatusText").GetComponent<Text> ().text = "OnJoinedRoom";
+
+		GameObject gObj;
+		gObj=Instantiate (suppoters);
+		gObj.transform.parent=GameObject.Find ("Canvas").transform;
+
 		Vector3 Pos = initPos [PhotonNetwork.countOfPlayersInRooms];
+		Player = PhotonNetwork.Instantiate ("myPlayer", Pos,Quaternion.Euler (Vector3.zero), 0);
 
-		cube = PhotonNetwork.Instantiate ("myPlayer", Pos,
-			Quaternion.Euler (Vector3.zero), 0);
-	}
+		Player.GetComponent<N2_Status> ().N_status = gObj.GetComponent<Text> ();
 
-	// ボタン削除
-	void DestroyButton(){
-		Destroy(createRoom);
-		Destroy (connectPhoton);
-		Destroy (joinRoom);
+		ConnectResult.text = "";
 	}
 
 	//体力表示ＵＩを表示
 	void ShowSuppotersButton(){
 		GameObject ss;
 		ss=Instantiate (suppoters);
-		ss.transform.parent=cnvs.transform;
+		ss.transform.parent=GameObject.Find ("Canvas").transform;
 	}
 }
