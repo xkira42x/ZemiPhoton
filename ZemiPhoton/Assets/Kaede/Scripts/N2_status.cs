@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class N2_status : Photon.MonoBehaviour {
+public class N2_Status : Photon.MonoBehaviour {
 
 	private int userid;
 	private float hp = 1;
+	public void Damage(float d){
+		hp -= d;
+		HpSlider.value = hp;
+	}
 
 	//private int userid2;
 	//private int hp2;
@@ -42,6 +46,7 @@ public class N2_status : Photon.MonoBehaviour {
 				HpSlider = GameObject.Find ("HpSlider" + no.ToString ()).GetComponent<Slider> ();
 
 			gameObject.name = "Player" + no.ToString ();
+			myText.text = "Player" + no.ToString ();
 
 			if (myText != null && HpSlider != null)
 				find = true;
@@ -49,13 +54,6 @@ public class N2_status : Photon.MonoBehaviour {
 
 		//p1Text.text = "自分： " + hp;
 		//p2Text.text = "仲間： " + hp2;
-
-		myText.text = "Player" + no.ToString ();
-
-		hp += 0.01f;
-		if (hp > 1)	hp = 0;
-		HpSlider.value = hp;
-
 	}
 
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){

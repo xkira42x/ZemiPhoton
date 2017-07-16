@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour {
 	float speed = 1;
 	Vector3 angle;
 	Vector3 movement;
+	float pow = 1;
+	public float Pow{ get { return pow; } set { pow = value; } }
 	// Use this for initialization
 	void Start () {
 		// 角度の保持
