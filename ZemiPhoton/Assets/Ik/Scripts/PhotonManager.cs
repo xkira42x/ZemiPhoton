@@ -67,28 +67,23 @@ public class PhotonManager : Photon.MonoBehaviour {
 	private GameObject Player;
 	//ルーム入室した時に呼ばれるコールバックメソッド
 	void OnJoinedRoom() {
+
+		int No = PhotonNetwork.countOfPlayersInRooms;
+
 		// メニュー項目の削除
 		foreach (GameObject g in MenuItems)	Destroy (g);
-		//ShowSuppotersButton ();
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		GameObject.Find ("StatusText").GetComponent<Text> ().text = "OnJoinedRoom";
-
+		// プレイヤー生成
+		Vector3 Pos = initPos [No];
+		Player = PhotonNetwork.Instantiate ("myPlayer", Pos,Quaternion.Euler (Vector3.zero), 0);
+		// プレイヤーステータス生成
 		GameObject gObj;
-		gObj=Instantiate (suppoters);
+		gObj = Instantiate (suppoters);
 		gObj.transform.parent=GameObject.Find ("Canvas").transform;
 
-		Vector3 Pos = initPos [PhotonNetwork.countOfPlayersInRooms];
-		Player = PhotonNetwork.Instantiate ("myPlayer", Pos,Quaternion.Euler (Vector3.zero), 0);
-
-		Player.GetComponent<N2_Status> ().N_status = gObj.GetComponent<Text> ();
+		Player.GetComponent<N2_status> ().No = No + 1;
 
 		ConnectResult.text = "";
-	}
-
-	//体力表示ＵＩを表示
-	void ShowSuppotersButton(){
-		GameObject ss;
-		ss=Instantiate (suppoters);
-		ss.transform.parent=GameObject.Find ("Canvas").transform;
 	}
 }
