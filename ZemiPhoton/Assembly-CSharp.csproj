@@ -77,7 +77,7 @@
      <Compile Include="Assets\Iki\EnemySpawn3.cs" />
      <Compile Include="Assets\Iki\EnemySpown_2.cs" />
      <Compile Include="Assets\Kaede\Scripts\FirstPersonController.cs" />
-     <Compile Include="Assets\Kaede\Scripts\N2_Status.cs" />
+     <Compile Include="Assets\Kaede\Scripts\N2_status.cs" />
      <Compile Include="Assets\Kaede\Scripts\PhotonManager_ver2.cs" />
      <Compile Include="Assets\Kaede\Scripts\Player_Status.cs" />
      <Compile Include="Assets\Kaede\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
