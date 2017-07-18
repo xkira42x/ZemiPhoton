@@ -1,8 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Kaede\Scripts\Player_status2.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Iki\EnemySpawn3.cs">
     <Files>
       <File FileName="Assets\Kaede\Scripts\Player_status2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Kaede\Scripts\Enemy.cs" Line="11" Column="2" />
+      <File FileName="Assets\Iki\EnemySpawn3.cs" Line="17" Column="2" />
+      <File FileName="Assets\Kaede\Scripts\EnemySqwan.cs" Line="18" Column="1" />
+      <File FileName="Assets\Ik\Scripts\N3_CubeScript.cs" Line="21" Column="15" />
+      <File FileName="Assets\Ik\Scripts\PhotonManager.cs" Line="18" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
