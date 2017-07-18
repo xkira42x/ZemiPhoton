@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySpawn3 : MonoBehaviour {
+public class EnemySpawn3 : Photon.MonoBehaviour {
 
 	public GameObject enemy;     //敵オブジェクト
 	public Transform ground;     //地面オブジェクト
@@ -12,6 +12,8 @@ public class EnemySpawn3 : MonoBehaviour {
 	private float A_timer;      //経過時間
 	int A_enemy_cnt = 1; //生成された敵の数
 	int i=1;
+
+	private object[] args;
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +43,8 @@ public class EnemySpawn3 : MonoBehaviour {
 
 				Vector3 pos = new Vector3 (x, 3, z) + enemyground.position;
 				//enemy.SetActive(false);
-				GameObject enemy_notClone = GameObject.Instantiate (enemy, pos, Quaternion.identity);
+
+				GameObject enemy_notClone = PhotonNetwork.Instantiate(enemy.name, pos, Quaternion.identity,0).gameObject;
 				enemy_notClone.name = enemy.name + A_enemy_cnt.ToString();
 				Debug.Log (A_enemy_cnt);
 				A_enemy_cnt++;
