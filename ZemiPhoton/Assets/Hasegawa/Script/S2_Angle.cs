@@ -9,7 +9,11 @@ public class S2_Angle : Photon.MonoBehaviour {
 
 	[SerializeField]
 	Transform S_Collection;
-	
+
+	void Awake(){
+		Screen.lockCursor = true;
+//		Screen.showCursor(false);
+	}
 	// Update is called once per frame
 	void Update () {
 		if (photonView.isMine) {

@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class A_normal_enemy_move : MonoBehaviour {
  
-    protected float A_spd = 0.15f;         //>敵のスピード(とりあえず現在は適当に数値をIN)>>少ないデータ型(求
+    protected float A_spd = 0.01f;         //>敵のスピード(とりあえず現在は適当に数値をIN)>>少ないデータ型(求
     protected float A_rad;                 //>ラジアン(プレイヤー追尾にて使用)
     protected short A_hp_init = 100;       //>体力初期値 (16bitの変数)             
     protected short A_hp;                  //>体力(16bitの変数)

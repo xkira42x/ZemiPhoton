@@ -1,25 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Iki\EnemySpawn3.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Ik\Scripts\a.cs">
     <Files>
-      <File FileName="Assets\Hasegawa\Script\S1_Move.cs" Line="1" Column="1" />
-      <File FileName="Assets\Ik\Scripts\N3_CubeScript.cs" Line="52" Column="40" />
+      <File FileName="Assets\Iki\EnemySpawn3.cs" Line="1" Column="1" />
+      <File FileName="Assets\Nemoto\A_normal_enemy_move.cs" Line="1" Column="1" />
+      <File FileName="Assets\Ik\Scripts\N3_CubeScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Ik\Scripts\PhotonManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Kaede\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" Line="25" Column="30" />
-      <File FileName="Assets\Iki\EnemySpawn3.cs" Line="79" Column="34" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Hasegawa\Script\S1_Move.cs">
-    <Files>
-      <File FileName="Assets\Hasegawa\Script\Gun.cs" Line="1" Column="1" />
-      <File FileName="Assets\Hasegawa\Script\PhotonNetworkTest.cs" Line="1" Column="1" />
-      <File FileName="Assets\Hasegawa\Script\S1_Move.cs" Line="151" Column="19" />
-      <File FileName="Assets\Hasegawa\Script\CubeBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets\Hasegawa\Script\S3_Shot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Hasegawa\Script\N6_SyncShot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Ik\Scripts\N4_SyncAngle.cs" Line="13" Column="18" />
-      <File FileName="Assets\Hasegawa\Script\N3_SyncMove.cs" Line="33" Column="42" />
->>>>>>> origin/Hasegawa
+      <File FileName="Assets\Ik\Scripts\a.cs" Line="13" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
