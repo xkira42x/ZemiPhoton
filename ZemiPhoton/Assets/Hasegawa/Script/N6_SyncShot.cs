@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class N6_SyncShot : Photon.MonoBehaviour {
 
-	PhotonView N_PhotonView;
+	//PhotonView N_PhotonView;
 	S3_Shot S_Shot;
+
+	void Awake(){
+		S_Shot = GetComponent<S3_Shot> ();
+	}
 
 	// Use this for initialization
 	void Start () {
-		S_Shot = GetComponent<S3_Shot> ();
-		N_PhotonView = PhotonView.Get (this);
+		//N_PhotonView = PhotonView.Get (this);
 	}
 	// 同期処理
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){

@@ -5,7 +5,9 @@ using UnityEngine;
 public class S2_Angle : Photon.MonoBehaviour {
 	Vector3 S_MouseAngle = Vector3.zero;
 	Quaternion S_MainAngle;
-	public Quaternion S_GetMainAngle(){return S_MainAngle;}
+	public Quaternion S_mainAngle{ get { return S_MainAngle; } set { S_MainAngle = value; } }
+	Quaternion S_CameraAngle;
+	public Quaternion S_cameraAngle{ get { return S_CameraAngle; } set { S_CameraAngle = value; } }
 
 	[SerializeField]
 	Transform S_Collection;
@@ -29,9 +31,10 @@ public class S2_Angle : Photon.MonoBehaviour {
 		if (S_MouseAngle.x <= -60)S_MouseAngle.x = -60;
 		else if (S_MouseAngle.x >= 60)S_MouseAngle.x = 60;
 		// 角度に変換
-		S_MainAngle = Quaternion.Euler (S_MouseAngle);
+		S_MainAngle = Quaternion.Euler (transform.localEulerAngles.x,S_MouseAngle.y,0);
+		S_CameraAngle = Quaternion.Euler (S_MouseAngle.x, S_Collection.localEulerAngles.y, 0);
 		// 角度の更新
-		transform.localRotation = new Quaternion (0, S_MainAngle.y, 0, S_MainAngle.w);
-		S_Collection.localRotation = new Quaternion (S_MainAngle.x, S_Collection.localRotation.y, S_Collection.localRotation.z, S_Collection.localRotation.w);
+		transform.localRotation = S_MainAngle;
+		S_Collection.localRotation = S_CameraAngle;
 	}
 }

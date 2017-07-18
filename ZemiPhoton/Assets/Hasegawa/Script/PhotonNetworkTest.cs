@@ -9,16 +9,16 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	Text Result;
 
 	// 同期する際のポオストの様な役割
-	PhotonView N_photonView;
+	//PhotonView N_photonView;
 	PhotonStream stream;
-	PhotonMessageInfo info;
+	//PhotonMessageInfo info;
 
 	// Use this for initialization
 	void Start () {
 		Result = GameObject.Find ("Result").GetComponent<Text> ();
 		// ネットワーク設定
 		PhotonNetwork.NetworkStatisticsEnabled = true;
-		N_photonView = PhotonView.Get (this);
+		//N_photonView = PhotonView.Get (this);
 	}
 	
 	// Update is called once per frame
@@ -30,7 +30,7 @@ public class PhotonNetworkTest : Photon.MonoBehaviour {
 	//******************************************************************//
 	void OnPhotonSerializeView(PhotonStream ss,PhotonMessageInfo ii){
 		stream = ss;
-		info = ii;
+		//info = ii;
 
 		Hello ();
 
