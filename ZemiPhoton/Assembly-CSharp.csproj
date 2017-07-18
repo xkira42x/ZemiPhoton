@@ -76,10 +76,13 @@
      <Compile Include="Assets\Iki\EnemySpawn.cs" />
      <Compile Include="Assets\Iki\EnemySpawn3.cs" />
      <Compile Include="Assets\Iki\EnemySpown_2.cs" />
+     <Compile Include="Assets\Kaede\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Kaede\Scripts\EnemySqwan.cs" />
      <Compile Include="Assets\Kaede\Scripts\FirstPersonController.cs" />
      <Compile Include="Assets\Kaede\Scripts\N2_Status.cs" />
      <Compile Include="Assets\Kaede\Scripts\PhotonManager_ver2.cs" />
      <Compile Include="Assets\Kaede\Scripts\Player_Status.cs" />
+     <Compile Include="Assets\Kaede\Scripts\Player_status2.cs" />
      <Compile Include="Assets\Kaede\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
      <Compile Include="Assets\Kaede\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Kaede\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs" />
