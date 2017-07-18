@@ -26,7 +26,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	bool isJumping = false;
 	[SerializeField]
 	bool isGround;
-	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 0.6f);}
+	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 0.3f);}
 
 	void Start(){
 		N_SyncPos = transform.position;
@@ -178,7 +178,7 @@ public class S1_Move : Photon.MonoBehaviour {
 		S_KeyMove ();
 
 		// ジャンプ
-		S_Jump();
+		//S_Jump();
 
 		IsGround ();
 
@@ -189,15 +189,16 @@ public class S1_Move : Photon.MonoBehaviour {
 	// 座標同期
 	void SyncPosition(){
 		// 同期座標取得
-		N_SyncPos += N_syncMove.GetSyncPos ();
+		N_SyncPos = N_syncMove.GetSyncPos ();
 		Vector3 movement = (N_SyncPos - transform.position) * 0.5f;
-
+		movement = new Vector3 (movement.x, 0, movement.z);
 		// 移動処理とアニメーション処理
 		if (movement != Vector3.zero) {
 			S_Motion = 1;
 			transform.position += movement;
 		} else
 			S_Motion = 0;
+		isJumping = N_syncMove.IsJump;
 		// アニメーション
 		S_UnityChanAnimation ();
 	}

@@ -12,6 +12,8 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 	public Vector3 GetSyncPos(){return N_syncPos;}
 
 	public Vector3 pos;
+	bool isJump = false;
+	public bool IsJump{ get { return isJump; } set { isJump = value; } }
 
 	void Awake(){
 		//初期生成時にも同期が起きてしまうため、前回の座標を生成時の座標へ
@@ -28,12 +30,14 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (stream.isWriting) {
 			//座標の差分値を送信
-			stream.SendNext (transform.position - N_nowPos);
-			N_nowPos = transform.position;
-			//stream.SendNext(transform.position);
+			//stream.SendNext (transform.position - N_nowPos);
+			//N_nowPos = transform.position;
+			stream.SendNext(transform.position);
+			stream.SendNext(isJump);
 		} else {
 			//データの受信
 			N_syncPos = (Vector3)stream.ReceiveNext ();
+			isJump = (bool)stream.ReceiveNext ();
 		}
 	}
 }
