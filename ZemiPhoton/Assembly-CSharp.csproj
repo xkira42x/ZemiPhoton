@@ -54,6 +54,8 @@
      <Compile Include="Assets\Ik\Scripts\Move.cs" />
      <Compile Include="Assets\Ik\Scripts\PhotonManager.cs" />
      <Compile Include="Assets\Ik\Scripts\PlayerMove.cs" />
+     <Compile Include="Assets\Kaede\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Kaede\Scripts\EnemySqwan.cs" />
      <Compile Include="Assets\Kaede\Scripts\FirstPersonController.cs" />
      <Compile Include="Assets\Kaede\Scripts\PhotonManager_ver2.cs" />
      <Compile Include="Assets\Kaede\Scripts\Player_Status.cs" />
