@@ -73,7 +73,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		// メニュー項目の削除
 		foreach (GameObject g in MenuItems)	Destroy (g);
 		Debug.Log ("PhotonManager OnJoinedRoom");
-		GameObject.Find ("StatusText").GetComponent<Text> ().text = "OnJoinedRoom";
+		//GameObject.Find ("StatusText").GetComponent<Text> ().text = "OnJoinedRoom";
 		// プレイヤー生成
 		Vector3 Pos = initPos [No];
 		Player = PhotonNetwork.Instantiate ("myPlayer", Pos,Quaternion.Euler (Vector3.zero), 0);
