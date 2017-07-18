@@ -16,13 +16,17 @@ public class Player_status2 : Photon.MonoBehaviour {
 		if (photonView.isMine) {
 			userid = PhotonNetwork.player.ID;
 		}
+
+
 			
 	}
 
 	void Update(){
 
-		GameObject.Find ("Suppoter1").GetComponent<Text> ().text = "自分： " + hp;
-		GameObject.Find ("Suppoter2").GetComponent<Text> ().text = "仲間： " + hp2;
+		GameObject.Find ("Suppoter1").GetComponent<Text> ().text = "自分";
+		GameObject.Find ("Slider1").GetComponent<Slider> ().value = hp;
+		GameObject.Find ("Suppoter2").GetComponent<Text> ().text = "仲間";
+		GameObject.Find ("Slider2").GetComponent<Slider> ().value = hp2;
 
 
 		if (Input.GetKeyUp (KeyCode.B)) {
