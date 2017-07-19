@@ -1,23 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\unit\yokoari_daruma\Assets\script\ber.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Nemoto\A_normal_enemy_move.cs">
     <Files>
-      <File FileName="Assets\Kaede\Scripts\Player_status2.cs" Line="1" Column="1" />
-      <File FileName="Assets\Kaede\Scripts\Enemy.cs" Line="1" Column="1" />
-<<<<<<< HEAD
-      <File FileName="Assets\Iki\EnemySpawn3.cs" Line="1" Column="1" />
-      <File FileName="Assets\Kaede\Scripts\EnemySqwan.cs" Line="1" Column="1" />
-      <File FileName="Assets\Ik\Scripts\N3_CubeScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Ik\Scripts\PhotonManager.cs" Line="1" Column="1" />
-      <File FileName="..\..\unit\yokoari_daruma\Assets\script\ber.cs" Line="23" Column="32" />
-=======
-      <File FileName="Assets\Iki\EnemySpawn3.cs" Line="24" Column="3" />
-      <File FileName="Assets\Kaede\Scripts\EnemySqwan.cs" Line="1" Column="1" />
-      <File FileName="Assets\Ik\Scripts\N3_CubeScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Ik\Scripts\PhotonManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Hasegawa\Script\S1_Move.cs" Line="90" Column="85" />
-      <File FileName="Assets\Hasegawa\Script\move_test.cs" Line="63" Column="77" />
->>>>>>> origin/Hasegawa
+      <File FileName="Assets\Nemoto\A_normal_enemy_move.cs" Line="11" Column="25" />
+      <File FileName="Assets\Hasegawa\Script\Bullet.cs" Line="19" Column="47" />
+      <File FileName="Assets\Hasegawa\Script\N2_NetworkSetting.cs" Line="1" Column="1" />
+      <File FileName="Assets\Kaede\Scripts\N2_Status.cs" Line="11" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
