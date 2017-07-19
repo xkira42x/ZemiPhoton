@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class N2_Status : Photon.MonoBehaviour {
 
 	private int userid;
-	private float hp = 1;
-	public void Damage(float d){
+	private short hp = 1;
+	public short Hp{ get { return hp; } set { hp = value; } }
+	public void Damage(short d){
 		hp -= d;
 		HpSlider.value = hp;
 	}
@@ -64,7 +65,7 @@ public class N2_Status : Photon.MonoBehaviour {
 			//stream.SendNext (hp);
 		} else {
 			no = (int)stream.ReceiveNext ();
-			hp = (float)stream.ReceiveNext ();
+			hp = (short)stream.ReceiveNext ();
 			//userid2 = (int)stream.ReceiveNext ();
 			//hp2 = (int)stream.ReceiveNext ();
 			//Debug.Log ("Receive: " + hp2);
