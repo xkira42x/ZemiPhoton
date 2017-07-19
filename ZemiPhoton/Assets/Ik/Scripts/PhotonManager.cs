@@ -18,7 +18,8 @@ public class PhotonManager : Photon.MonoBehaviour {
 	public GameObject suppoters;
 	// 接続状況表示用テキスト
 	Text ConnectResult;
-
+	// 入室中判定
+	public static bool EnteringTheRoom = false;
 	void Start(){
 		ConnectResult = GameObject.Find ("ConnectResult").GetComponent<Text> ();
 		// 初期接続
@@ -85,5 +86,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		Player.GetComponent<N2_Status> ().No = No + 1;
 
 		ConnectResult.text = "";
+
+		EnteringTheRoom = true;
 	}
 }
