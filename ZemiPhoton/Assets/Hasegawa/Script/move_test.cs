@@ -54,39 +54,16 @@ public class move_test : MonoBehaviour {
 		Vector3 pos = Vector3.zero;
 		// 移動
 		switch (S_Type) {
-		case Key.FORWARD:
-			pos += transform.forward * S_Speed;
-			break;
-		case Key.BACK:
-			pos += -(transform.forward * S_Speed);
-			break;
-		case Key.RIGHT:
-			pos += transform.right * S_Speed;
-			break;
-		case Key.LEFT:
-			pos += -(transform.right * S_Speed);
-			break;
-		case Key.FORWARDLEFT:
-			pos += transform.forward * S_Speed;
-			pos += -(transform.right * S_Speed);
-			break;
-		case Key.FORWARDRIGHT:
-			pos += transform.forward * S_Speed;
-			pos += transform.right * S_Speed;
-			break;
-		case Key.BACKLEFT:
-			pos += -(transform.forward * S_Speed);
-			pos += -(transform.right * S_Speed);
-			break;
-		case Key.BACKRIGHT:
-			pos += -(transform.forward * S_Speed);
-			pos += transform.right * S_Speed;
-			break;
-		case Key.NONE:
-			break;
-		default:
-			Debug.Log ("Error :: Player move S_Type");
-			break;
+		case Key.FORWARD:pos += transform.forward * S_Speed;break;
+		case Key.BACK	:pos -= transform.forward * S_Speed;break;
+		case Key.RIGHT	:pos += transform.right * S_Speed;break;
+		case Key.LEFT	:pos -= transform.right * S_Speed;break;
+		case Key.FORWARDLEFT	:pos += (transform.forward - transform.right) * S_Speed;break;
+		case Key.FORWARDRIGHT	:pos += (transform.forward + transform.right) * S_Speed;break;
+		case Key.BACKLEFT		:pos -= (transform.forward + transform.right) * S_Speed;break;
+		case Key.BACKRIGHT		:pos -= (transform.forward - transform.right) * S_Speed;break;
+		case Key.NONE:break;
+		default:Debug.Log ("Error :: Player move S_Type");break;
 		}
 		transform.localPosition += pos;
 	}

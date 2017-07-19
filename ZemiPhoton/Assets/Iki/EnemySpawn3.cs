@@ -17,7 +17,6 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Spawn();    //初期スポーン
 	}
 
 	// Update is called once per frame
@@ -27,7 +26,7 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 		}
 		A_timer += Time.deltaTime;    //経過時間加算
 		if(A_timer >= A_interval){
-			Spawn();    //スポーン実行
+			if(PhotonManager.EnteringTheRoom)Spawn();    //スポーン実行
 			A_timer = 0;  //初期化
 		}
 	}
@@ -43,8 +42,7 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 
 				Vector3 pos = new Vector3 (x, 3, z) + enemyground.position;
 				//enemy.SetActive(false);
-
-				GameObject enemy_notClone = PhotonNetwork.Instantiate(enemy.name, pos, Quaternion.identity,0).gameObject;
+				GameObject enemy_notClone = PhotonNetwork.Instantiate (enemy.name,pos,Quaternion.identity,0).gameObject;
 				enemy_notClone.name = enemy.name + A_enemy_cnt.ToString();
 				Debug.Log (A_enemy_cnt);
 				A_enemy_cnt++;
