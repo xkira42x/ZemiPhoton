@@ -15,19 +15,24 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 
 	private object[] args;
 
+	bool spnflg=true;
 	// Use this for initialization
 	void Start () {
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Space)) {
-			Spawn_stage ();
-		}
+//		if (Input.GetKey(KeyCode.Space)) {
+//			Spawn_stage ();
+//		}
 		A_timer += Time.deltaTime;    //経過時間加算
 		if(A_timer >= A_interval){
 			if(PhotonManager.EnteringTheRoom)Spawn();    //スポーン実行
 			A_timer = 0;  //初期化
+			if (spnflg == true) {
+				Spawn_stage ();
+				spnflg = false;
+			}
 		}
 	}
 
@@ -69,21 +74,21 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 
 
 	void Spawn_stage (){
-		
-		float x=0;
-		float z=0;
-		GameObject aa = GameObject.Find ("Enemy" + i.ToString());
-		aa.SetActive(true);
+		float x = 0;
+		float z = 0;
+		for (int i = 1; i < A_enemy_max; i++) {
+			GameObject aa = GameObject.Find ("Enemy" + i.ToString ());
+			aa.SetActive (true);
 
-		do {
-			x = Random.Range (-150f, 150f);
-			z = Random.Range (-150f, 150f);
-		} while(x <= 120 && x >= -120 && z <= 120 && z >= -120);
+			do {
+				x = Random.Range (-150f, 150f);
+				z = Random.Range (-150f, 150f);
+			} while(x <= 120 && x >= -120 && z <= 120 && z >= -120);
 			
-		Vector3 pos_enemy = new Vector3 (x, 3, z) + ground.position;
+			Vector3 pos_enemy = new Vector3 (x, 3, z) + ground.position;
 
-		aa.transform.position = pos_enemy;
-		i++;
+			aa.transform.position = pos_enemy;
+		}
 	}
 
 

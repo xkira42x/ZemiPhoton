@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class N2_Status : Photon.MonoBehaviour {
 
 	private int userid;
-	private short hp = 1;
+	private short hp = 100;
+	private short hp2;
 	public short Hp{ get { return hp; } set { hp = value; } }
 	public void Damage(short d){
 		hp -= d;
 		HpSlider.value = hp;
+		Debug.Log ("Player" + no + " is dameged");
 	}
 
 	//private int userid2;
@@ -45,13 +47,23 @@ public class N2_Status : Photon.MonoBehaviour {
 				myText = GameObject.Find ("Status" + no.ToString ()).GetComponent<Text> ();
 			if (HpSlider == null)
 				HpSlider = GameObject.Find ("HpSlider" + no.ToString ()).GetComponent<Slider> ();
-
+			
 			gameObject.name = "Player" + no.ToString ();
-			myText.text = "Player" + no.ToString ();
+
+			if (photonView.isMine) {
+				myText.text = "自分";
+			} else {
+				myText.text = "仲間";
+			}
 
 			if (myText != null && HpSlider != null)
 				find = true;
 		}
+
+/*		GameObject.Find ("Status1").GetComponent<Text> ().text = "自分";
+		GameObject.Find ("HpSlider1").GetComponent<Slider> ().value = hp;
+		GameObject.Find ("Status2").GetComponent<Text> ().text = "仲間";
+		GameObject.Find ("HpSlider2").GetComponent<Slider> ().value = hp2;*/
 
 		//p1Text.text = "自分： " + hp;
 		//p2Text.text = "仲間： " + hp2;
@@ -65,7 +77,7 @@ public class N2_Status : Photon.MonoBehaviour {
 			//stream.SendNext (hp);
 		} else {
 			no = (int)stream.ReceiveNext ();
-			hp = (short)stream.ReceiveNext ();
+			hp2 = (short)stream.ReceiveNext ();
 			//userid2 = (int)stream.ReceiveNext ();
 			//hp2 = (int)stream.ReceiveNext ();
 			//Debug.Log ("Receive: " + hp2);

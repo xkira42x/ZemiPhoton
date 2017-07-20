@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections;
 
 /// <summary>
 /// 敵行動スクリプト(機能→状態遷移、動き、攻撃、当たり判定)
@@ -43,12 +43,12 @@ public class A_normal_enemy_move : MonoBehaviour {
         else if (A_player_target == 2) A_Player = GameObject.Find("Player1");
 
         A_anim = GetComponent<Animator>();
-		A_P_info = A_Player.GetComponent<N2_Status>();
+	A_P_info = A_Player.GetComponent<N2_Status>();
         A_B_info = A_Bullet.GetComponent<Bullet>();
         A_anim.SetBool("play", true);
         A_hp = A_hp_init;                               //>体力初期化
         A_state = A_enemy_state.A_vsb;
-
+		StartCoroutine ("Target");
     }
     // Update is called once per frame
     void Update()
@@ -202,6 +202,8 @@ public class A_normal_enemy_move : MonoBehaviour {
             {
                 /*プレイヤーダメージ処理*/
                 //A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
+				A_P_info.Damage(A_power);
+				Debug.Log ("HP:" + A_P_info.Hp+"_"+Time.time);
                 A_delay_flg = false;    //ダメージが入った時にflgをfalse
                 /**********************/
             }
@@ -235,4 +237,15 @@ public class A_normal_enemy_move : MonoBehaviour {
     /// <summary>
     /// instanceがtrueになった時に呼ばれる
     /// </summary>
+
+	IEnumerator Target(){
+		while(true){
+			A_player_target = Random.Range(1, 3);
+			if (A_player_target == 1) A_Player = GameObject.Find("Player1");
+			else if (A_player_target == 2) A_Player = GameObject.Find("Player2");
+
+			yield return new WaitForSeconds (40f);
+		}
+	}
+
 }
