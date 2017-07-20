@@ -65,9 +65,11 @@
      <Compile Include="Assets\Hasegawa\Script\move_test.cs" />
      <Compile Include="Assets\Hasegawa\Script\myNamespace.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_CubeScript.cs" />
+     <Compile Include="Assets\Ik\Scripts\N3_EndKey.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_LineSet.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_OnGUI.cs" />
      <Compile Include="Assets\Ik\Scripts\N3_PlayerMove.cs" />
+     <Compile Include="Assets\Ik\Scripts\N3_Yfreez.cs" />
      <Compile Include="Assets\Ik\Scripts\N4_SyncAngle.cs" />
      <Compile Include="Assets\Ik\Scripts\PhotonManager.cs" />
      <Compile Include="Assets\Ik\Scripts\a.cs" />
