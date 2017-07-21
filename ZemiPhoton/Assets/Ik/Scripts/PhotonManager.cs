@@ -69,8 +69,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 	//ルーム入室した時に呼ばれるコールバックメソッド
 	void OnJoinedRoom() {
 
-		int No = PhotonNetwork.countOfPlayersInRooms;
-
+//		int No = PhotonNetwork.countOfPlayersInRooms;
+		int No=0;
+		No = PhotonNetwork.player.ID;
 		// メニュー項目の削除
 		foreach (GameObject g in MenuItems)	Destroy (g);
 		Debug.Log ("PhotonManager OnJoinedRoom");
@@ -83,7 +84,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		gObj = Instantiate (suppoters);
 		gObj.transform.parent=GameObject.Find ("Canvas").transform;
 
-		Player.GetComponent<N2_Status> ().No = No + 1;
+		Player.GetComponent<N2_Status> ().No = No;
 
 		ConnectResult.text = "";
 

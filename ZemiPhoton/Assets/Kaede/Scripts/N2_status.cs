@@ -7,13 +7,8 @@ public class N2_Status : Photon.MonoBehaviour {
 
 	private int userid;
 	private short hp = 100;
-	private short hp2;
 	public short Hp{ get { return hp; } set { hp = value; } }
-	public void Damage(short d){
-		hp -= d;
-		HpSlider.value = hp;
-		Debug.Log ("Player" + no + " is dameged");
-	}
+	public void Damage(short d){hp -= d;HpSlider.value = hp;}
 
 	//private int userid2;
 	//private int hp2;
@@ -36,7 +31,9 @@ public class N2_Status : Photon.MonoBehaviour {
 		myText = GameObject.Find ("Status" + no.ToString ()).GetComponent<Text> ();
 		HpSlider = GameObject.Find ("HpSlider" + no.ToString ()).GetComponent<Slider> ();
 		if (photonView.isMine) {
-			userid = PhotonNetwork.player.ID;
+			no = PhotonNetwork.player.ID;
+		} else {
+			no = 3-PhotonNetwork.player.ID;
 		}
 	}
 
@@ -77,11 +74,11 @@ public class N2_Status : Photon.MonoBehaviour {
 			//stream.SendNext (hp);
 		} else {
 			no = (int)stream.ReceiveNext ();
-			hp2 = (short)stream.ReceiveNext ();
+			hp = (short)stream.ReceiveNext ();
 			//userid2 = (int)stream.ReceiveNext ();
 			//hp2 = (int)stream.ReceiveNext ();
 			//Debug.Log ("Receive: " + hp2);
-
+			HpSlider.value = hp;
 		}
 	}
 

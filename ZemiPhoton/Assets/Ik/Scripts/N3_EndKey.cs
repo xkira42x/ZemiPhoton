@@ -23,8 +23,8 @@ public class N3_EndKey : MonoBehaviour {
 		Application.Quit ();
 	}
 	public void ContnButton(){
-		ShowMouse (true);
 		Destroy (GameObject.Find(EndUI.name));
+		ShowMouse (true);
 	}
 	public void ShowMouse(bool flg){
 		Screen.lockCursor = flg;
