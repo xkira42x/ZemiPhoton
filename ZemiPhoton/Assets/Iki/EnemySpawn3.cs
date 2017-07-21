@@ -26,12 +26,15 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 //			Spawn_stage ();
 //		}
 		A_timer += Time.deltaTime;    //経過時間加算
-		if(A_timer >= A_interval){
-			if(PhotonManager.EnteringTheRoom)Spawn();    //スポーン実行
-			A_timer = 0;  //初期化
-			if (spnflg == true) {
-				Spawn_stage ();
-				spnflg = false;
+		if (A_timer >= A_interval) {
+			if (PhotonManager.EnteringTheRoom) {
+				Spawn ();    //スポーン実行
+				A_timer = 0;  //初期化
+				if (spnflg == true) {
+					Spawn_stage ();
+					spnflg = false;
+				
+				}
 			}
 		}
 	}
@@ -49,7 +52,7 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 				//enemy.SetActive(false);
 				GameObject enemy_notClone = PhotonNetwork.Instantiate (enemy.name,pos,Quaternion.identity,0).gameObject;
 				enemy_notClone.name = enemy.name + A_enemy_cnt.ToString();
-				Debug.Log (A_enemy_cnt);
+				//Debug.Log (A_enemy_cnt);
 				A_enemy_cnt++;
 
 				/*

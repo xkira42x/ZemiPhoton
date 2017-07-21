@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// 敵行動スクリプト(機能→状態遷移、動き、攻撃、当たり判定)
 /// </summary>
-public class A_normal_enemy_move : MonoBehaviour {
+public class A_normal_enemy_move : Photon.MonoBehaviour {
  
     protected float A_spd = 0.05f;             //>敵のスピード(とりあえず現在は適当に数値をIN)>>少ないデータ型(求
     protected float A_rad;                     //>ラジアン(プレイヤー追尾にて使用)
@@ -40,9 +40,15 @@ public class A_normal_enemy_move : MonoBehaviour {
 
     void Awake()
     {
-        A_player_target = Random.Range(1, 3);
-        if (A_player_target == 1) A_Player = GameObject.Find("Player1");
-        else if (A_player_target == 2) A_Player = GameObject.Find("Player1");
+		while (true) {
+			A_player_target = Random.Range (1, 3);
+			if (A_player_target == 1)
+				A_Player = GameObject.Find ("Player1");
+			else if (A_player_target == 2)
+				A_Player = GameObject.Find ("Player2");
+			if (A_Player != null)
+				break;
+		}
 
         A_anim = GetComponent<Animator>();
 		A_P_info = A_Player.GetComponent<N2_Status>();
@@ -147,7 +153,7 @@ public class A_normal_enemy_move : MonoBehaviour {
 				if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime > 1.0f) { //0～1(始発から終点)
 					/*初期ポジションに戻る*/
 					/********************/
-				}else GameObject.Destroy (this.gameObject);//確認用
+				}else PhotonNetwork.Destroy (this.gameObject);//確認用
 			}
 
                 /*死亡モーション*/
@@ -237,7 +243,7 @@ public class A_normal_enemy_move : MonoBehaviour {
 			A_player_target = Random.Range(1, 3);
 			if (A_player_target == 1) A_Player = GameObject.Find("Player1");
 			else if (A_player_target == 2) A_Player = GameObject.Find("Player2");
-
+			A_P_info = A_Player.GetComponent<N2_Status> ();
 			yield return new WaitForSeconds (40f);
 		}
 	}
