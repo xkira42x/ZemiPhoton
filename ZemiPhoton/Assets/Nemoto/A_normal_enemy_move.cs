@@ -22,6 +22,8 @@ public class A_normal_enemy_move : MonoBehaviour {
     public GameObject A_Bullet;
     Bullet A_B_info;                           //>弾の情報
 
+	string endStateName = null;
+
 
     /// <summary>
     /// マップ外待機(アクティブfalse)、待機、視認、攻撃、hit、死亡
@@ -43,7 +45,7 @@ public class A_normal_enemy_move : MonoBehaviour {
         else if (A_player_target == 2) A_Player = GameObject.Find("Player1");
 
         A_anim = GetComponent<Animator>();
-	A_P_info = A_Player.GetComponent<N2_Status>();
+		A_P_info = A_Player.GetComponent<N2_Status>();
         A_B_info = A_Bullet.GetComponent<Bullet>();
         A_anim.SetBool("play", true);
         A_hp = A_hp_init;                               //>体力初期化
@@ -64,104 +66,96 @@ public class A_normal_enemy_move : MonoBehaviour {
     protected void A_Enemy_Move(float A_spd)
     {
 
-        switch (A_state)
-        {
-            case A_enemy_state.A_Stand_by://マップ外の待機状態(リセット)
-                A_hp = A_hp_init;
-                break;
+		switch (A_state) {
+		case A_enemy_state.A_Stand_by://マップ外の待機状態(リセット)
+			A_hp = A_hp_init;
+			break;
 
-            case A_enemy_state.A_oov://待機状態
+		case A_enemy_state.A_oov://待機状態
                 /*待機モーション*/
-                A_anim.SetBool("play", true);
+			A_anim.SetBool ("play", true);
                 /***************/
-                if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.2f)
-                {
+			if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.2f) {
 
-                    /*攻撃に切り替える*/
-                    A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude - 2;//>二点間の距離
-                    if (A_magnitude <= A_target_magnitude)
-                    {
-                        A_anim.SetBool("play", false);
-                        A_state = A_enemy_state.A_atk;//攻撃範囲内にプレイヤーがいたら攻撃実行
-                    }
-                    else {
-                        A_state = A_enemy_state.A_vsb; //>プレイヤーが攻撃範囲外なら追いかける
-                        A_anim.SetBool("attack", false);
-                    }
-                    /****************/
-                }
-                break;
+				/*攻撃に切り替える*/
+				A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude - 2;//>二点間の距離
+				if (A_magnitude <= A_target_magnitude) {
+					A_anim.SetBool ("play", false);
+					A_state = A_enemy_state.A_atk;//攻撃範囲内にプレイヤーがいたら攻撃実行
+				} else {
+					A_state = A_enemy_state.A_vsb; //>プレイヤーが攻撃範囲外なら追いかける
+					A_anim.SetBool ("attack", false);
+				}
+				/****************/
+			}
+			break;
       
-            case A_enemy_state.A_vsb://追いかけて来る状態(視認している)
+		case A_enemy_state.A_vsb://追いかけて来る状態(視認している)
 
                 /*移動のモーション*/
-                A_anim.SetBool("run", true);
+			A_anim.SetBool ("run", true);
                 /****************/
 
                 /******追尾*******/
-                transform.position = A_Unique_Move();
+			transform.position = A_Unique_Move ();
                 /*****************/
 
                 /*条件で攻撃(stateを攻撃に切り替え)*/
-                A_magnitude = (transform.position - A_Player.transform.position).magnitude;//二点間の距離
-                if (A_magnitude <= A_target_magnitude)
-                {
-                    A_anim.SetBool("run", false);
-                    A_state = A_enemy_state.A_atk;//プレイヤーと自分の距離が一定範囲以内なら攻撃へ
-                }
+			A_magnitude = (transform.position - A_Player.transform.position).magnitude;//二点間の距離
+			if (A_magnitude <= A_target_magnitude) {
+				A_anim.SetBool ("run", false);
+				A_state = A_enemy_state.A_atk;//プレイヤーと自分の距離が一定範囲以内なら攻撃へ
+			}
                 /********************************/
-                break;
+			break;
 
-            case A_enemy_state.A_atk://攻撃
-                A_anim.SetBool("run", false);
-                A_anim.SetBool("play", false);
+		case A_enemy_state.A_atk://攻撃
+			A_anim.SetBool ("run", false);
+			A_anim.SetBool ("play", false);
                 /*攻撃モーション*/
-                A_anim.SetBool("attack", true);
+			A_anim.SetBool ("attack", true);
                 /**************/
 
                 /*攻撃判定処理*/
-                A_Attack();
+			A_Attack ();
                 /*************/
-                break;
+			break;
 
-            case A_enemy_state.A_hit://敵がダメージを受けた状態(撃たれるなど)
+		case A_enemy_state.A_hit://敵がダメージを受けた状態(撃たれるなど)
                 
                 /*ダメージ計算*/
 			A_hp -= A_B_info.Pow;
                 /************/
-                if (A_hp <= 0) {//体力が0(以下)なら状態を死亡に遷移
-                    A_state = A_enemy_state.A_death;
-                }
-                else {
-                    /*ヒットモーション*/
+			if (A_hp <= 0) {//体力が0(以下)なら状態を死亡に遷移
+				A_state = A_enemy_state.A_death;
+			} else {
+				/*ヒットモーション*/
 
-                    /****************/
-                    /*まだ体力が余っているプレイヤーを追いかける*/
-                    A_state = A_enemy_state.A_vsb;
-                }
+				/****************/
+				/*まだ体力が余っているプレイヤーを追いかける*/
+				A_state = A_enemy_state.A_vsb;
+			}
                 /************/
-                break;
+			break;
             
-            case A_enemy_state.A_death://死亡した状態(行動不能)
-                A_anim.SetBool("run", false);
-                A_anim.SetBool("attack", false);
-                A_anim.SetBool("play", false);
-                
+		case A_enemy_state.A_death://死亡した状態(行動不能)		
+			//A_anim.SetBool ("run", false);
+			//A_anim.SetBool ("attack", false);
+			//A_anim.SetBool ("play", false);
+			/***************/
+			if (A_anim.GetBool ("dide")) {
+				if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime > 1.0f) { //0～1(始発から終点)
+					/*初期ポジションに戻る*/
+					/********************/
+				}else GameObject.Destroy (this.gameObject);//確認用
+			}
+
                 /*死亡モーション*/
-                A_anim.SetBool("dide", true);
-                /***************/
-                if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f) //0～1(始発から終点)
-                {
-                    /*初期ポジションに戻る*/
-                    GameObject.Destroy(this.gameObject);//確認用
-                    /********************/
-                }
-
-                break;
-        }
+			A_anim.SetBool ("dide", true);
+			break;
+		}
     }
-
-
+		
     /// <summary>
     /// 敵(ゾンビ)の行動⇒継承後にオーバーライド
     /// </summary>
