@@ -19,10 +19,10 @@ public class N6_SyncShot : Photon.MonoBehaviour {
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (stream.isWriting) {
 			// 送信
-			stream.SendNext(S_Shot.S_Shooting);
+			stream.SendNext(S_Shot.S_Shoot);
 		}else{
 			// 受信
-			S_Shot.S_Shooting = (bool)stream.ReceiveNext();
+			S_Shot.S_Shoot = (bool)stream.ReceiveNext();
 		}
 	}
 }
