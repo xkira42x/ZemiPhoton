@@ -63,7 +63,6 @@
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Editor\PyroParticlesEditor.cs" />
      <Compile Include="Assets\Resources\Kaede\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
      <Compile Include="Assets\Resources\Kai\Standard Assets\Effects\AmbientOcclusion\Editor\AmbientOcclusionEditor.cs" />
      <Compile Include="Assets\Resources\Kai\Standard Assets\Effects\AntiAliasing\Editor\AntiAliasingEditor.cs" />
@@ -259,6 +258,8 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{1BBBFCDC-538B-4668-D2B0-32A0468BFC3F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{A1129DE2-3A4A-B741-CE9D-5B29976C4907}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript.unityproj">
       <Project>{6616FA1C-5276-807B-4707-D7B52ED5EA46}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>

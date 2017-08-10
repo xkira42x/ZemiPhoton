@@ -107,15 +107,6 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\Resources\Hasegawa\PinwheelFantasyEffectFreePack2\Scripts\Spawn.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Demo\DemoScript.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Demo\DemoScriptEditor.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Script\FireBaseScript.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Script\FireCollisionForwardScript.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Script\FireConstantBaseScript.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Script\FireLightScript.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Script\FireProjectileScript.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Script\MeteorSwarmScript.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Script\SingleLineAttribute.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Bullet.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\CubeBehavior.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Gun.cs" />
