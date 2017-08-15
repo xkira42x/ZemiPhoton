@@ -27,6 +27,8 @@ public class N3_EndKey : MonoBehaviour {
 		ShowMouse (true);
 	}
 	public void ShowMouse(bool flg){
-		Screen.lockCursor = flg;
+//		Screen.lockCursor = flg;
+//		Cursor.lockState = flg;
+		Cursor.visible=flg;
 	}
 }

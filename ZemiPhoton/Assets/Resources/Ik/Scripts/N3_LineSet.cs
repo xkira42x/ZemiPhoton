@@ -83,7 +83,8 @@ public class N3_LineSet : MonoBehaviour {
 		N_LR=I_LR.GetComponent<LineRenderer> ();
 
 		//頂点の数をセット
-		N_LR.SetVertexCount (2);
+//		N_LR.SetVertexCount (2);
+		N_LR.positionCount=2;
 
 		//１番目の頂点の座標をセット
 		N_LR.SetPosition (0, I_LR.transform.position);
