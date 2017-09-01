@@ -8,7 +8,7 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 
 	//PhotonView N_photonView;
 	Vector3 N_syncPos = Vector3.zero;
-	Vector3 N_nowPos = Vector3.zero;
+	//Vector3 N_nowPos = Vector3.zero;
 	public Vector3 GetSyncPos(){return N_syncPos;}
 
 	public Vector3 pos;
@@ -17,7 +17,7 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 
 	void Awake(){
 		//初期生成時にも同期が起きてしまうため、前回の座標を生成時の座標へ
-		N_nowPos = transform.position;
+		//N_nowPos = transform.position;
 	}
 
 	// Use this for initialization
