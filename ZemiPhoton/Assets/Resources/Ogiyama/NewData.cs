@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NewData : MonoBehaviour {
 
-	public Text UserMessage;
+	/*public Text UserMessage;
 	public Text UserName;
 	public Text Button_Message;
 	public int Button_flg=0;
@@ -44,6 +44,6 @@ public class NewData : MonoBehaviour {
 		foreach (KeyValuePair<string,string>post_arg in post) {
 			form.AddField (post_arg.Key, post_arg.Value);
 		}
-	}
+	}*/
 
 }

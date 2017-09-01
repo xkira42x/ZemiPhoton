@@ -11,20 +11,12 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 	public float A_enemy_max = 100;
 	private float A_timer;      //経過時間
 	int A_enemy_cnt = 1; //生成された敵の数
-	int i=1;
 
 	private object[] args;
 
 	bool spnflg=true;
-	// Use this for initialization
-	void Start () {
-	}
 
-	// Update is called once per frame
 	void Update () {
-//		if (Input.GetKey(KeyCode.Space)) {
-//			Spawn_stage ();
-//		}
 		A_timer += Time.deltaTime;    //経過時間加算
 		if (A_timer >= A_interval) {
 			if (PhotonManager.EnteringTheRoom) {
@@ -49,28 +41,10 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 				z = Random.Range (-25f, 25f);
 
 				Vector3 pos = new Vector3 (x, 3, z) + enemyground.position;
-				//enemy.SetActive(false);
 				GameObject enemy_notClone = PhotonNetwork.Instantiate (enemy.name,pos,Quaternion.identity,0).gameObject;
 				enemy_notClone.name = enemy.name + A_enemy_cnt.ToString();
-				//Debug.Log (A_enemy_cnt);
 				A_enemy_cnt++;
-
-				/*
-				//ステージの外周に敵をスポーンさせる
-				do {
-					x = Random.Range (-150f, 150f);
-					z = Random.Range (-150f, 150f);
-				} while(x <= 120 && x >= -120 && z <= 120 && z >= -120);
-
-				Vector3 pos = new Vector3 (x, 3, z) + ground.position;
-				GameObject enemy_notClone = GameObject.Instantiate (enemy, pos, Quaternion.identity);
-				enemy_notClone.name = enemy.name + A_enemy_cnt.ToString();
-				Debug.Log (A_enemy_cnt);
-				A_enemy_cnt++;
-
-				*/
 			}
-
 		}
 
 	}
@@ -80,17 +54,15 @@ public class EnemySpawn3 : Photon.MonoBehaviour {
 		float x = 0;
 		float z = 0;
 		for (int i = 1; i < A_enemy_max; i++) {
-			GameObject aa = GameObject.Find ("Enemy" + i.ToString ());
-			aa.SetActive (true);
+			GameObject obj = GameObject.Find ("Enemy" + i.ToString ());
+			obj.SetActive (true);
 
 			do {
 				x = Random.Range (-150f, 150f);
 				z = Random.Range (-150f, 150f);
 			} while(x <= 120 && x >= -120 && z <= 120 && z >= -120);
-			
-			Vector3 pos_enemy = new Vector3 (x, 3, z) + ground.position;
 
-			aa.transform.position = pos_enemy;
+			obj.transform.position = new Vector3 (x, 3, z) + ground.position;
 		}
 	}
 
