@@ -24,12 +24,12 @@ public class NewData : MonoBehaviour {
 			Button_Message.GetComponent<Text> ().text = "New Data";
 			Button_flg = 0;
 
-			StartCoroutine ("DataAccess");
+//			StartCoroutine ("DataAccess");
 
 		}
 	}
 		
-	private IEnumerator DataAccess(){
+/*	private IEnumerator DataAccess(){
 		Dictionary<string,string> dic = new Dictionary<string,string> ();
 
 		dic.Add ("name", UserName.GetComponent<Text> ().text);
@@ -38,12 +38,12 @@ public class NewData : MonoBehaviour {
 		StartCoroutine(DataPost(ServerAddress,dic));
 		yield return 0;
 	}
-
-	private IEnumerator DataPost(string url,Dictionary<string,string>post){
+*/
+/*	private IEnumerator DataPost(string url,Dictionary<string,string>post){
 		WWWForm form = new WWWForm ();
 		foreach (KeyValuePair<string,string>post_arg in post) {
 			form.AddField (post_arg.Key, post_arg.Value);
 		}
 	}
-
+*/
 }
