@@ -13,10 +13,10 @@ public class S2_Angle : Photon.MonoBehaviour {
 	Transform S_Collection;
 
 	void Awake(){
-		Screen.lockCursor = true;
-//		Screen.showCursor(false);
+		Cursor.lockState = CursorLockMode.Locked;	// カーソルを固定
+		Cursor.visible = true;						// カーソルを隠す
 	}
-	// Update is called once per frame
+
 	void Update () {
 		if (photonView.isMine) {
 			// 視線移動
