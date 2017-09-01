@@ -47,8 +47,4 @@ public class NewData : MonoBehaviour {
 <<<<<<< HEAD
 	}
 */
-=======
-	}*/
-
->>>>>>> origin/Hasegawa
 }
