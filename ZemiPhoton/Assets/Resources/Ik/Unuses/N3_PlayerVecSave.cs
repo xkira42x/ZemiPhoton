@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class N3_PlayerVecSave : Photon.MonoBehaviour {
 
-	private PhotonView N_photonView;
-
 	public Vector3 N_hensu2=new Vector3(0,0,0);
 
 	public Vector3 N_PlayerVec = Vector3.zero;
@@ -14,7 +12,6 @@ public class N3_PlayerVecSave : Photon.MonoBehaviour {
 	void Start () {
 		N_PlayerVec = this.transform.position;
 		PhotonNetwork.NetworkStatisticsEnabled=true;
-		N_photonView = PhotonView.Get(this);
 	}
 
 
