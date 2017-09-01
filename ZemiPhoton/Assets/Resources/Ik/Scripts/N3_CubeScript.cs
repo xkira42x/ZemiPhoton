@@ -10,8 +10,6 @@ using UnityEngine;
 //コンポーネントの追加だけでおｋ
 public class N3_CubeScript : Photon.MonoBehaviour {
 
-	private PhotonView N_photonView;
-
 	public Vector3 N_hensu1=Vector3.zero;
 	private Vector3 N_OutVec=Vector3.zero;
 
@@ -28,7 +26,6 @@ public class N3_CubeScript : Photon.MonoBehaviour {
 
 		//ネットワーク
 		PhotonNetwork.NetworkStatisticsEnabled=true;
-		N_photonView = PhotonView.Get(this);
 
 		//カメラ設定
 		if (photonView.isMine) {
