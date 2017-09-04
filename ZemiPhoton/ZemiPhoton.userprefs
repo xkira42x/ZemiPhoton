@@ -1,12 +1,23 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Ogiyama\NewData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Ik\Scripts\RPCManager.cs">
     <Files>
       <File FileName="..\..\unit\3Algo\Assets\Scripts\Down.cs" Line="1" Column="1" />
       <File FileName="..\..\unit\3Algo\Assets\Scripts\Restart.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Ik\Scripts\N3_EndKey.cs" Line="1" Column="1" />
       <File FileName="Assets\Photon Unity Networking\UtilityScripts\NetworkCullingHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Ogiyama\NewData.cs" Line="50" Column="1" />
+      <File FileName="Assets\Resources\Ogiyama\NewData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Scripts\N3_CubeScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Unuses\N3_CorutinSave.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Unuses\N3_PlayerVecSave.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Scripts\RPCTest.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Scripts\N3_OnGUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Scripts\RPCManager.cs" Line="70" Column="3" />
+      <File FileName="Assets\Resources\Kaede\Scripts\PhotonManager_ver2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Kaede\UnityChan\Scripts\IdleChanger.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Kaede\Scripts\FirstPersonController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Kaede\UnityChan\Scripts\SceneLoader.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Kaede\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

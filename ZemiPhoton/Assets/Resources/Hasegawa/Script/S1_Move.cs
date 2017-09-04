@@ -28,6 +28,10 @@ public class S1_Move : Photon.MonoBehaviour {
 	bool isGround;
 	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 0.3f);}
 
+	//IK追記
+	[SerializeField]
+	bool mineflg;
+
 	void Start(){
 		N_SyncPos = transform.position;
 		if (!photonView.isMine)
@@ -36,7 +40,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	}
 
 	void Update(){
-		if (photonView.isMine) {
+		if (photonView.isMine||mineflg==true) {
 			MyMain ();
 		} else {
 			// 同期処理の呼び出し
