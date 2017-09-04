@@ -30,12 +30,12 @@ public class PhotonManager_ver2 : Photon.MonoBehaviour {
 		PhotonNetwork.SetPlayerCustomProperties(customProp);
 
 		RoomOptions roomOptions = new RoomOptions ();
-		roomOptions.customRoomProperties = customProp;
+		roomOptions.CustomRoomProperties = customProp;
 		//ロビーで見えるルーム情報としてカスタムプロパティのuserName,userIdを使いますよという宣言
-		roomOptions.customRoomPropertiesForLobby = new string[]{ "userName","userId"};
-		roomOptions.maxPlayers = 4; //部屋の最大人数
-		roomOptions.isOpen = true; //入室許可する
-		roomOptions.isVisible = true; //ロビーから見えるようにする
+		roomOptions.CustomRoomPropertiesForLobby = new string[]{ "userName","userId"};
+		roomOptions.MaxPlayers = 4; //部屋の最大人数
+		roomOptions.IsOpen = true; //入室許可する
+		roomOptions.IsVisible = true; //ロビーから見えるようにする
 		//userIdが名前のルームがなければ作って入室、あれば普通に入室する。
 		PhotonNetwork.JoinOrCreateRoom (userId, roomOptions, null);
 

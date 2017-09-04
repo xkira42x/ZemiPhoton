@@ -133,6 +133,8 @@
      <Compile Include="Assets\Resources\Ik\Scripts\N3_Yfreez.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N4_SyncAngle.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\PhotonManager.cs" />
+     <Compile Include="Assets\Resources\Ik\Scripts\RPCManager.cs" />
+     <Compile Include="Assets\Resources\Ik\Scripts\RPCTest.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\a.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\N3_CorutinSave.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\N3_PlayerVecSave.cs" />
