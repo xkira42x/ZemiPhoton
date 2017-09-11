@@ -16,7 +16,7 @@ public class N3_EndKey : MonoBehaviour {
 			gObj = Instantiate (EndUI);
 			gObj.transform.name = EndUI.name;
 			gObj.transform.parent=GameObject.Find ("Canvas").transform;
-			ShowMouse (false);
+			ShowMouse (true);
 		}
 	}
 	public void EndButton(){
@@ -24,7 +24,7 @@ public class N3_EndKey : MonoBehaviour {
 	}
 	public void ContnButton(){
 		Destroy (GameObject.Find(EndUI.name));
-		ShowMouse (true);
+		ShowMouse (false);
 	}
 	public void ShowMouse(bool flg){
 //		Screen.lockCursor = flg;

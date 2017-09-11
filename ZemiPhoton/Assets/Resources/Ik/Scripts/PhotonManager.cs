@@ -84,7 +84,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		gObj = Instantiate (suppoters);
 		gObj.transform.parent=GameObject.Find ("Canvas").transform;
 
-		Player.GetComponent<N2_Status> ().No = No;
+		Player.GetComponent<N2_Status> ().No=No;
 
 		ConnectResult.text = "";
 

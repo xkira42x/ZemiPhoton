@@ -32,6 +32,9 @@ public class S1_Move : Photon.MonoBehaviour {
 	[SerializeField]
 	bool mineflg;
 
+	[SerializeField]
+	bool deltaflg;
+
 	void Start(){
 		N_SyncPos = transform.position;
 		if (!photonView.isMine)
@@ -44,7 +47,7 @@ public class S1_Move : Photon.MonoBehaviour {
 			MyMain ();
 		} else {
 			// 同期処理の呼び出し
-			SyncPosition();
+//			SyncPosition();
 		}
 	}
 
@@ -168,7 +171,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	}
 
 	// 座標同期
-	void SyncPosition(){
+	public void SyncPosition(){
 		// 同期座標取得
 		N_SyncPos = N_syncMove.GetSyncPos ();
 		Vector3 movement = (N_SyncPos - transform.position) * 0.5f;
@@ -176,6 +179,9 @@ public class S1_Move : Photon.MonoBehaviour {
 		// 移動処理とアニメーション処理
 		if (movement != Vector3.zero) {
 			S_Motion = 1;
+			if (deltaflg == true) {
+				movement = N_syncMove.GetSyncPos ();
+			}
 			transform.position += movement;
 		} else
 			S_Motion = 0;

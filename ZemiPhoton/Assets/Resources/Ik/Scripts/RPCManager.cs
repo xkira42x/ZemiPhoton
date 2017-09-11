@@ -65,10 +65,9 @@ public class RPCManager : Photon.MonoBehaviour {
 	public void JoinRoom(){
 		PhotonNetwork.JoinRoom("user1");
 	}
+	private GameObject Player;
 	//ルーム入室した時に呼ばれるコールバックメソッド
 	void OnJoinedRoom() {
-//		GameObject Player;
-
 //		int No = PhotonNetwork.countOfPlayersInRooms;
 		int No=0;
 		No = PhotonNetwork.player.ID;
@@ -78,13 +77,13 @@ public class RPCManager : Photon.MonoBehaviour {
 		//GameObject.Find ("StatusText").GetComponent<Text> ().text = "OnJoinedRoom";
 		// プレイヤー生成
 		Vector3 Pos = initPos [No];
-		PhotonNetwork.Instantiate ("cube", Pos,Quaternion.Euler (Vector3.zero), 0);
+		PhotonNetwork.Instantiate ("myPlayer_typeR", Pos,Quaternion.Euler (Vector3.zero), 0);
 		// プレイヤーステータス生成
 		GameObject gObj;
 		gObj = Instantiate (suppoters);
 		gObj.transform.parent=GameObject.Find ("Canvas").transform;
 
-//		Player.GetComponent<N2_Status> ().No = No;
+//		Player.GetComponent<N2_Status_typeR> ().No = No;
 
 		ConnectResult.text = "";
 
