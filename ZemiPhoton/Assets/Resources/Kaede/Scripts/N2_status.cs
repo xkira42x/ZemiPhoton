@@ -8,6 +8,7 @@ public class N2_Status : Photon.MonoBehaviour {
 	private int userid;
 	private short hp = 100;
 	public short Hp{ get { return hp; } set { hp = value; } }
+	[PunRPC]
 	public void Damage(short d){hp -= d;HpSlider.value = hp;}
 
 	bool find = false;

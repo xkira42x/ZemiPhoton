@@ -12,15 +12,16 @@ public class RPCTest : Photon.MonoBehaviour {
 	GameObject obj;
 
 	[PunRPC]
-	void Hoge(){
+	void Hoge(int aa){
 		Instantiate (obj);
+		Debug.Log (aa);
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (photonView.isMine) {
 			if (Input.GetKeyUp (KeyCode.Space)) {
-				photonView.RPC ("Hoge", PhotonTargets.All);
+				photonView.RPC ("Hoge", PhotonTargets.All,20);
 			}
 		}
 	}
