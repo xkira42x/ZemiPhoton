@@ -25,7 +25,6 @@ public class S3_Shot : Photon.MonoBehaviour {
 		MuzzleFlashEffect = MuzzleFlash.GetComponentsInChildren<ParticleSystem> ();
 	}
 
-	// Update is called once per frame
 	void Update () {
 		// プレイヤーコントロール設定
 		if (photonView.isMine) {

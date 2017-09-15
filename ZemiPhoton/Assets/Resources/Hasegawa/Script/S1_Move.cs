@@ -12,9 +12,8 @@ public class S1_Move : Photon.MonoBehaviour {
 	float S_Speed = 0.1f;
 	// 移動方向
 	byte S_Type = 0;
-
-	[SerializeField]
-	Animator S_Animator;
+	[SerializeField] Transform myTransform;
+	[SerializeField] Animator S_Animator;
 	float S_Motion = 0;
 
 	// ジャンプ判定群
@@ -24,19 +23,16 @@ public class S1_Move : Photon.MonoBehaviour {
 	float JumpGravity;
 	// ジャンプしている
 	bool isJumping = false;
-	[SerializeField]
-	bool isGround;
+	[SerializeField] bool isGround;
 	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 0.3f);}
 
 	//IK追記
-	[SerializeField]
-	bool mineflg;
+	[SerializeField] bool mineflg;
 
 	void Start(){
 		N_SyncPos = transform.position;
 		if (!photonView.isMine)
 			N_syncMove = GetComponent<N3_SyncMove> ();
-
 	}
 
 	void Update(){
@@ -81,27 +77,27 @@ public class S1_Move : Photon.MonoBehaviour {
 
 	// 移動
 	void S_Move(){
-		Vector3 pos = Vector3.zero;
+		int angle = 0;
 		// 移動
 		switch (S_Type) {
-		case Key.FORWARD		:pos += transform.forward * S_Speed;break;
-		case Key.BACK			:pos -= transform.forward * S_Speed;break;
-		case Key.RIGHT			:pos += transform.right * S_Speed;break;
-		case Key.LEFT			:pos -= transform.right * S_Speed;break;
-		case Key.FORWARDLEFT	:pos += (transform.forward - transform.right) * S_Speed;break;
-		case Key.FORWARDRIGHT	:pos += (transform.forward + transform.right) * S_Speed;break;
-		case Key.BACKLEFT		:pos -= (transform.forward + transform.right) * S_Speed;break;
-		case Key.BACKRIGHT		:pos -= (transform.forward - transform.right) * S_Speed;break;
+		case Key.FORWARD		:angle=0;break;
+		case Key.BACK			:angle=180;break;
+		case Key.RIGHT			:angle=90;break;
+		case Key.LEFT			:angle=270;break;
+		case Key.FORWARDLEFT	:angle=315;break;
+		case Key.FORWARDRIGHT	:angle=45;break;
+		case Key.BACKLEFT		:angle=215;break;
+		case Key.BACKRIGHT		:angle=135;break;
 		case Key.NONE:break;
 		default:Debug.Log ("Error :: Player move S_Type");break;
 		}
-		transform.localPosition += pos;
+		if (S_Type != NONE)
+			transform.position += new Vector3 (
+				Mathf.Sin ((myTransform.localEulerAngles.x + angle) * 3.14f / 180) * 0.1f, 
+				0, 
+				Mathf.Cos ((myTransform.localEulerAngles.z + angle) * 3.14f / 180) * 0.1f);
 		// モーション更新
-		if (S_Type != Key.NONE)
-			S_Motion = 1;
-		else
-			S_Motion = 0;
-
+		S_Motion = (S_Type != Key.NONE)? 1 : 0;
 	}
 
 	// ジャンプ
