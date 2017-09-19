@@ -126,6 +126,8 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\angle_test.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\move_test.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\myNamespace.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\testGun.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\testShot.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_CubeScript.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_EndKey.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_LineSet.cs" />
