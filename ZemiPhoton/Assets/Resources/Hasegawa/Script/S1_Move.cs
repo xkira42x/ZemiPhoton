@@ -9,11 +9,13 @@ public class S1_Move : Photon.MonoBehaviour {
 	// 同期座標
 	Vector3 N_SyncPos;
 	// 移動速度
-	float S_Speed = 0.1f;
+	float S_Speed;
+	public float Speed{ get { return S_Speed; } set { S_Speed = value; } }
 	// 移動方向
 	byte S_Type = 0;
 	[SerializeField] Transform myTransform;
-	[SerializeField] Animator S_Animator;
+	//[SerializeField] Animator S_Animator;
+	//[SerializeField]S4_Animation S_Animation;
 	float S_Motion = 0;
 
 	// ジャンプ判定群
@@ -23,6 +25,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	float JumpGravity;
 	// ジャンプしている
 	bool isJumping = false;
+	public bool IsJumping{ get { return isJumping; } set { isJumping = value; } }
 	[SerializeField] bool isGround;
 	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 0.3f);}
 
@@ -47,18 +50,13 @@ public class S1_Move : Photon.MonoBehaviour {
 
 	// Unityちゃんモーション
 	void S_UnityChanAnimation(){
-		S_Animator.SetFloat ("Speed", S_Motion);
-		S_Animator.SetBool ("IsJumping",isJumping);
+		//S_Animator.SetFloat ("Speed", S_Motion);
+		//S_Animator.SetBool ("IsJumping",isJumping);
 	}
 
 	// キー移動判定
 	void S_KeyMove(){
 		S_Type = Key.NONE;
-		// 走る
-		if (Input.GetKey (KeyCode.LeftShift))
-			S_Speed = 0.15f;
-		else
-			S_Speed = 0.1f;
 		// キー判定
 		if (Input.GetKey (KeyCode.W)) {
 			S_Type += Key.FORWARD;
@@ -80,24 +78,25 @@ public class S1_Move : Photon.MonoBehaviour {
 		int angle = 0;
 		// 移動
 		switch (S_Type) {
-		case Key.FORWARD		:angle=0;break;
-		case Key.BACK			:angle=180;break;
-		case Key.RIGHT			:angle=90;break;
-		case Key.LEFT			:angle=270;break;
-		case Key.FORWARDLEFT	:angle=315;break;
-		case Key.FORWARDRIGHT	:angle=45;break;
-		case Key.BACKLEFT		:angle=215;break;
-		case Key.BACKRIGHT		:angle=135;break;
+		case Key.FORWARD		:angle=0;	break;
+		case Key.BACK			:angle=180;	break;
+		case Key.RIGHT			:angle=90;	break;
+		case Key.LEFT			:angle=270;	break;
+		case Key.FORWARDLEFT	:angle=315;	break;
+		case Key.FORWARDRIGHT	:angle=45;	break;
+		case Key.BACKLEFT		:angle=215;	break;
+		case Key.BACKRIGHT		:angle=135;	break;
 		case Key.NONE:break;
 		default:Debug.Log ("Error :: Player move S_Type");break;
 		}
-		if (S_Type != NONE)
+		if (S_Type != NONE) {
 			transform.position += new Vector3 (
-				Mathf.Sin ((myTransform.localEulerAngles.x + angle) * 3.14f / 180) * 0.1f, 
+				Mathf.Sin ((myTransform.localEulerAngles.y + transform.localEulerAngles.x + angle) * 3.14f / 180) * 0.1f, 
 				0, 
-				Mathf.Cos ((myTransform.localEulerAngles.z + angle) * 3.14f / 180) * 0.1f);
+				Mathf.Cos ((myTransform.localEulerAngles.y  + angle) * 3.14f / 180) * 0.1f);
+		}
 		// モーション更新
-		S_Motion = (S_Type != Key.NONE)? 1 : 0;
+		S_Speed = (S_Type != Key.NONE)? 1 : 0;
 	}
 
 	// ジャンプ
