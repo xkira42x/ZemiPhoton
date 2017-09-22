@@ -3,22 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GunBase : MonoBehaviour {
-	protected byte S_type=0;
-	protected int S_MaxAmmo;
-	protected int S_Ammo;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+	[SerializeField]protected GameObject AmmoObj;
+	protected int MaxAmmo;
+	protected int Ammo;
+	protected bool Next = true;
+	[SerializeField]public Transform Muzzle;
+	[SerializeField]public Transform Collection;
+	[SerializeField]public ParticleSystem[] MuzzleFlash;
 
 	// ショット
-	protected virtual void S_Shot(){
+	public virtual void Action(){
+		if (Next) {
+			Instantiate (AmmoObj, Muzzle.position, transform.localRotation * Collection.localRotation);
+			for (int i = 0; i < MuzzleFlash.Length; i++)
+				MuzzleFlash [i].Play ();
+			Next = false;
+			Delay (.1f);
+		}
 	}
 
-	protected byte S_GetType(){return S_type;}
+	public void Delay(float interval){
+		StartCoroutine ("Del", interval);
+	}
+
+	IEnumerator Del(float il){
+		yield return new WaitForSeconds (il);
+		Next = true;
+	}
+
+	public void ShotSetting(S3_Shot S_Shot){
+		S_Shot.Shot = Action;
+		Collection = S_Shot.S_Collection;
+	}
+
 }
