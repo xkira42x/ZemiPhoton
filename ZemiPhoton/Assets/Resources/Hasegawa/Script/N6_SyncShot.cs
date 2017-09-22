@@ -18,10 +18,10 @@ public class N6_SyncShot : Photon.MonoBehaviour {
         // そうでない時、射撃判定を受信する
 		if (stream.isWriting) {
 			// 送信
-			stream.SendNext(S_Shot.S_Shoot);
+			//stream.SendNext(S_Shot.S_Shoot);
 		}else{
 			// 受信
-			S_Shot.S_Shoot = (bool)stream.ReceiveNext();
+			//S_Shot.S_Shoot = (bool)stream.ReceiveNext();
 		}
 	}
 }

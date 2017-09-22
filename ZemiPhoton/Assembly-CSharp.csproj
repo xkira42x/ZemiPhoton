@@ -111,6 +111,7 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\CubeBehavior.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Gun.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\GunBase.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Gun_M4A1.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Hp.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MyLOD.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\N2_NetworkSetting.cs" />
