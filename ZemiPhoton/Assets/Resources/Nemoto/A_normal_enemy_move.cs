@@ -18,7 +18,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 
     public GameObject A_Player;                //>プレイヤーオブジェクト
     int A_player_target;                       //>どのプレイヤーをターゲットするか
-　　N2_Status A_P_info;                    //>プレイヤーの情報
+　　N2_status A_P_info;                    //>プレイヤーの情報
     public GameObject A_Bullet;
     Bullet A_B_info;                           //>弾の情報
 
@@ -51,7 +51,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 		}
 
         A_anim = GetComponent<Animator>();
-		A_P_info = A_Player.GetComponent<N2_Status>();
+		A_P_info = A_Player.GetComponent<N2_status>();
         A_B_info = A_Bullet.GetComponent<Bullet>();
         A_anim.SetBool("play", true);
         A_hp = A_hp_init;                               //>体力初期化
@@ -243,7 +243,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 			A_player_target = Random.Range(1, 3);
 			if (A_player_target == 1) A_Player = GameObject.Find("Player1");
 			else if (A_player_target == 2) A_Player = GameObject.Find("Player2");
-			A_P_info = A_Player.GetComponent<N2_Status> ();
+			A_P_info = A_Player.GetComponent<N2_status> ();
 			yield return new WaitForSeconds (40f);
 		}
 	}

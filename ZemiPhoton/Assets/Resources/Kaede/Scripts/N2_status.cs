@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class N2_Status : Photon.MonoBehaviour {
+public class N2_status : Photon.MonoBehaviour {
 
 	private int userid;
 	private short hp = 100;
