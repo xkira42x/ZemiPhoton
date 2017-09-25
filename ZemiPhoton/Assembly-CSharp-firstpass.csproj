@@ -59,6 +59,7 @@
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc" />
+     <None Include="Assets\Resources\Hasegawa\3D Models\Props\Weapons\Ammunition\ReadMe.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />

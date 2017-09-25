@@ -41,6 +41,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 
 	//ルーム作成
 	public void CreateRoom(){
+		Debug.Log ("Create room");
 		string userName = "ユーザ1"+Time.time;
 		string userId = "user1";
 		PhotonNetwork.autoCleanUpPlayerObjects = false;

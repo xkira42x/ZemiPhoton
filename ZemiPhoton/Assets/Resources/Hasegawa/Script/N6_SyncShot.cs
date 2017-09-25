@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class N6_SyncShot : Photon.MonoBehaviour {
 
-	//PhotonView N_PhotonView;
+	// 送受信する情報の伝達先
 	S3_Shot S_Shot;
 
 	void Awake(){
+        // コンポーネントの取得
 		S_Shot = GetComponent<S3_Shot> ();
 	}
 
-	// Use this for initialization
-	void Start () {
-		//N_PhotonView = PhotonView.Get (this);
-	}
 	// 同期処理
 	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
+        // クライアントが操作するキャラクターの時、射撃判定を送信する
+        // そうでない時、射撃判定を受信する
 		if (stream.isWriting) {
 			// 送信
-			stream.SendNext(S_Shot.S_Shoot);
+			//stream.SendNext(S_Shot.S_Shoot);
 		}else{
 			// 受信
-			S_Shot.S_Shoot = (bool)stream.ReceiveNext();
+			//S_Shot.S_Shoot = (bool)stream.ReceiveNext();
 		}
 	}
 }

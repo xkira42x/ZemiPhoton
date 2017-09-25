@@ -111,11 +111,12 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\CubeBehavior.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Gun.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\GunBase.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Gun_M4A1.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Hp.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Script\Key.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MyLOD.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\N2_NetworkSetting.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\N3_SyncMove.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\N4_SyncAnimation.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\N6_SyncShot.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\PhotonNetworkTest.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\S1_Move.cs" />
@@ -123,11 +124,15 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\S3_Shot.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\TestCube.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\angle_test.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Script\move_test.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\myNamespace.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Resources\Ik\Scripts\A_normal_enemy_move_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\EnemySpawn3_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N2_Status_typeR.cs" />
+=======
+     <Compile Include="Assets\Resources\Hasegawa\Script\testGun.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\testShot.cs" />
+>>>>>>> origin/Hasegawa
      <Compile Include="Assets\Resources\Ik\Scripts\N3_CubeScript.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_EndKey.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_LineSet.cs" />
@@ -276,6 +281,7 @@
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc" />
+     <None Include="Assets\Resources\Hasegawa\3D Models\Props\Weapons\Ammunition\ReadMe.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />

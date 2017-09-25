@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Runtime.InteropServices;
+//using System;
+//using System.Runtime.InteropServices;
 
 public class N3_SyncMove : Photon.MonoBehaviour {
 
@@ -10,7 +12,9 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 	Vector3 N_syncPos = Vector3.zero;
 	//Vector3 N_nowPos = Vector3.zero;
 	public Vector3 GetSyncPos(){return N_syncPos;}
+	[SerializeField]S1_Move S_Move;
 
+<<<<<<< HEAD
 	public Vector3 pos;
 	bool isJump = false;
 	public bool IsJump{ get { return isJump; } set { isJump = value; } }
@@ -52,5 +56,17 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 			}
 			isJump = (bool)stream.ReceiveNext ();
 		}
+=======
+	void Update(){
+		if (photonView.isMine) {
+			photonView.RPC ("SyncPosition", PhotonTargets.Others, transform.position);
+		}
 	}
+
+	[PunRPC]
+	void SyncPosition(Vector3 pos){
+		transform.position = pos;
+>>>>>>> origin/Hasegawa
+	}
+}
 }

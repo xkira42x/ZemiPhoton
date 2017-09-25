@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-	protected float speed = 1;
-	Vector3 angle;
+	[SerializeField]protected float speed = 1;
 	Vector3 movement;
-	protected short pow = 50;
+	[SerializeField]protected short pow = 50;
 	public short Pow{ get { return pow; } set { pow = value; } }
 	float time;
 
-	// Use this for initialization
 	void Start () {
 		// 角度の保持
-		angle = transform.localEulerAngles;
+		Vector3 angle = transform.localEulerAngles;
 		// 移動量計算
 		movement = new Vector3(
 			Mathf.Sin (angle.y * 3.14f / 180) * speed, 
@@ -23,7 +21,6 @@ public class Bullet : MonoBehaviour {
 		Destroy (gameObject, 1);
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
 		// 移動
