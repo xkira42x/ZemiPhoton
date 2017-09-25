@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 using System.Runtime.InteropServices;
 
 public class S1_Move : Photon.MonoBehaviour {
@@ -8,14 +9,19 @@ public class S1_Move : Photon.MonoBehaviour {
 	N3_SyncMove N_syncMove;
 	// 同期座標
 	Vector3 N_SyncPos;
+public class S1_Move : MonoBehaviour {
+
 	// 移動速度
 	float S_Speed = 0.1f;
 	// 移動方向
 	byte S_Type = 0;
+	[SerializeField]float speed = 0.1f;
 
 	[SerializeField]
 	Animator S_Animator;
 	float S_Motion = 0;
+	float _motion = 0;
+	public float motion{get{ return _motion;}}
 
 	// ジャンプ判定群
 	const byte NONE=0,UP=1,DOWN=2;
@@ -26,6 +32,8 @@ public class S1_Move : Photon.MonoBehaviour {
 	bool isJumping = false;
 	[SerializeField]
 	bool isGround;
+	public bool IsJumping{ get { return isJumping; } set { isJumping = value; } }
+	[SerializeField] bool isGround;
 	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 0.3f);}
 
 	//IK追記
@@ -43,6 +51,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	}
 
 	void Update(){
+<<<<<<< HEAD
 		if (photonView.isMine||mineflg==true) {
 			MyMain ();
 		} else {
@@ -50,14 +59,23 @@ public class S1_Move : Photon.MonoBehaviour {
 //			SyncPosition();
 		}
 	}
+=======
+		// キー移動
+		S_KeyMove ();
 
+		// ジャンプ
+		//S_Jump();
+>>>>>>> origin/Hasegawa
 
 	// Unityちゃんモーション
 	void S_UnityChanAnimation(){
 		S_Animator.SetFloat ("Speed", S_Motion);
 		S_Animator.SetBool ("IsJumping",isJumping);
 	}
+		IsGround ();
 
+	}
+		
 	// キー移動判定
 	void S_KeyMove(){
 		S_Type = Key.NONE;
@@ -105,6 +123,10 @@ public class S1_Move : Photon.MonoBehaviour {
 		else
 			S_Motion = 0;
 
+		float horizontal = CrossPlatformInputManager.GetAxis ("Horizontal") * speed;
+		float vertical = CrossPlatformInputManager.GetAxis ("Vertical") * speed;
+		transform.Translate (horizontal, 0, vertical);
+		_motion = (horizontal != 0 || vertical != 0) ? 1 : 0;
 	}
 
 	// ジャンプ
@@ -118,9 +140,11 @@ public class S1_Move : Photon.MonoBehaviour {
 		switch (S_Jtype) {
 		case UP:
 			S_ToJump ();
+			ToJump ();
 			break;
 		case DOWN:
 			S_DropDown ();
+			DropDown ();
 			break;
 		}
 	}
@@ -132,6 +156,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	}
 	// 上昇処理
 	void S_ToJump(){
+	void ToJump(){
 		// 重力
 		AddGravity ();
 		// 頂点判定
@@ -140,6 +165,7 @@ public class S1_Move : Photon.MonoBehaviour {
 	}
 	// 下降処理
 	void S_DropDown(){
+	void DropDown(){
 		// 床判定
 		if (!isGround)
 			// 重力
@@ -154,6 +180,7 @@ public class S1_Move : Photon.MonoBehaviour {
 		transform.position += Vector3.up * JumpGravity;
 		JumpGravity -= 0.98f * Time.deltaTime;		
 	}
+<<<<<<< HEAD
 
 	// メイン処理
 	void MyMain(){
@@ -189,4 +216,6 @@ public class S1_Move : Photon.MonoBehaviour {
 		// アニメーション
 		S_UnityChanAnimation ();
 	}
+=======
+>>>>>>> origin/Hasegawa
 }

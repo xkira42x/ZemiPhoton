@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S2_Angle : Photon.MonoBehaviour {
+public class S2_Angle : MonoBehaviour {
 	Vector3 S_MouseAngle = Vector3.zero;
 	Quaternion S_MainAngle;
 	public Quaternion S_mainAngle{ get { return S_MainAngle; } set { S_MainAngle = value; } }
@@ -18,11 +18,10 @@ public class S2_Angle : Photon.MonoBehaviour {
 	}
 
 	void Update () {
-		if (photonView.isMine) {
-			// 視線移動
-			S_Eye ();
-		}
+		// 視線移動
+		S_Eye ();
 	}
+
 	// 視線移動
 	void S_Eye(){
 		// マウス移動量を保存
