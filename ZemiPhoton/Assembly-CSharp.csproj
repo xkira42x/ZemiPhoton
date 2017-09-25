@@ -125,11 +125,14 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\TestCube.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\angle_test.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\myNamespace.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Script\testGun.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Script\testShot.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Resources\Ik\Scripts\A_normal_enemy_move_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\EnemySpawn3_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N2_Status_typeR.cs" />
+=======
+     <Compile Include="Assets\Resources\Hasegawa\Script\testGun.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\testShot.cs" />
+>>>>>>> origin/Hasegawa
      <Compile Include="Assets\Resources\Ik\Scripts\N3_CubeScript.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_EndKey.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_LineSet.cs" />
@@ -149,7 +152,7 @@
      <Compile Include="Assets\Resources\Kaede\Scripts\Enemy.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\EnemySqwan.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\FirstPersonController.cs" />
-     <Compile Include="Assets\Resources\Kaede\Scripts\N2_status.cs" />
+     <Compile Include="Assets\Resources\Kaede\Scripts\N2_Status.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\PhotonManager_ver2.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\Player_Status.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\Player_status2.cs" />
