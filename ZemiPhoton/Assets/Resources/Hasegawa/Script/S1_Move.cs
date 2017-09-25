@@ -4,22 +4,11 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using System.Runtime.InteropServices;
 
-public class S1_Move : Photon.MonoBehaviour {
-	// 同期スクリプト参照
-	N3_SyncMove N_syncMove;
-	// 同期座標
-	Vector3 N_SyncPos;
 public class S1_Move : MonoBehaviour {
 
 	// 移動速度
-	float S_Speed = 0.1f;
-	// 移動方向
-	byte S_Type = 0;
 	[SerializeField]float speed = 0.1f;
 
-	[SerializeField]
-	Animator S_Animator;
-	float S_Motion = 0;
 	float _motion = 0;
 	public float motion{get{ return _motion;}}
 
@@ -30,99 +19,27 @@ public class S1_Move : MonoBehaviour {
 	float JumpGravity;
 	// ジャンプしている
 	bool isJumping = false;
-	[SerializeField]
-	bool isGround;
 	public bool IsJumping{ get { return isJumping; } set { isJumping = value; } }
 	[SerializeField] bool isGround;
 	void IsGround(){isGround = Physics.Raycast (transform.position, Vector3.down, 0.3f);}
 
-	//IK追記
-	[SerializeField]
-	bool mineflg;
-
-	[SerializeField]
-	bool deltaflg;
 
 	void Start(){
-		N_SyncPos = transform.position;
-		if (!photonView.isMine)
-			N_syncMove = GetComponent<N3_SyncMove> ();
-
 	}
 
 	void Update(){
-<<<<<<< HEAD
-		if (photonView.isMine||mineflg==true) {
-			MyMain ();
-		} else {
-			// 同期処理の呼び出し
-//			SyncPosition();
-		}
-	}
-=======
 		// キー移動
 		S_KeyMove ();
 
 		// ジャンプ
 		//S_Jump();
->>>>>>> origin/Hasegawa
 
-	// Unityちゃんモーション
-	void S_UnityChanAnimation(){
-		S_Animator.SetFloat ("Speed", S_Motion);
-		S_Animator.SetBool ("IsJumping",isJumping);
-	}
 		IsGround ();
 
 	}
 		
 	// キー移動判定
 	void S_KeyMove(){
-		S_Type = Key.NONE;
-		// 走る
-		if (Input.GetKey (KeyCode.LeftShift))
-			S_Speed = 0.15f;
-		else
-			S_Speed = 0.1f;
-		// キー判定
-		if (Input.GetKey (KeyCode.W)) {
-			S_Type += Key.FORWARD;
-		}
-		if (Input.GetKey (KeyCode.S)) {
-			S_Type += Key.BACK;
-		}
-		if (Input.GetKey (KeyCode.A)) {
-			S_Type += Key.LEFT;
-		}
-		if (Input.GetKey (KeyCode.D)) {
-			S_Type += Key.RIGHT;
-		}
-		S_Move ();
-	}
-
-	// 移動
-	void S_Move(){
-		Vector3 pos = Vector3.zero;
-		// 移動
-		switch (S_Type) {
-		case Key.FORWARD		:pos += transform.forward * S_Speed;break;
-		case Key.BACK			:pos -= transform.forward * S_Speed;break;
-		case Key.RIGHT			:pos += transform.right * S_Speed;break;
-		case Key.LEFT			:pos -= transform.right * S_Speed;break;
-		case Key.FORWARDLEFT	:pos += (transform.forward - transform.right) * S_Speed;break;
-		case Key.FORWARDRIGHT	:pos += (transform.forward + transform.right) * S_Speed;break;
-		case Key.BACKLEFT		:pos -= (transform.forward + transform.right) * S_Speed;break;
-		case Key.BACKRIGHT		:pos -= (transform.forward - transform.right) * S_Speed;break;
-		case Key.NONE:break;
-		default:Debug.Log ("Error :: Player move S_Type");break;
-		}
-		transform.localPosition += pos;
-		// モーション更新
-		if (S_Type != Key.NONE)
-			S_Motion = 1;
-		else
-			S_Motion = 0;
-
 		float horizontal = CrossPlatformInputManager.GetAxis ("Horizontal") * speed;
 		float vertical = CrossPlatformInputManager.GetAxis ("Vertical") * speed;
 		transform.Translate (horizontal, 0, vertical);
@@ -139,11 +56,9 @@ public class S1_Move : MonoBehaviour {
 		// 判定分岐
 		switch (S_Jtype) {
 		case UP:
-			S_ToJump ();
 			ToJump ();
 			break;
 		case DOWN:
-			S_DropDown ();
 			DropDown ();
 			break;
 		}
@@ -155,7 +70,6 @@ public class S1_Move : MonoBehaviour {
 		JumpGravity = 0.3f;
 	}
 	// 上昇処理
-	void S_ToJump(){
 	void ToJump(){
 		// 重力
 		AddGravity ();
@@ -164,7 +78,6 @@ public class S1_Move : MonoBehaviour {
 			S_Jtype = DOWN;
 	}
 	// 下降処理
-	void S_DropDown(){
 	void DropDown(){
 		// 床判定
 		if (!isGround)
@@ -180,42 +93,4 @@ public class S1_Move : MonoBehaviour {
 		transform.position += Vector3.up * JumpGravity;
 		JumpGravity -= 0.98f * Time.deltaTime;		
 	}
-<<<<<<< HEAD
-
-	// メイン処理
-	void MyMain(){
-
-		// キー移動
-		S_KeyMove ();
-
-		// ジャンプ
-		//S_Jump();
-
-		IsGround ();
-
-		// アニメーション
-		S_UnityChanAnimation ();
-	}
-
-	// 座標同期
-	public void SyncPosition(){
-		// 同期座標取得
-		N_SyncPos = N_syncMove.GetSyncPos ();
-		Vector3 movement = (N_SyncPos - transform.position) * 0.5f;
-		movement = new Vector3 (movement.x, 0, movement.z);
-		// 移動処理とアニメーション処理
-		if (movement != Vector3.zero) {
-			S_Motion = 1;
-			if (deltaflg == true) {
-				movement = N_syncMove.GetSyncPos ();
-			}
-			transform.position += movement;
-		} else
-			S_Motion = 0;
-		isJumping = N_syncMove.IsJump;
-		// アニメーション
-		S_UnityChanAnimation ();
-	}
-=======
->>>>>>> origin/Hasegawa
 }
