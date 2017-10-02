@@ -80,6 +80,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		// プレイヤー生成
 		Vector3 Pos = initPos [No];
 		Player = PhotonNetwork.Instantiate ("myPlayer", Pos,Quaternion.Euler (Vector3.zero), 0);
+		Player.name = "Player" + No.ToString ();
 		// プレイヤーステータス生成
 		GameObject gObj;
 		gObj = Instantiate (suppoters);
