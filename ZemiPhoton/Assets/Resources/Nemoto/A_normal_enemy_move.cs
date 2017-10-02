@@ -89,8 +89,9 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 					A_anim.SetBool ("play", false);
 					A_state = A_enemy_state.A_atk;//攻撃範囲内にプレイヤーがいたら攻撃実行
 				} else {
-					A_state = A_enemy_state.A_vsb; //>プレイヤーが攻撃範囲外なら追いかける
-					A_anim.SetBool ("attack", false);
+                        A_anim.SetBool("attack", false);
+                        A_state = A_enemy_state.A_vsb; //>プレイヤーが攻撃範囲外なら追いかける
+					
 				}
 				/****************/
 			}
@@ -203,7 +204,6 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
                 /*プレイヤーダメージ処理*/
                 //A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
 				A_P_info.Damage(A_power);
-				Debug.Log ("HP:" + A_P_info.Hp+"_"+Time.time);
                 A_delay_flg = false;    //ダメージが入った時にflgをfalse
                 /**********************/
             }

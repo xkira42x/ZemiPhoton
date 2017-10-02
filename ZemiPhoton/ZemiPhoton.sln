@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemiPhoton", "Assembly-CSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemiPhoton", "Assembly-CSharp-Editor.csproj", "{24EB199F-DF8F-5CFA-C347-4586D30616D7}"
 EndProject
-Project("{4E3D3258-C59B-5786-CFE6-A4DC74F80745}") = "ZemiPhoton", "Assembly-UnityScript.unityproj", "{6616FA1C-5276-807B-4707-D7B52ED5EA46}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,10 +25,6 @@ Global
 		{24EB199F-DF8F-5CFA-C347-4586D30616D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24EB199F-DF8F-5CFA-C347-4586D30616D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24EB199F-DF8F-5CFA-C347-4586D30616D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6616FA1C-5276-807B-4707-D7B52ED5EA46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6616FA1C-5276-807B-4707-D7B52ED5EA46}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6616FA1C-5276-807B-4707-D7B52ED5EA46}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6616FA1C-5276-807B-4707-D7B52ED5EA46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
