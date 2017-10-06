@@ -8,12 +8,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
-    public class FirstPersonController : Photon.MonoBehaviour
+    public class FirstPersonController : MonoBehaviour
     {
-
-		private PhotonView photonView;						//追加
-		private PhotonTransformView photonTransformView;	//追加
-
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -59,10 +55,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-
-			photonTransformView = GetComponent<PhotonTransformView>();	//追加
-			photonView = PhotonView.Get(this);							//追加
-
         }
 
 
@@ -89,14 +81,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-
-			if (photonView.isMine) {
-				//現在の移動速度
-				Vector3 velocity = gameObject.GetComponent<Rigidbody> ().velocity;
-				//移動速度を指定
-				photonTransformView.SetSynchronizedValues (velocity, 0);
-			}
-
         }
 
 

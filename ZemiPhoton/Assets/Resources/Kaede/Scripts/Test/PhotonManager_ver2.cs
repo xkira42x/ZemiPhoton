@@ -16,6 +16,7 @@ public class PhotonManager_ver2 : Photon.MonoBehaviour {
 		Debug.Log ("PhotonManager OnJoinedLobby");
 		//ボタンを押せるようにする
 		GameObject.Find ("CreateRoomB").GetComponent<Button> ().interactable = true;
+		GameObject.Find ("JoinRoomB").GetComponent<Button> ().interactable = true;
 	}
 
 	//ルーム作成
@@ -58,11 +59,8 @@ public class PhotonManager_ver2 : Photon.MonoBehaviour {
 		Debug.Log ("PhotonManager OnJoinedRoom");
 
 		Vector3 initPos = new Vector3 (0, 3f, 3f);
-		cube = PhotonNetwork.Instantiate ("Player", initPos,
+		cube = PhotonNetwork.Instantiate ("Cube", initPos,
 			Quaternion.Euler (Vector3.zero), 0);
-
-		GameObject.Find ("Main Camera").GetComponent<Camera>().enabled = false;
-		GameObject.Find ("FirstPersonCharacter").GetComponent<Camera>().enabled = true;
 
 	}
 
