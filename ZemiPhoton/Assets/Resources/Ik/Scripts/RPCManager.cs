@@ -86,7 +86,7 @@ public class RPCManager : Photon.MonoBehaviour {
 //		Player.GetComponent<N2_Status_typeR> ().No = No;
 
 		ConnectResult.text = "";
-
+		if(PhotonNetwork.isMasterClient)
 		EnteringTheRoom = true;
 	}
 }

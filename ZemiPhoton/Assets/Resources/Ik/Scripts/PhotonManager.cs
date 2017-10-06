@@ -62,14 +62,12 @@ public class PhotonManager : Photon.MonoBehaviour {
 		PhotonNetwork.JoinOrCreateRoom (userId, roomOptions, null);
 		ConnectResult.text = "";
 	}
-		
 	public void JoinRoom(){
 		PhotonNetwork.JoinRoom("user1");
 	}
 	private GameObject Player;
 	//ルーム入室した時に呼ばれるコールバックメソッド
 	void OnJoinedRoom() {
-
 //		int No = PhotonNetwork.countOfPlayersInRooms;
 		int No=0;
 		No = PhotonNetwork.player.ID;

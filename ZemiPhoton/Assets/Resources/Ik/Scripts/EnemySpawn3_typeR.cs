@@ -46,7 +46,6 @@ public class EnemySpawn3_typeR : Photon.MonoBehaviour {
 				A_enemy_cnt++;
 			}
 		}
-
 	}
 
 
