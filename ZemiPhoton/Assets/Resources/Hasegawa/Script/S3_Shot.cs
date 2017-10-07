@@ -8,45 +8,55 @@ public class S3_Shot : Photon.MonoBehaviour {
 	
 	[SerializeField]Action _action;
 	public Action action{ set { _action = value; } }
-	[SerializeField]public Transform S_Collection;
+	public void ShotAction (){_action ();}
 	[SerializeField]Transform GunSpot;
-	[SerializeField]public Transform MyTransform;
 	[SerializeField]GunBase MyGun;
 	[SerializeField]LayerMask mask;
-	[SerializeField]public Transform Camera;
+	[SerializeField]public Transform CameraT;
 	[SerializeField]S3_Shot shot;
 	[SerializeField]Text UI;
-
-	public GameObject obj;
 
 	RaycastHit hitInfo;
 
 	void Start(){
-		shot = GetComponent<S3_Shot> ();
-		MyGun.ShotSetting (shot, GunSpot);
+		if (MyGun != null)
+			MyGun.ShotSetting (shot);
 	}
 
 	void Update () {
 		// プレイヤーコントロール設定
-		//if (photonView.isMine) {
+
 		// ショット
 		if (Input.GetMouseButton (0)) {
-			_action ();
+			if (_action != null)
+				_action ();
+			else
+				WriteUIText ("I do not have weapons");
 		}
-		//}
-		if (Physics.Raycast (Camera.position, Camera.forward, out hitInfo, 10, 1 << LayerMask.NameToLayer ("Item"))) {
-			UI.text = "Pick uo with E key";
+
+		if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
+			WriteUIText ("Pick up with E key");
 			if (Input.GetKeyDown (KeyCode.E)) {
-				GameObject obj = hitInfo.collider.gameObject;
-				MyGun.ThrowAway ();
-				obj.transform.parent = gameObject.transform;
-				MyGun = obj.GetComponent<GunBase> ();
-				MyGun.ShotSetting (shot, GunSpot);
+				SendMessage ("PickUpItem", hitInfo.collider.gameObject);
 			}
-		} else
-			UI.text = "";
-			
-		obj.transform.position = (Camera.position + (Camera.forward * 10));
+		}
+	}
+
+	void PickUpItem(GameObject obj){
+		if (MyGun != null)
+			MyGun.ThrowAway ();
+		obj.transform.parent = GunSpot;
+		MyGun = obj.GetComponent<GunBase> ();
+		MyGun.ShotSetting (shot);
+	}
+
+	void WriteUIText(string UIText){
+		UI.text = UIText;
+		StartCoroutine ("ClearUIText");
+	}
+	IEnumerator ClearUIText(){
+		yield return new WaitForSeconds (1);
+		UI.text = "";
 	}
 
 }

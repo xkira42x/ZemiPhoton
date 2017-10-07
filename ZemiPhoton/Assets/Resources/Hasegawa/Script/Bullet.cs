@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
 	Vector3 movement;
 	[SerializeField]protected short pow = 50;
 	public short Pow{ get { return pow; } set { pow = value; } }
-	[SerializeField]protected float range;
+	[SerializeField]protected float LifeTime = 1;
 	float time;
 
 	void Start () {
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour {
 			-(Mathf.Tan (angle.x * 3.14f / 180) * speed), 
 			Mathf.Cos (angle.y * 3.14f / 180) * speed);
 		// 削除処理
-		Destroy (gameObject, range);
+		Destroy (gameObject, LifeTime);
 	}
 	
 	void Update () {

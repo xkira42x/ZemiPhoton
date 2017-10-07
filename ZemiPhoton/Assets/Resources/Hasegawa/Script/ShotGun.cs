@@ -7,7 +7,7 @@ public class ShotGun : GunBase {
 	public override void Action (){
 		if (Next) {
 			for (int i = 0; i < 10; i++)
-				Instantiate (AmmoObj, Muzzle.position, Quaternion.Euler (Vec3Rand) * Collection.localRotation * MyTransform.localRotation);
+				Instantiate (AmmoObj, CameraT.position, Quaternion.Euler (Vec3Rand)*CameraT.rotation);//* Collection.localRotation * MyTransform.localRotation);
 
 			PlayEffect ();
 			Next = false;
