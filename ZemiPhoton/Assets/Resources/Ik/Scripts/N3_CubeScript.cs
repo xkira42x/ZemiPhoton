@@ -29,7 +29,7 @@ public class N3_CubeScript : Photon.MonoBehaviour {
 
 		//カメラ設定
 		if (photonView.isMine) {
-			this.transform.FindChild ("Camera").GetComponent<Camera> ().depth = 1;
+			this.transform.Find ("Camera").GetComponent<Camera> ().depth = 1;
 		}
 	}
 

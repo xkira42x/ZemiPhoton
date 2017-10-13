@@ -1,29 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody))]
+/// <summary>
+/// <para>名前　GunBase</para>
+/// <para>概要　銃の派生親、銃の動作に必要な</para>
+/// <para>次段装填の待ちや銃を拾った際の設定などがある</para>
+/// </summary>
 public class GunBase : MonoBehaviour {
 
 	// カメラのTransform情報
 	protected Transform CameraT;
 	// 弾丸オブジェクト
 	[SerializeField]protected GameObject AmmoObj;
-	// 弾丸最大数
-	protected int MaxAmmo;
-	// 弾数
-	protected int Ammo;
+	// 所持総弾数
+	[SerializeField]protected int MaxAmmo;
+	// マガジンの最大数
+	[SerializeField]protected int MaxMagazine;
+	// 今のマガジン内弾数
+	protected int Magazine;
+	[SerializeField]protected float ReloadTime = 1;
 	// 攻撃の間隔フラグ
 	protected bool Next = true;
 	// マズルフラッシュエフェクト
 	[SerializeField]public ParticleSystem[] MuzzleFlash;
 	// 銃を取得した際の向きを指定
 	[SerializeField]Vector3 Rotate;
+	// 物理処理
+	Rigidbody myRigidbody;
+
+	/// <summary>
+	/// <para>名前　Start</para>
+	/// <para>概要　初期化処理</para>
+	/// <para>引数　なし</para>
+	/// <para>戻り値　なし</para>
+	/// </summary>
+	void Start(){
+		myRigidbody = gameObject.GetComponent<Rigidbody> ();
+	}
 
 	/// <summary>
 	/// <para>名前 　Action</para>
 	/// <para>概要 　射撃アクションを記載する</para>
 	/// <para>引数 　なし</para>
-	/// <para>戻り値 なし</para>
+	/// <para>戻り値 bool 弾が残っているかどうか</para>
 	/// <para></para>
 	/// <para>＊手引き＊</para>
 	/// <para>void PlayEffect()</para>
@@ -36,11 +56,36 @@ public class GunBase : MonoBehaviour {
 	/// </summary>
 	public virtual void Action(){
 		if (Next) {
-			Instantiate (AmmoObj, CameraT.position, CameraT.rotation);
-			PlayEffect ();
-			Next = false;
-			Delay (.1f);
+			if (Magazine > 0) {
+				Magazine--;
+				Instantiate (AmmoObj, CameraT.position, CameraT.rotation);
+				PlayEffect ();
+				Next = false;
+				Delay (.1f);
+			} else
+				SendMessageUpwards ("OutOfAmmoMSG", SendMessageOptions.DontRequireReceiver);
 		}
+	}
+
+	/// <summary>
+	/// <para>名前　ReloadRequest</para>
+	/// <para>概要　リロード指示を出す</para>
+	/// <para>引数　なし</para>
+	/// <para>戻り値　なし</para>
+	/// </summary>
+	public void ReloadRequest(){
+		StartCoroutine ("Reload", ReloadTime);
+	}
+
+	/// <summary>
+	/// <para>名前　Reload</para>
+	/// <para>概要　li秒遅延してマガジンの弾数を最大数にする</para>
+	/// <para>引数　float il　遅延時間(秒)</para>
+	/// <para>戻り値　なし</para>
+	/// </summary>
+	IEnumerator Reload(float il){
+		yield return new WaitForSeconds (il);
+		Magazine = MaxMagazine;
 	}
 
 	/// <summary>
@@ -74,8 +119,9 @@ public class GunBase : MonoBehaviour {
 	public void ShotSetting(S3_Shot S_Shot){
 		transform.localRotation = Quaternion.Euler (Rotate);
 		transform.localPosition = Vector3.zero;
-		S_Shot.action = Action;
 		CameraT = S_Shot.CameraT;
+		Magazine = MaxMagazine;
+		myRigidbody.constraints = RigidbodyConstraints.FreezeAll;
 	}
 
 	/// <summary>
@@ -86,6 +132,7 @@ public class GunBase : MonoBehaviour {
 	/// </summary>
 	public void ThrowAway(){
 		transform.parent = null;
+		myRigidbody.constraints = RigidbodyConstraints.None;
 	}
 
 	/// <summary>

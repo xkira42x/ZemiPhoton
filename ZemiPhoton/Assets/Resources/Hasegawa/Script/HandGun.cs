@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class HandGun : GunBase {
 
-	public override void Action ()
-	{
-		if (Input.GetMouseButtonDown(0)) {
+	public override void Action (){
+		if (Input.GetMouseButtonDown (0)) {
 			base.Action ();
 		}
 	}

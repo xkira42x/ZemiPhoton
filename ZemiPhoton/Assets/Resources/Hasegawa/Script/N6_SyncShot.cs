@@ -5,16 +5,24 @@ using UnityEngine;
 public class N6_SyncShot : Photon.MonoBehaviour {
 
 	// 送受信する情報の伝達先
-	S3_Shot S_Shot;
+	//S3_Shot S_Shot;
 
 	void Awake(){
         // コンポーネントの取得
-		S_Shot = GetComponent<S3_Shot> ();
+		//S_Shot = GetComponent<S3_Shot> ();
+	}
+
+	void ToAttackMSG(){
+		photonView.RPC ("SyncShotAction", PhotonTargets.Others);
+	}
+
+	void PickUpItemMSG(GameObject obj){
+		photonView.RPC ("SyncPickUpIten", PhotonTargets.Others, obj);
 	}
 
 	[PunRPC]
 	void SyncShotAction(){
-		S_Shot.ShotAction ();
+		SendMessage ("ToAttackMSG", SendMessageOptions.DontRequireReceiver);
 	}
 
 	[PunRPC]

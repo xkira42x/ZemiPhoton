@@ -5,10 +5,10 @@ using UnityEngine;
 public class ShotGun : GunBase {
 	float angle = 2;
 	public override void Action (){
-		if (Next) {
+		if (Next && Magazine > 0) {
+			Magazine--;
 			for (int i = 0; i < 10; i++)
-				Instantiate (AmmoObj, CameraT.position, Quaternion.Euler (Vec3Rand)*CameraT.rotation);//* Collection.localRotation * MyTransform.localRotation);
-
+				Instantiate (AmmoObj, CameraT.position, Quaternion.Euler (Vec3Rand)*CameraT.rotation);
 			PlayEffect ();
 			Next = false;
 			Delay (.5f);

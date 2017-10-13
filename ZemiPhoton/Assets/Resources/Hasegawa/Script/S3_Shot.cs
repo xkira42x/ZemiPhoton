@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class S3_Shot : Photon.MonoBehaviour {
 	
-	[SerializeField]Action _action;
-	public Action action{ set { _action = value; } }
-	public void ShotAction (){_action ();}
+	//[SerializeField]Action  _action;
+	//public Action action {set {_action = value;}}
+	//public void ShotAction (){if (_action != null)_action ();}
 	[SerializeField]Transform GunSpot;
 	[SerializeField]GunBase MyGun;
 	[SerializeField]LayerMask mask;
@@ -28,26 +28,39 @@ public class S3_Shot : Photon.MonoBehaviour {
 
 		// ショット
 		if (Input.GetMouseButton (0)) {
-			if (_action != null)
-				_action ();
-			else
-				WriteUIText ("I do not have weapons");
+			SendMessage ("ToAttackMSG", SendMessageOptions.DontRequireReceiver);
+		}
+
+		if (Input.GetKeyDown (KeyCode.R)) {
+			MyGun.ReloadRequest ();
 		}
 
 		if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
 			WriteUIText ("Pick up with E key");
 			if (Input.GetKeyDown (KeyCode.E)) {
-				SendMessage ("PickUpItem", hitInfo.collider.gameObject);
+				SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}
 
-	void PickUpItem(GameObject obj){
+	public void ToAttackMSG(){
+		if (MyGun != null) {
+			MyGun.Action ();
+		}
+		else
+			WriteUIText ("I do not have weapons");
+	}
+
+	void PickUpItemMSG(GameObject obj){
 		if (MyGun != null)
 			MyGun.ThrowAway ();
 		obj.transform.parent = GunSpot;
 		MyGun = obj.GetComponent<GunBase> ();
 		MyGun.ShotSetting (shot);
+	}
+
+	void OutOfAmmoMSG(){
+		WriteUIText ("Reload with R key");
 	}
 
 	void WriteUIText(string UIText){
