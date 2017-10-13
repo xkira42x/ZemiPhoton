@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Kaede\Scripts\N2_status.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Kaede\Scripts\Test\Player_Status.cs">
     <Files>
       <File FileName="Assets\Resources\Kaede\Scripts\Test\InputManager_test.cs" Line="10" Column="27" />
       <File FileName="Assets\Resources\Kaede\Scripts\Test\PhotonManager_ver2.cs" Line="18" Column="31" />
-      <File FileName="Assets\Resources\Kaede\Scripts\Test\Player_Status.cs" Line="22" Column="29" />
-      <File FileName="Assets\Resources\Kaede\Scripts\N2_status.cs" Line="51" Column="17" />
+      <File FileName="Assets\Resources\Kaede\Scripts\Test\Player_Status.cs" Line="37" Column="6" />
+      <File FileName="Assets\Resources\Kaede\Scripts\N2_status.cs" Line="21" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
