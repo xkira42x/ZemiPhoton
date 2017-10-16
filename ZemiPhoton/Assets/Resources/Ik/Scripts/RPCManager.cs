@@ -54,7 +54,7 @@ public class RPCManager : Photon.MonoBehaviour {
 		roomOptions.CustomRoomProperties = customProp;
 		//ロビーで見えるルーム情報としてカスタムプロパティのuserName,userIdを使いますよという宣言
 		roomOptions.CustomRoomPropertiesForLobby = new string[]{ "userName","userId"};
-		roomOptions.MaxPlayers = 3; //部屋の最大人数
+		roomOptions.MaxPlayers = 4; //部屋の最大人数
 		roomOptions.IsOpen = true; //入室許可する
 		roomOptions.IsVisible = true; //ロビーから見えるようにする
 		//userIdが名@前のルームがなければ作って入室、あれば普通に入室する。
@@ -71,12 +71,13 @@ public class RPCManager : Photon.MonoBehaviour {
 //		int No = PhotonNetwork.countOfPlayersInRooms;
 		int No=0;
 		No = PhotonNetwork.player.ID;
+		Debug.Log("pid"+PhotonNetwork.player.ID);
 		// メニュー項目の削除
 		foreach (GameObject g in MenuItems)	Destroy (g);
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		//GameObject.Find ("StatusText").GetComponent<Text> ().text = "OnJoinedRoom";
 		// プレイヤー生成
-		Vector3 Pos = initPos [No];
+		Vector3 Pos = initPos [No-1];
 		PhotonNetwork.Instantiate ("myPlayer_typeR", Pos,Quaternion.Euler (Vector3.zero), 0);
 		// プレイヤーステータス生成
 		GameObject gObj;
