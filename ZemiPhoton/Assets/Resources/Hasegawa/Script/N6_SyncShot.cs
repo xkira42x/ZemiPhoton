@@ -7,10 +7,13 @@ public class N6_SyncShot : Photon.MonoBehaviour {
 	// 送受信する情報の伝達先
 	//S3_Shot S_Shot;
 
-	void Awake(){
+	//IK追記
+	N15_SizeOf SO;
+	void Awake(){SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();}
+//	void Awake(){
         // コンポーネントの取得
 		//S_Shot = GetComponent<S3_Shot> ();
-	}
+//	}
 
 	void ToAttackMSG(){
 		photonView.RPC ("SyncShotAction", PhotonTargets.Others);
@@ -23,11 +26,13 @@ public class N6_SyncShot : Photon.MonoBehaviour {
 	[PunRPC]
 	void SyncShotAction(){
 		SendMessage ("ToAttackMSG", SendMessageOptions.DontRequireReceiver);
+		SO.AddSize (3);
 	}
 
 	[PunRPC]
 	void SyncPickUpIten(GameObject obj){
 		Instantiate (obj);
+		SO.AddSize (3);
 	}
 
 	// 同期処理

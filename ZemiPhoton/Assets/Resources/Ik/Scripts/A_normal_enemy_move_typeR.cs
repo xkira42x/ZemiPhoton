@@ -22,6 +22,7 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
     public GameObject A_Bullet;
     Bullet A_B_info;                           //>弾の情報
 
+	Target TG;//愛敬追記
 //	string endStateName = null;
 
 
@@ -40,24 +41,13 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
 
     void Awake()
 	{
-		if (PhotonNetwork.isMasterClient) {
-			int InRoomsPlayer = PhotonNetwork.countOfPlayers;
-
-			//部屋内のプレイヤー数を最大に数字を抽出
-			A_player_target = Random.Range (1, InRoomsPlayer + 1);
-
-			photonView.RPC ("TargetSet", PhotonTargets.AllBuffered, A_player_target);
-		}
-
+		if (PhotonNetwork.isMasterClient)
+			StartCoroutine ("Target");
 		A_anim = GetComponent<Animator> ();
-		if (A_Player == null)
-			Debug.Log ("プレイヤーが見つかっていません");
-		A_P_info = A_Player.GetComponent<N2_Status_typeR> ();
 		A_B_info = A_Bullet.GetComponent<Bullet> ();
 		A_anim.SetBool ("play", true);
 		A_hp = A_hp_init;                               //>体力初期化
 		A_state = A_enemy_state.A_vsb;
-		StartCoroutine ("Target");
 	}
     // Update is called once per frame
     void Update()
@@ -203,8 +193,8 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
             {
                 /*プレイヤーダメージ処理*/
                 //A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
-
-				photonView.RPC("Dmg",PhotonTargets.All);
+				Dmg();
+//				photonView.RPC("Dmg",PhotonTargets.All);
 				Debug.Log ("HP:" + A_P_info.Hp+"_"+Time.time);
                 A_delay_flg = false;    //ダメージが入った時にflgをfalse
                 /**********************/
@@ -224,6 +214,7 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
     }
 	[PunRPC]
 	void Dmg(){
+		if(PhotonNetwork.player.IsMasterClient)
 		A_P_info.Damage(A_power);
 	}
 
@@ -253,18 +244,24 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
 			Debug.Log ("プレイヤーがみつかりません");
 		}
 		A_P_info = A_Player.GetComponent<N2_Status_typeR> ();
+
+	}
+	public string TargetGet(){
+		return A_Player.transform.name;
 	}
 	IEnumerator Target(){
-		if (PhotonNetwork.isMasterClient) {
-			int InRoomsPlayer = PhotonNetwork.countOfPlayers;
+//		while(true){
+			//部屋内のプレイヤー人数をリストの長さから参照
+			int InRoomsPlayer = PhotonNetwork.playerList.Length+1;
 
 			//部屋内のプレイヤー数を最大に数字を抽出
-			A_player_target = Random.Range (1, InRoomsPlayer + 1);
+			A_player_target = Random.Range (1, InRoomsPlayer);
 
 			photonView.RPC ("TargetSet",PhotonTargets.AllBuffered,A_player_target);
-		}
+			Debug.Log ("Tag:" + A_player_target);
 
 
-		yield return new WaitForSeconds (40f);
+			yield return new WaitForSeconds (5f);
+//		}
 	}
 }

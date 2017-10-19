@@ -55,7 +55,7 @@ public class N2_Status_typeR : Photon.MonoBehaviour {
 			if (photonView.isMine) {
 				myText.text = "自分";
 			} else {
-				myText.text = "仲間";
+				myText.text = "仲間"+no;
 			}
 
 			if (myText != null && HpSlider != null)

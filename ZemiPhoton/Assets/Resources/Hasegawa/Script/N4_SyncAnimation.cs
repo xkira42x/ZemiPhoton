@@ -16,6 +16,10 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	/// 同期したジャンプフラグを格納する
 	bool isJumping = false;
 
+	//IK追記
+	N15_SizeOf SO;
+	void Awake(){SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();}
+
 	void Update () {
 		if (photonView.isMine) {
 			// アニメーションの値を送信
@@ -32,6 +36,10 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	[PunRPC]
 	void SyncMotion(float motion){
 		speed = motion;
+		//IK追記
+		SO.AddSize ((int)motion);
+		SO.AddSize (3);
+
 	}
 
 	/// ジャンプアニメーション値の取得側の記述
