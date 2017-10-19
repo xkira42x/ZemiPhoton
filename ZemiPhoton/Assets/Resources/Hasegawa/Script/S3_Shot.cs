@@ -25,20 +25,21 @@ public class S3_Shot : Photon.MonoBehaviour {
 
 	void Update () {
 		// プレイヤーコントロール設定
+		if (photonView.isMine) {
+			// ショット
+			if (Input.GetMouseButton (0)) {
+				SendMessage ("ToAttackMSG", SendMessageOptions.DontRequireReceiver);
+			}
 
-		// ショット
-		if (Input.GetMouseButton (0)) {
-			SendMessage ("ToAttackMSG", SendMessageOptions.DontRequireReceiver);
-		}
+			if (Input.GetKeyDown (KeyCode.R)) {
+				MyGun.ReloadRequest ();
+			}
 
-		if (Input.GetKeyDown (KeyCode.R)) {
-			MyGun.ReloadRequest ();
-		}
-
-		if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
-			WriteUIText ("Pick up with E key");
-			if (Input.GetKeyDown (KeyCode.E)) {
-				SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
+			if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
+				WriteUIText ("Pick up with E key");
+				if (Input.GetKeyDown (KeyCode.E)) {
+					SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
+				}
 			}
 		}
 	}

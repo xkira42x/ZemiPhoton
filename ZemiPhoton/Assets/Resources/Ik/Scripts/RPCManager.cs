@@ -78,7 +78,7 @@ public class RPCManager : Photon.MonoBehaviour {
 		//GameObject.Find ("StatusText").GetComponent<Text> ().text = "OnJoinedRoom";
 		// プレイヤー生成
 		Vector3 Pos = initPos [No-1];
-		PhotonNetwork.Instantiate ("myPlayer_typeR", Pos,Quaternion.Euler (Vector3.zero), 0);
+		PhotonNetwork.Instantiate ("FPSPlayer", Pos,Quaternion.Euler (Vector3.zero), 0);
 		// プレイヤーステータス生成
 		GameObject gObj;
 		gObj = Instantiate (suppoters);

@@ -23,9 +23,10 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 		transform.position = pos;
 
 		//IK追記
-		SO.SizeLog ((int)pos.x);
-		SO.SizeLog ((int)pos.y);
-		SO.SizeLog ((int)pos.z);
-		SO.SizeLog (3);
+
+		SO.AddSize ((int)pos.x);
+		SO.AddSize ((int)pos.y);
+		SO.AddSize ((int)pos.z);
+		SO.AddSize (3);
 	}
 }

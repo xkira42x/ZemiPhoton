@@ -37,8 +37,8 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	void SyncMotion(float motion){
 		speed = motion;
 		//IK追記
-		SO.SizeLog ((int)motion);
-		SO.SizeLog (3);
+		SO.AddSize ((int)motion);
+		SO.AddSize (3);
 
 	}
 
