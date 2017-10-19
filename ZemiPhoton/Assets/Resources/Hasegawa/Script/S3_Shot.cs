@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class S3_Shot : Photon.MonoBehaviour {
 	
-	//[SerializeField]Action  _action;
-	//public Action action {set {_action = value;}}
-	//public void ShotAction (){if (_action != null)_action ();}
 	[SerializeField]Transform GunSpot;
 	[SerializeField]GunBase MyGun;
 	[SerializeField]LayerMask mask;

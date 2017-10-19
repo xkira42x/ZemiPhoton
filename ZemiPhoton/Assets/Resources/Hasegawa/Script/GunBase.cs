@@ -43,16 +43,7 @@ public class GunBase : MonoBehaviour {
 	/// <para>名前 　Action</para>
 	/// <para>概要 　射撃アクションを記載する</para>
 	/// <para>引数 　なし</para>
-	/// <para>戻り値 bool 弾が残っているかどうか</para>
-	/// <para></para>
-	/// <para>＊手引き＊</para>
-	/// <para>void PlayEffect()</para>
-	/// <para>弾を発射する時のマズルフラッシュ用エフェクトを再生する</para>
-	/// <para>bool Next</para> 
-	/// <para>弾が発射されて次の弾が装填される間のフラグ変数</para>
-	/// <para>void Delay(interval)</para>
-	/// <para>interval秒遅延をさせてNextフラグをtrueにする</para>
-	/// <para>＊＊＊＊＊</para>
+	/// <para>戻り値 なし</para>
 	/// </summary>
 	public virtual void Action(){
 		if (Next) {

@@ -27,4 +27,10 @@ public class Bullet : MonoBehaviour {
 		// 移動
 		transform.position += new Vector3(movement.x,movement.y - ((9.8f * time)/200),movement.z);
 	}
+
+	void OnCollisionEnter(){
+		Debug.Log ("Destroy bullet.");
+		Destroy (gameObject);
+	}
+
 }
