@@ -11,6 +11,8 @@ public class PhotonManager : Photon.MonoBehaviour {
 		new Vector3(5,0,-5)
 	};
 
+	[SerializeField]string roomName = "myRoomName";
+
 	[SerializeField]
 	GameObject[] MenuItems;
 
@@ -59,11 +61,11 @@ public class PhotonManager : Photon.MonoBehaviour {
 		roomOptions.IsOpen = true; //入室許可する
 		roomOptions.IsVisible = true; //ロビーから見えるようにする
 		//userIdが名@前のルームがなければ作って入室、あれば普通に入室する。
-		PhotonNetwork.JoinOrCreateRoom (userId, roomOptions, null);
+		PhotonNetwork.JoinOrCreateRoom (roomName/*userId*/, roomOptions, null);
 		ConnectResult.text = "";
 	}
 	public void JoinRoom(){
-		PhotonNetwork.JoinRoom("user1");
+		PhotonNetwork.JoinRoom (roomName);//"user1");
 	}
 	private GameObject Player;
 	//ルーム入室した時に呼ばれるコールバックメソッド

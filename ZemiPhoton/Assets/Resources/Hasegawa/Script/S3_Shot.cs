@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class S3_Shot : Photon.MonoBehaviour {
 	
-	//[SerializeField]Action  _action;
-	//public Action action {set {_action = value;}}
-	//public void ShotAction (){if (_action != null)_action ();}
 	[SerializeField]Transform GunSpot;
 	[SerializeField]GunBase MyGun;
 	[SerializeField]LayerMask mask;
@@ -44,6 +41,12 @@ public class S3_Shot : Photon.MonoBehaviour {
 		}
 	}
 
+	public void PickUpItem(){
+		if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
+			PickUpItemMSG (hitInfo.collider.gameObject);
+		}
+	}
+
 	public void ToAttackMSG(){
 		if (MyGun != null) {
 			MyGun.Action ();
@@ -52,7 +55,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 			WriteUIText ("I do not have weapons");
 	}
 
-	void PickUpItemMSG(GameObject obj){
+	public void PickUpItemMSG(GameObject obj){
 		if (MyGun != null)
 			MyGun.ThrowAway ();
 		obj.transform.parent = GunSpot;
@@ -65,8 +68,11 @@ public class S3_Shot : Photon.MonoBehaviour {
 	}
 
 	void WriteUIText(string UIText){
-		UI.text = UIText;
-		StartCoroutine ("ClearUIText");
+		if (UI != null) {
+			Debug.Log ("Call UItext is " + gameObject.name);
+			UI.text = UIText;
+			StartCoroutine ("ClearUIText");
+		}
 	}
 	IEnumerator ClearUIText(){
 		yield return new WaitForSeconds (1);

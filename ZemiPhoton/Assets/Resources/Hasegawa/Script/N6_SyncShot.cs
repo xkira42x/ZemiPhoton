@@ -5,33 +5,33 @@ using UnityEngine;
 public class N6_SyncShot : Photon.MonoBehaviour {
 
 	// 送受信する情報の伝達先
-	//S3_Shot S_Shot;
+	S3_Shot S_Shot;
 
 	//IK追記
 	N15_SizeOf SO;
-	void Awake(){SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();}
-//	void Awake(){
-        // コンポーネントの取得
-		//S_Shot = GetComponent<S3_Shot> ();
-//	}
+	void Awake(){
+		SO = GameObject.Find ("PhotonManager").GetComponent<N15_SizeOf> ();
+		// コンポーネントの取得
+		S_Shot = GetComponent<S3_Shot> ();
+	}
 
 	void ToAttackMSG(){
 		photonView.RPC ("SyncShotAction", PhotonTargets.Others);
 	}
 
 	void PickUpItemMSG(GameObject obj){
-		photonView.RPC ("SyncPickUpIten", PhotonTargets.Others, obj);
+		photonView.RPC ("SyncPickUpIten", PhotonTargets.Others,obj.name);
 	}
 
 	[PunRPC]
 	void SyncShotAction(){
-		SendMessage ("ToAttackMSG", SendMessageOptions.DontRequireReceiver);
+		S_Shot.ToAttackMSG ();
 		SO.AddSize (3);
 	}
 
 	[PunRPC]
-	void SyncPickUpIten(GameObject obj){
-		Instantiate (obj);
+	void SyncPickUpIten(string name){
+		S_Shot.PickUpItemMSG (Instantiate (Resources.Load (name, typeof(GameObject))as GameObject));
 		SO.AddSize (3);
 	}
 
