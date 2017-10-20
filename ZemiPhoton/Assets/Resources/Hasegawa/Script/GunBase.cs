@@ -27,7 +27,7 @@ public class GunBase : MonoBehaviour {
 	// 銃を取得した際の向きを指定
 	[SerializeField]Vector3 Rotate;
 	// 物理処理
-	Rigidbody myRigidbody;
+	[SerializeField]Rigidbody myRigidbody;
 
 	/// <summary>
 	/// <para>名前　Start</para>

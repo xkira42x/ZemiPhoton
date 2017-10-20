@@ -20,7 +20,7 @@ public class N6_SyncShot : Photon.MonoBehaviour {
 	}
 
 	void PickUpItemMSG(GameObject obj){
-		photonView.RPC ("SyncPickUpIten", PhotonTargets.Others);
+		photonView.RPC ("SyncPickUpIten", PhotonTargets.Others,obj.name);
 	}
 
 	[PunRPC]
@@ -30,8 +30,8 @@ public class N6_SyncShot : Photon.MonoBehaviour {
 	}
 
 	[PunRPC]
-	void SyncPickUpIten(){
-		S_Shot.PickUpItem();
+	void SyncPickUpIten(string name){
+		S_Shot.PickUpItemMSG (Instantiate (Resources.Load (name, typeof(GameObject))as GameObject));
 		SO.AddSize (3);
 	}
 

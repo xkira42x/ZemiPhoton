@@ -55,7 +55,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 			WriteUIText ("I do not have weapons");
 	}
 
-	void PickUpItemMSG(GameObject obj){
+	public void PickUpItemMSG(GameObject obj){
 		if (MyGun != null)
 			MyGun.ThrowAway ();
 		obj.transform.parent = GunSpot;
