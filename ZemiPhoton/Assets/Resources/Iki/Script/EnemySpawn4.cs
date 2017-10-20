@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySpawn3 : Photon.MonoBehaviour {
+public class EnemySpawn4 : Photon.MonoBehaviour {
 
 	public GameObject enemy;     //敵オブジェクト
 	public Transform Spawner_A;     //地面オブジェクト
