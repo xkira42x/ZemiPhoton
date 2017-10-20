@@ -64,6 +64,8 @@ public class S1_Move : MonoBehaviour {
 	void S_Jump(){
 		// ジャンプスイッチ
 		if (isGround && Input.GetKeyDown (KeyCode.Space)) {
+			Debug.Log ("Jump!!");
+			//rigid.AddForce (Vector3.up * 5);
 			rigid.velocity = Vector3.up * 5;
 		}
 	}

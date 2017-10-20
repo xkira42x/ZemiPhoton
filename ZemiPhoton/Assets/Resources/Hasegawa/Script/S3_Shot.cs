@@ -41,6 +41,12 @@ public class S3_Shot : Photon.MonoBehaviour {
 		}
 	}
 
+	public void PickUpItem(){
+		if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
+			PickUpItemMSG (hitInfo.collider.gameObject);
+		}
+	}
+
 	public void ToAttackMSG(){
 		if (MyGun != null) {
 			MyGun.Action ();
@@ -62,8 +68,11 @@ public class S3_Shot : Photon.MonoBehaviour {
 	}
 
 	void WriteUIText(string UIText){
-		UI.text = UIText;
-		StartCoroutine ("ClearUIText");
+		if (UI != null) {
+			Debug.Log ("Call UItext is " + gameObject.name);
+			UI.text = UIText;
+			StartCoroutine ("ClearUIText");
+		}
 	}
 	IEnumerator ClearUIText(){
 		yield return new WaitForSeconds (1);
