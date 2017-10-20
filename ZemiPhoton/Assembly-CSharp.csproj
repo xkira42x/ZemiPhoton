@@ -109,10 +109,8 @@
      <Compile Include="Assets\Resources\Hasegawa\PinwheelFantasyEffectFreePack2\Scripts\Spawn.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\AssaultRifle.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Bullet.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Script\CubeBehavior.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\GunBase.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\HandGun.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Script\Hp.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MyLOD.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\N2_NetworkSetting.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\N3_SyncMove.cs" />
@@ -123,7 +121,6 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\S2_Angle.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\S3_Shot.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\ShotGun.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Script\TestCube.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\myNamespace.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\A_normal_enemy_move_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\EnemySpawn3_typeR.cs" />
