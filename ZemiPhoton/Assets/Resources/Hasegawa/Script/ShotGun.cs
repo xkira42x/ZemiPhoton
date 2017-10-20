@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShotGun : GunBase {
-	float angle = 2;
+	[SerializeField]float colllectingRate = 4;
 	public override void Action (){
 		if (Next && Magazine > 0) {
 			Magazine--;
@@ -14,5 +14,5 @@ public class ShotGun : GunBase {
 			Delay (.5f);
 		}
 	}
-	Vector3 Vec3Rand { get { return new Vector3 (Random.Range (-angle, angle), Random.Range (-angle, angle), Random.Range (-angle, angle)); } }
+	Vector3 Vec3Rand { get { return new Vector3 (Random.Range (-colllectingRate, colllectingRate), Random.Range (-colllectingRate, colllectingRate), Random.Range (-colllectingRate, colllectingRate)); } }
 }
