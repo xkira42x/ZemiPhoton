@@ -76,7 +76,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		Debug.Log ("PhotonManager OnJoinedRoom");
 		//GameObject.Find ("StatusText").GetComponent<Text> ().text = "OnJoinedRoom";
 		// プレイヤー生成
-		Vector3 Pos = initPos [No];
+		Vector3 Pos = initPos [No-1];
 		Player = PhotonNetwork.Instantiate ("FPSPlayer", Pos,Quaternion.Euler (Vector3.zero), 0);
 		Player.name = "Player" + No.ToString ();
 		// プレイヤーステータス生成
@@ -88,6 +88,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 
 		ConnectResult.text = "";
 
+	}
+
+	public void GameStart(){
 		EnteringTheRoom = true;
 	}
 }
