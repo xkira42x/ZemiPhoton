@@ -9,7 +9,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     protected float A_spd = 0.05f;             //>敵のスピード(とりあえず現在は適当に数値をIN)>>少ないデータ型(求
     protected float A_rad;                     //>ラジアン(プレイヤー追尾にて使用)
     protected short A_hp_init = 100;           //>体力初期値 (16bit)->扱える数値(-32768~32767)             
-    protected short A_hp;                      //>体力
+	[SerializeField]protected short A_hp;                      //>体力
     protected sbyte A_power = 20;              //>攻撃力(8bit)->扱える数値(0~255)
     protected float A_magnitude;               //>二点間の距離(プレイヤーとの距離)
     protected float A_target_magnitude = 2f;    //>プレイヤーに対しての攻撃判定距離
@@ -23,7 +23,6 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     Bullet A_B_info;                           //>弾の情報
 
 	string endStateName = null;
-
 
     /// <summary>
     /// マップ外待機(アクティブfalse)、待機、視認、攻撃、hit、死亡
@@ -40,7 +39,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 
     void Awake()
     {
-		while (true) {
+		/*while (true) {
 			A_player_target = Random.Range (1, 3);
 			if (A_player_target == 1)
 				A_Player = GameObject.Find ("Player1");
@@ -48,10 +47,9 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 				A_Player = GameObject.Find ("Player2");
 			if (A_Player != null)
 				break;
-		}
+		}*/
 
         A_anim = GetComponent<Animator>();
-		A_P_info = A_Player.GetComponent<N2_status>();
         A_B_info = A_Bullet.GetComponent<Bullet>();
         A_anim.SetBool("play", true);
         A_hp = A_hp_init;                               //>体力初期化
@@ -181,71 +179,73 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
         transform.rotation = new Quaternion(0, 0, A_Position.z, 0);
         transform.LookAt(A_Position); //移動方向を見る
         return A_Position;//移動値を返す
-    }
+	}
 
 
     /// <summary>
     /// 敵の攻撃(継承させる)
     /// </summary>
     protected void A_Attack()
-    {
-        A_anim.SetBool("run", false);
-        A_anim.SetBool("play", false);
+	{
+		A_anim.SetBool ("run", false);
+		A_anim.SetBool ("play", false);
 
-        if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime == 0) transform.LookAt(A_Player.transform.position);
-        if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f && A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.54f)
-        {
+		if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime == 0)
+			transform.LookAt (A_Player.transform.position);
+		if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.5f && A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime <= 0.54f) {
             
-            /*攻撃判定*/
-            A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude - 2.0f;//>二点間の距離
-            if (A_delay_flg == true && A_magnitude <= A_target_magnitude)
-            {
-                /*プレイヤーダメージ処理*/
-                //A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
-				A_P_info.Damage(A_power);
-				Debug.Log ("HP:" + A_P_info.Hp+"_"+Time.time);
-                A_delay_flg = false;    //ダメージが入った時にflgをfalse
-                /**********************/
-            }
-        }
-        //アニメーションが終わったらflgをtrue
-        if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-        {
-            A_delay_flg = true;
-            A_anim.SetBool("attack", false);
-            /*攻撃モーションが終わったのでstateを切り替える(待機へ)*/
-            A_state = A_enemy_state.A_oov;
-            /**************************************************/
-        }
+			/*攻撃判定*/
+			A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude - 2.0f;//>二点間の距離
+			if (A_delay_flg == true && A_magnitude <= A_target_magnitude) {
+				/*プレイヤーダメージ処理*/
+				//A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
+				A_P_info.Damage (A_power);
+				Debug.Log ("HP:" + A_P_info.Hp + "_" + Time.time);
+				A_delay_flg = false;    //ダメージが入った時にflgをfalse
+				/**********************/
+			}
+		}
+		//アニメーションが終わったらflgをtrue
+		if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 1.0f) {
+			A_delay_flg = true;
+			A_anim.SetBool ("attack", false);
+			/*攻撃モーションが終わったのでstateを切り替える(待機へ)*/
+			A_state = A_enemy_state.A_oov;
+			/**************************************************/
+		}
 
         
-    }
+	}
     
     /// <summary>
     /// 弾との当たり判定
     /// </summary>
     /// <param name="col"></param>
     void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.name.StartsWith("Bullet"))
-        {
-            GameObject.Destroy(col.gameObject);
-            A_state = A_enemy_state.A_hit;
-        }
-    }
+	{
+		if (col.gameObject.layer == LayerMask.NameToLayer ("Bullet")) {
+			GameObject.Destroy (col.gameObject);
+			A_state = A_enemy_state.A_hit;
+		}
+	}
 
     /// <summary>
     /// instanceがtrueになった時に呼ばれる
     /// </summary>
 
 	IEnumerator Target(){
-		while(true){
-			A_player_target = Random.Range(1, 3);
-			if (A_player_target == 1) A_Player = GameObject.Find("Player1");
-			else if (A_player_target == 2) A_Player = GameObject.Find("Player2");
+		yield return new WaitForSeconds (10);
+		A_Player = GameObject.FindGameObjectWithTag ("Player");
+		A_P_info = A_Player.GetComponent<N2_status>();
+		/*while (true) {
+			A_player_target = Random.Range (1, 3);
+			if (A_player_target == 1)
+				A_Player = GameObject.Find ("Player1");
+			else if (A_player_target == 2)
+				A_Player = GameObject.Find ("Player2");
 			A_P_info = A_Player.GetComponent<N2_status> ();
 			yield return new WaitForSeconds (40f);
-		}
+		}*/
 	}
 
 }

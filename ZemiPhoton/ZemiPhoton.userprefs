@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Shihara\Script\Player_Start.cs">
+    <Files>
+      <File FileName="Assets\Resources\Ik\Scripts\PhotonManager.cs" Line="94" Column="26" />
+      <File FileName="Assets\Resources\Hasegawa\Script\ShotGun.cs" Line="16" Column="3" />
+      <File FileName="Assets\Resources\Shihara\Script\Player_Start.cs" Line="33" Column="50" />
+      <File FileName="Assets\Resources\Ik\Scripts\N15_SizeOf.cs" Line="18" Column="12" />
+      <File FileName="Assets\Resources\Ik\Scripts\A_normal_enemy_move_typeR.cs" Line="22" Column="32" />
+      <File FileName="Assets\Resources\Nemoto\A_normal_enemy_move.cs" Line="133" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

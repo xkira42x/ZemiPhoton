@@ -27,15 +27,25 @@ public class Player_Start : Photon.MonoBehaviour {
     [PunRPC]
     public void Check(bool Check_ok)
     {
+<<<<<<< HEAD
         Debug.Log(PhotonNetwork.countOfPlayers);
         for(int i = 0; i <= PhotonNetwork.countOfPlayers; i++)
+=======
+		//IK
+		int playercount=PhotonNetwork.playerList.Length;
+//		Debug.Log(PhotonNetwork.countOfPlayers);
+//        for(int i = 0; i < PhotonNetwork.countOfPlayers; i++)
+		Debug.Log(playercount);
+		for(int i = 0; i < playercount; i++)
+>>>>>>> df29816e4d20e17206aa079e3e5ef64c5dc16ab4
         {
             if (Check_ok == true) check++;
             //if (check >= PhotonNetwork.countOfPlayers) check = PhotonNetwork.countOfPlayers;
         }
 
         //二人以上でスタート
-        if (2 <= check && check == PhotonNetwork.countOfPlayers)
+//        if (2 <= check && check == PhotonNetwork.countOfPlayers)
+        if (2 <= check && check == playercount)
         {
             Debug.Log("start");
             start = true;
