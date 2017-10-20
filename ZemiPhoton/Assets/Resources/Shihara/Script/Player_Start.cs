@@ -42,8 +42,12 @@ public class Player_Start : Photon.MonoBehaviour {
     [PunRPC]
     public void Check(bool Check_ok)
     {
-        Debug.Log(PhotonNetwork.countOfPlayers);
-        for(int i = 0; i < PhotonNetwork.countOfPlayers; i++)
+		//IK
+		int playercount=PhotonNetwork.playerList.Length;
+//		Debug.Log(PhotonNetwork.countOfPlayers);
+//        for(int i = 0; i < PhotonNetwork.countOfPlayers; i++)
+		Debug.Log(playercount);
+		for(int i = 0; i < playercount; i++)
         {
 			if(GameObject.Find("Player"+(i+1)).GetComponent<Player_Start>().ok==true)check++;
 		//if (Check_ok == true) check++;
@@ -51,7 +55,8 @@ public class Player_Start : Photon.MonoBehaviour {
         }
 
         //二人以上でスタート
-        if (2 <= check && check == PhotonNetwork.countOfPlayers)
+//        if (2 <= check && check == PhotonNetwork.countOfPlayers)
+        if (2 <= check && check == playercount)
         {
             Debug.Log("start");
             start = true;

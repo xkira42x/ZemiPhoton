@@ -26,7 +26,7 @@ public class EnemySpawn4 : Photon.MonoBehaviour {
 		A_timer += Time.deltaTime;    //経過時間加算
 		if (A_timer >= A_interval) { //時間がインターバルをすぎたら
 			if (PhotonManager.EnteringTheRoom) {//
-				j = Random.Range (1,4);//スポナー１～４からランダムで１つ選択
+				j = Random.Range (1,5);//スポナー１～４からランダムで１つ選択
 				Spawn ();    //スポーン実行
 				A_timer = 0;  //時間初期化
 				if (spnflg == true) {
@@ -69,7 +69,7 @@ public class EnemySpawn4 : Photon.MonoBehaviour {
 				x = Random.Range (-3f, 3f);
 				z = Random.Range (-3f, 3f);
 			//} while(x <= 120 && x >= -120 && z <= 120 && z >= -120);
-
+			Debug.Log("j:"+j);
 			switch(j){
 			case 1:
 				obj.transform.position = new Vector3 (x, 3, z) + Spawner_A.position;
