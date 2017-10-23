@@ -150,6 +150,10 @@
      <Compile Include="Assets\Resources\Kaede\Scripts\Test\Enemy.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\Test\FirstPersonController.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\Test\InputManager_test.cs" />
+     <Compile Include="Assets\Resources\Kaede\Scripts\Test\N2_status_Test.cs" />
+     <Compile Include="Assets\Resources\Kaede\Scripts\Test\NetworkManager_Test.cs" />
+     <Compile Include="Assets\Resources\Kaede\Scripts\Test\OperationHitPoint_Test.cs" />
+     <Compile Include="Assets\Resources\Kaede\Scripts\Test\OperationName_Test.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\Test\PhotonManager_ver2.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\Test\Player_Status.cs" />
      <Compile Include="Assets\Resources\Kaede\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />

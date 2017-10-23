@@ -59,7 +59,7 @@ public class PhotonManager_ver2 : Photon.MonoBehaviour {
 		Debug.Log ("PhotonManager OnJoinedRoom");
 
 		Vector3 initPos = new Vector3 (0, 3f, 3f);
-		cube = PhotonNetwork.Instantiate ("Cube", initPos,
+		cube = PhotonNetwork.Instantiate ("PlayerTest", initPos,
 			Quaternion.Euler (Vector3.zero), 0);
 
 	}
