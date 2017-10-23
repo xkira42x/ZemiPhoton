@@ -15,6 +15,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 54
     width: 1920
     height: 1026
@@ -31,6 +32,15 @@ MonoBehaviour:
   m_RootView: {fileID: 4}
   m_MinSize: {x: 950, y: 542}
 >>>>>>> origin/nemoto
+=======
+    y: 43
+    width: 1536
+    height: 821
+  m_ShowMode: 4
+  m_Title: 
+  m_RootView: {fileID: 2}
+  m_MinSize: {x: 950, y: 542}
+>>>>>>> origin/kodama
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -40,14 +50,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children: []
+=======
+  m_Script: {fileID: 12008, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 3}
+  - {fileID: 5}
+  - {fileID: 4}
+>>>>>>> origin/kodama
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
     x: 0
+<<<<<<< HEAD
     y: 30
     width: 1920
     height: 976
@@ -68,6 +89,13 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 >>>>>>> origin/nemoto
+=======
+    y: 0
+    width: 1536
+    height: 821
+  m_MinSize: {x: 950, y: 542}
+  m_MaxSize: {x: 10000, y: 10000}
+>>>>>>> origin/kodama
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -76,7 +104,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+=======
+  m_Script: {fileID: 12011, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> origin/kodama
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
@@ -84,6 +116,7 @@ MonoBehaviour:
   - {fileID: 2}
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
     x: 1410
     y: 0
@@ -106,6 +139,15 @@ MonoBehaviour:
   vertical: 0
   controlID: 219
 >>>>>>> origin/nemoto
+=======
+    x: 0
+    y: 0
+    width: 1536
+    height: 30
+  m_MinSize: {x: 0, y: 0}
+  m_MaxSize: {x: 0, y: 0}
+  m_LastLoadedLayoutName: 
+>>>>>>> origin/kodama
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -114,7 +156,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
   m_Script: {fileID: 12008, guid: 0000000000000000e000000000000000, type: 0}
+=======
+  m_Script: {fileID: 12042, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> origin/kodama
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
@@ -124,6 +170,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 0
 <<<<<<< HEAD
     width: 371
@@ -141,6 +188,13 @@ MonoBehaviour:
   m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 >>>>>>> origin/nemoto
+=======
+    y: 801
+    width: 1536
+    height: 20
+  m_MinSize: {x: 0, y: 0}
+  m_MaxSize: {x: 0, y: 0}
+>>>>>>> origin/kodama
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,13 +203,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
   m_Script: {fileID: 12011, guid: 0000000000000000e000000000000000, type: 0}
+=======
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> origin/kodama
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Children: []
+  m_Children:
+  - {fileID: 6}
+  - {fileID: 13}
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     y: 590
     width: 1410
@@ -176,6 +237,15 @@ MonoBehaviour:
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: original
 >>>>>>> origin/nemoto
+=======
+    y: 30
+    width: 1536
+    height: 771
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
+  vertical: 0
+  controlID: 6580
+>>>>>>> origin/kodama
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -184,15 +254,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
   m_Script: {fileID: 12042, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children: []
+=======
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 7}
+  - {fileID: 10}
+>>>>>>> origin/kodama
   m_Position:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
     y: 0
+<<<<<<< HEAD
     width: 1920
     height: 1026
   m_MinSize: {x: 950, y: 521}
@@ -204,6 +284,14 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
 >>>>>>> origin/nemoto
+=======
+    width: 1182
+    height: 771
+  m_MinSize: {x: 436, y: 492}
+  m_MaxSize: {x: 14006, y: 14042}
+  vertical: 1
+  controlID: 6550
+>>>>>>> origin/kodama
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -217,12 +305,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 8}
+<<<<<<< HEAD
   - {fileID: 14}
+=======
+  - {fileID: 9}
+>>>>>>> origin/kodama
   m_Position:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
     y: 0
+<<<<<<< HEAD
     width: 1920
     height: 30
   m_MinSize: {x: 0, y: 0}
@@ -237,6 +330,14 @@ MonoBehaviour:
   vertical: 0
   controlID: 217
 >>>>>>> origin/nemoto
+=======
+    width: 1182
+    height: 381
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
+  vertical: 0
+  controlID: 6551
+>>>>>>> origin/kodama
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,7 +346,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+=======
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> origin/kodama
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
@@ -254,6 +359,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     y: 1006
     width: 1920
@@ -269,6 +375,18 @@ MonoBehaviour:
   vertical: 1
   controlID: 218
 >>>>>>> origin/nemoto
+=======
+    y: 0
+    width: 319
+    height: 381
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 15}
+  m_Panes:
+  - {fileID: 15}
+  m_Selected: 0
+  m_LastSelected: 0
+>>>>>>> origin/kodama
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -277,17 +395,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_Children:
   - {fileID: 10}
   - {fileID: 11}
   - {fileID: 12}
+=======
+  m_Children: []
+>>>>>>> origin/kodama
   m_Position:
     serializedVersion: 2
-    x: 0
+    x: 319
     y: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: 1410
     height: 976
@@ -303,6 +426,17 @@ MonoBehaviour:
   vertical: 0
   controlID: 280
 >>>>>>> origin/nemoto
+=======
+    width: 863
+    height: 381
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
+  m_ActualView: {fileID: 16}
+  m_Panes:
+  - {fileID: 16}
+  m_Selected: 0
+  m_LastSelected: 0
+>>>>>>> origin/kodama
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -314,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_Children: []
   m_Position:
     serializedVersion: 2
@@ -337,6 +472,21 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 >>>>>>> origin/nemoto
+=======
+  m_Children:
+  - {fileID: 11}
+  - {fileID: 12}
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 381
+    width: 1182
+    height: 390
+  m_MinSize: {x: 436, y: 271}
+  m_MaxSize: {x: 14006, y: 10021}
+  vertical: 0
+  controlID: 6495
+>>>>>>> origin/kodama
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -351,6 +501,7 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
     x: 371
     y: 0
@@ -374,6 +525,18 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 15}
 >>>>>>> origin/nemoto
+=======
+    x: 0
+    y: 0
+    width: 416
+    height: 390
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
+  m_ActualView: {fileID: 17}
+  m_Panes:
+  - {fileID: 17}
+  - {fileID: 18}
+>>>>>>> origin/kodama
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &12
@@ -384,6 +547,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_Script: {fileID: 12013, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -590,6 +754,23 @@ MonoBehaviour:
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
+=======
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 416
+    y: 0
+    width: 766
+    height: 390
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
+  m_ActualView: {fileID: 14}
+  m_Panes:
+  - {fileID: 14}
+>>>>>>> origin/kodama
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &13
@@ -606,6 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
+<<<<<<< HEAD
     serializedVersion: 2
 <<<<<<< HEAD
     x: 1412
@@ -760,16 +942,65 @@ MonoBehaviour:
     height: 479
   m_MaximizeOnPlay: 1
   m_Gizmos: 0
+=======
+    serializedVersion: 2
+    x: 1182
+    y: 0
+    width: 354
+    height: 771
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 19}
+  m_Panes:
+  - {fileID: 19}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &14
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AutoRepaintOnSceneChange: 1
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Game
+    m_Image: {fileID: -2087823869225018852, guid: 0000000000000000d000000000000000,
+      type: 0}
+    m_Tooltip: 
+  m_DepthBufferBits: 32
+  m_Pos:
+    serializedVersion: 2
+    x: 418
+    y: 473
+    width: 762
+    height: 369
+  m_MaximizeOnPlay: 0
+  m_Gizmos: 1
+>>>>>>> origin/kodama
   m_Stats: 0
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
+<<<<<<< HEAD
     m_HBaseRangeMin: -298.5
     m_HBaseRangeMax: 298.5
     m_VBaseRangeMin: -231
     m_VBaseRangeMax: 231
+=======
+    m_HBaseRangeMin: -381
+    m_HBaseRangeMax: 381
+    m_VBaseRangeMin: -176
+    m_VBaseRangeMax: 176
+>>>>>>> origin/kodama
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -786,29 +1017,51 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
+<<<<<<< HEAD
       width: 597
       height: 462
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 298.5, y: 231}
+=======
+      width: 762
+      height: 352
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 381, y: 176}
+>>>>>>> origin/kodama
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
       x: -298.5
       y: -231
       width: 597
       height: 462
+=======
+      x: -381
+      y: -176
+      width: 762
+      height: 352
+>>>>>>> origin/kodama
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 597, y: 479}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
 --- !u!114 &18
+=======
+  m_LastWindowPixelSize: {x: 762, y: 369}
+  m_ClearInEditMode: 1
+  m_NoCameraWarning: 1
+  m_LowResolutionForAspectRatios: 01000000000100000100
+--- !u!114 &15
+>>>>>>> origin/kodama
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -833,6 +1086,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 103
     width: 369
     height: 569
@@ -851,6 +1105,16 @@ MonoBehaviour:
     m_LastClickedID: 0
     m_ExpandedIDs: 34f3ffffe4fbffff00000000
 >>>>>>> origin/nemoto
+=======
+    y: 92
+    width: 317
+    height: 360
+  m_TreeViewState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 2eeaffff62eaffff64eaffffcceeffffe4fbffff00000000
+>>>>>>> origin/kodama
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Player1
@@ -867,20 +1131,28 @@ MonoBehaviour:
       m_OriginalEventType: 0
       m_IsRenamingFilename: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ClientGUIView: {fileID: 4}
 =======
       m_ClientGUIView: {fileID: 10}
 >>>>>>> origin/nemoto
+=======
+      m_ClientGUIView: {fileID: 8}
+>>>>>>> origin/kodama
     m_SearchString: 
   m_ExpandedScenes:
-  - main
+  - InputTest
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &16
 =======
 --- !u!114 &19
+=======
+--- !u!114 &16
+>>>>>>> origin/kodama
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -902,19 +1174,26 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 204
     y: 92
     width: 452
     height: 479
+=======
+    x: 321
+    y: 92
+    width: 859
+    height: 360
+>>>>>>> origin/kodama
   m_SceneLighting: 1
-  lastFramingTime: 0
+  lastFramingTime: 4005.566657552535
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: 374.23886, y: 174.19853, z: 0}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: 374.23886, y: 174.19853, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -937,13 +1216,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Target: {x: -0.116728514, y: -0.00893835, z: 0.0010505854, w: -0.9931231}
     speed: 2
-    m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Value: {x: -0.116728514, y: -0.008938349, z: 0.0010505854, w: -0.9931231}
   m_Size:
-    m_Target: 10
+    m_Target: 311.15952
     speed: 2
-    m_Value: 10
+    m_Value: 311.15952
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -954,8 +1233,12 @@ MonoBehaviour:
   m_ReplacementString: 
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
+<<<<<<< HEAD
 --- !u!114 &20
 >>>>>>> origin/nemoto
+=======
+--- !u!114 &17
+>>>>>>> origin/kodama
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -977,6 +1260,7 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
     x: 373
     y: 103
@@ -1038,6 +1322,12 @@ MonoBehaviour:
     y: 592
     width: 698
     height: 250
+=======
+    x: 0
+    y: 473
+    width: 414
+    height: 369
+>>>>>>> origin/kodama
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -1049,6 +1339,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
+<<<<<<< HEAD
     - Assets/Resources/Nemoto
   m_ViewMode: 1
   m_StartGridSize: 63
@@ -1062,6 +1353,21 @@ MonoBehaviour:
     m_SelectedIDs: 66310000
     m_LastClickedID: 12646
     m_ExpandedIDs: 00000000fc2700004a280000e4280000e6280000602a00003e2c0000462c0000aa2c0000602d0000782d0000aa2d0000222e00002e2e0000302e0000982e0000da2f0000363000003e300000c2300000d23000000a3100005e310000b2310000b43100001c320000d6320000023300008c330000b4330000c03300002636000044360000e43e000000ca9a3bffffff7f
+=======
+    - Assets/Resources
+  m_ViewMode: 1
+  m_StartGridSize: 16
+  m_LastFolders:
+  - Assets/Resources
+  m_LastFoldersGridSize: 16
+  m_LastProjectPath: "C:\\Users\\nwuser.DA\\Documents\\3\u5E74\\\u5352\u696D\u5236\u4F5C\\zemi\\ZemiPhoton"
+  m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 95}
+    m_SelectedIDs: 242e0000
+    m_LastClickedID: 11812
+    m_ExpandedIDs: 00000000ee2700003a280000d4280000502a0000e82b0000382c00006e2d0000222e0000242e00008e2e000034300000b830000054310000a8310000aa31000012320000f8320000aa330000b63300001c3600003a3600009c3900009e390000a039000000ca9a3bffffff7f
+>>>>>>> origin/kodama
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1077,7 +1383,11 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
+<<<<<<< HEAD
       m_ClientGUIView: {fileID: 13}
+=======
+      m_ClientGUIView: {fileID: 11}
+>>>>>>> origin/kodama
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -1089,7 +1399,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000fc2700004a280000e4280000e6280000602a00003e2c0000462c0000aa2c0000602d0000782d0000aa2d0000222e00002e2e0000302e0000982e0000da2f0000363000003e300000c2300000d23000000a3100005e310000b2310000b43100001c320000d6320000023300008c330000b4330000c03300002636000044360000e43e0000
+=======
+    m_ExpandedIDs: 00000000ee2700003a280000d4280000502a0000e82b0000382c00006e2d0000222e0000242e00008e2e000034300000b830000054310000a8310000aa31000012320000f8320000aa330000b63300001c3600003a3600009c3900009e390000a039000000ca9a3bffffff7f
+>>>>>>> origin/kodama
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1120,20 +1434,34 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
+<<<<<<< HEAD
       m_Name: 
       m_OriginalName: 
+=======
+      m_Name: Resources
+      m_OriginalName: Resources
+>>>>>>> origin/kodama
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
+<<<<<<< HEAD
       m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
+=======
+      m_UserData: 10952
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 0
+      m_IsRenamingFilename: 1
+      m_ClientGUIView: {fileID: 11}
+>>>>>>> origin/kodama
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1142,10 +1470,16 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
+<<<<<<< HEAD
     m_GridSize: 63
   m_DirectoriesAreaWidth: 222
 --- !u!114 &21
 >>>>>>> origin/nemoto
+=======
+    m_GridSize: 16
+  m_DirectoriesAreaWidth: 110
+--- !u!114 &18
+>>>>>>> origin/kodama
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -1169,6 +1503,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 693
     width: 1408
     height: 365
@@ -1177,6 +1512,12 @@ MonoBehaviour:
     width: 813
     height: 250
 --- !u!114 &22
+=======
+    y: 473
+    width: 414
+    height: 369
+--- !u!114 &19
+>>>>>>> origin/kodama
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -1198,9 +1539,15 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1261
     y: 92
     width: 275
+=======
+    x: 1184
+    y: 92
+    width: 352
+>>>>>>> origin/kodama
     height: 750
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
@@ -1209,4 +1556,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
+<<<<<<< HEAD
 >>>>>>> origin/nemoto
+=======
+>>>>>>> origin/kodama

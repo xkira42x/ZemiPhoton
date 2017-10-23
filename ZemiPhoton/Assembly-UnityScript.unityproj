@@ -189,10 +189,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/nwuser.DA/Documents/3年/卒業制作/zemi/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/nwuser.DA/Documents/3年/卒業制作/zemi/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

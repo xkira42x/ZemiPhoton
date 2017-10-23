@@ -63,5 +63,4 @@ public class N2_status : Photon.MonoBehaviour {
 		}
 	}
 
-
 }
