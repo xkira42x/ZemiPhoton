@@ -9,8 +9,8 @@ public class S3_Shot : Photon.MonoBehaviour {
 	[SerializeField]Transform GunSpot;
 	[SerializeField]GunBase MyGun;
 	[SerializeField]public Transform CameraT;
-
-	Text UI;
+	[SerializeField]Text UI;
+	bool ShowUI = false;
 	S3_Shot shot;
 
 	RaycastHit hitInfo;
@@ -20,7 +20,6 @@ public class S3_Shot : Photon.MonoBehaviour {
 			MyGun.ShotSetting (shot);
 
 		shot = GetComponent<S3_Shot> ();
-		UI = GetComponentInChildren<Text> ();
 	}
 
 	void Update () {
@@ -41,6 +40,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 					gameObject.SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
 				}
 			}
+
 		}
 	}
 
@@ -72,14 +72,17 @@ public class S3_Shot : Photon.MonoBehaviour {
 
 	void WriteUIText(string UIText){
 		if (UI != null) {
-			Debug.Log ("Call UItext is " + gameObject.name);
 			UI.text = UIText;
 			StartCoroutine ("ClearUIText");
+			ShowUI = true;
 		}
 	}
 	IEnumerator ClearUIText(){
 		yield return new WaitForSeconds (1);
-		UI.text = "";
+		if (ShowUI)
+			ShowUI = false;
+		else
+			UI.text = "";
 	}
 
 }
