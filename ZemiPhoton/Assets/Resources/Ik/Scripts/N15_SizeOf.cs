@@ -56,24 +56,23 @@ public class N15_SizeOf : MonoBehaviour {
 			}
 			//計算したbit数を保存していく
 			ave += divcount;
+			Debug.Log ("ave:"+ave);
 
 		}
 	}
-	//second秒ごとの平均通信量を出力する
 
+	//second秒ごとの平均通信量を出力する
 	IEnumerator Ave(){
 		while (true) {
 			//通信数(int)から通信量(byte)に変換
 			SizeLog (sizecnt);
 
+			int average = ave / (int)second;
+			int count = masscount / (int)second;
+							
 			//出力
-			if (masscount != 0) {
-				TM.text = (int)ave / second + "bps" + "\n" +
-				(int)masscount / second + "個ps";
-			} else {
-				TM.text = 0 + "bps" + "\n" +
-					0 + "個ps";
-			}
+			TM.text = average + " bps" + "\n" +
+				count + " 個ps";
 
 			//10秒ごとの計測したbit数を出力
 //			Debug.Log ("b/s:"+ave+" / 10");
