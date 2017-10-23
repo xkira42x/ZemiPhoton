@@ -19,8 +19,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     protected N2_status A_P_info;              //>プレイヤーの情報
     public GameObject A_Bullet;                //>弾オブジェクト
     protected Bullet A_B_info;                 //>弾の情報
-
-
+    public GameObject A_enemy;
     /// <summary>
     /// マップ外待機(アクティブfalse)、待機、視認、攻撃、hit、死亡
     /// </summary>
@@ -36,7 +35,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     
 
     //↑の列挙の状態のアニメーション情報
-    protected string[] A_animator_state = { "play" , "run", "attack", "play", "dide" };//play2つの理由→ヒットモーションなし
+     protected string[] A_animator_state = { "play" , "run", "attack", "play", "dide" };//play2つの理由→ヒットモーションなし
 
 
     void Start()
@@ -62,7 +61,12 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     /// </summary>
     protected void A_Enemy_Move()
     {
+
+
         A_anim.SetBool(A_animator_state[(int)A_state], true);//>状態毎のアニメーション
+
+
+
         switch (A_state) {
 		/*case A_enemy_state.A_Stand_by://マップ外の待機状態(リセット)
 			A_hp = A_hp_init;
@@ -88,19 +92,20 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
       
 		case A_enemy_state.A_vsb://追いかけて来る状態(視認している)
 
-        
-                /******追尾*******/
-			transform.position = A_Unique_Move ();
-                /*****************/
-
                 /*条件で攻撃(stateを攻撃に切り替え)*/
 			A_magnitude = (transform.position - A_Player.transform.position).magnitude;//二点間の距離
 			if (A_magnitude <= A_target_magnitude) {
                     A_anim.SetBool(A_animator_state[(int)A_state], false);
                     A_state = A_enemy_state.A_atk;//プレイヤーと自分の距離が一定範囲以内なら攻撃へ
 			}
+            else
+                {
+                    /******追尾*******/
+                    transform.position = A_Unique_Move();
+                    /*****************/
+                }
                 /********************************/
-			break;
+                break;
 
 		case A_enemy_state.A_atk://攻撃
                 /*攻撃判定処理*/
@@ -116,6 +121,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 			if (A_hp <= 0) {//体力が0(以下)なら状態を死亡に遷移
                     A_anim.SetBool(A_animator_state[(int)A_state], false);
                     A_state = A_enemy_state.A_death;
+                    
 			} else {
                     /*ヒットモーション*/
 
@@ -128,12 +134,18 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 			break;
             
 		case A_enemy_state.A_death://死亡した状態(行動不能)		
-                if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
-            { //0～1(始発から終点)
-                PhotonNetwork.Destroy(this.gameObject);//確認用
-            }
-                
-		    break;
+                                   /* if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+                                { //0～1(始発から終点)
+                                       
+                                        PhotonNetwork.Destroy(this.gameObject);//確認用
+                                }
+                             */
+                Destroy(A_enemy, 2f);
+                if (A_enemy == null)//オブジェクトがnullなら
+                {
+                    PhotonNetwork.Destroy(A_enemy);
+                }
+                break;
 		}
         
     }
@@ -205,8 +217,9 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     {
         if (col.gameObject.name.StartsWith("Bullet") && A_state != A_enemy_state.A_death)
         {
-            GameObject.Destroy(col.gameObject);
             A_anim.SetBool(A_animator_state[(int)A_state], false);
+            
+            GameObject.Destroy(col.gameObject);
             A_state = A_enemy_state.A_hit;
         }
     }
@@ -219,16 +232,16 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     {
         do
         {
-            A_Player = GameObject.Find("Player" + Random.Range(1, 5).ToString());//>1P～4Pをランダムで参照
+            A_Player = GameObject.Find("Player" + Random.Range(1, 3).ToString());//>1P～4Pをランダムで参照
         } while (A_Player == null);//>プレイヤーが居たら抜け出す
     }
 
-
+/*
     /// <summary>
     /// プレイヤー参照（1P～4Pどれを狙うか選ぶ）
     /// </summary>
     protected virtual void A_Player_Select(sbyte player_num)
     {
         A_Player = GameObject.Find("Player" + player_num.ToString());//>1P～4Pをランダムで参照   
-    }
+    }*/
 }
