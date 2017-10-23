@@ -3,28 +3,29 @@
 require_once("DB_test_unity.php");
 $pdo=connectDB();
 
-
-	$pass=$_POST["pass"];	//入力されたPass
-
+	//$name=$_POST["name"];	//入力されたPass
 
 if(isset($_POST["name"])){
-	$name=$_POST["name"];
+	$name=$_POST["name"];	
 }
-
 
 try{
 
-$stmt=$pdo->query();
+if(!empty($name)){
+if(!$stmt=$pdo->query("insert into player_data (id,name) select max(id)+1,'$name' from player_data")){
+$res=null;
+}
+}else{
+$res=null;
+}
+
+
 
 } catch (PDOException $e){
 	var_dump($e->getMessage());
 }
 $pdo=null;	//DB切断
 
-if(empty($res)){
-	$res=null;	//入力されたPassがなければError
-}
-
-echo $res;	//Unityに結果を返す
+echo $res;
 
 ?>
