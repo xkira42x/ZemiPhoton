@@ -44,6 +44,7 @@ public class N15_SizeOf : MonoBehaviour {
 	//引数のbit数を出力する(int)
 	public void SizeLog(int ss){
 		if (PhotonNetwork.isMasterClient) {
+			Debug.Log ("size count:"+ss);
 			//bit算出に使用
 			int divcount=1;
 			//値が１以下になるまで２で割る
@@ -66,9 +67,13 @@ public class N15_SizeOf : MonoBehaviour {
 			SizeLog (sizecnt);
 
 			//出力
-			TM.text = (int)ave/second + "b /s" +"\n"+
-				(int)masscount/second+"回 /s";
-
+			if (masscount != 0) {
+				TM.text = (int)ave / second + "bps" + "\n" +
+				(int)masscount / second + "個ps";
+			} else {
+				TM.text = 0 + "bps" + "\n" +
+					0 + "個ps";
+			}
 
 			//10秒ごとの計測したbit数を出力
 //			Debug.Log ("b/s:"+ave+" / 10");
@@ -76,8 +81,8 @@ public class N15_SizeOf : MonoBehaviour {
 //			Debug.Log ("c/s:"+masscount+" / 10");
 	
 			//次の１０秒間のデータを図るため初期化
-			ave = 1;
-			masscount = 1;
+			ave = 0;
+			masscount = 0;
 			sizecnt = 0;
 			yield return new WaitForSeconds (second);
 		}
