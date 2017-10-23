@@ -5,10 +5,10 @@ using UnityEngine;
 public class N4_SyncAnimation : Photon.MonoBehaviour {
 
 	// 同期するステータスを取得する
-	[SerializeField] S1_Move S_Move;
+	S1_Move S_Move;
 	// 同期後にアニメーションを更新するために
 	// アニメーターを取得
-	[SerializeField] Animator animator;
+	Animator animator;
 
 	/// 同期したアニメーションの値を格納
 	/// （実際に受け取る値が、移動量のためfloat speedと表記をする）
@@ -18,7 +18,13 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 
 	//IK追記
 	N15_SizeOf SO;
-	void Awake(){SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();}
+
+	void Awake(){
+		SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();
+
+		S_Move = GetComponent<S1_Move> ();
+		animator = GetComponent<Animator> ();
+	}
 
 	void Update () {
 		if (photonView.isMine) {

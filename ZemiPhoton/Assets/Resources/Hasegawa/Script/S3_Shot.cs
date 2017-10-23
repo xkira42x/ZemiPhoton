@@ -8,16 +8,19 @@ public class S3_Shot : Photon.MonoBehaviour {
 	
 	[SerializeField]Transform GunSpot;
 	[SerializeField]GunBase MyGun;
-	[SerializeField]LayerMask mask;
 	[SerializeField]public Transform CameraT;
-	[SerializeField]S3_Shot shot;
-	[SerializeField]Text UI;
+
+	Text UI;
+	S3_Shot shot;
 
 	RaycastHit hitInfo;
 
 	void Start(){
 		if (MyGun != null)
 			MyGun.ShotSetting (shot);
+
+		shot = GetComponent<S3_Shot> ();
+		UI = GetComponentInChildren<Text> ();
 	}
 
 	void Update () {
@@ -25,7 +28,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 		if (photonView.isMine) {
 			// ショット
 			if (Input.GetMouseButton (0)) {
-				SendMessage ("ToAttackMSG", SendMessageOptions.DontRequireReceiver);
+				gameObject.SendMessage ("ToAttackMSG", SendMessageOptions.DontRequireReceiver);
 			}
 
 			if (Input.GetKeyDown (KeyCode.R)) {
@@ -35,7 +38,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 			if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
 				WriteUIText ("Pick up with E key");
 				if (Input.GetKeyDown (KeyCode.E)) {
-					SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
+					gameObject.SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
 				}
 			}
 		}

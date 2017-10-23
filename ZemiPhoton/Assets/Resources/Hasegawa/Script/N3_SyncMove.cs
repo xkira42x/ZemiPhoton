@@ -6,11 +6,16 @@ using UnityEngine;
 
 public class N3_SyncMove : Photon.MonoBehaviour {
 
-	[SerializeField]S1_Move S_Move;
+	S1_Move S_Move;
 
 	//IK追記
 	N15_SizeOf SO;
-	void Awake(){SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();}
+
+	void Awake(){
+		SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();
+
+		S_Move = GetComponent<S1_Move> ();
+	}
 
 	void Update(){
 		if (photonView.isMine) {

@@ -9,9 +9,10 @@ public class N6_SyncShot : Photon.MonoBehaviour {
 
 	//IK追記
 	N15_SizeOf SO;
+
 	void Awake(){
 		SO = GameObject.Find ("PhotonManager").GetComponent<N15_SizeOf> ();
-		// コンポーネントの取得
+
 		S_Shot = GetComponent<S3_Shot> ();
 	}
 
