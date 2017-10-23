@@ -195,6 +195,9 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+ <Reference Include="Assembly-UnityScript">
+ <HintPath>C:/Users/nwuser/Documents/ZemiPhoton/ZemiPhoton/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -250,13 +253,13 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/nwuser/Documents/ZemiPhoton/ZemiPhoton/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/nwuser/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/nwuser/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -264,8 +267,6 @@
       <Project>{1BBBFCDC-538B-4668-D2B0-32A0468BFC3F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{A1129DE2-3A4A-B741-CE9D-5B29976C4907}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
-    <ProjectReference Include="Assembly-UnityScript.unityproj">
-      <Project>{6616FA1C-5276-807B-4707-D7B52ED5EA46}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
