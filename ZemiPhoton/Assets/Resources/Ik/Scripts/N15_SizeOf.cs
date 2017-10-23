@@ -67,10 +67,13 @@ public class N15_SizeOf : MonoBehaviour {
 			SizeLog (sizecnt);
 
 			//出力
-			if(masscount!=0)
-			TM.text = (int)ave/second + "bps" +"\n"+
-				(int)masscount/second+"個ps";
-
+			if (masscount != 0) {
+				TM.text = (int)ave / second + "bps" + "\n" +
+				(int)masscount / second + "個ps";
+			} else {
+				TM.text = 0 + "bps" + "\n" +
+					0 + "個ps";
+			}
 
 			//10秒ごとの計測したbit数を出力
 //			Debug.Log ("b/s:"+ave+" / 10");
