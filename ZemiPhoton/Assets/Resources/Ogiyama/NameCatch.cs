@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Net;
 
 public class NameCatch : MonoBehaviour {
 
@@ -16,12 +17,17 @@ public class NameCatch : MonoBehaviour {
 	//157.112.147.22
 	//public string ServerAddress ="157.112.147.43";
 
-	//public string ServerAddress = "localhost/3zemi/DB_test_unity_select.php";
-
-	string ServerAddress = "10.22.1.156/3zemi/DB_test_unity_select_name.php";
+	//string ServerAddress = "10.22.1.156/3zemi/DB_test_unity_select_name.php";
+	string ipAddress;
+	string ServerAddress;
 
 	public void SendSignal_Button_Push(){
-
+		string hostname = Dns.GetHostName ();
+		IPAddress[] adrList = Dns.GetHostAddresses (hostname);
+		foreach (IPAddress address in adrList){
+			ipAddress = address.ToString ();
+		}
+		ServerAddress = ipAddress+"/3zemi/DB_test_unity_select_name.php";
 		StartCoroutine ("Access");	//Accessコルーチンの開始
 
 	}
