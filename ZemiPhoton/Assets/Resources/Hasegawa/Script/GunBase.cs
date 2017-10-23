@@ -9,6 +9,7 @@ using UnityEngine;
 /// </summary>
 public class GunBase : MonoBehaviour {
 
+	public string WeaponName;
 	// カメラのTransform情報
 	protected Transform CameraT;
 	// 弾丸オブジェクト
@@ -27,7 +28,7 @@ public class GunBase : MonoBehaviour {
 	// 銃を取得した際の向きを指定
 	[SerializeField]Vector3 Rotate;
 	// 物理処理
-	[SerializeField]Rigidbody myRigidbody;
+	Rigidbody myRigidbody;
 
 	/// <summary>
 	/// <para>名前　Start</para>
@@ -37,6 +38,7 @@ public class GunBase : MonoBehaviour {
 	/// </summary>
 	void Start(){
 		myRigidbody = gameObject.GetComponent<Rigidbody> ();
+		gameObject.name = WeaponName;
 	}
 
 	/// <summary>
@@ -54,7 +56,7 @@ public class GunBase : MonoBehaviour {
 				Next = false;
 				Delay (.1f);
 			} else
-				SendMessageUpwards ("OutOfAmmoMSG", SendMessageOptions.DontRequireReceiver);
+				gameObject.SendMessageUpwards ("OutOfAmmoMSG", SendMessageOptions.DontRequireReceiver);
 		}
 	}
 

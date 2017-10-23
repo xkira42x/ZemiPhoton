@@ -25,16 +25,17 @@ public class S1_Move : MonoBehaviour {
 	// ジャンプしている
 	bool isJumping = false;
 	public bool IsJumping{ get { return isJumping; } set { isJumping = value; } }
-	[SerializeField] bool isGround;
+	bool isGround;
+
 	void IsGround(){
 		isGround = Physics.Raycast (transform.position, Vector3.down, 0.3f);
 	}
 	bool isSquat = false;
 
-	[SerializeField]Rigidbody rigid;
+	Rigidbody myRigidbody;
 
 	void Start(){
-		rigid = GetComponent<Rigidbody> ();
+		myRigidbody = GetComponent<Rigidbody> ();
 	}
 
 	void Update(){
@@ -63,11 +64,8 @@ public class S1_Move : MonoBehaviour {
 	// ジャンプ
 	void S_Jump(){
 		// ジャンプスイッチ
-		if (isGround && Input.GetKeyDown (KeyCode.Space)) {
-			Debug.Log ("Jump!!");
-			//rigid.AddForce (Vector3.up * 5);
-			rigid.velocity = Vector3.up * 5;
-		}
+		if (isGround && Input.GetKeyDown (KeyCode.Space))
+			myRigidbody.velocity = Vector3.up * 5;
 	}
 
 	// しゃがむ
@@ -75,9 +73,9 @@ public class S1_Move : MonoBehaviour {
 		float width = 0f;
 		if (Input.GetKey (KeyCode.LeftControl)) {
 			width = -1f;
-			isSquat = true;
-		} else
-			isSquat = false;
+			//isSquat = true;
+		} //else
+			//isSquat = false;
 		myCollection.localPosition = new Vector3 (0, width, 0);
 	}
 }
