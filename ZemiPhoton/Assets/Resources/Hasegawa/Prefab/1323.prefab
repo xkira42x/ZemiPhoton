@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4077734206649626}
   - component: {fileID: 114622235718494266}
   - component: {fileID: 65178478306358238}
-  - component: {fileID: 54217069240117052}
+  - component: {fileID: 54002736303362416}
   m_Layer: 8
   m_Name: 1323
   m_TagString: Untagged
@@ -334,7 +334,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 708185bac4d535c428cb349d9c9d9ae2, type: 2}
+  - {fileID: 2100000, guid: 2ba94d9cc2f708a4295ce0f3ff1574f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -366,7 +366,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 708185bac4d535c428cb349d9c9d9ae2, type: 2}
+  - {fileID: 2100000, guid: 2ba94d9cc2f708a4295ce0f3ff1574f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -398,8 +398,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 708185bac4d535c428cb349d9c9d9ae2, type: 2}
-  - {fileID: 2100000, guid: 6b7e3623484a5154ea09780672c2204c, type: 2}
+  - {fileID: 2100000, guid: 67b4eadfca20a7f4baeb446aaf864a72, type: 2}
+  - {fileID: 2100000, guid: 2ba94d9cc2f708a4295ce0f3ff1574f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -431,7 +431,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 708185bac4d535c428cb349d9c9d9ae2, type: 2}
+  - {fileID: 2100000, guid: 2ba94d9cc2f708a4295ce0f3ff1574f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -463,7 +463,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1b045e9710ee1d545b623b565fe21489, type: 2}
+  - {fileID: 2100000, guid: 0f88dc58afa027e49a2bd5ab3d0286d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -495,7 +495,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 708185bac4d535c428cb349d9c9d9ae2, type: 2}
+  - {fileID: 2100000, guid: 2ba94d9cc2f708a4295ce0f3ff1574f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -556,7 +556,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005714395656808}
   m_Mesh: {fileID: 4300008, guid: 4eb96162da770da43b14be92eeae3a91, type: 3}
---- !u!54 &54217069240117052
+--- !u!54 &54002736303362416
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -569,7 +569,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &65178478306358238
 BoxCollider:
@@ -594,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0023c1042febe3543937798475edbb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponName: 1323
   AmmoObj: {fileID: 1959209029980616, guid: 82aca2db3b3a5dd44987d3ba653d5486, type: 2}
   MaxAmmo: 0
   MaxMagazine: 15
@@ -10442,8 +10443,8 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 02edd1244785818498016d4807af1a34, type: 2}
+  - {fileID: 2100000, guid: 02edd1244785818498016d4807af1a34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

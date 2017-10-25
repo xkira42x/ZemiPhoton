@@ -2034,6 +2034,7 @@ GameObject:
   - component: {fileID: 114642221789993672}
   - component: {fileID: 114920032861188224}
   - component: {fileID: 114525342582463294}
+  - component: {fileID: 114999979079093970}
   m_Layer: 9
   m_Name: myPlayer
   m_TagString: Untagged
@@ -4512,7 +4513,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787174758562178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.81371784, y: 0.05, z: 1.3403504}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4336795678230726}
@@ -5288,8 +5289,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787174758562178}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
-  m_Controller: {fileID: 9100000, guid: b772e2344f26c0c4ab8bca948e9c1616, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 16f4a7b377148314ea01f2cab8052822, type: 3}
+  m_Controller: {fileID: 9100000, guid: f894220391630ac4e92ef203fc8819a1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5353,26 +5354,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myCollection: {fileID: 4336795678230726}
   speed: 0.1
-  isGround: 0
-  rigid: {fileID: 0}
 --- !u!114 &114642221789993672
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787174758562178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f27ee031801f4441b060b13aaa6bcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GunSpot: {fileID: 4427124905349712}
   MyGun: {fileID: 0}
-  mask:
-    m_Bits: 256
   CameraT: {fileID: 4041547470686448}
-  shot: {fileID: 114642221789993672}
-  UI: {fileID: 114646672912403194}
+  UI: {fileID: 0}
 --- !u!114 &114646672912403194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5439,6 +5435,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114999979079093970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1787174758562178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510539c1cdadf284abf14603c48cb5a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &124080008205397240
 Behaviour:
   m_ObjectHideFlags: 1

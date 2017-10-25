@@ -10,6 +10,8 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	// アニメーターを取得
 	Animator animator;
 
+	UnityChanAnimatorController UnityChanAnim;
+
 	/// 同期したアニメーションの値を格納
 	/// （実際に受け取る値が、移動量のためfloat speedと表記をする）
 	float speed = 0;
@@ -24,22 +26,24 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 
 		S_Move = GetComponent<S1_Move> ();
 		animator = GetComponent<Animator> ();
+		UnityChanAnim = GetComponent<UnityChanAnimatorController> ();
 	}
 
 	void Update () {
 		if (photonView.isMine) {
 			// アニメーションの値を送信
-			photonView.RPC ("SyncMotion", PhotonTargets.Others, S_Move.motion);
+			//photonView.RPC ("SyncMotion", PhotonTargets.Others, S_Move.motion);
 			// ジャンプアニメーションの値を送信
-			photonView.RPC ("SyncJumping", PhotonTargets.Others, S_Move.IsJumping);
-		} else {
+			//photonView.RPC ("SyncJumping", PhotonTargets.Others, S_Move.IsJumping);
+			photonView.RPC ("SyncAnimation", PhotonTargets.Others, S_Move.Status);
+		}/* else {
 			// アニメーションの再生をする
 			SetAnimation ();
-		}
+		}*/
 	}
 
 	/// アニメーション値の取得側の記述
-	[PunRPC]
+	/*[PunRPC]
 	void SyncMotion(float motion){
 		speed = motion;
 		//IK追記
@@ -58,5 +62,11 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	void SetAnimation(){
 		animator.SetFloat ("Speed", speed);
 		animator.SetBool ("IsJumping", isJumping);
+		//animator.Play (S_Move.Status);
+	}*/
+
+	[PunRPC]
+	void SyncAnimation(byte status){
+		UnityChanAnim.AnimationPlay (status);
 	}
 }

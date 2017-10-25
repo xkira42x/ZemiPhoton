@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975ef9c3e4252a846b0a87d7e2965058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponName: Shotgun
   AmmoObj: {fileID: 1548440872965694, guid: 5420859dbf2300a47af4d47f89f94a3a, type: 2}
   MaxAmmo: 0
   MaxMagazine: 8
@@ -416,6 +417,7 @@ MonoBehaviour:
   MuzzleFlash:
   - {fileID: 198830114774112902}
   Rotate: {x: 0, y: -90, z: 0}
+  colllectingRate: 4
 --- !u!198 &198036173444050960
 ParticleSystem:
   m_ObjectHideFlags: 1
