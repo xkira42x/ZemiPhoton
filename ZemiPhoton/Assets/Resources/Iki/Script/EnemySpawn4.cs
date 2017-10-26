@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemySpawn4 : Photon.MonoBehaviour {
 
-	public GameObject enemy;     //敵オブジェクト
+	public GameObject[] enemy;     //敵オブジェクト
 	public Transform Spawner_A;     //地面オブジェクト
 	public Transform Spawner_B;     //地面オブジェクト
 	public Transform Spawner_C;     //地面オブジェクト
@@ -37,7 +37,6 @@ public class EnemySpawn4 : Photon.MonoBehaviour {
 			}
 		}
 	}
-
 	void Spawn () {
 		float x=0;
 		float z=0;
@@ -48,21 +47,19 @@ public class EnemySpawn4 : Photon.MonoBehaviour {
 				z = Random.Range (-25f, 25f);
 
 				Vector3 pos = new Vector3 (x, 3, z) + enemyground.position;
-				GameObject enemy_notClone = PhotonNetwork.Instantiate (enemy.name,pos,Quaternion.identity,0).gameObject;
-				enemy_notClone.name = enemy.name + A_enemy_cnt.ToString();
+				GameObject enemy_notClone = PhotonNetwork.Instantiate (enemy[0].name,pos,Quaternion.identity,0).gameObject;
+				enemy_notClone.name=enemy[0].name+A_enemy_cnt.ToString();
 				A_enemy_cnt++;
-
 			}
 		}
 
 	}
 
-
 	void Spawn_stage (){
 		float x = 0;
 		float z = 0;
 		for (int i = A_enemy_i; i < A_enemy_max; i++) {
-			GameObject obj = GameObject.Find ("Enemy" + i.ToString ());
+			GameObject obj = GameObject.Find (enemy[0].name + i.ToString ());
 			obj.SetActive (true);
 
 			//do {

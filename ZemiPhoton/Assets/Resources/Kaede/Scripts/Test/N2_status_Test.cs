@@ -40,7 +40,7 @@ public class N2_status_Test : Photon.MonoBehaviour {
 			gameObject.name = "Player" + no.ToString ();
 
 			if (photonView.isMine) {
-				myText.text = nameText;
+				myText.text = nameText.ToString();
 			}
 
 			if (myText != null )

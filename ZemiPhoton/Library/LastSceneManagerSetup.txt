@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Resources/Ik/Resources/main.unity
-=======
-- path: Assets/Resources/Kaede/Scene/InputTest.unity
->>>>>>> origin/kodama
   isLoaded: 1
   isActive: 1

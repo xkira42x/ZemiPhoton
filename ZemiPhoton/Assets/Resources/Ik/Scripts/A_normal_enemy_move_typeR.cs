@@ -5,7 +5,7 @@ using System.Collections;
 /// 敵行動スクリプト(機能→状態遷移、動き、攻撃、当たり判定)
 /// </summary>
 public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
- 
+/* 
     protected float A_spd = 0.05f;             //>敵のスピード(とりあえず現在は適当に数値をIN)>>少ないデータ型(求
     protected float A_rad;                     //>ラジアン(プレイヤー追尾にて使用)
     protected short A_hp_init = 100;           //>体力初期値 (16bit)->扱える数値(-32768~32767)             
@@ -30,7 +30,7 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
     /// マップ外待機(アクティブfalse)、待機、視認、攻撃、hit、死亡
     /// </summary>
     protected enum A_enemy_state
-    {/*****使わないstateは後に消す******/
+    {/*****使わないstateは後に消す*****
         A_Stand_by, //Stand-by    ->マップ外待機(アクティブfalse)
         A_oov,      //Out-of-view ->待機
         A_vsb,      //Visibility  ->視認(移動)
@@ -69,12 +69,12 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
 			break;
 
 		case A_enemy_state.A_oov://待機状態
-                /*待機モーション*/
+                /*待機モーション
 			A_anim.SetBool ("play", true);
-                /***************/
+                /**************
 			if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.2f) {
 
-				/*攻撃に切り替える*/
+				/*攻撃に切り替える
 				A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude - 2;//>二点間の距離
 				if (A_magnitude <= A_target_magnitude) {
 					A_anim.SetBool ("play", false);
@@ -83,71 +83,71 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
 					A_state = A_enemy_state.A_vsb; //>プレイヤーが攻撃範囲外なら追いかける
 					A_anim.SetBool ("attack", false);
 				}
-				/****************/
+				/***************
 			}
 			break;
       
 		case A_enemy_state.A_vsb://追いかけて来る状態(視認している)
 
-                /*移動のモーション*/
+                /*移動のモーション
 			A_anim.SetBool ("run", true);
                 /****************/
 
-                /******追尾*******/
+                /******追尾******
 			transform.position = A_Unique_Move ();
                 /*****************/
 
-                /*条件で攻撃(stateを攻撃に切り替え)*/
+                /*条件で攻撃(stateを攻撃に切り替え)
 			A_magnitude = (transform.position - A_Player.transform.position).magnitude;//二点間の距離
 			if (A_magnitude <= A_target_magnitude) {
 				A_anim.SetBool ("run", false);
 				A_state = A_enemy_state.A_atk;//プレイヤーと自分の距離が一定範囲以内なら攻撃へ
 			}
-                /********************************/
+                /*******************************
 			break;
 
 		case A_enemy_state.A_atk://攻撃
 			A_anim.SetBool ("run", false);
 			A_anim.SetBool ("play", false);
-                /*攻撃モーション*/
+                /*攻撃モーション
 			A_anim.SetBool ("attack", true);
-                /**************/
+                /*************
 
-                /*攻撃判定処理*/
+                /*攻撃判定処理
 			A_Attack ();
-                /*************/
+                /************
 			break;
 
 		case A_enemy_state.A_hit://敵がダメージを受けた状態(撃たれるなど)
                 
-                /*ダメージ計算*/
+                /*ダメージ計算
 			A_hp -= A_B_info.Pow;
-                /************/
+                /***********
 			if (A_hp <= 0) {//体力が0(以下)なら状態を死亡に遷移
 				A_state = A_enemy_state.A_death;
 			} else {
-				/*ヒットモーション*/
+				/*ヒットモーション
 
-				/****************/
-				/*まだ体力が余っているプレイヤーを追いかける*/
+				/***************
+				/*まだ体力が余っているプレイヤーを追いかける
 				A_state = A_enemy_state.A_vsb;
 			}
-                /************/
+                /***********
 			break;
             
 		case A_enemy_state.A_death://死亡した状態(行動不能)		
 			//A_anim.SetBool ("run", false);
 			//A_anim.SetBool ("attack", false);
 			//A_anim.SetBool ("play", false);
-			/***************/
+			/**************
 			if (A_anim.GetBool ("dide")) {
 				if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime > 1.0f) { //0～1(始発から終点)
-					/*初期ポジションに戻る*/
-					/********************/
+					/*初期ポジションに戻る
+					/*******************
 				}else PhotonNetwork.Destroy (this.gameObject);//確認用
 			}
 
-                /*死亡モーション*/
+                /*死亡モーション
 			A_anim.SetBool ("dide", true);
 			break;
 		}
@@ -160,7 +160,7 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
     protected Vector3 A_Unique_Move()
     {
 
-        /***********************追尾処理**************************/
+        /***********************追尾処理*************************
         A_rad = Mathf.Atan2(
                A_Player.transform.position.z - transform.position.z,
                A_Player.transform.position.x - transform.position.x);
@@ -168,7 +168,7 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
 
         A_Position.x += A_spd * Mathf.Cos(A_rad);
         A_Position.z += A_spd * Mathf.Sin(A_rad);
-        /********************************************************/
+        /*******************************************************
         transform.rotation = new Quaternion(0, 0, A_Position.z, 0);
         transform.LookAt(A_Position); //移動方向を見る
         return A_Position;//移動値を返す
@@ -187,17 +187,17 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
         if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f && A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.54f)
         {
             
-            /*攻撃判定*/
+            /*攻撃判定
             A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude - 2.0f;//>二点間の距離
             if (A_delay_flg == true && A_magnitude <= A_target_magnitude)
             {
-                /*プレイヤーダメージ処理*/
+                /*プレイヤーダメージ処理
                 //A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
 				Dmg();
 //				photonView.RPC("Dmg",PhotonTargets.All);
 				Debug.Log ("HP:" + A_P_info.Hp+"_"+Time.time);
                 A_delay_flg = false;    //ダメージが入った時にflgをfalse
-                /**********************/
+                /*********************
             }
         }
         //アニメーションが終わったらflgをtrue
@@ -205,9 +205,9 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
         {
             A_delay_flg = true;
             A_anim.SetBool("attack", false);
-            /*攻撃モーションが終わったのでstateを切り替える(待機へ)*/
+            /*攻撃モーションが終わったのでstateを切り替える(待機へ)
             A_state = A_enemy_state.A_oov;
-            /**************************************************/
+            /*************************************************
         }
 
         
@@ -263,5 +263,5 @@ public class A_normal_enemy_move_typeR : Photon.MonoBehaviour {
 
 			yield return new WaitForSeconds (5f);
 //		}
-	}
+	}*/
 }

@@ -102,15 +102,12 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Resources\Kaede\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-     <None Include="Assets\Resources\Hasegawa\PyroParticles\Readme.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Stage\Shader\AlphaMask.shader" />
-     <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
-     <None Include="Assets\Resources\Hasegawa\Material\MySharder.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
@@ -143,6 +140,7 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
+     <None Include="Assets\Resources\Nemoto\True Explosions\System\Shaders\SphereVolumetricExplosion.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\DepthOfField\Resources\BokehSplatting.shader" />
      <None Include="Assets\Resources\Kaede\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
@@ -160,6 +158,7 @@
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
+     <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -183,17 +182,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
-<<<<<<< HEAD
- <HintPath>C:/Users/nwuser/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/nwuser/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
-=======
- <HintPath>C:/Users/nwuser.DA/Documents/3年/卒業制作/zemi/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
- </Reference>
- <Reference Include="websocket-sharp">
- <HintPath>C:/Users/nwuser.DA/Documents/3年/卒業制作/zemi/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
->>>>>>> origin/kodama
+ <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

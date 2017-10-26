@@ -38,7 +38,6 @@ public class NetworkManager_Test : Photon.MonoBehaviour {
 		Debug.Log ("ロビーに入る");
 		loginUI.SetActive (true);
 	}
-
 	//	アカウント作成ボタンを押した時の処理
 	public void CrateAccount(){
 		loginUI.SetActive (false);
@@ -125,7 +124,7 @@ public class NetworkManager_Test : Photon.MonoBehaviour {
 	IEnumerator SetPlayer(float time){
 		yield return new WaitForSeconds (time);
 		//ネットワークごしにplayerをインスタンス化する
-		player = PhotonNetwork.Instantiate("PlayerTest", Vector3.up, Quaternion.identity, 0);
+		player = PhotonNetwork.Instantiate("FPSPlayer", Vector3.up, Quaternion.identity, 0);
 
 		player.GetPhotonView ().RPC ("SetName", PhotonTargets.AllBuffered, PhotonNetwork.player.NickName);
 		player.GetPhotonView ().RPC ("SetHP", PhotonTargets.AllBuffered, 100);

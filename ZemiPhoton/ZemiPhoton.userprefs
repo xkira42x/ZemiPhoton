@@ -1,23 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Shihara\Script\Player_Start.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Iki\Script\EnemySpawn4.cs">
     <Files>
-      <File FileName="Assets\Resources\Ik\Scripts\PhotonManager.cs" Line="94" Column="26" />
-      <File FileName="Assets\Resources\Hasegawa\Script\ShotGun.cs" Line="16" Column="3" />
-      <File FileName="Assets\Resources\Shihara\Script\Player_Start.cs" Line="33" Column="50" />
-      <File FileName="Assets\Resources\Ik\Scripts\N15_SizeOf.cs" Line="18" Column="12" />
-      <File FileName="Assets\Resources\Ik\Scripts\A_normal_enemy_move_typeR.cs" Line="22" Column="32" />
-      <File FileName="Assets\Resources\Nemoto\A_normal_enemy_move.cs" Line="133" Column="37" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Kaede\Scripts\Test\NetworkManager_Test.cs">
-    <Files>
-      <File FileName="Assets\Resources\Kaede\Scripts\Test\InputManager_test.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Kaede\Scripts\Test\PhotonManager_ver2.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Kaede\Scripts\Test\NetworkManager_Test.cs" Line="58" Column="28" />
-      <File FileName="Assets\Resources\Kaede\Scripts\N2_status.cs" Line="21" Column="9" />
-      <File FileName="Assets\Resources\Kaede\Scripts\Test\N2_status_Test.cs" Line="43" Column="27" />
->>>>>>> origin/kodama
+      <File FileName="Assets\Resources\Nemoto\A_normal_enemy_move.cs" Line="270" Column="3" />
+      <File FileName="Assets\Resources\Kaede\Scripts\Test\OperationHitPoint_Test.cs" Line="17" Column="21" />
+      <File FileName="Assets\Resources\Nemoto\A_Boomer_move.cs" Line="19" Column="29" />
+      <File FileName="Assets\Resources\Ik\Scripts\A_normal_enemy_move_typeR.cs" Line="105" Column="5" />
+      <File FileName="Assets\Resources\Iki\Script\EnemySpawn4.cs" Line="9" Column="44" />
+      <File FileName="Assets\Resources\Ogiyama\Catch.cs" Line="6" Column="37" />
+      <File FileName="Assets\Resources\Ogiyama\NewData.cs" Line="9" Column="1" />
+      <File FileName="Assets\Resources\Ik\Scripts\PhotonManager.cs" Line="105" Column="3" />
+      <File FileName="Assets\Resources\Ogiyama\NameCatch.cs" Line="5" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

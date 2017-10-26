@@ -106,7 +106,6 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\PinwheelFantasyEffectFreePack2\Scripts\Spawn.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\AssaultRifle.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Bullet.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\GunBase.cs" />
@@ -125,7 +124,6 @@
      <Compile Include="Assets\Resources\Ik\Scripts\A_normal_enemy_move_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\EnemySpawn3_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N15_SizeOf.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\N2_Status_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_CubeScript.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_EndKey.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_LineSet.cs" />
@@ -144,13 +142,7 @@
      <Compile Include="Assets\Resources\Iki\EnemySpawn.cs" />
      <Compile Include="Assets\Resources\Iki\EnemySpawn3.cs" />
      <Compile Include="Assets\Resources\Iki\EnemySpown_2.cs" />
-<<<<<<< HEAD
      <Compile Include="Assets\Resources\Iki\Script\EnemySpawn4.cs" />
-     <Compile Include="Assets\Resources\Kaede\Scripts\Enemy.cs" />
-     <Compile Include="Assets\Resources\Kaede\Scripts\EnemySqwan.cs" />
-     <Compile Include="Assets\Resources\Kaede\Scripts\FirstPersonController.cs" />
-=======
->>>>>>> origin/kodama
      <Compile Include="Assets\Resources\Kaede\Scripts\N2_status.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\Test\Enemy.cs" />
      <Compile Include="Assets\Resources\Kaede\Scripts\Test\FirstPersonController.cs" />
@@ -265,8 +257,20 @@
      <Compile Include="Assets\Resources\Kai\Standard Assets\Effects\TemporalAntiAliasing\TemporalAntiAliasing.cs" />
      <Compile Include="Assets\Resources\Kai\Standard Assets\Effects\TonemappingColorGrading\TonemappingColorGrading.cs" />
      <Compile Include="Assets\Resources\Kai\Zombie\Model\CreateInstance.cs" />
+     <Compile Include="Assets\Resources\Nemoto\A_Boomer_move.cs" />
+     <Compile Include="Assets\Resources\Nemoto\A_explosion.cs" />
      <Compile Include="Assets\Resources\Nemoto\A_normal_enemy_move.cs" />
+     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\PseudoVolumetricExplosion.cs" />
+     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\ExploderComponent.cs" />
+     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\LightComponent.cs" />
+     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\ParticleComponent.cs" />
+     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\PseudoVolumetricComponent.cs" />
+     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent.cs" />
+     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\exploders\Exploder.cs" />
+     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
+     <Compile Include="Assets\Resources\Nemoto\zombie\Zombi_Ani_test.cs" />
      <Compile Include="Assets\Resources\Ogiyama\Catch.cs" />
+     <Compile Include="Assets\Resources\Ogiyama\NameCatch.cs" />
      <Compile Include="Assets\Resources\Ogiyama\NewData.cs" />
      <Compile Include="Assets\Resources\Shihara\Script\Player_Start.cs" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
@@ -324,15 +328,12 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Resources\Kaede\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-     <None Include="Assets\Resources\Hasegawa\PyroParticles\Readme.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Stage\Shader\AlphaMask.shader" />
-     <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
-     <None Include="Assets\Resources\Hasegawa\Material\MySharder.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
@@ -365,6 +366,7 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
+     <None Include="Assets\Resources\Nemoto\True Explosions\System\Shaders\SphereVolumetricExplosion.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\DepthOfField\Resources\BokehSplatting.shader" />
      <None Include="Assets\Resources\Kaede\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
@@ -382,6 +384,7 @@
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
+     <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -405,17 +408,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
-<<<<<<< HEAD
- <HintPath>C:/Users/nwuser/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/nwuser/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
-=======
- <HintPath>C:/Users/nwuser.DA/Documents/3年/卒業制作/zemi/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
- </Reference>
- <Reference Include="websocket-sharp">
- <HintPath>C:/Users/nwuser.DA/Documents/3年/卒業制作/zemi/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
->>>>>>> origin/kodama
+ <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

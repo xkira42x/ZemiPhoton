@@ -14,7 +14,10 @@ public class A_Boomer_move : A_normal_enemy_move{
         A_hp_init = 50;                                //>ブマーのHP
         A_power = 30;                                  //>ブマーの攻撃力
         A_target_magnitude = 4f;                       //>ブマーの攻撃範囲
-        A_Player_Select();                             //>プレイヤーターゲットロックオン     
+//        A_Player_Select();                             //>プレイヤーターゲットロックオン     
+//		if (PhotonNetwork.player.IsMasterClient)
+		photonView.RPC ("TargetSet",PhotonTargets.AllBuffered, Random.Range (1, PhotonNetwork.playerList.Length+1));
+		//IK追記
         A_anim = GetComponent<Animator>();
         A_P_info = A_Player.GetComponent<N2_status>();
         A_B_info = A_Bullet.GetComponent<Bullet>();
@@ -58,12 +61,12 @@ public class A_Boomer_move : A_normal_enemy_move{
             {
                 //プレイヤーダメージ処理
                 //A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
-                //A_P_info.Damage(A_power);
+		if(PhotonNetwork.player.IsMasterClient)//IK追記　ダメージ判定はホスト側で行う
+		A_P_info.Damage(A_power);
                 A_delay_flg = false;    //ダメージが入った時にflgをfalse
                 //----------------------//
             }
         }
 
     }
-
 }
