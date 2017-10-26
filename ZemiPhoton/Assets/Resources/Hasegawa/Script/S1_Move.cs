@@ -6,10 +6,6 @@ using System.Runtime.InteropServices;
 
 public class S1_Move : MonoBehaviour {
 
-	//public enum STATUS{Idol,Walk,Jump,Crouch,CrouchMove};
-	//STATUS status = STATUS.Idol;
-	//public string Status{ get { return status.ToString (); } }
-
 	const byte IDOL = 0,WALK = 1,JUMP = 2,CROUCH = 3,CROUCHMOVE = 4;
 	byte status = IDOL;
 	public byte Status{ get { return status; } }
@@ -54,7 +50,6 @@ public class S1_Move : MonoBehaviour {
 		Crouch ();
 
 		IsGround ();
-		//status = (!isGround) ? STATUS.Jump : (_motion == 1) ? STATUS.Walk : (isCrouch) ? STATUS.Crouch : STATUS.Idol;
 		status = (!isGround) ? JUMP : (_motion == 1) ? WALK : (isCrouch) ? CROUCH : IDOL;
 	}
 
@@ -78,9 +73,9 @@ public class S1_Move : MonoBehaviour {
 		float width = 0f;
 		if (Input.GetKey (KeyCode.LeftControl)) {
 			width = -1f;
-			//isCrouch = true;
-		} //else
-			//isCrouch = false;
+			isCrouch = true;
+		} else
+			isCrouch = false;
 		myCollection.localPosition = new Vector3 (0, width, 0);
 	}
 }

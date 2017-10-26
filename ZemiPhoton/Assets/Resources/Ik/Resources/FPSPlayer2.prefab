@@ -2046,7 +2046,7 @@ GameObject:
   - component: {fileID: 114266032933655284}
   - component: {fileID: 114251246918543674}
   m_Layer: 10
-  m_Name: FPSPlayer
+  m_Name: FPSPlayer2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5299,8 +5299,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787174758562178}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
-  m_Controller: {fileID: 9100000, guid: b772e2344f26c0c4ab8bca948e9c1616, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 16f4a7b377148314ea01f2cab8052822, type: 3}
+  m_Controller: {fileID: 9100000, guid: f894220391630ac4e92ef203fc8819a1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
