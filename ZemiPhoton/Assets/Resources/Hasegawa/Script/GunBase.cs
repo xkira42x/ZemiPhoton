@@ -36,7 +36,7 @@ public class GunBase : MonoBehaviour {
 	/// <para>引数　なし</para>
 	/// <para>戻り値　なし</para>
 	/// </summary>
-	void Start(){
+	public void Start(){
 		myRigidbody = gameObject.GetComponent<Rigidbody> ();
 		gameObject.name = WeaponName;
 	}

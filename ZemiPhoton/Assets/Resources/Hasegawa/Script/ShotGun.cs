@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ShotGun : GunBase {
 	[SerializeField]float colllectingRate = 4;
+
+	void Start(){
+		base.Start ();
+	}
+
 	public override void Action (){
 		if (Next && Magazine > 0) {
 			Magazine--;

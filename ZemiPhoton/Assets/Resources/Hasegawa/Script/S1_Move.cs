@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 
 public class S1_Move : MonoBehaviour {
 
-	public enum STATUS{Idol,Walk,Jump,Squat};
-	STATUS status = STATUS.Idol;
-	public string Status{ get { return status.ToString (); } }
+	const byte IDOL = 0,WALK = 1,JUMP = 2,CROUCH = 3,CROUCHMOVE = 4;
+	byte status = IDOL;
+	public byte Status{ get { return status; } }
 
 	[SerializeField]Transform myCollection;
 	// 移動速度
@@ -30,7 +30,7 @@ public class S1_Move : MonoBehaviour {
 	void IsGround(){
 		isGround = Physics.Raycast (transform.position, Vector3.down, 0.3f);
 	}
-	bool isSquat = false;
+	bool isCrouch = false;
 
 	Rigidbody myRigidbody;
 
@@ -47,10 +47,10 @@ public class S1_Move : MonoBehaviour {
 		S_Jump();
 
 		// しゃがみ
-		Squat ();
+		Crouch ();
 
 		IsGround ();
-		status = (!isGround) ? STATUS.Jump : (_motion == 1) ? STATUS.Walk : (isSquat) ? STATUS.Squat : STATUS.Idol;
+		status = (!isGround) ? JUMP : (_motion == 1) ? WALK : (isCrouch) ? CROUCH : IDOL;
 	}
 
 	// キー移動判定
@@ -69,13 +69,13 @@ public class S1_Move : MonoBehaviour {
 	}
 
 	// しゃがむ
-	void Squat(){
+	void Crouch(){
 		float width = 0f;
 		if (Input.GetKey (KeyCode.LeftControl)) {
 			width = -1f;
-			//isSquat = true;
-		} //else
-			//isSquat = false;
+			isCrouch = true;
+		} else
+			isCrouch = false;
 		myCollection.localPosition = new Vector3 (0, width, 0);
 	}
 }
