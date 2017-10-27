@@ -4,26 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //ゲームを強制終了させるキーです
-public class N3_EndKey : MonoBehaviour {
+public class N3_EndKey : Photon.MonoBehaviour {
 
-	public GameObject EndUI;
+	GameObject EndUI;
 
-	GameObject gObj;
+	GameObject LoginUI;
 	// Update is called once per frame
+	void Start(){
+		EndUI=GameObject.Find ("Canvas").transform.Find("EndUI").gameObject;
+		LoginUI= GameObject.Find ("UI").transform.Find("loginUI").gameObject;
+	}
 	void Update () {
 		//Escapeキーでゲーム終了ボタンを表示
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			gObj = Instantiate (EndUI);
-			gObj.transform.name = EndUI.name;
-			gObj.transform.parent=GameObject.Find ("Canvas").transform;
+			EndUI.SetActive (true);
+			Cursor.lockState=CursorLockMode.None;	//ロックなし
 			ShowMouse (true);
 		}
 	}
 	public void EndButton(){
-		Application.Quit ();
+		LoginUI =GameObject.Find ("UI").transform.Find("loginUI").gameObject;
+		LoginUI.SetActive(true);
+		PhotonNetwork.LeaveRoom ();
 	}
 	public void ContnButton(){
-		Destroy (GameObject.Find(EndUI.name));
+		EndUI = GameObject.Find ("EndUI");
+		EndUI.SetActive (false);
+		Cursor.lockState=CursorLockMode.Confined;	//画面内にロック
 		ShowMouse (false);
 	}
 	public void ShowMouse(bool flg){

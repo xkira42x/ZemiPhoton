@@ -47,9 +47,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\WebSocket\WebSocket.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\GlobalFog.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
+     <None Include="Assets\Standard Assets\Effects\ImageEffects\Readme.txt" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
      <None Include="Assets\Resources\Hasegawa\AssetStore\PyroParticles\Prefab\AdditiveTintable.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\license.txt" />
@@ -59,6 +62,7 @@
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\Resources\Kaede\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Stage\Shader\AlphaMask.shader" />
      <None Include="Assets\Resources\Ogiyama\PHPについて.txt" />
