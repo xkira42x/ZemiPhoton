@@ -35,7 +35,7 @@ public class N3_EndKey : Photon.MonoBehaviour {
 		EndUI = GameObject.Find ("EndUI");
 		EndUI.SetActive (false);
 		PhotonNetwork.LeaveRoom ();
-		DestroyImmediate (this.gameObject,true);
+		Destroy(this.gameObject);
 
 	}
 	public void ContnButton(){
