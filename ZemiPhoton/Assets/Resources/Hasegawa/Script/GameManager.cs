@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator TimeCountDown(){
 		while (true) {
 			yield return new WaitForSeconds (1.0f);
-			timeLimit -= .5f;
 			timeText.text = "Time : " + timeLimit.ToString ();
 			if (timeLimit <= 0) {
 				GameMessage.text = "Time Over";
 				break;
 			}
+			timeLimit -= .5f;
 		}
 	}
 }

@@ -313,7 +313,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 //		player.GetPhotonView ().RPC ("SetHP", PhotonTargets.AllBuffered, 100);
 
 		// メニュー項目の削除
-		foreach (GameObject g in MenuItems)	Destroy (g);
+		foreach (GameObject g in MenuItems)	g.SetActive(false);
 
 	}
 
