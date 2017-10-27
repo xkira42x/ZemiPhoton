@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HandGun : GunBase {
 
-	void Start(){
-		base.Start ();
+	void Awake(){
+		base.Awake ();
 	}
 
 	public override void Action (){
