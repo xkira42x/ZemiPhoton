@@ -10,23 +10,23 @@ public class A_Boomer_move : A_normal_enemy_move{
 
     // Use this for initialization
     void Start() {
-
+		base.Start ();
         A_hp_init = 50;                                //>ブマーのHP
         A_power = 30;                                  //>ブマーの攻撃力
         A_target_magnitude = 4f;                       //>ブマーの攻撃範囲
 //        A_Player_Select();                             //>プレイヤーターゲットロックオン     
-//		if (PhotonNetwork.player.IsMasterClient)
-		photonView.RPC ("A_Player_Select",PhotonTargets.AllBuffered);
+		/*if (PhotonNetwork.player.IsMasterClient)
+			photonView.RPC ("TargetSet",PhotonTargets.AllBuffered,Random.Range (1, PhotonNetwork.playerList.Length+1));
 		//IK追記
-        A_anim = GetComponent<Animator>();
+       /* A_anim = GetComponent<Animator>();
         A_P_info = A_Player.GetComponent<N2_status>();
         A_B_info = A_Bullet.GetComponent<Bullet>();
         A_hp = A_hp_init;                               //>体力初期化
-        A_spd = Random.Range(0.02f, 0.04f);             //>ブマーの速度
         A_state = A_enemy_state.A_vsb;
-        A_anim.SetBool("Walking", true);
+        */
         ////////////////////////////////
-
+		A_spd = Random.Range(0.02f, 0.04f);             //>ブマーの速度
+		A_anim.SetBool("Walking", true);
 
         //アニメーションの変数変わっているため、調整
 
@@ -38,7 +38,7 @@ public class A_Boomer_move : A_normal_enemy_move{
 
 
         /////////////////////////////////////
-    }
+	}
     // Update is called once per frame
     void Update()
     {

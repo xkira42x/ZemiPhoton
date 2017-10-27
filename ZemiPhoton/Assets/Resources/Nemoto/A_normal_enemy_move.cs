@@ -37,9 +37,10 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     //↑の列挙の状態のアニメーション情報
      protected string[] A_animator_state = { "play" , "run", "attack", "play", "dide" };//play2つの理由→ヒットモーションなし
 
-    void Start()
+	protected void Start()
     {
 //        A_Player_Select();                             //>プレイヤーをランダムで参照（狙う）
+		if (PhotonNetwork.player.IsMasterClient)
 		TargetSelect();
 			//IK追記
         A_anim = GetComponent<Animator>();
@@ -238,7 +239,6 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 			A_Player = GameObject.Find("Player" + Random.Range(1, PhotonNetwork.playerList.Length+1).ToString());//>1P～4Pをランダムで参照
         } while (A_Player == null);//>プレイヤーが居たら抜け出す
 		A_P_info = A_Player.GetComponent<N2_status> ();
-		Debug.Log ("AP:"+A_Player);
 
     }
 
@@ -255,7 +255,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 	/// </summary>
 
 	[PunRPC]
-	protected virtual void TargetSet(int ss){
+	protected void TargetSet(int ss){
 		//数字に応じたプレイヤーをターゲットに代入
 		A_Player = GameObject.Find ("Player" + ss);
 
@@ -264,11 +264,12 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 		}
 		A_P_info = A_Player.GetComponent<N2_status> ();
 
+		Debug.Log ("AP:"+A_Player);
 	}
 	public string TargetGet(){
 		return A_Player.transform.name;
 	}
-	protected void TargetSelect(){
+	protected virtual void TargetSelect(){
 
 			photonView.RPC ("TargetSet",PhotonTargets.AllBuffered, Random.Range (1, PhotonNetwork.playerList.Length+1));
 
