@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AssaultRifle : GunBase {
 
-	void Start(){
-		base.Start ();
+	public override void Awake (){
+		base.Awake ();
 	}
 
 	public override void Action (){

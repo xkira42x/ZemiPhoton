@@ -17,9 +17,6 @@ public class S1_Move : MonoBehaviour {
 	float _motion = 0;
 	public float motion{ get { return _motion; } }
 
-	// ジャンプ判定群
-	const byte NONE=0,UP=1,DOWN=2;
-	byte S_Jtype = NONE;
 	// 重力
 	float JumpGravity;
 	// ジャンプしている

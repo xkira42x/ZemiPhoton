@@ -11,7 +11,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 	[SerializeField]public Transform CameraT;
 	[SerializeField]Text UI;
 	bool ShowUI = false;
-	S3_Shot shot;
+	[SerializeField]S3_Shot shot;
 
 	RaycastHit hitInfo;
 

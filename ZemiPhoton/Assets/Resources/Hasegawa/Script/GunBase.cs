@@ -28,7 +28,7 @@ public class GunBase : MonoBehaviour {
 	// 銃を取得した際の向きを指定
 	[SerializeField]Vector3 Rotate;
 	// 物理処理
-	Rigidbody myRigidbody;
+	[SerializeField]Rigidbody myRigidbody;
 
 	/// <summary>
 	/// <para>名前　Start</para>
@@ -36,8 +36,8 @@ public class GunBase : MonoBehaviour {
 	/// <para>引数　なし</para>
 	/// <para>戻り値　なし</para>
 	/// </summary>
-	public void Start(){
-		myRigidbody = gameObject.GetComponent<Rigidbody> ();
+	public virtual void Awake(){
+		myRigidbody = GetComponent<Rigidbody> ();
 		gameObject.name = WeaponName;
 	}
 
@@ -110,11 +110,13 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値　なし</para>
 	/// </summary>
 	public void ShotSetting(S3_Shot S_Shot){
+		myRigidbody.useGravity = false;
+		myRigidbody.constraints = RigidbodyConstraints.FreezeAll;
 		transform.localRotation = Quaternion.Euler (Rotate);
 		transform.localPosition = Vector3.zero;
 		CameraT = S_Shot.CameraT;
 		Magazine = MaxMagazine;
-		myRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+		gameObject.layer = LayerMask.NameToLayer ("Default");
 	}
 
 	/// <summary>
@@ -124,8 +126,10 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値　なし</para>
 	/// </summary>
 	public void ThrowAway(){
-		transform.parent = null;
+		myRigidbody.useGravity = true;
 		myRigidbody.constraints = RigidbodyConstraints.None;
+		transform.parent = null;
+		gameObject.layer = LayerMask.NameToLayer ("Item");
 	}
 
 	/// <summary>
