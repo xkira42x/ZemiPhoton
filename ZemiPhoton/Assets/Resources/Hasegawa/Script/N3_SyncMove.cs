@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class N3_SyncMove : Photon.MonoBehaviour {
 
-	S1_Move S_Move;
-
 	//IK追記
 	N15_SizeOf SO;
 
@@ -17,7 +15,6 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 	void Awake(){
 		SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();
 
-		S_Move = GetComponent<S1_Move> ();
 		lastPosition = syncPosition = transform.position;
 	}
 
@@ -37,7 +34,6 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 		syncPosition = pos;
 
 		//IK追記
-
 		SO.AddSize ((int)pos.x);
 		SO.AddSize ((int)pos.y);
 		SO.AddSize ((int)pos.z);

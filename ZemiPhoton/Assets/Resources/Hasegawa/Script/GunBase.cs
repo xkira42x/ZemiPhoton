@@ -36,7 +36,7 @@ public class GunBase : MonoBehaviour {
 	/// <para>引数　なし</para>
 	/// <para>戻り値　なし</para>
 	/// </summary>
-	public void Awake(){
+	public virtual void Awake(){
 		myRigidbody = GetComponent<Rigidbody> ();
 		gameObject.name = WeaponName;
 	}

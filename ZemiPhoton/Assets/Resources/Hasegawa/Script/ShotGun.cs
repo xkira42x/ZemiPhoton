@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShotGun : GunBase {
 	[SerializeField]float colllectingRate = 4;
 
-	void Awake(){
+	public override void Awake (){
 		base.Awake ();
 	}
 

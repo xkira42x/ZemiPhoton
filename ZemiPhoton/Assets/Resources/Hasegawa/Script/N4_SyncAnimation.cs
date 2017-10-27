@@ -31,5 +31,6 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	[PunRPC]
 	void SyncAnimation(byte status){
 		animator.Play (AnimationName [status]);
+		SO.AddSize ((int)status);
 	}
 }
