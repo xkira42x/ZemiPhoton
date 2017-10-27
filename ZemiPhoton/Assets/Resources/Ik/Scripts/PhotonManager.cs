@@ -289,6 +289,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 	//　部屋に入室した時に呼ばれるメソッド
 	void OnJoinedRoom() {
 		loginUI.SetActive (false);
+		ResultText_.gameObject.SetActive(false);
 		Debug.Log ("入室");
 
 		//　InputFieldに入力した名前を設定
