@@ -191,7 +191,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
             {
                 /*プレイヤーダメージ処理*/
                 //A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
-		if(PhotonNetwork.player.IsMasterClient)//IK追記　ダメージ判定はホスト側で行う
+		//if(PhotonNetwork.player.IsMasterClient)//IK追記　ダメージ判定はホスト側で行う
                 A_P_info.Damage(A_power);
 
                 A_delay_flg = false;    //ダメージが入った時にflgをfalse
@@ -218,7 +218,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     /// <param name="col"></param>
     protected void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name.StartsWith("Bullet") && A_state != A_enemy_state.A_death)
+		if (col.gameObject.tag=="Bullet" && A_state != A_enemy_state.A_death)
         {
             A_anim.SetBool(A_animator_state[(int)A_state], false);
             

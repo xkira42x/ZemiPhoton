@@ -14,16 +14,6 @@ public class A_Boomer_move : A_normal_enemy_move{
         A_hp_init = 50;                                //>ブマーのHP
         A_power = 30;                                  //>ブマーの攻撃力
         A_target_magnitude = 4f;                       //>ブマーの攻撃範囲
-//        A_Player_Select();                             //>プレイヤーターゲットロックオン     
-		/*if (PhotonNetwork.player.IsMasterClient)
-			photonView.RPC ("TargetSet",PhotonTargets.AllBuffered,Random.Range (1, PhotonNetwork.playerList.Length+1));
-		//IK追記
-       /* A_anim = GetComponent<Animator>();
-        A_P_info = A_Player.GetComponent<N2_status>();
-        A_B_info = A_Bullet.GetComponent<Bullet>();
-        A_hp = A_hp_init;                               //>体力初期化
-        A_state = A_enemy_state.A_vsb;
-        */
         ////////////////////////////////
 		A_spd = Random.Range(0.02f, 0.04f);             //>ブマーの速度
 		A_anim.SetBool("Walking", true);
@@ -32,10 +22,6 @@ public class A_Boomer_move : A_normal_enemy_move{
 
         // string[] A_animator_state = { "Walking", "Walking", "Being Strangled", "Shove Reaction", "Dying" };//play2つの理由→ヒットモーションなし
         A_animator_state = new[]{ "Walking", "Walking", "Being Strangled", "Shove Reaction", "Dying" };//play2つの理由→ヒットモーションなし
-
-
-
-
 
         /////////////////////////////////////
 	}
@@ -57,11 +43,11 @@ public class A_Boomer_move : A_normal_enemy_move{
            
             //攻撃判定
             A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude - A_target_magnitude;//>二点間の距離
-            if (A_delay_flg == true && A_magnitude <= A_target_magnitude)
+            if (A_delay_flg == true && A_magnitude <= A_target_magnitude+2)
             {
                 //プレイヤーダメージ処理
                 //A_P_info -= A_power; //プレイヤーのHPに自分の攻撃分減算する
-		if(PhotonNetwork.player.IsMasterClient)//IK追記　ダメージ判定はホスト側で行う
+		//if(PhotonNetwork.player.IsMasterClient)//IK追記　ダメージ判定はホスト側で行う
 		A_P_info.Damage(A_power);
                 A_delay_flg = false;    //ダメージが入った時にflgをfalse
                 //----------------------//

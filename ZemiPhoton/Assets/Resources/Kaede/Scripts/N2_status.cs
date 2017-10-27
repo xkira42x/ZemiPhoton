@@ -10,8 +10,8 @@ public class N2_status: Photon.MonoBehaviour {
 	public short Hp{ get { return hp; } set { hp = value; } }
 	int no;
 	public int No {	get { return no; } set { no = value; } }
-	public void Damage(short d){hp -= d;HpSlider.value = hp;HitPoint.value = hp;
-		Debug.Log ("DMG:"+this.gameObject.name);
+	public void Damage(short d){hp -= d;HpSlider.value = hp;
+		HitPoint.value = hp;
 	}
 
 	bool find = false;
@@ -44,13 +44,13 @@ public class N2_status: Photon.MonoBehaviour {
 		//		HpSlider = GameObject.Find ("HpSlider" + no.ToString ()).GetComponent<Slider> ();
 		myText = GameObject.Find ("MyPlayerName").GetComponent<Text> ();
 		HpSlider = GameObject.Find ("MyHP").GetComponent<Slider> ();
-		HitPoint.gameObject.name = "tes"+no.ToString();
+		HitPoint = this.GetComponentInChildren<Slider> ();
 
 		Debug.Log ("No:"+no);
 		gameObject.name = "Player" + no.ToString ();
 		if (no == 0)
 			Debug.Log ("番号が割りふられていません" + gameObject.name);
-//		namePlate = nameText.transform.parent.gameObject;
+		namePlate = nameText.transform.parent.gameObject;
 //		HitPointPlate = HitPoint.transform.parent.gameObject;
 
 	}
@@ -77,7 +77,7 @@ public class N2_status: Photon.MonoBehaviour {
 				find = true;
 		}
 
-//		namePlate.transform.rotation = Camera.main.transform.rotation;
+		namePlate.transform.rotation = Camera.main.transform.rotation;
 //		HitPoint.transform.rotation = Camera.main.transform.rotation;
 
 	}
@@ -90,6 +90,7 @@ public class N2_status: Photon.MonoBehaviour {
 	void SetHP(short hp){
 		HitPoint.value = hp;
 	}
+
 	/*	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (stream.isWriting) {
 			stream.SendNext (no);
