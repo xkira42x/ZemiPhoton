@@ -108,6 +108,7 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\AssaultRifle.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Bullet.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\GameManager.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\GunBase.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\HandGun.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MyLOD.cs" />

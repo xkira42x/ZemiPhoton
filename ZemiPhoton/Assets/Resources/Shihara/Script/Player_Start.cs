@@ -61,6 +61,7 @@ public class Player_Start : Photon.MonoBehaviour {
             Debug.Log("start");
             start = true;
 			PM.GameStart ();
+			photonView.RPC ("GAMESTART", PhotonTargets.All);
         }
         check = 0;
     }
@@ -69,4 +70,8 @@ public class Player_Start : Photon.MonoBehaviour {
     {
         ok = bb;
     }
+	[PunRPC]
+	void GAMESTART(){
+		StartCoroutine (PM.gameManager.TimeCountDown ());
+	}
 }

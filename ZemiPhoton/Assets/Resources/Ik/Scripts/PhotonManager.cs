@@ -14,6 +14,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 */
 //	[SerializeField]string roomName = "myRoomName";
 
+	[SerializeField]public GameManager gameManager;
 	[SerializeField]
 	GameObject[] MenuItems;
 
@@ -334,9 +335,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 		EnteringTheRoom = true;
 	}
 	void Update(){
-		if(Input.GetKeyUp(KeyCode.P)){
+		/*if(Input.GetKeyUp(KeyCode.P)){
 			GameStart ();
-		}
+		}*/
 	}
 /*	void Start(){
 		ConnectResult = GameObject.Find ("ConnectResult").GetComponent<Text> ();
