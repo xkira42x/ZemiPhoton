@@ -73,6 +73,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		foreach (IPAddress address in adrList){
 			ipAddress = address.ToString ();
 		}
+		ipAddress="192.168.43.29";
 		ServerAddress = ipAddress+"/3zemi/DB_test_unity_input.php";
 		//Debug.Log (ipAddress);
 		StartCoroutine ("DataAccess");
@@ -159,6 +160,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 		foreach (IPAddress address in adrList){
 			ipAddress = address.ToString ();
 		}
+		ipAddress="192.168.43.29";
 		ServerAddress = ipAddress+"/3zemi/DB_test_unity_select_name.php";
 		StartCoroutine ("Access");	//Accessコルーチンの開始
 

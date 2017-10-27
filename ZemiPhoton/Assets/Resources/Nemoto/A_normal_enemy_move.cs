@@ -40,6 +40,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     void Start()
     {
 //        A_Player_Select();                             //>プレイヤーをランダムで参照（狙う）
+		TargetSelect();
 			//IK追記
         A_anim = GetComponent<Animator>();
 		A_P_info = A_Player.GetComponent<N2_status>();
@@ -229,12 +230,16 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     /// <summary>
     /// プレイヤー参照（1P～4Pランダムで狙う）
     /// </summary>
+	[PunRPC]
     protected virtual void A_Player_Select()
     {
         do
         {
-            A_Player = GameObject.Find("Player" + Random.Range(1, 3).ToString());//>1P～4Pをランダムで参照
+			A_Player = GameObject.Find("Player" + Random.Range(1, PhotonNetwork.playerList.Length+1).ToString());//>1P～4Pをランダムで参照
         } while (A_Player == null);//>プレイヤーが居たら抜け出す
+		A_P_info = A_Player.GetComponent<N2_status> ();
+		Debug.Log ("AP:"+A_Player);
+
     }
 
 /*

@@ -72,9 +72,8 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
-     <None Include="Assets\Resources\Hasegawa\BasicBeamShot\sh\Add_UVScroll_sh.shader" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
-     <None Include="Assets\Resources\Hasegawa\PyroParticles\Prefab\Materials\AdditiveTintable.shader" />
+     <None Include="Assets\Resources\Hasegawa\AssetStore\PyroParticles\Prefab\AdditiveTintable.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\DepthOfField\Resources\DepthOfField.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\license.txt" />
@@ -84,7 +83,6 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\AntiAliasing\FXAA\Resources\FXAA.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\TonemappingColorGrading\Resources\HistogramRender.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
-     <None Include="Assets\Resources\Hasegawa\BasicBeamShot\HowToUse_JP.txt" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\AntiAliasing\SMAA\Resources\SMAA.shader" />
@@ -94,11 +92,8 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\Bloom\Resources\Bloom.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
-     <None Include="Assets\Resources\Hasegawa\BasicBeamShot\sh\Sprite_Add_sh.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
-     <None Include="Assets\Resources\Hasegawa\BasicBeamShot\sh\GeroBeam_sh.shader" />
-     <None Include="Assets\Resources\Hasegawa\BasicBeamShot\sh\BeamLine_sh.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Resources\Kaede\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
@@ -146,7 +141,6 @@
      <None Include="Assets\Resources\Kaede\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
-     <None Include="Assets\Resources\Hasegawa\BasicBeamShot\sh\AddColor_sh.shader" />
      <None Include="Assets\Resources\Kai\Model\skyscrapers\shaders\building.shader" />
      <None Include="Assets\Resources\Kaede\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
@@ -154,7 +148,6 @@
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\LensAberrations\Resources\LensAberrations.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\TonemappingColorGrading\Resources\HistogramCompute.compute" />
-     <None Include="Assets\Resources\Hasegawa\BasicBeamShot\HowToUse_EN.txt" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Resources\Kai\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />

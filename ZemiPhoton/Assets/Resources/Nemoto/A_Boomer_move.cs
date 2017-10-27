@@ -16,7 +16,7 @@ public class A_Boomer_move : A_normal_enemy_move{
         A_target_magnitude = 4f;                       //>ブマーの攻撃範囲
 //        A_Player_Select();                             //>プレイヤーターゲットロックオン     
 //		if (PhotonNetwork.player.IsMasterClient)
-		photonView.RPC ("TargetSet",PhotonTargets.AllBuffered, Random.Range (1, PhotonNetwork.playerList.Length+1));
+		photonView.RPC ("A_Player_Select",PhotonTargets.AllBuffered);
 		//IK追記
         A_anim = GetComponent<Animator>();
         A_P_info = A_Player.GetComponent<N2_status>();
