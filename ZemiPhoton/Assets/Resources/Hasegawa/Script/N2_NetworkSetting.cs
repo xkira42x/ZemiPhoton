@@ -9,13 +9,15 @@ public class N2_NetworkSetting : Photon.MonoBehaviour {
 	[SerializeField]S1_Move move;
 	[SerializeField]S2_Angle angle;
 	[SerializeField]GameObject Canvas;
-	void Start () {
+	[SerializeField]Rigidbody myRigidbody;
+	void Awake () {
 		if (photonView.isMine) {
 			myCamera.gameObject.SetActive (true);
 			Body.SetActive (false);
 			move.enabled = true;
 			angle.enabled = true;
 			Canvas.SetActive (true);
+			myRigidbody.useGravity = true;
 		}
 	}
 }

@@ -324,7 +324,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4473170181069296, guid: 155e3ba170a086c428fb19044e9ed6e7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.774909
+      value: -0.993
       objectReference: {fileID: 0}
     - target: {fileID: 4473170181069296, guid: 155e3ba170a086c428fb19044e9ed6e7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -332,7 +332,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4473170181069296, guid: 155e3ba170a086c428fb19044e9ed6e7, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -4.6272383
+      value: -0.505
       objectReference: {fileID: 0}
     - target: {fileID: 4473170181069296, guid: 155e3ba170a086c428fb19044e9ed6e7, type: 2}
       propertyPath: m_LocalRotation.x
@@ -396,6 +396,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114642221789993672, guid: 5d8ca438f2ca2c74c80491aebad36442,
+        type: 2}
+      propertyPath: MyGun
+      value: 
+      objectReference: {fileID: 1816797826}
+    - target: {fileID: 4336795678230726, guid: 5d8ca438f2ca2c74c80491aebad36442, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822557328513012, guid: 5d8ca438f2ca2c74c80491aebad36442, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224439770389269324, guid: 5d8ca438f2ca2c74c80491aebad36442,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d8ca438f2ca2c74c80491aebad36442, type: 2}
   m_IsPrefabParent: 0
@@ -441,6 +459,28 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9a68f3cc74f02344a8cc495b1727a46, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1181877469 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1787174758562178, guid: 5d8ca438f2ca2c74c80491aebad36442,
+    type: 2}
+  m_PrefabInternal: {fileID: 954101448}
+--- !u!114 &1181877477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1181877469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a1667243509a64bbfc0f36c60db90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1816797826 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114358706763756826, guid: 155e3ba170a086c428fb19044e9ed6e7,
+    type: 2}
+  m_PrefabInternal: {fileID: 823951977}
+  m_Script: {fileID: 11500000, guid: 33d2031d14575b54ea5c437043d47a18, type: 3}
 --- !u!1 &1989072671
 GameObject:
   m_ObjectHideFlags: 0
