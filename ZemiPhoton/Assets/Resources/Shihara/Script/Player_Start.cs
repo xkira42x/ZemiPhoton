@@ -22,6 +22,7 @@ public class Player_Start : Photon.MonoBehaviour {
 	void Start () {
 		//GameStart関数を呼ぶ為のコンポーネントの取得
 		PM = GameObject.Find ("PhotonManager").GetComponent<PhotonManager> ();
+		photonView.RPC("OK", PhotonTargets.All, true);
 	}
 	
 	// Update is called once per frame
@@ -29,8 +30,8 @@ public class Player_Start : Photon.MonoBehaviour {
 		if(photonView.isMine)
         //ボタン入力に変更////////////////////////////////
 	//        if (Input.GetKeyDown(KeyCode.Space)) OK();
-        if (Input.GetKeyDown(KeyCode.Space)) 
-			photonView.RPC("OK", PhotonTargets.All, true);
+    //    if (Input.GetKeyDown(KeyCode.Space)) 
+	//		photonView.RPC("OK", PhotonTargets.All, true);
 
 	if (Input.GetKeyDown (KeyCode.C))
 			Check (true);
@@ -39,7 +40,7 @@ public class Player_Start : Photon.MonoBehaviour {
 
     }
 
-    [PunRPC]
+//    [PunRPC]
     public void Check(bool Check_ok)
     {
 		//IK
