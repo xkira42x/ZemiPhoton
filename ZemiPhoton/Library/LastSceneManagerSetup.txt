@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Resources/Hasegawa/Image/Ik/Resources/main.unity
+- path: Assets/Resources/Ik/Resources/main.unity
   isLoaded: 1
   isActive: 1
