@@ -37,6 +37,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 
 	private GameObject player;
 
+	[SerializeField]
+	bool dbdebug=true;
+
 
 	void Start () {
 
@@ -153,9 +156,38 @@ public class PhotonManager : Photon.MonoBehaviour {
 		yield return null;
 	}
 
+	void PlayerLogin(){
+		//プレイヤー画面UI
+		playerUI.SetActive (true);
 
+		//　ルームオプションを設定
+		RoomOptions ro = new RoomOptions ();
+		//　ルームを見えるようにする
+		ro.IsVisible = true;
+		//　部屋の入室最大人数
+		ro.MaxPlayers = 4;
+
+
+		if (roomName.text != "") {
+			//　部屋がない場合は作って入室
+			PhotonNetwork.JoinOrCreateRoom (roomName.text, ro, TypedLobby.Default);
+		} else {
+			//　部屋が存在すれば
+			if (roomList.options.Count != 0) {
+				Debug.Log (roomList.options [roomList.value].text);
+				PhotonNetwork.JoinRoom (roomList.options [roomList.value].text);
+				//　部屋が存在しなければDefaultRoomという名前で部屋を作成
+			} else {
+				PhotonNetwork.JoinOrCreateRoom ("DefaultRoom", ro, TypedLobby.Default);
+			}
+		}
+	}
 	//　ログインボタンを押した時に実行するメソッド
 	public void LoginGame() {
+
+		if (dbdebug)
+			PlayerLogin ();
+
 		string hostname = Dns.GetHostName ();
 		IPAddress[] adrList = Dns.GetHostAddresses (hostname);
 		foreach (IPAddress address in adrList){
@@ -207,31 +239,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 			//ResultText_.GetComponent<Text> ().text = www.bytesDownloaded.ToString ();
 			//ResultText_.GetComponent<Text> ().text = www.bytesDownloaded.ToString ();
 
-			//プレイヤー画面UI
-			playerUI.SetActive(true);
-
-			//　ルームオプションを設定
-			RoomOptions ro = new RoomOptions ();
-			//　ルームを見えるようにする
-			ro.IsVisible = true;
-			//　部屋の入室最大人数
-			ro.MaxPlayers = 4;
-
-
-			if (roomName.text != "") {
-				//　部屋がない場合は作って入室
-				PhotonNetwork.JoinOrCreateRoom (roomName.text, ro, TypedLobby.Default);
-			} else {
-				//　部屋が存在すれば
-				if (roomList.options.Count != 0) {
-					Debug.Log (roomList.options [roomList.value].text);
-					PhotonNetwork.JoinRoom (roomList.options [roomList.value].text);
-					//　部屋が存在しなければDefaultRoomという名前で部屋を作成
-				} else {
-					PhotonNetwork.JoinOrCreateRoom ("DefaultRoom", ro, TypedLobby.Default);
-				}
-			}
-
+			PlayerLogin ();
 		}
 	}
 		

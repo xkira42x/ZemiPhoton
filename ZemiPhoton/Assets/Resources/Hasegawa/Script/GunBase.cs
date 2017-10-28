@@ -116,7 +116,7 @@ public class GunBase : MonoBehaviour {
 		transform.localPosition = Vector3.zero;
 		CameraT = S_Shot.CameraT;
 		Magazine = MaxMagazine;
-		gameObject.layer = LayerMask.NameToLayer ("Default");
+		gameObject.layer = LayerMask.NameToLayer ("Possessing");
 	}
 
 	/// <summary>

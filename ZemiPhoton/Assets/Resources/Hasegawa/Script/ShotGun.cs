@@ -17,7 +17,8 @@ public class ShotGun : GunBase {
 			PlayEffect ();
 			Next = false;
 			Delay (.5f);
-		}
+		}else
+			gameObject.SendMessageUpwards ("OutOfAmmoMSG", SendMessageOptions.DontRequireReceiver);
 	}
 	Vector3 Vec3Rand { get { return new Vector3 (Random.Range (-colllectingRate, colllectingRate), Random.Range (-colllectingRate, colllectingRate), Random.Range (-colllectingRate, colllectingRate)); } }
 }
