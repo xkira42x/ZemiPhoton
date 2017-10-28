@@ -59,8 +59,8 @@ public class N2_status: Photon.MonoBehaviour {
 	}
 	IEnumerator SyncHp(){
 		while (true) {
-//			photonView.RPC ("SetHP", PhotonTargets.OthersBuffered, Hp);
-			yield return new WaitForSeconds(0.5f);
+			photonView.RPC ("SetHP", PhotonTargets.OthersBuffered, Hp);
+			yield return new WaitForSeconds(0.1f);
 		}
 	}
 
