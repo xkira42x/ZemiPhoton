@@ -15,8 +15,8 @@ public class N2_NetworkSetting : Photon.MonoBehaviour {
 			GetComponent<Rigidbody> ().useGravity = true;
 			Destroy (body);
 		} else {
-			Destroy (GetComponent<S1_Move> ());
-			Destroy (GetComponent<S2_Angle> ());
+			GetComponent<S1_Move> ().enabled = false;
+			GetComponent<S2_Angle> ().enabled = false;
 			Destroy (myCanvas);
 		}
 

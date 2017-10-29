@@ -11,6 +11,7 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	Animator animator;
 	// アニメーションの名前を格納
 	readonly string[] AnimationName = { "Idol", "Walk", "Jump", "Crouch", "CrouchMove" };
+	byte lastStatus = 0;
 
 	//IK追記
 	N15_SizeOf SO;
@@ -23,14 +24,16 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	}
 
 	void Update () {
-		if (photonView.isMine) {
-			photonView.RPC ("SyncAnimation", PhotonTargets.Others, S_Move.Status);
+		byte status = S_Move.Status;
+			if (photonView.isMine && (lastStatus != status)) {
+			photonView.RPC ("SyncAnimation", PhotonTargets.Others, status);
+			lastStatus = status;
 		}
 	}
 		
 	[PunRPC]
 	void SyncAnimation(byte status){
-		animator.Play (AnimationName [status]);
-		SO.AddSize ((int)status);
+			animator.Play (AnimationName [status]);
+			SO.AddSize ((int)status);
 	}
 }

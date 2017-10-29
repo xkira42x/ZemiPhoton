@@ -32,6 +32,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 
 			if (Input.GetKeyDown (KeyCode.R)) {
 				MyGun.ReloadRequest ();
+                UI.text = "";
 			}
 
 			if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
@@ -40,7 +41,6 @@ public class S3_Shot : Photon.MonoBehaviour {
 					gameObject.SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
 				}
 			}
-
 		}
 	}
 

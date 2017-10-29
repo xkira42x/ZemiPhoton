@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 public class S1_Move : MonoBehaviour {
 
 	const byte IDOL = 0,WALK = 1,JUMP = 2,CROUCH = 3,CROUCHMOVE = 4;
-	byte status = IDOL;
+	[SerializeField]byte status = IDOL;
 	public byte Status{ get { return status; } }
 
 	[SerializeField]Transform myCollection;
