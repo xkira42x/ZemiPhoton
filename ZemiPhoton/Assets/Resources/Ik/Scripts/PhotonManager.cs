@@ -60,6 +60,12 @@ public class PhotonManager : Photon.MonoBehaviour {
 	void OnJoinedLobby (){
 		Debug.Log ("ロビーに入る");
 		loginUI.SetActive (true);
+		GetIpAddress ();
+	}
+
+	[PunRPC]
+	void IpAddressSet(string ii){
+		ipAddress = ii;
 	}
 	//	アカウント作成ボタンを押した時の処理
 	public void CrateAccount(){
@@ -71,13 +77,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 	//　アカウント作成画面での処理
 	public void MakingAccount(){
 
-
-		string hostname = Dns.GetHostName ();
-		IPAddress[] adrList = Dns.GetHostAddresses (hostname);
-		foreach (IPAddress address in adrList){
-			ipAddress = address.ToString ();
-		}
-		ipAddress="192.168.43.29";
+//		ipAddress="172.20.10.0";
 		ServerAddress = ipAddress+"/3zemi/DB_test_unity_input.php";
 		//Debug.Log (ipAddress);
 		StartCoroutine ("DataAccess");
@@ -182,18 +182,20 @@ public class PhotonManager : Photon.MonoBehaviour {
 			}
 		}
 	}
-	//　ログインボタンを押した時に実行するメソッド
-	public void LoginGame() {
-
-		if (dbdebug)
-			PlayerLogin ();
-
+	void GetIpAddress(){
 		string hostname = Dns.GetHostName ();
 		IPAddress[] adrList = Dns.GetHostAddresses (hostname);
 		foreach (IPAddress address in adrList){
 			ipAddress = address.ToString ();
 		}
-		ipAddress="192.168.43.29";
+			photonView.RPC ("IpAddressSet", PhotonTargets.AllBuffered, ipAddress);
+	}
+	//　ログインボタンを押した時に実行するメソッド
+	public void LoginGame() {
+
+//f		if (dbdebug)
+//			PlayerLogin ();
+//		ipAddress="172.20.10.0";
 		ServerAddress = ipAddress+"/3zemi/DB_test_unity_select_name.php";
 		StartCoroutine ("Access");	//Accessコルーチンの開始
 

@@ -74,5 +74,6 @@ public class Player_Start : Photon.MonoBehaviour {
 	[PunRPC]
 	void GAMESTART(){
 		StartCoroutine (PM.gameManager.TimeCountDown ());
+		//Destroy (this);
 	}
 }
