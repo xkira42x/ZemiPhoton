@@ -20,6 +20,10 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     public GameObject A_Bullet;                //>弾オブジェクト
     protected Bullet A_B_info;                 //>弾の情報
     public GameObject A_enemy;
+
+	bool once = false;
+	float timer = 2;
+
     /// <summary>
     /// マップ外待機(アクティブfalse)、待機、視認、攻撃、hit、死亡
     /// </summary>
@@ -69,38 +73,44 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 
 
 
-        switch (A_state) {
-		/*case A_enemy_state.A_Stand_by://マップ外の待機状態(リセット)
-			A_hp = A_hp_init;
-			break;
-            */
-		case A_enemy_state.A_oov://待機状態
-             
-			if (A_anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.15f) {
+        switch (A_state)
+        {
+            /*case A_enemy_state.A_Stand_by://マップ外の待機状態(リセット)
+                A_hp = A_hp_init;
+                break;
+                */
+            case A_enemy_state.A_oov://待機状態
 
-				/*攻撃に切り替える*/
-				A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude;//>二点間の距離
-				if (A_magnitude <= A_target_magnitude) {
+                if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.15f)
+                {
+
+                    /*攻撃に切り替える*/
+                    A_magnitude = (transform.position - A_Player.transform.position).sqrMagnitude;//>二点間の距離
+                    if (A_magnitude <= A_target_magnitude)
+                    {
                         A_anim.SetBool(A_animator_state[(int)A_state], false);
                         A_state = A_enemy_state.A_atk;//攻撃範囲内にプレイヤーがいたら攻撃実行
-				} else {
+                    }
+                    else
+                    {
                         A_anim.SetBool(A_animator_state[(int)A_state], false);
                         A_state = A_enemy_state.A_vsb; //>プレイヤーが攻撃範囲外なら追いかける
-					
-				}
-				/****************/
-			}
-			break;
-      
-		case A_enemy_state.A_vsb://追いかけて来る状態(視認している)
+
+                    }
+                    /****************/
+                }
+                break;
+
+            case A_enemy_state.A_vsb://追いかけて来る状態(視認している)
 
                 /*条件で攻撃(stateを攻撃に切り替え)*/
-			A_magnitude = (transform.position - A_Player.transform.position).magnitude;//二点間の距離
-			if (A_magnitude <= A_target_magnitude) {
+                A_magnitude = (transform.position - A_Player.transform.position).magnitude;//二点間の距離
+                if (A_magnitude <= A_target_magnitude)
+                {
                     A_anim.SetBool(A_animator_state[(int)A_state], false);
                     A_state = A_enemy_state.A_atk;//プレイヤーと自分の距離が一定範囲以内なら攻撃へ
-			}
-            else
+                }
+                else
                 {
                     /******追尾*******/
                     transform.position = A_Unique_Move();
@@ -109,47 +119,57 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
                 /********************************/
                 break;
 
-		case A_enemy_state.A_atk://攻撃
-                /*攻撃判定処理*/
-			A_Attack ();
+            case A_enemy_state.A_atk://攻撃
+                                     /*攻撃判定処理*/
+                A_Attack();
                 /*************/
-			break;
+                break;
 
-		case A_enemy_state.A_hit://敵がダメージを受けた状態(撃たれるなど)
-                
+            case A_enemy_state.A_hit://敵がダメージを受けた状態(撃たれるなど)
+
                 /*ダメージ計算*/
-			A_hp -= A_B_info.Pow;
+                A_hp -= A_B_info.Pow;
                 /************/
-			if (A_hp <= 0) {//体力が0(以下)なら状態を死亡に遷移
+                if (A_hp <= 0)
+                {//体力が0(以下)なら状態を死亡に遷移
                     A_anim.SetBool(A_animator_state[(int)A_state], false);
                     A_state = A_enemy_state.A_death;
-                    
-			} else {
+
+                }
+                else
+                {
                     /*ヒットモーション*/
 
                     /****************/
                     /*まだ体力が余っているプレイヤーを追いかける*/
                     A_anim.SetBool(A_animator_state[(int)A_state], false);
                     A_state = A_enemy_state.A_vsb;
-			}
-                /************/
-			break;
-            
-		case A_enemy_state.A_death://死亡した状態(行動不能)		
-                                   /* if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
-                                { //0～1(始発から終点)
-                                       
-                                        PhotonNetwork.Destroy(this.gameObject);//確認用
-                                }
-                             */
-                Destroy(A_enemy, 2f);
-                if (A_enemy == null)//オブジェクトがnullなら
-                {
-                    PhotonNetwork.Destroy(A_enemy);
                 }
+                /************/
                 break;
-		}
-        
+
+		case A_enemy_state.A_death://死亡した状態(行動不能)		
+                                       /* if (A_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+                                    { //0～1(始発から終点)
+
+                                            PhotonNetwork.Destroy(this.gameObject);//確認用
+                                    }
+                                 */
+                                       //Destroy(A_enemy, 2f);
+			if (once)
+				PhotonNetwork.Destroy (A_enemy);
+			else {
+				timer -= Time.deltaTime;
+				if (timer <= 0)
+					once = true;
+			}
+                //if (A_enemy == null)//オブジェクトがnullなら
+                // {
+                //     PhotonNetwork.Destroy(A_enemy);
+                // }
+                break;
+        }
+
     }
 		
 

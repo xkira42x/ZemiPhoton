@@ -14,14 +14,8 @@ public class S1_Move : MonoBehaviour {
 	// 移動速度
 	[SerializeField]float speed = 0.1f;
 
-	float _motion = 0;
-	public float motion{ get { return _motion; } }
+	float motion = 0;
 
-	// 重力
-	float JumpGravity;
-	// ジャンプしている
-	bool isJumping = false;
-	public bool IsJumping{ get { return isJumping; } set { isJumping = value; } }
 	bool isGround;
 
 	void IsGround(){
@@ -47,7 +41,7 @@ public class S1_Move : MonoBehaviour {
 		Crouch ();
 
 		IsGround ();
-		status = (!isGround) ? JUMP : (_motion == 1) ? WALK : (isCrouch) ? CROUCH : IDOL;
+		status = (!isGround) ? JUMP : (motion == 1) ? WALK : (isCrouch) ? CROUCH : IDOL;
 	}
 
 	// キー移動判定
@@ -55,7 +49,7 @@ public class S1_Move : MonoBehaviour {
 		float horizontal = CrossPlatformInputManager.GetAxis ("Horizontal") * speed;
 		float vertical = CrossPlatformInputManager.GetAxis ("Vertical") * speed;
 		transform.Translate (horizontal, 0, vertical);
-		_motion = (horizontal != 0 || vertical != 0) ? 1 : 0;
+		motion = (horizontal != 0 || vertical != 0) ? 1 : 0;
 	}
 
 	// ジャンプ

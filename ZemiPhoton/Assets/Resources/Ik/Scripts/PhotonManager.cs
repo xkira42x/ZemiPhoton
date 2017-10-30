@@ -14,7 +14,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 */
 //	[SerializeField]string roomName = "myRoomName";
 
-	[SerializeField]public GameManager gameManager;
+	[SerializeField]public TimerManager Tmanager;
 	[SerializeField]
 	GameObject[] MenuItems;
 
