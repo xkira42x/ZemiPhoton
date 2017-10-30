@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class N2_NetworkSetting : Photon.MonoBehaviour {
-	[SerializeField]Camera myCamera;
-	[SerializeField]GameObject Body;
-	[SerializeField]S1_Move move;
-	[SerializeField]S2_Angle angle;
+	[SerializeField]GameObject myCamera;
+	[SerializeField]GameObject myCanvas;
+	[SerializeField]GameObject body;
 
-	void Start () {
+	void Awake () {
 		if (photonView.isMine) {
-			myCamera.gameObject.SetActive (true);
-			Body.SetActive (false);
-			move.enabled = true;
-			angle.enabled = true;
+			myCamera.SetActive (true);
+			myCanvas.SetActive (true);
+			GetComponent<Rigidbody> ().useGravity = true;
+			Destroy (body);
+		} else {
+			Destroy (GetComponent<S1_Move> ());
+			Destroy (GetComponent<S2_Angle> ());
+			Destroy (myCanvas);
 		}
+
+		Destroy (this);
 	}
 }

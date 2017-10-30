@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
 	Vector3 movement;
 	[SerializeField]protected short pow = 50;
 	public short Pow{ get { return pow; } set { pow = value; } }
+	[SerializeField]protected float LifeTime = 1;
 	float time;
 
 	void Start () {
@@ -18,12 +19,18 @@ public class Bullet : MonoBehaviour {
 			-(Mathf.Tan (angle.x * 3.14f / 180) * speed), 
 			Mathf.Cos (angle.y * 3.14f / 180) * speed);
 		// 削除処理
-		Destroy (gameObject, 1);
+		Destroy (gameObject, LifeTime);
 	}
 	
 	void Update () {
 		time += Time.deltaTime;
 		// 移動
-		transform.position += new Vector3(movement.x,movement.y - ((9.8f * time)/100),movement.z);
+		transform.position += new Vector3(movement.x,movement.y - ((9.8f * time)/200),movement.z);
 	}
+
+	void OnCollisionEnter(){
+		Debug.Log ("Destroy bullet.");
+		Destroy (gameObject);
+	}
+
 }

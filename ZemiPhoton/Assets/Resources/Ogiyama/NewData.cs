@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Net;
 
 public class NewData : MonoBehaviour {
 
@@ -13,10 +14,19 @@ public class NewData : MonoBehaviour {
 
 	//string ServerAddress = "localhost/3zemi/DB_test_unity_input.php";
 
-	string ServerAddress = "10.22.1.156/3zemi/DB_test_unity_input.php";
+	string ipAddress;
+	string ServerAddress;
+	//string ServerAddress = "10.22.1.156/3zemi/DB_test_unity_input.php";
 
 	public void NewData_Button_Push(){
 		
+		string hostname = Dns.GetHostName ();
+		IPAddress[] adrList = Dns.GetHostAddresses (hostname);
+		foreach (IPAddress address in adrList){
+			ipAddress = address.ToString ();
+		}
+		ServerAddress = ipAddress+"/3zemi/DB_test_unity_input.php";
+		//Debug.Log (ipAddress);
 			StartCoroutine ("DataAccess");
 		/*if (Button_flg == 0) {
 			UserMessage.GetComponent<Text> ().text = "Prese New UserName&PassWord";
@@ -33,6 +43,8 @@ public class NewData : MonoBehaviour {
 	}
 		
 	private IEnumerator DataAccess(){
+		
+
 		Dictionary<string,string> dic = new Dictionary<string,string> ();
 
 		dic.Add ("name", UserName.GetComponent<Text> ().text);

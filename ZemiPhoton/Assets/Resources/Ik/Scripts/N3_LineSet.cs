@@ -100,7 +100,7 @@ public class N3_LineSet : MonoBehaviour {
 		//名前を設定し、一つのオブジェクトにまとめる
 		I_LR.name=vctl+ii+"LR";
 		string child_name =vctl+"Lines";
-		I_LR.transform.parent = this.gameObject.transform.FindChild (child_name);
+		I_LR.transform.parent = this.gameObject.transform.Find (child_name);
 
 	}
 }
