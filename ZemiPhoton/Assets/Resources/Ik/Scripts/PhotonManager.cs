@@ -37,6 +37,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 
 	private GameObject player;
 
+	[SerializeField]
+	bool dbdebug=true;
+
 
 	void Start () {
 
@@ -57,6 +60,12 @@ public class PhotonManager : Photon.MonoBehaviour {
 	void OnJoinedLobby (){
 		Debug.Log ("ロビーに入る");
 		loginUI.SetActive (true);
+		GetIpAddress ();
+	}
+
+	[PunRPC]
+	void IpAddressSet(string ii){
+		ipAddress = ii;
 	}
 	//	アカウント作成ボタンを押した時の処理
 	public void CrateAccount(){
@@ -68,13 +77,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 	//　アカウント作成画面での処理
 	public void MakingAccount(){
 
-
-		string hostname = Dns.GetHostName ();
-		IPAddress[] adrList = Dns.GetHostAddresses (hostname);
-		foreach (IPAddress address in adrList){
-			ipAddress = address.ToString ();
-		}
-		ipAddress="192.168.43.29";
+//		ipAddress="172.20.10.0";
 		ServerAddress = ipAddress+"/3zemi/DB_test_unity_input.php";
 		//Debug.Log (ipAddress);
 		StartCoroutine ("DataAccess");
@@ -153,11 +156,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 		yield return null;
 	}
 
-
-	//　ログインボタンを押した時に実行するメソッド
-	public void LoginGame() {
+	void PlayerLogin(){
 		//プレイヤー画面UI
-		playerUI.SetActive(true);
+		playerUI.SetActive (true);
 
 		//　ルームオプションを設定
 		RoomOptions ro = new RoomOptions ();
@@ -180,13 +181,21 @@ public class PhotonManager : Photon.MonoBehaviour {
 				PhotonNetwork.JoinOrCreateRoom ("DefaultRoom", ro, TypedLobby.Default);
 			}
 		}
-
+	}
+	void GetIpAddress(){
 		string hostname = Dns.GetHostName ();
 		IPAddress[] adrList = Dns.GetHostAddresses (hostname);
 		foreach (IPAddress address in adrList){
 			ipAddress = address.ToString ();
 		}
-		ipAddress="192.168.43.29";
+			photonView.RPC ("IpAddressSet", PhotonTargets.AllBuffered, ipAddress);
+	}
+	//　ログインボタンを押した時に実行するメソッド
+	public void LoginGame() {
+
+//f		if (dbdebug)
+//			PlayerLogin ();
+//		ipAddress="172.20.10.0";
 		ServerAddress = ipAddress+"/3zemi/DB_test_unity_select_name.php";
 		StartCoroutine ("Access");	//Accessコルーチンの開始
 
@@ -232,31 +241,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 			//ResultText_.GetComponent<Text> ().text = www.bytesDownloaded.ToString ();
 			//ResultText_.GetComponent<Text> ().text = www.bytesDownloaded.ToString ();
 
-			//プレイヤー画面UI
-			playerUI.SetActive(true);
-
-			//　ルームオプションを設定
-			RoomOptions ro = new RoomOptions ();
-			//　ルームを見えるようにする
-			ro.IsVisible = true;
-			//　部屋の入室最大人数
-			ro.MaxPlayers = 4;
-
-
-			if (roomName.text != "") {
-				//　部屋がない場合は作って入室
-				PhotonNetwork.JoinOrCreateRoom (roomName.text, ro, TypedLobby.Default);
-			} else {
-				//　部屋が存在すれば
-				if (roomList.options.Count != 0) {
-					Debug.Log (roomList.options [roomList.value].text);
-					PhotonNetwork.JoinRoom (roomList.options [roomList.value].text);
-					//　部屋が存在しなければDefaultRoomという名前で部屋を作成
-				} else {
-					PhotonNetwork.JoinOrCreateRoom ("DefaultRoom", ro, TypedLobby.Default);
-				}
-			}
-
+			PlayerLogin ();
 		}
 	}
 		
@@ -290,6 +275,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 	//　部屋に入室した時に呼ばれるメソッド
 	void OnJoinedRoom() {
 		loginUI.SetActive (false);
+		ResultText_.gameObject.SetActive(false);
 		Debug.Log ("入室");
 
 		//　InputFieldに入力した名前を設定
@@ -312,7 +298,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 //		player.GetPhotonView ().RPC ("SetHP", PhotonTargets.AllBuffered, 100);
 
 		// メニュー項目の削除
-		foreach (GameObject g in MenuItems)	Destroy (g);
+		foreach (GameObject g in MenuItems)	g.SetActive(false);
 
 	}
 

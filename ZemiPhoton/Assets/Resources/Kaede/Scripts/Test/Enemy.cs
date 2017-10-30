@@ -34,12 +34,12 @@ public class Enemy : Photon.MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter (Collision collision){
+/*	void OnCollisionEnter (Collision collision){
 
 		if (collision.gameObject.tag == "Player") {
 			deadflg = true;
 		}
 
 	}
-
+*/
 }

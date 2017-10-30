@@ -10,8 +10,9 @@ public class N2_status: Photon.MonoBehaviour {
 	public short Hp{ get { return hp; } set { hp = value; } }
 	int no;
 	public int No {	get { return no; } set { no = value; } }
-	public void Damage(short d){hp -= d;HpSlider.value = hp;
-		HitPoint.value = hp;
+	public void Damage(short d){hp -= d;HitPoint.value = hp;
+		if (photonView.isMine)
+			HpSlider.value = hp;
 	}
 
 	bool find = false;
@@ -38,13 +39,14 @@ public class N2_status: Photon.MonoBehaviour {
 			no = PhotonNetwork.player.ID;
 			//自分のIDを他のPCのクローンに代入させる
 			photonView.RPC ("NoSet",PhotonTargets.OthersBuffered,no);
+			HpSlider = GameObject.Find ("MyHP").GetComponent<Slider> ();
 		} 
 		//プレイヤーの名前とHPバーを取得
 		//		myText = GameObject.Find ("Status" + no.ToString ()).GetComponent<Text> ();
-		//		HpSlider = GameObject.Find ("HpSlider" + no.ToString ()).GetComponent<Slider> ();
-		myText = GameObject.Find ("MyPlayerName").GetComponent<Text> ();
-		HpSlider = GameObject.Find ("MyHP").GetComponent<Slider> ();
+		//HpSlider = GameObject.Find ("HpSlider" + no.ToString ()).GetComponent<Slider> ();
+//		transform.FindChild("HP").name="HitPoint"+no.ToString();
 		HitPoint = this.GetComponentInChildren<Slider> ();
+		myText = GameObject.Find ("MyPlayerName").GetComponent<Text> ();
 
 		Debug.Log ("No:"+no);
 		gameObject.name = "Player" + no.ToString ();
@@ -52,7 +54,14 @@ public class N2_status: Photon.MonoBehaviour {
 			Debug.Log ("番号が割りふられていません" + gameObject.name);
 		namePlate = nameText.transform.parent.gameObject;
 //		HitPointPlate = HitPoint.transform.parent.gameObject;
-
+		if(PhotonNetwork.player.IsMasterClient)
+		StartCoroutine("SyncHp");
+	}
+	IEnumerator SyncHp(){
+		while (true) {
+			photonView.RPC ("SetHP", PhotonTargets.OthersBuffered, Hp);
+			yield return new WaitForSeconds(0.1f);
+		}
 	}
 
 	void Update(){
@@ -88,7 +97,7 @@ public class N2_status: Photon.MonoBehaviour {
 	}
 	[PunRPC]
 	void SetHP(short hp){
-		HitPoint.value = hp;
+		Hp = hp;
 	}
 
 	/*	void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
