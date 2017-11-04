@@ -12,8 +12,4 @@ public class PlayerStatusUI : MonoBehaviour {
 
 	public short Health { set { hpSlider.value = value; } }
 
-//	void Awake () {
-//		userNameUI = GetComponentInChildren<Text> ();
-//		hpSlider = GetComponentInChildren<Slider> ();
-//	}
 }

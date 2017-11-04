@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour {
 	}
 		
 	void Spawn () {
-		if (PhotonManager.EnteringTheRoom) {
+		if (PlayerInfo.Spawn) {
 			int index = Random.Range (0, 4);
 			for (int i = numGenerated; i < maxNum; i++) {
 				PhotonNetwork.Instantiate (enemy [0].name,

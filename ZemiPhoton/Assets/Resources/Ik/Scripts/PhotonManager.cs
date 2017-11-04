@@ -14,7 +14,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 */
 //	[SerializeField]string roomName = "myRoomName";
 
-	[SerializeField]public TimerManager Tmanager;
+//	[SerializeField]public TimerManager Tmanager;
 	[SerializeField]
 	GameObject[] MenuItems;
 
@@ -47,13 +47,12 @@ public class PhotonManager : Photon.MonoBehaviour {
 		PhotonNetwork.autoJoinLobby = true;
 
 		//　ゲームのバージョン設定
-		PhotonNetwork.ConnectUsingSettings ("0.1");
+		PhotonNetwork.ConnectUsingSettings ("v0.1");
 	}
 
 	//　マスターサーバに接続された時に呼ばれる
 	void OnConnectedToMaster() {
 		Debug.Log ("マスターサーバに接続");
-
 	}
 
 	//　ロビーに入った時に呼ばれる
@@ -150,6 +149,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 				//タイムアウト処理
 				//
 				//
+				//PlayerLogin ();
 				break;
 			}
 		}
@@ -196,9 +196,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 //f		if (dbdebug)
 //			PlayerLogin ();
 //		ipAddress="172.20.10.0";
-		ServerAddress = ipAddress+"/3zemi/DB_test_unity_select_name.php";
-		StartCoroutine ("Access");	//Accessコルーチンの開始
-
+//		ServerAddress = ipAddress+"/3zemi/DB_test_unity_select_name.php";
+//		StartCoroutine ("Access");	//Accessコルーチンの開始
+		PlayerLogin ();
 
 	}
 	public Text ResultText_;	//結果格納用テキスト
@@ -279,8 +279,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 		Debug.Log ("入室");
 
 		//　InputFieldに入力した名前を設定
-		if (playerName.text != "") {
-			PhotonNetwork.player.NickName = playerName.text;
+		//if (playerName.text != "") {
+		if(PlayerInfo.playerName != ""){
+			PhotonNetwork.player.NickName = PlayerInfo.playerName;//playerName.text;
 		} else {
 			PhotonNetwork.player.NickName = "DefaultPlayer";
 		}
