@@ -9,24 +9,16 @@ public class RoomItem : Photon.MonoBehaviour {
 	[SerializeField]Text NumberofPeople;
 
 	string _roomName;
-	string _numofPeople;
+	int _numofPeople;
+	byte _maxnumofPeople;
 
-	// Use this for initialization
-	void Start () {
-		gameObject.name = "Item";
-	}
-
-	public void SetRoomInfo(string name,string num){
+	public void SetRoomInfo(string name,int num,byte maxnum){
 		_roomName = name;
 		_numofPeople = num;
+		_maxnumofPeople = maxnum;
 
 		RoomName.text = "ルーム名" + _roomName;
-		NumberofPeople.text = "人数" + _numofPeople + "/4";
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		NumberofPeople.text = "人数" + _numofPeople.ToString () + "/" + _maxnumofPeople.ToString ();
 	}
 
 	public void OnClickJoinButton(){
@@ -35,7 +27,7 @@ public class RoomItem : Photon.MonoBehaviour {
 		//　ルームを見えるようにする
 		ro.IsVisible = true;
 		//　部屋の入室最大人数
-		ro.MaxPlayers = 4;
+		ro.MaxPlayers = _maxnumofPeople;
 		// ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (_roomName, ro, TypedLobby.Default);
 	}
