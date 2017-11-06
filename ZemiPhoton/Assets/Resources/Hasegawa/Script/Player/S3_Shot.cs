@@ -10,7 +10,8 @@ public class S3_Shot : Photon.MonoBehaviour {
 	[SerializeField]GunBase MyGun;
 	[SerializeField]public Transform CameraT;
 	[SerializeField]Text UI;
-	bool ShowUI = false;
+    [SerializeField]Text NumberofRemainingBullets;
+    bool ShowUI = false;
 	[SerializeField]S3_Shot shot;
 
 	RaycastHit hitInfo;

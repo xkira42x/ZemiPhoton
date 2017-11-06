@@ -6,11 +6,9 @@ using System.Net;
 
 public class myPhotonManager : Photon.MonoBehaviour {
 
-	public int No = 0;
+	//public int No = 0;
 	[SerializeField]GameObject menu;
 
-	// 接続状況表示用テキスト
-	//Text ConnectResult;
 
 	void Start () {
 
@@ -32,21 +30,6 @@ public class myPhotonManager : Photon.MonoBehaviour {
 		PlayerLogin();
 	}
 
-	/*[PunRPC]
-	void IpAddressSet(string ii){
-		ipAddress = ii;
-	}
-	//	アカウント作成ボタンを押した時の処理
-	public void CrateAccount(){
-	}
-
-	//　アカウント作成画面での処理
-	public void MakingAccount(){
-		ServerAddress = ipAddress+"/3zemi/DB_test_unity_input.php";
-		StartCoroutine ("DataAccess");
-
-	}*/
-
 	void PlayerLogin(){
 
 		//　ルームオプションを設定
@@ -57,33 +40,30 @@ public class myPhotonManager : Photon.MonoBehaviour {
 		PhotonNetwork.JoinOrCreateRoom ("DefaultRoom", ro, TypedLobby.Default);
 	}
 
-	//string ipAddress;
-	//string ServerAddress;
-		
 	//　部屋が更新された時の処理
 	void OnReceivedRoomListUpdate() {
 		Debug.Log ("部屋更新");
 
 		//　部屋情報を取得する
-		RoomInfo[] rooms = PhotonNetwork.GetRoomList ();
+//		RoomInfo[] rooms = PhotonNetwork.GetRoomList ();
 
 		//　ドロップダウンリストに追加する文字列用のリストを作成
-		List<string> list = new List <string> ();
+//		List<string> list = new List <string> ();
 
 		//　部屋情報を部屋リストに表示
-		foreach (RoomInfo room in rooms) {
+//		foreach (RoomInfo room in rooms) {
 			//　部屋が満員でなければ追加
-			if (room.PlayerCount < room.MaxPlayers) {
-				list.Add (room.Name);
-			}
-		}
+//			if (room.PlayerCount < room.MaxPlayers) {
+//				list.Add (room.Name);
+//			}
+//		}
 	}
 
 	//　部屋に入室した時に呼ばれるメソッド
 	void OnJoinedRoom() {
 		//Debug.Log ("入室");
 
-		No = PhotonNetwork.player.ID - 1;
+		PlayerInfo.playerNumber = PhotonNetwork.player.ID - 1;
 		gameObject.GetComponent<MenuManager> ().SetName (PlayerInfo.playerName);
 		menu.SetActive (true);
 
