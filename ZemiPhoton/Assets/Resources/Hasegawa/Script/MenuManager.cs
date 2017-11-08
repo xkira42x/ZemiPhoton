@@ -9,7 +9,6 @@ public class MenuManager : Photon.MonoBehaviour {
 	[SerializeField]Text[] Status;
 	[SerializeField]Text timerText;
 	[SerializeField]GameObject[] MenuItems;
-	//[SerializeField]myPhotonManager photonManager;
 
 	byte index = 0;
 

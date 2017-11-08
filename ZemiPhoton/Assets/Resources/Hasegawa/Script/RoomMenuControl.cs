@@ -16,6 +16,9 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	// ルーム一覧のひな型
 	[SerializeField]GameObject RoomListTemplate;
 
+	[SerializeField]GameObject CreateRoomButton;
+	[SerializeField]GameObject CreateRoomCancelButton;
+
 	/// <summary>
 	/// <para>作成されたルームの表示</para>
 	/// True ルーム有り	False ルームなし
@@ -40,6 +43,8 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	public void OnClickCreateRoomButton(){
 		RoomSelectinView.SetActive (false);
 		RoomSettings.SetActive (true);
+		CreateRoomButton.SetActive (false);
+		CreateRoomCancelButton.SetActive (true);
 	}
 	/// <summary>
 	/// ルーム作成キャンセルボタン
@@ -47,6 +52,8 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	public void OnClickCreateRoomCancelButton(){
 		RoomSettings.SetActive (false);
 		RoomSelectinView.SetActive (true);
+		CreateRoomButton.SetActive (true);
+		CreateRoomCancelButton.SetActive (false);
 	}
 
 	/// <summary>
@@ -64,6 +71,15 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 
 		RoomSettings.SetActive (false);
 		RoomSelectinView.SetActive (false);
+		CreateRoomButton.SetActive (false);
+		CreateRoomCancelButton.SetActive (false);
+	}
+
+	public void JoinRoom(){
+		RoomSettings.SetActive (false);
+		RoomSelectinView.SetActive (false);
+		CreateRoomButton.SetActive (false);
+		CreateRoomCancelButton.SetActive (false);
 	}
 
 }

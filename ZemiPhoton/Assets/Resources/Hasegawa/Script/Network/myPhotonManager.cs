@@ -6,15 +6,13 @@ using System.Net;
 
 public class myPhotonManager : Photon.MonoBehaviour {
 
-	//public int No = 0;
 	[SerializeField]GameObject menu;
-
+	[SerializeField]RoomMenuControl roomMenuControl;
 
 	void Start () {
-
+		Cursor.lockState = CursorLockMode.None;
 		//　ロビーに自動で入る
 		PhotonNetwork.autoJoinLobby = true;
-
 		//　ゲームのバージョン設定
 		PhotonNetwork.ConnectUsingSettings ("v0.1");
 	}
@@ -27,10 +25,10 @@ public class myPhotonManager : Photon.MonoBehaviour {
 	//　ロビーに入った時に呼ばれる
 	void OnJoinedLobby (){
 		//Debug.Log ("ロビーに入る");
-		PlayerLogin();
+		//PlayerLogin();
 	}
 
-	void PlayerLogin(){
+	/*void PlayerLogin(){
 
 		//　ルームオプションを設定
 		RoomOptions ro = new RoomOptions ();
@@ -38,25 +36,13 @@ public class myPhotonManager : Photon.MonoBehaviour {
 		ro.MaxPlayers = 4;
 
 		PhotonNetwork.JoinOrCreateRoom ("DefaultRoom", ro, TypedLobby.Default);
-	}
+	}*/
 
 	//　部屋が更新された時の処理
 	void OnReceivedRoomListUpdate() {
-		Debug.Log ("部屋更新");
+		//Debug.Log ("部屋更新");
 
-		//　部屋情報を取得する
-//		RoomInfo[] rooms = PhotonNetwork.GetRoomList ();
-
-		//　ドロップダウンリストに追加する文字列用のリストを作成
-//		List<string> list = new List <string> ();
-
-		//　部屋情報を部屋リストに表示
-//		foreach (RoomInfo room in rooms) {
-			//　部屋が満員でなければ追加
-//			if (room.PlayerCount < room.MaxPlayers) {
-//				list.Add (room.Name);
-//			}
-//		}
+		roomMenuControl.DisplayRoomList ();
 	}
 
 	//　部屋に入室した時に呼ばれるメソッド
@@ -66,7 +52,8 @@ public class myPhotonManager : Photon.MonoBehaviour {
 		PlayerInfo.playerNumber = PhotonNetwork.player.ID - 1;
 		gameObject.GetComponent<MenuManager> ().SetName (PlayerInfo.playerName);
 		menu.SetActive (true);
-
+		Cursor.lockState=CursorLockMode.Confined;
+		roomMenuControl.JoinRoom ();
 	}
 
 	//　部屋の入室に失敗した
