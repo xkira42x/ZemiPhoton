@@ -9,7 +9,6 @@ public class MenuManager : Photon.MonoBehaviour {
 	[SerializeField]Text[] Status;
 	[SerializeField]Text timerText;
 	[SerializeField]GameObject[] MenuItems;
-	[SerializeField]myPhotonManager photonManager;
 
 	byte index = 0;
 
@@ -23,7 +22,7 @@ public class MenuManager : Photon.MonoBehaviour {
 	}
 
 	public void OnClickReadyButton(){
-		photonView.RPC ("Ready", PhotonTargets.AllBuffered, photonManager.No);
+		photonView.RPC ("Ready", PhotonTargets.AllBuffered, PlayerInfo.playerNumber);
 	}
 
 	[PunRPC]

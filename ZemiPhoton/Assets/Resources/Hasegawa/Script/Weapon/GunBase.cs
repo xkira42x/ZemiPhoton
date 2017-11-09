@@ -20,6 +20,7 @@ public class GunBase : MonoBehaviour {
 	[SerializeField]protected int MaxMagazine;
 	// 今のマガジン内弾数
 	protected int Magazine;
+    public int GetMagazine() { return Magazine; }
 	[SerializeField]protected float ReloadTime = 1;
 	// 攻撃の間隔フラグ
 	protected bool Next = true;
