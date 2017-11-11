@@ -33,6 +33,9 @@ public class AutoDestroyMaterials : MonoBehaviour {
 				DestroyImmediate(m);
 			}
 		}
+
+		var obj = gameObject.GetComponent<GameObject> ();
+		obj = null;
 	}
 
 }

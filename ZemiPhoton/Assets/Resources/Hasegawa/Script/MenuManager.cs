@@ -30,7 +30,7 @@ public class MenuManager : Photon.MonoBehaviour {
 		Status[no].text = "Ready";
 
 		bool flg = true;
-		for (int i = 0; i < PhotonNetwork.playerList.Length; i++) {
+		for (int i = 0; i < PhotonNetwork.playerList.Length - 1; i++) {
 			if (Status [i].text != "Ready") {
 				flg = false;
 				break;
