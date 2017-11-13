@@ -65,7 +65,7 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		//　ルームを見えるようにする
 		ro.IsVisible = true;
 		//　部屋の入室最大人数
-		ro.MaxPlayers = 4;
+		ro.MaxPlayers = 5;
 		// ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (RoomNane.text, ro, TypedLobby.Default);
 
@@ -73,6 +73,8 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		RoomSelectinView.SetActive (false);
 		CreateRoomButton.SetActive (false);
 		CreateRoomCancelButton.SetActive (false);
+
+		PlayerInfo.role = PlayerInfo.Server;
 	}
 
 	public void JoinRoom(){
