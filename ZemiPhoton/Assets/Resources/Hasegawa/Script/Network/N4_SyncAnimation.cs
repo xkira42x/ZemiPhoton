@@ -11,6 +11,7 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	Animator animator;
 	// アニメーションの名前を格納
 	readonly string[] AnimationName = { "Idol", "Walk", "Jump", "Crouch", "CrouchMove" };
+    // 最後に同期したアニメーションステータス
 	byte lastStatus = 0;
 
 	//IK追記
@@ -24,15 +25,24 @@ public class N4_SyncAnimation : Photon.MonoBehaviour {
 	}
 
 	void Update () {
+        // アニメーションステータスの取得
 		byte status = S_Move.Status;
+        // クライアントが制御するキャラかつ、ステータスが変更している時
 			if (photonView.isMine && (lastStatus != status)) {
+            // アニメーションステータスの同期
 			photonView.RPC ("SyncAnimation", PhotonTargets.Others, status);
+            // 同期したアニメーションステータスの更新
 			lastStatus = status;
 		}
 	}
-		
+	
+    /// <summary>
+    /// アニメーションステータスの同期（受信）
+    /// </summary>
+    /// <param name="status"></param>
 	[PunRPC]
 	void SyncAnimation(byte status){
+        // 受け取ったステータスでアニメーションを再生する
 			animator.Play (AnimationName [status]);
 			SO.AddSize ((int)status);
 	}

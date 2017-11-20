@@ -15,9 +15,18 @@ public class TitleManager : MonoBehaviour {
 	}
 
 	public void OnLoginButton(){
+
+		if (string.IsNullOrEmpty (inputField.text)) {
+			inputField.image.color = Color.red;
+		}else {
 		Debug.Log ("Login");
 		PlayerInfo.playerName = inputField.text;
 		SceneManager.LoadScene (MainSceneName);
+		}
+	}
+
+	public void OnValueChanged(){
+		inputField.image.color = Color.white;
 	}
 
 	public void OnExitButton(){

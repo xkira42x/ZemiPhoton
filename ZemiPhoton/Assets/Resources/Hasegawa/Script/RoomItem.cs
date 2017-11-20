@@ -30,5 +30,7 @@ public class RoomItem : Photon.MonoBehaviour {
 		ro.MaxPlayers = _maxnumofPeople;
 		// ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (_roomName, ro, TypedLobby.Default);
+
+		PlayerInfo.role = PlayerInfo.Client;
 	}
 }

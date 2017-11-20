@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 
 public class S1_Move : MonoBehaviour {
 
-	const byte IDOL = 0,WALK = 1,JUMP = 2,CROUCH = 3,CROUCHMOVE = 4;
-	[SerializeField]byte status = IDOL;
+	const byte IDLE = 0,WALK = 1,JUMP = 2,CROUCH = 3,CROUCHMOVE = 4;
+	[SerializeField]byte status = IDLE;
 	public byte Status{ get { return status; } }
 
 	[SerializeField]Transform myCollection;
@@ -41,7 +41,7 @@ public class S1_Move : MonoBehaviour {
 		Crouch ();
 
 		IsGround ();
-		status = (!isGround) ? JUMP : (motion == 1) ? WALK : (isCrouch) ? CROUCH : IDOL;
+		status = (!isGround) ? JUMP : (motion == 1) ? WALK : (isCrouch) ? CROUCH : IDLE;
 	}
 
 	// キー移動判定

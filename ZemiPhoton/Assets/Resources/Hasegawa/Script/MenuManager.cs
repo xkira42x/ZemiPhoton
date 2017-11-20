@@ -11,6 +11,7 @@ public class MenuManager : Photon.MonoBehaviour {
 	[SerializeField]GameObject[] MenuItems;
 
 	byte index = 0;
+	bool doOnce_Ready = false;
 
 	public void SetName(string name){
 		photonView.RPC ("SetNameText", PhotonTargets.AllBufferedViaServer, name);
@@ -22,7 +23,10 @@ public class MenuManager : Photon.MonoBehaviour {
 	}
 
 	public void OnClickReadyButton(){
-		photonView.RPC ("Ready", PhotonTargets.AllBuffered, PlayerInfo.playerNumber);
+		if (!doOnce_Ready) {
+			photonView.RPC ("Ready", PhotonTargets.AllBuffered, PlayerInfo.playerNumber);
+			doOnce_Ready = true;
+		}
 	}
 
 	[PunRPC]
@@ -30,14 +34,14 @@ public class MenuManager : Photon.MonoBehaviour {
 		Status[no].text = "Ready";
 
 		bool flg = true;
-		for (int i = 0; i < PhotonNetwork.playerList.Length; i++) {
+		for (int i = 0; i < PhotonNetwork.playerList.Length - 1; i++) {
 			if (Status [i].text != "Ready") {
 				flg = false;
 				break;
 			}
 		}
 
-		if (flg) {
+		if (flg && PlayerInfo.isClient()) {
 			StartCoroutine ("StartTimeCount");
 		}
 	}
@@ -58,6 +62,7 @@ public class MenuManager : Photon.MonoBehaviour {
 
 	void PlayerSpawn(){
 		GameObject player = PhotonNetwork.Instantiate ("FPSPlayer", Vector3.up, Quaternion.identity, 0);
+		player.name = "Player" + PhotonNetwork.player.ID;
 		player.GetPhotonView ().RPC ("SetName", PhotonTargets.AllBuffered, PlayerInfo.playerName);
 		foreach (GameObject obj in MenuItems)
 			obj.SetActive (false);
