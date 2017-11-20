@@ -17,6 +17,10 @@ public class bpstestobjscript : Photon.MonoBehaviour {
 
 	string myname;
 	public string name{set{myname = value;}}
+	short[] pos;
+
+	[SerializeField]
+	bool syncflg=true;
 
 	//初期座標を取得
 	void Start(){
@@ -25,10 +29,12 @@ public class bpstestobjscript : Photon.MonoBehaviour {
 		photonView.RPC ("TestSyncName", PhotonTargets.AllBuffered, myname);
 	}
 
-	void Update(){
+	void FixedUpdate(){
 		FlgCheng ();
-		if(PhotonNetwork.isMasterClient)
-		Move ();
+		if (syncflg) {
+			if (PhotonNetwork.isMasterClient)
+				Move ();
+		}
 	}
 
 	//キー入力を受けフラグを変える
@@ -49,25 +55,34 @@ public class bpstestobjscript : Photon.MonoBehaviour {
 	void Move(){
 		switch (moveflg) {
 		case (int)udflg.STOP:
-			photonView.RPC ("TestTransSync", PhotonTargets.All, initpos-this.transform.position);
+			Vector3 aa = initpos - this.transform.position;
+			pos = new short[]{(short)aa.x, (short)aa.y, (short)aa.z};
+			photonView.RPC ("TestTransSync", PhotonTargets.All,pos);
+//			photonView.RPC ("TestTransSync", PhotonTargets.All,initpos - this.transform.position );
 			break;
 		case (int)udflg.FORWORD:
-			photonView.RPC ("TestTransSync", PhotonTargets.All, new Vector3 (0, 0, -movevec));
+			pos = new short[]{0,0, (short)-movevec};
+			photonView.RPC ("TestTransSync", PhotonTargets.All, pos);
 			break;
 		case (int)udflg.BACKWORD:
-			photonView.RPC ("TestTransSync", PhotonTargets.All, new Vector3 (0, 0, movevec));
+			pos = new short[]{0,0, (short)movevec};
+			photonView.RPC ("TestTransSync", PhotonTargets.All, pos);
 			break;
 		}
 	}
 
 	//引数(tt)の座標に同期
 	[PunRPC]
-	void TestTransSync(Vector3 tt){
-		this.transform.position += tt;
+	void TestTransSync(short[] tt){
+		this.transform.position += new Vector3(tt[0],tt[1],tt[2]);
 	}
+//	[PunRPC]
+//	void TestTransSync(Vector3 tt){
+//		this.transform.position += tt;
+//	}
 
 	[PunRPC]
 	void TestSyncName(string ss){
-		this.transform.name = ss;
+//		this.transform.name = ss;
 	}
 }

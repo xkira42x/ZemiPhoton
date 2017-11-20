@@ -107,8 +107,6 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Demo\DemoPhotonManager.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Demo\RoomItem.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Demo\RoomMenuControl.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MenuManager.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MyLOD.cs" />
@@ -126,6 +124,8 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Player\S3_Shot.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Player\UnityChanAnimatio.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\RoomItem.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\TitleManager.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\AssaultRifle.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\Bullet.cs" />
@@ -133,25 +133,26 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\HandGun.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\ShotGun.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\myNamespace.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\A_normal_enemy_move_typeR.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\EnemySpawn3_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N15_SizeOf.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\N3_CubeScript.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_EndKey.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_LineSet.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_OnGUI.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\N3_PlayerMove.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\N3_Yfreez.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\N4_SyncAngle.cs" />
+     <Compile Include="Assets\Resources\Ik\Scripts\N8_SyncMove.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\PhotonManager.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\RPCManager.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\RPCTest.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\Target.cs" />
-     <Compile Include="Assets\Resources\Ik\Scripts\a.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\bpsTest.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\A_normal_enemy_move_typeR.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\EnemySpawn3_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\N3_CorutinSave.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\N3_CubeScript.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\N3_PlayerMove.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\N3_PlayerVecSave.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\N3_Yfreez.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\N4_SyncAngle.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\RPCManager.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\RPCTest.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\Target.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\a.cs" />
      <Compile Include="Assets\Resources\Iki\EnemySpawn.cs" />
      <Compile Include="Assets\Resources\Iki\EnemySpawn3.cs" />
      <Compile Include="Assets\Resources\Iki\EnemySpown_2.cs" />
@@ -274,10 +275,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/sato/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/sato/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

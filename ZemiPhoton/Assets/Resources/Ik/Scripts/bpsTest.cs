@@ -61,7 +61,7 @@ public class bpsTest : Photon.MonoBehaviour {
 	}
 	void OnJoinedRoom() {
 		Debug.Log ("PhotonManager OnJoinedRoom");
-		if(PhotonNetwork.isMasterClient)
+//		if(PhotonNetwork.isMasterClient)
 		spn ();
 	}
 	void spn(){
@@ -71,7 +71,7 @@ public class bpsTest : Photon.MonoBehaviour {
 			for (int j=0; j < maxspn; j++) {
 				if (GameObject.Find ("testobj" + i + "_" + j)==null||
 					GameObject.Find ("testobj" + i + "_" + j).name != "testobj" + i + "_" + j) {
-					spnpos = new Vector3 (i, 0, j);
+					spnpos = new Vector3 (i*1.5f, 0, j*1.5f);
 					obj = PhotonNetwork.Instantiate (testobj.name, spnpos, Quaternion.Euler (Vector3.zero), 0);
 					obj.GetComponent<bpstestobjscript>().name ="testobj" + i + "_" + j;
 				}

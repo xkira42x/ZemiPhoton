@@ -49,7 +49,7 @@ public class myPhotonManager : Photon.MonoBehaviour {
 	void OnJoinedRoom() {
 		//Debug.Log ("入室");
 
-		PlayerInfo.playerNumber = PhotonNetwork.player.ID - 1;
+		PlayerInfo.playerNumber = PhotonNetwork.player.ID;
 		gameObject.GetComponent<MenuManager> ().SetName (PlayerInfo.playerName);
 		menu.SetActive (true);
 		Cursor.lockState=CursorLockMode.Confined;
