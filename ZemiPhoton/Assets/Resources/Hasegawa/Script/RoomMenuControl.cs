@@ -8,6 +8,7 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	// ルーム作成のセッティングメニュー
 	[SerializeField]GameObject RoomSettings;
 	[SerializeField]InputField RoomNane;
+	[SerializeField]Dropdown RoleDropdown;
 
 	// ルーム選択画面
 	[SerializeField]GameObject RoomSelectinView;
@@ -60,6 +61,9 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	/// ルーム作成の完了ボタン
 	/// </summary>
 	public void OnClickRoomSettingCompleteButton(){
+		
+		PlayerInfo.role = (RoleDropdown.value == 0) ? PlayerInfo.Server : PlayerInfo.Client;//PlayerInfo.Server;
+
 		//　ルームオプションを設定
 		RoomOptions ro = new RoomOptions ();
 		//　ルームを見えるようにする
@@ -73,8 +77,6 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		RoomSelectinView.SetActive (false);
 		CreateRoomButton.SetActive (false);
 		CreateRoomCancelButton.SetActive (false);
-
-		PlayerInfo.role = PlayerInfo.Server;
 	}
 
 	public void JoinRoom(){
