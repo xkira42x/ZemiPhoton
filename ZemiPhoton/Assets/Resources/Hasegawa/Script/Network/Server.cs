@@ -25,58 +25,71 @@ public class Server : Photon.MonoBehaviour {
 	/// サーバーとして接続した時に、呼ばれるメソッド
 	/// </summary>
 	public void StartUp(){
-		// ここにデータベースのIPアドレスを同期する処理を書く
-		// ipAddress = GetIPAddress(); // みたいな？
-
+		Debug.Log("StartUp");
 		GetIpAddress ();	//ホストのみの処理
 		//↓ipAdress送信処理
 		photonView.RPC("SyncIPAddress",PhotonTargets.OthersBuffered,ipAddress);
 	}
 
-	//自身のipAddress取得（ホストのみが行う処理）
+	///自身のipAddress取得（ホストのみが行う処理）
+	/// これ以降の処理（IPアドレス送信を除く)はホスト側は実行されない
+	/// そのため、ホストの入力したプレイヤーの名前はDBへの接続関連の処理は行われない
 	void GetIpAddress(){
+		Debug.Log("GetIP");
 		string hostname = Dns.GetHostName ();
 		IPAddress[] adrList = Dns.GetHostAddresses (hostname);
 		foreach (IPAddress address in adrList){
 			ipAddress = address.ToString ();
 		}
-		photonView.RPC ("IpAddressSet", PhotonTargets.AllBuffered, ipAddress);
+
+		Debug.Log(ipAddress);
+		//photonView.RPC ("IpAddressSet", PhotonTargets.AllBuffered, ipAddress);
 	}
 
+	/// <summary>
+	/// ここ移行はクライアント側が行う処理
+	/// DB接続関連の処理が行われる
+	/// </summary>
 	[PunRPC]
 	void SyncIPAddress(string adrs){
+		Debug.Log ("SyncIP");
 		// ここで送られてきた値を受け取る
 		ipAddress = adrs;
-		ConnectToServer ();
+		//ログイン処理実行
+		LogIn_Button_Push ();
+		//ConnectToServer ();
 	}
 
-	void ConnectToServer(){
-		// ここでサーバー接続とログイン・新規作成をする
-		// PlayerInfo.playerName; // プレイヤーの名前を格納している
-		LogIn_Button_Push();
-	}
-
-	void LogIn_Button_Push(){//ログイン処理
-		ServerAddress = DBManager.ipAddress + "/3zemi/DB_test_unity_select_name.php";
+	//ログイン処理
+	void LogIn_Button_Push(){
+		Debug.Log("LogInPush");
+		Debug.Log ("ipAddress=" + ipAddress);
+		ServerAddress = ipAddress + "/3zemi/DB_test_unity_select_name.php";
 		StartCoroutine ("Access");	//Accessコルーチンの開始
+
 	}
 
-	void NewData_Button_Push(){//新規作成処理
-		ServerAddress = DBManager.ipAddress+"/3zemi/DB_test_unity_input.php";
+	//新規作成処理
+	void NewData_Button_Push(){
+		Debug.Log("NewDataPush");
+		ServerAddress = ipAddress+"/3zemi/DB_test_unity_input.php";
 		StartCoroutine ("Access");
-	}
 
+	}
+		
+	//DBへの接続と名前の送信
 	IEnumerator Access(){
+		Debug.Log("Access");
 		Dictionary<string,string> dic = new Dictionary<string,string> ();
 
 		dic.Add ("name", PlayerInfo.playerName);
-		//dic.Add ("pass", NewPass.GetComponent<Text> ().text);
 		StartCoroutine(DataPost(ServerAddress,dic));
-
 		yield return 0;
 	}
 
+	//DBへ名前送信
 	IEnumerator DataPost(string url,Dictionary<string,string>post){
+		Debug.Log("DataPost");
 		WWWForm form = new WWWForm ();
 		foreach (KeyValuePair<string,string>post_arg in post) {
 			form.AddField (post_arg.Key, post_arg.Value);
@@ -88,12 +101,15 @@ public class Server : Photon.MonoBehaviour {
 			if (www.error != null) {
 				Debug.Log ("HttpPost NG: " + www.error);
 				//そもそも接続ができていないとき
+			}
+			else if (www.isDone) 
+			{//接続が成功
 
-			} else if (www.isDone) {//接続が成功
-
+				//DBから送られてきた情報のbyte量で処理振り分け
 				switch (www.bytesDownloaded) {
 				case 8://DBに名前が存在してログイン成功
 					//ログイン時の処理がここに必要な場合以下に追記
+
 					break;
 				case 9://DBに名前が存在せず、ログイン失敗－＞新規作成の関数を実行
 					NewData_Button_Push ();
@@ -105,25 +121,24 @@ public class Server : Photon.MonoBehaviour {
 					LogIn_Button_Push();
 					break;
 				default:
+					//DBから送られてくる情報が以上以外の場合
 					Debug.Log ("Unknown Error");
 					break;
 				}
 			}
 		}
 	}
-
+		
+	//タイムアウト処理
 	IEnumerator CheckTimeOut(WWW www, float timeout) {
 		float requestTime = Time.time;
 		while (!www.isDone) {
-			if (Time.time - requestTime < timeout)
+			if (Time.time - requestTime < timeout) {
 				yield return null;
-			else {
+			}
+			else 
+			{
 				Debug.Log ("TimeOut");
-
-				//UserMessage.GetComponent<Text>().text="TimeOut";  //タイムアウト
-				//タイムアウト処理
-				//
-				//
 				break;
 			}
 		}
