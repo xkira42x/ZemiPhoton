@@ -29,6 +29,7 @@ public class MenuManager : Photon.MonoBehaviour {
 	public void OnClickReadyButton(){
 		if (!doOnce_Ready) {
 			photonView.RPC ("Ready", PhotonTargets.AllBuffered, PlayerInfo.playerNumber);
+			Debug.Log (PlayerInfo.playerNumber);
 			doOnce_Ready = true;
 		}
 	}
@@ -66,7 +67,7 @@ public class MenuManager : Photon.MonoBehaviour {
 
 	void PlayerSpawn(){
 		GameObject player = PhotonNetwork.Instantiate ("FPSPlayer", Vector3.up, Quaternion.identity, 0);
-		player.name = "Player" + PhotonNetwork.player.ID;
+		player.name = "Player" + (PlayerInfo.playerNumber+1).ToString();
 		player.GetPhotonView ().RPC ("SetName", PhotonTargets.AllBuffered, PlayerInfo.playerName);
 		foreach (GameObject obj in MenuItems)
 			obj.SetActive (false);

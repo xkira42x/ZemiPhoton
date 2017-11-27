@@ -27,9 +27,13 @@ public class N3_LineSet : MonoBehaviour {
 	//カラーカウント
 	private int ColCnt=0;
 
-	// Use this for initialization
-	void Start () {
+	void Update(){
+		if (Input.GetKey (KeyCode.LeftControl) && Input.GetKey (KeyCode.L)) {
+			LineSet ();
+		}
+	}
 
+	void LineSet(){
 		//終わりの座標 ＝ 線の本数 * 線の間隔
 		N_L_end.x = N_L_mass.x * N_L_intrvl.x;
 		N_L_end.z = N_L_mass.z * N_L_intrvl.z;
@@ -48,7 +52,6 @@ public class N3_LineSet : MonoBehaviour {
 
 		}
 	}
-
 	/// <summary>
 	/// ラインレンダラーを設定する関数
 	/// </summary>

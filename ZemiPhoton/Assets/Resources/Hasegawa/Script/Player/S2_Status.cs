@@ -23,7 +23,7 @@ public class S2_Status: Photon.MonoBehaviour {
 	void Awake(){
 		if (photonView.isMine) {
 			statusUI = GameObject.Find ("PlayerStatusUI0").GetComponent<PlayerStatusUI> ();
-			photonView.RPC ("SyncPlayerID", PhotonTargets.AllBuffered, PlayerInfo.playerNumber);
+			photonView.RPC ("SyncPlayerID", PhotonTargets.AllBuffered, PlayerInfo.playerNumber+1);
 		}else {
 			statusUI = GameObject.Find ("PlayerStatusUI" + (PlayerInfo.statusCount).ToString ()).GetComponent<PlayerStatusUI> ();
 			PlayerInfo.statusCount++;

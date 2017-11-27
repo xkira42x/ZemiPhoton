@@ -1,18 +1,25 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Network\N3_SyncMove.cs">
     <Files>
-      <File FileName="Assets\Resources\Ik\Scripts\PhotonManager.cs" Line="293" Column="14" />
+      <File FileName="Assets\Resources\Ik\Scripts\PhotonManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Iki\Script\EnemySpawn4.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Nemoto\A_Boomer_move.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Nemoto\A_normal_enemy_move.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\MenuManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" Line="72" Column="3" />
-      <File FileName="Assets\Resources\Ik\Scripts\bpsTest.cs" Line="30" Column="36" />
+      <File FileName="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Scripts\bpsTest.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\Player\S2_Angle.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs" Line="9" Column="2" />
-      <File FileName="Assets\Resources\Hasegawa\Script\TitleManager.cs" Line="16" Column="2" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Network\myPhotonManager.cs" Line="52" Column="52" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\TitleManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\myPhotonManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\Server.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\N2_NetworkSetting.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Unuses\DbgText.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Unuses\N3_CorutinSave.cs" Line="13" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\N3_SyncMove.cs" Line="17" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

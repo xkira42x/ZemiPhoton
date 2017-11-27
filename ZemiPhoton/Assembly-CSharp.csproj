@@ -107,15 +107,18 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Demo\DemoPhotonManager.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\AutoDestroyMaterials.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MenuManager.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MyLOD.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Network\CallAndResponse.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\N2_NetworkSetting.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\N2_SyncStatus.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\N3_SyncMove.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\N4_SyncAnimation.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\N6_SyncShot.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\PhotonNetworkTest.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Network\Server.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\myPhotonManager.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Player\PlayerInfo.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Player\PlayerStatusUI.cs" />
@@ -142,6 +145,7 @@
      <Compile Include="Assets\Resources\Ik\Scripts\bpsTest.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\A_normal_enemy_move_typeR.cs" />
+     <Compile Include="Assets\Resources\Ik\Unuses\DbgText.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\EnemySpawn3_typeR.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\N3_CorutinSave.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\N3_CubeScript.cs" />
