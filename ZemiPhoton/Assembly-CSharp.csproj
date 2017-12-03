@@ -142,6 +142,7 @@
      <Compile Include="Assets\Resources\Ik\Scripts\N3_OnGUI.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N8_SyncMove.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\PhotonManager.cs" />
+     <Compile Include="Assets\Resources\Ik\Scripts\Response.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\bpsTest.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" />
      <Compile Include="Assets\Resources\Ik\Unuses\A_normal_enemy_move_typeR.cs" />

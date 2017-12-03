@@ -9,8 +9,11 @@ public class N8_SyncMove : Photon.MonoBehaviour {
 	//IK追記
 	N15_SizeOf SO;
 
+	PhotonView phview;
 	//通信量を計測するコンポーネントの取得
-	void Awake(){SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();}
+	void Awake(){SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();
+		phview=GameObject.Find("PhotonManager").GetPhotonView();
+			}
 
 	//部屋のマスターが
 	//座標同期を開始する
@@ -23,6 +26,7 @@ public class N8_SyncMove : Photon.MonoBehaviour {
 	/// </summary>
 	IEnumerator SyncPos(){
 		while (true) {
+			Debug.Log ("N8.SyncPosition:送信");
 			photonView.RPC ("SyncPosition", PhotonTargets.Others, transform.position);
 			yield return new WaitForSeconds (0.25f);
 		}
@@ -42,5 +46,9 @@ public class N8_SyncMove : Photon.MonoBehaviour {
 		SO.AddSize((int)pos.y);
 		SO.AddSize((int)pos.z);
 		SO.AddSize(3);
+
+		phview.RPC ("Receive", PhotonTargets.MasterClient,(byte)1,(byte)8);
 	}
+
+
 }
