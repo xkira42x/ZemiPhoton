@@ -37,30 +37,30 @@ public class Item_State2 : MonoBehaviour
     {
         if (Input.GetKeyDown("1"))
         {
-            Gun_Select();
             Gun_sel = 1.0f;
-            Bomb_Select();
+            Gun_Select();
             Bom_sel = 0.3f;
-            Recovery_Select();
+            Bomb_Select();
             Rec_sel = 0.3f;
+            Recovery_Select();
         }
         if (Input.GetKeyDown("2"))
         {
-            Gun_Select();
             Gun_sel = 0.3f;
-            Bomb_Select();
+            Gun_Select();
             Bom_sel = 1.0f;
-            Recovery_Select();
+            Bomb_Select();
             Rec_sel = 0.3f;
+            Recovery_Select();
         }
         if (Input.GetKeyDown("3"))
         {
-            Gun_Select();
             Gun_sel = 0.3f;
-            Bomb_Select();
+            Gun_Select();
             Bom_sel = 0.3f;
-            Recovery_Select();
+            Bomb_Select();
             Rec_sel = 1.0f;
+            Recovery_Select();
         }
 
         //弾の円ゲージ（＝　残りの弾数　/　弾の最大所持数）
