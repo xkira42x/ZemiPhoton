@@ -14,8 +14,8 @@ public class RoomItem : Photon.MonoBehaviour {
 
 	public void SetRoomInfo(string name,int num,byte maxnum){
 		_roomName = name;
-		_numofPeople = num;
-		_maxnumofPeople = maxnum;
+		_numofPeople = num - 1;
+		_maxnumofPeople = maxnum - 1;
 
 		RoomName.text = "ルーム名" + _roomName;
 		NumberofPeople.text = "人数" + _numofPeople.ToString () + "/" + _maxnumofPeople.ToString ();
