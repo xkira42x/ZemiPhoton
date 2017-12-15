@@ -14,11 +14,11 @@ public class RoomItem : Photon.MonoBehaviour {
 
 	public void SetRoomInfo(string name,int num,byte maxnum){
 		_roomName = name;
-		_numofPeople = num - 1;
-		_maxnumofPeople = (byte)(maxnum - 1);
+		_numofPeople = num;
+		_maxnumofPeople = maxnum;
 
 		RoomName.text = "ルーム名" + _roomName;
-		NumberofPeople.text = "人数" + _numofPeople.ToString () + "/" + _maxnumofPeople.ToString ();
+		NumberofPeople.text = "人数" + (_numofPeople - 1).ToString () + "/" + (_maxnumofPeople - 1).ToString ();
 	}
 
 	public void OnClickJoinButton(){

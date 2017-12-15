@@ -62,7 +62,7 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	/// </summary>
 	public void OnClickRoomSettingCompleteButton(){
 		
-		PlayerInfo.role = (RoleDropdown.value == 0) ? PlayerInfo.Server : PlayerInfo.Client;//PlayerInfo.Server;
+		PlayerInfo.role = (RoleDropdown.value == 0) ? PlayerInfo.Server:PlayerInfo.Client;//PlayerInfo.Server;
 
 		//　ルームオプションを設定
 		RoomOptions ro = new RoomOptions ();
