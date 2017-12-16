@@ -30,7 +30,8 @@ public class Timer : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            EnGauge_Time();
+			if (PlayerInfo.Spawn)
+				EnGauge_Time ();
         }
     }
 
