@@ -18,7 +18,7 @@ public class RoomItem : Photon.MonoBehaviour {
 		_maxnumofPeople = maxnum;
 
 		RoomName.text = "ルーム名" + _roomName;
-		NumberofPeople.text = "人数" + _numofPeople.ToString () + "/" + _maxnumofPeople.ToString ();
+		NumberofPeople.text = "人数" + (_numofPeople - 1).ToString () + "/" + (_maxnumofPeople - 1).ToString ();
 	}
 
 	public void OnClickJoinButton(){

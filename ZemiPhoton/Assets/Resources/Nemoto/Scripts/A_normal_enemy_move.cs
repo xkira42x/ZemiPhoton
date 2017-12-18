@@ -16,7 +16,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
     protected Animator A_anim;                 //>敵(ゾンビ)のアニメーター
     protected bool A_delay_flg = true;         //>ダメージ処理の抑制flg(多段HIT防止)
     protected GameObject A_Player;             //>プレイヤーオブジェクト
-    protected N2_status A_P_info;              //>プレイヤーの情報
+    protected S2_Status A_P_info;              //>プレイヤーの情報
     public GameObject A_Bullet;                //>弾オブジェクト
     protected Bullet A_B_info;                 //>弾の情報
     public GameObject A_enemy;
@@ -48,7 +48,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 		TargetSelect();
 			//IK追記
         A_anim = GetComponent<Animator>();
-		A_P_info = A_Player.GetComponent<N2_status>();
+		A_P_info = A_Player.GetComponent<S2_Status>();
         A_B_info = A_Bullet.GetComponent<Bullet>();
         A_hp = A_hp_init;                              //>体力初期化
         A_spd = Random.Range(0.04f, 0.1f);
@@ -258,7 +258,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
         {
 			A_Player = GameObject.Find("Player" + Random.Range(1, PhotonNetwork.playerList.Length+1).ToString());//>1P～4Pをランダムで参照
         } while (A_Player == null);//>プレイヤーが居たら抜け出す
-		A_P_info = A_Player.GetComponent<N2_status> ();
+		A_P_info = A_Player.GetComponent<S2_Status> ();
 
     }
 
@@ -282,7 +282,7 @@ public class A_normal_enemy_move : Photon.MonoBehaviour {
 		if (A_Player == null) {
 			Debug.Log ("プレイヤーがみつかりません");
 		}
-		A_P_info = A_Player.GetComponent<N2_status> ();
+		A_P_info = A_Player.GetComponent<S2_Status> ();
 
 		Debug.Log ("AP:"+A_Player);
 	}
