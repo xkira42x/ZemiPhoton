@@ -19,10 +19,8 @@ public class MenuManager : Photon.MonoBehaviour {
 	[PunRPC]
 	void SetNameText(string name){
 		Names [index].text = name;
-		// ↓ここでコメントアウトすると元に戻る
 		if (PlayerInfo.playerName == name)
 			PlayerInfo.playerNumber = index;
-		// ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 		index++;
 	}
 

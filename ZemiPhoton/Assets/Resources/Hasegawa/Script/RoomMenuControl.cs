@@ -25,10 +25,16 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	/// True ルーム有り	False ルームなし
 	/// </summary>
 	public bool DisplayRoomList(){
+		// ルームアイテムをすべて削除
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("RoomItem"))
+			Destroy (obj);
+		// ルームが一つでも作られていたら
+		// ルームリストとして表示をする
 		if (PhotonNetwork.GetRoomList ().Length == 0) {
 			Debug.Log ("部屋なし");
 			return false;
 		} else {
+			// ルーム情報を取得して、表示用のオブジェクトに入れる
 			foreach (RoomInfo room in PhotonNetwork.GetRoomList()) {
 				GameObject obj = Instantiate (RoomListTemplate, new Vector3 (0, 0, 0), Quaternion.identity);
 				obj.GetComponent<RoomItem> ().SetRoomInfo (room.Name, room.PlayerCount, room.MaxPlayers);

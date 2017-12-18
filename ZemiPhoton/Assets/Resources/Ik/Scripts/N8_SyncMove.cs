@@ -27,10 +27,12 @@ public class N8_SyncMove : Photon.MonoBehaviour {
 	IEnumerator SyncPos(){
 		while (true) {
 			Debug.Log ("N8.SyncPosition:送信");
-			short[] hoge = new short[3] {(short)transform.position.x,
+/*			short[] hoge = new short[3] {(short)transform.position.x,
 				(short)transform.position.y, (short)transform.position.z
 			};
 			photonView.RPC ("SyncPosition", PhotonTargets.Others, hoge[0]);
+*/
+			photonView.RPC ("SyncPosition", PhotonTargets.Others, transform.position);
 			yield return new WaitForSeconds (0.25f);
 		}
 	}
@@ -40,8 +42,9 @@ public class N8_SyncMove : Photon.MonoBehaviour {
 	/// </summary>
 	/// <param name="pos">同期する座標.</param>
 	[PunRPC]
-	void SyncPosition(short[] pos){
-		transform.position = new Vector3((float)pos[0],(float)pos[1],(float)pos[2]);
+	void SyncPosition(Vector3 pos){
+//		transform.position = new Vector3((float)pos[0],(float)pos[1],(float)pos[2]);
+		transform.position = pos;
 
 		//送信したバイト数を保存する
 		SO.AddSize((int)pos[0]);
