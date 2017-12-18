@@ -181,7 +181,7 @@ public class A_Enemy_Base : Photon.MonoBehaviour {
     {
         //A_Player = GameObject.Find("FPSPlayer(Clone)");//仮組み→テスト
         //A_Player = GameObject.Find("Player" + player_num.ToString());   
-		photonView.RPC ("TargetSet",PhotonTargets.AllBuffered, Random.Range (1, PhotonNetwork.playerList.Length+1));
+		photonView.RPC ("TargetSet",PhotonTargets.AllBuffered, Random.Range (1, PhotonNetwork.playerList.Length));
     }
 	[PunRPC]
 	protected void TargetSet(int ss){
