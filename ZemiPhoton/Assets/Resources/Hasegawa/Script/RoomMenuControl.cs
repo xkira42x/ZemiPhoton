@@ -82,7 +82,10 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		string roomname = RoomNane.text;
 		// ルーム名の空白判定
 		if (!string.IsNullOrEmpty (roomname))
+		if (string.IsNullOrEmpty (roomname)) {
 			roomname = "Room" + (RoomNum + 1).ToString ();
+			RoomNane.text=roomname;
+		}
 		// ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (RoomNane.text, ro, TypedLobby.Default);
 

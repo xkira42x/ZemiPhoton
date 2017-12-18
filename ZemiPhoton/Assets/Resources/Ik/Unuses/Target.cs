@@ -6,12 +6,12 @@ public class Target: MonoBehaviour {
 	A_normal_enemy_move_typeR AER;
 	[SerializeField]
 	GameObject Object;
-	A_normal_enemy_move AE;
+	A_normal_enemy_move1 AE;
 	TextMesh TM;
 	// Use this for initialization
 	void Start () {
 //		AER = gameObject.transform.parent.GetComponent<A_normal_enemy_move_typeR> ();
-		AE = gameObject.transform.parent.GetComponent<A_normal_enemy_move> ();
+		AE = gameObject.transform.parent.GetComponent<A_normal_enemy_move1> ();
 		TM = GetComponent<TextMesh> ();
 	}
 	

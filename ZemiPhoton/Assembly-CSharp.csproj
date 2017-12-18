@@ -39,10 +39,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity5.6/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity5.6/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -215,15 +215,15 @@
      <Compile Include="Assets\Resources\Kaede\Standard Assets\Utility\TimedObjectDestructor.cs" />
      <Compile Include="Assets\Resources\Kaede\Standard Assets\Utility\WaypointCircuit.cs" />
      <Compile Include="Assets\Resources\Kaede\Standard Assets\Utility\WaypointProgressTracker.cs" />
-     <Compile Include="Assets\Resources\Nemoto\A_Boomer_move.cs" />
-     <Compile Include="Assets\Resources\Nemoto\A_explosion.cs" />
-     <Compile Include="Assets\Resources\Nemoto\A_normal_enemy_move.cs" />
+     <Compile Include="Assets\Resources\Nemoto\Scripts\A_Boomer_move.cs" />
+     <Compile Include="Assets\Resources\Nemoto\Scripts\A_Enemy_Base.cs" />
+     <Compile Include="Assets\Resources\Nemoto\Scripts\A_explosion.cs" />
+     <Compile Include="Assets\Resources\Nemoto\Scripts\A_normal_enemy_move.cs" />
+     <Compile Include="Assets\Resources\Nemoto\Scripts\A_normal_enemy_move1.cs" />
      <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\PseudoVolumetricExplosion.cs" />
      <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\ExploderComponent.cs" />
      <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\LightComponent.cs" />
-     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\ParticleComponent.cs" />
      <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\PseudoVolumetricComponent.cs" />
-     <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent.cs" />
      <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\exploders\Exploder.cs" />
      <Compile Include="Assets\Resources\Nemoto\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
      <Compile Include="Assets\Resources\Nemoto\zombie\Zombi_Ani_test.cs" />
@@ -231,6 +231,14 @@
      <Compile Include="Assets\Resources\Ogiyama\NameCatch.cs" />
      <Compile Include="Assets\Resources\Ogiyama\NewData.cs" />
      <Compile Include="Assets\Resources\Shihara\Script\Player_Start.cs" />
+     <Compile Include="Assets\Resources\Shihara\Script\UI\Camera_Spot.cs" />
+     <Compile Include="Assets\Resources\Shihara\Script\UI\Enemy_test.cs" />
+     <Compile Include="Assets\Resources\Shihara\Script\UI\Item_State.cs" />
+     <Compile Include="Assets\Resources\Shihara\Script\UI\Item_State2.cs" />
+     <Compile Include="Assets\Resources\Shihara\Script\UI\Item_get.cs" />
+     <Compile Include="Assets\Resources\Shihara\Script\UI\Player_Status_tes.cs" />
+     <Compile Include="Assets\Resources\Shihara\Script\UI\Spot.cs" />
+     <Compile Include="Assets\Resources\Shihara\Script\UI\Timer.cs" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
@@ -259,25 +267,25 @@
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
      <None Include="Assets\Resources\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/nunit.framework.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/TestRunner/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
  <HintPath>C:/Users/nwuser.DA/Documents/ZemiPhoton/ZemiPhoton/Assets/Plugins/Photon3Unity3D.dll</HintPath>

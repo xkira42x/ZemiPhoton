@@ -89,8 +89,8 @@ ModelImporter:
     - serializedVersion: 16
       name: mutant_idle
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 427
+      firstFrame: 94
+      lastFrame: 355
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

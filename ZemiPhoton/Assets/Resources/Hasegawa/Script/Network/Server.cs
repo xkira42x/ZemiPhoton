@@ -96,7 +96,7 @@ public class Server : Photon.MonoBehaviour {
 
 			WWW www = new WWW (url, form);
 
-			yield return StartCoroutine (CheckTimeOut (www, 3f));	//TimeOutSecond=3s
+			yield return StartCoroutine (CheckTimeOut (www, 10f));	//TimeOutSecond=3s
 
 			if (www.error != null) {
 				Debug.Log ("HttpPost NG: " + www.error);

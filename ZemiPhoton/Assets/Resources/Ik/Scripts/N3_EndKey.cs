@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //ゲームを強制終了させるキーです
 public class N3_EndKey : Photon.MonoBehaviour {
 
 	GameObject EndUI;
 
-	GameObject LoginUI;
+//	GameObject LoginUI;
 
-	GameObject Camera;
+//	GameObject Camera;
 	// Update is called once per frame
 	void Start(){
-		EndUI=GameObject.Find ("Canvas").transform.Find("EndUI").gameObject;
-		LoginUI= GameObject.Find ("UI").transform.Find("loginUI").gameObject;
+		EndUI=GameObject.Find ("UI").transform.Find("EndUI").gameObject;
+//		LoginUI= GameObject.Find ("UI").transform.Find("loginUI").gameObject;
 	}
 	void Update () {
 		//Escapeキーでゲーム終了ボタンを表示
@@ -25,7 +26,8 @@ public class N3_EndKey : Photon.MonoBehaviour {
 		}
 	}
 	public void EndButton(){
-		GameObject.Find ("PlayerName").SetActive (false);
+		SceneManager.LoadScene ("title");
+/*		GameObject.Find ("PlayerName").SetActive (false);
 		Camera =GameObject.Find ("PhotonManager").transform.Find("Camera").gameObject;
 		Camera.SetActive(true);
 		LoginUI =GameObject.Find ("UI").transform.Find("loginUI").gameObject;
@@ -36,13 +38,13 @@ public class N3_EndKey : Photon.MonoBehaviour {
 		EndUI.SetActive (false);
 		PhotonNetwork.LeaveRoom ();
 		Destroy(this.gameObject);
-
+*/
 	}
 	public void ContnButton(){
 		EndUI = GameObject.Find ("EndUI");
-		EndUI.SetActive (false);
 		Cursor.lockState=CursorLockMode.Confined;	//画面内にロック
 		ShowMouse (false);
+		EndUI.SetActive (false);
 	}
 	public void ShowMouse(bool flg){
 //		Screen.lockCursor = flg;
