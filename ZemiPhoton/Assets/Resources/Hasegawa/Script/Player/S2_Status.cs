@@ -39,7 +39,9 @@ public class S2_Status: Photon.MonoBehaviour {
 	/// ユーザIDからキャラクタの名前IDを設定する(初期呼び出し)
 	[PunRPC]
 	void SyncPlayerID(int id){
-		gameObject.name = "Player" + id.ToString ();
+		string name = "Player" + id.ToString ();
+		gameObject.name = name;
+		PlayerList.AddPlayerList (name);
 	}
 
 	/// ヒットポイントの同期して、HPのUIゲージも更新する
