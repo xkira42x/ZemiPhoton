@@ -15,11 +15,15 @@ public class S3_Shot : Photon.MonoBehaviour {
 
 	RaycastHit hitInfo;
 
+	Item_State2 iState;
+
 	void Start(){
 		if (MyGun != null)
 			MyGun.ShotSetting (shot);
 
 		shot = GetComponent<S3_Shot> ();
+
+		iState = GameObject.Find ("UI").GetComponent<Item_State2> ();
 	}
 
 	void Update () {
@@ -32,7 +36,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 
 			if (Input.GetKeyDown (KeyCode.R)) {
 				MyGun.ReloadRequest ();
-                UI.text = "";
+				UI.text = "";
 			}
 
 			if (Physics.Raycast (CameraT.position, CameraT.forward, out hitInfo, 5, 1 << LayerMask.NameToLayer ("Item"))) {
@@ -41,6 +45,9 @@ public class S3_Shot : Photon.MonoBehaviour {
 					gameObject.SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
 				}
 			}
+
+			if (MyGun != null)
+				iState.Number_of_remaining_bullets = MyGun.GetMagazine ();
 		}
 	}
 
