@@ -44,8 +44,10 @@ public class MenuManager : Photon.MonoBehaviour {
 			}
 		}
 
-		if (flg && PlayerInfo.isClient()) {
+		if (flg && PlayerInfo.isClient ()) {
 			StartCoroutine ("StartTimeCount");
+		} else if(flg){
+			PlayerInfo.Spawn = true;
 		}
 	}
 

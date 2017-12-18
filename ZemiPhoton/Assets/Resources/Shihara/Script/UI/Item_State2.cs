@@ -16,7 +16,6 @@ public class Item_State2 : MonoBehaviour
     public Image Bomb;
     public Image Recovery;
 
-
     public static byte Gun_flg = 1;
     public static float Bom_color = 1.0f;
     public static float Rec_color = 1.0f;
@@ -24,6 +23,8 @@ public class Item_State2 : MonoBehaviour
     float Gun_sel = 1.0f;
     float Bom_sel = 0.3f;
     float Rec_sel = 0.3f;
+
+	public int Number_of_remaining_bullets;
 
     void Start()
     {
@@ -68,6 +69,7 @@ public class Item_State2 : MonoBehaviour
 
         //残り弾数表示テキスト
         //Bullet.text = "" + Camera_Spot.tama.ToString();
+		Bullet.text = Number_of_remaining_bullets.ToString();
     }
 
 
