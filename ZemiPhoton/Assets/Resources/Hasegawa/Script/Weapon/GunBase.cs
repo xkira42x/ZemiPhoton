@@ -9,6 +9,7 @@ using UnityEngine;
 /// </summary>
 public class GunBase : MonoBehaviour {
 
+	// 銃の名前
 	public string WeaponName;
 	// カメラのTransform情報
 	protected Transform CameraT;
