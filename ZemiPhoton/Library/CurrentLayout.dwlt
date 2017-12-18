@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1307
     height: 708
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 33
+  controlID: 88
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 34
+  controlID: 89
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -201,8 +201,8 @@ MonoBehaviour:
     y: 0
     width: 649
     height: 387
-  m_MinSize: {x: 104, y: 121}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
@@ -365,9 +365,9 @@ MonoBehaviour:
     height: 366
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 48060000
     m_LastClickedID: 0
-    m_ExpandedIDs: d0e2ffff58e3ffff3ae5ffff40e5ffff2af7ffff000000006e3b00007a3b0000403c0000583c0000a03c0000a63c0000e63c0000fe3c0000
+    m_ExpandedIDs: 50f2ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -527,19 +527,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Resources/Hasegawa/Script
+    - Assets/Resources/Hasegawa/Script/Network
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Hasegawa/Script
+  - Assets/Resources/Hasegawa/Script/Network
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\nwuser.DA\Documents\ZemiPhoton\ZemiPhoton
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 247}
-    m_SelectedIDs: 52310000
-    m_LastClickedID: 12626
-    m_ExpandedIDs: 00000000502a0000a82c00008e2d00007c2e0000bc2e0000c22e0000242f0000322f00004c3100005231000058310000a0310000083400004c340000683700007839000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 207}
+    m_SelectedIDs: 10390000
+    m_LastClickedID: 14608
+    m_ExpandedIDs: 00000000b22c0000fe2e0000ae2f00009a300000da300000e0300000423100005031000072330000783300007e330000ca330000343600007a36000082390000903b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -567,7 +567,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000502a0000a82c00008e2d00007c2e0000bc2e0000c22e0000242f0000322f00004c3100005231000058310000a0310000083400004c3400006837000078390000
+    m_ExpandedIDs: 00000000b22c0000fe2e0000ae2f00009a300000da300000e0300000423100005031000072330000783300007e330000ca330000343600007a36000082390000903b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

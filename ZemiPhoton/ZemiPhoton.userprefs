@@ -1,19 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Player\PlayerStatusUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Network\Server.cs">
     <Files>
       <File FileName="Assets\Resources\Kaede\Scripts\Test\Enemy.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Ik\Scripts\N8_SyncMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Network\Server.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="11" Column="29" />
-      <File FileName="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" Line="7" Column="13" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Player\S1_Move.cs" Line="10" Column="37" />
-      <File FileName="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" Line="65" Column="67" />
-      <File FileName="Assets\Resources\Nemoto\Scripts\A_Enemy_Base.cs" Line="192" Column="23" />
-      <File FileName="Assets\Resources\Nemoto\Scripts\A_normal_enemy_move.cs" Line="277" Column="1" />
-      <File FileName="Assets\Resources\Ik\Unuses\Target.cs" Line="9" Column="22" />
-      <File FileName="Assets\Resources\Shihara\Script\UI\Player_Status_tes.cs" Line="7" Column="2" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Player\PlayerStatusUI.cs" Line="6" Column="46" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\Server.cs" Line="124" Column="28" />
+      <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Player\S1_Move.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Nemoto\Scripts\A_Enemy_Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Nemoto\Scripts\A_normal_enemy_move.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Unuses\Target.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Shihara\Script\UI\Player_Status_tes.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Player\PlayerStatusUI.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
