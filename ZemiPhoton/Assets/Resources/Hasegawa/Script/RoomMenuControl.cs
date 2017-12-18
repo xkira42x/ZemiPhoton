@@ -13,6 +13,7 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	// ルーム選択画面
 	[SerializeField]GameObject RoomSelectinView;
 	[SerializeField]Transform Content;
+	[SerializeField]int RoomNum = 0;
 
 	// ルーム一覧のひな型
 	[SerializeField]GameObject RoomListTemplate;
@@ -28,9 +29,11 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		// ルームアイテムをすべて削除
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("RoomItem"))
 			Destroy (obj);
+		
 		// ルームが一つでも作られていたら
 		// ルームリストとして表示をする
-		if (PhotonNetwork.GetRoomList ().Length == 0) {
+		RoomNum = PhotonNetwork.GetRoomList().Length;
+		if (RoomNum == 0) {
 			Debug.Log ("部屋なし");
 			return false;
 		} else {
@@ -76,6 +79,9 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		ro.IsVisible = true;
 		//　部屋の入室最大人数
 		ro.MaxPlayers = 5;
+		string roomname = RoomNane.text;
+		if (!string.IsNullOrEmpty (roomname))
+			roomname = "Room" + (RoomNum + 1).ToString ();
 		// ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (RoomNane.text, ro, TypedLobby.Default);
 
