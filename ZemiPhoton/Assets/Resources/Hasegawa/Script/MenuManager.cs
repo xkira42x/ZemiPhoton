@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class MenuManager : Photon.MonoBehaviour {
 
-	[SerializeField]Text[] Names;
-	[SerializeField]Text[] Status;
-	[SerializeField]Text timerText;
-	[SerializeField]GameObject[] MenuItems;
+	[SerializeField]Text[] Names;				// ユーザ名
+	[SerializeField]Text[] Status;				// 準備ステート
+	[SerializeField]Text timerText;				// スタートカウントダウン
+	[SerializeField]GameObject[] MenuItems;		// メニュー画面の一覧
 
-	byte index = 0;
-	bool doOnce_Ready = false;
+	byte index = 0;				// ユーザ名番号
+	bool doOnce_Ready = false;	// 準備判定
 
+	/// ユーザ名の設定と同期
 	public void SetName(string name){
 		photonView.RPC ("SetNameText", PhotonTargets.AllBufferedViaServer, name);
 	}
+	/// ユーザ名同期（受信）
+	/// 一覧に順次名前を更新する
 	[PunRPC]
 	void SetNameText(string name){
 		Names [index].text = name;
@@ -24,6 +27,7 @@ public class MenuManager : Photon.MonoBehaviour {
 		index++;
 	}
 
+	/// 
 	public void OnClickReadyButton(){
 		if (!doOnce_Ready) {
 			photonView.RPC ("Ready", PhotonTargets.AllBuffered, PlayerInfo.playerNumber);
@@ -63,6 +67,7 @@ public class MenuManager : Photon.MonoBehaviour {
 				break;
 		}
 		PlayerSpawn ();
+		PlayerInfo.onTimer = true;
 	}
 
 	void PlayerSpawn(){

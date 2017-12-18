@@ -14,4 +14,5 @@ public class PlayerInfo : MonoBehaviour {
 	public static byte role;						// サバクラの振り分けを保存
 	public static bool isClient(){return role == Client;} // クライアント判定
 
+	public static bool onTimer = false;
 }
