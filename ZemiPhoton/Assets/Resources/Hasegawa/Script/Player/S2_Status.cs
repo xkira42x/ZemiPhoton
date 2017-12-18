@@ -7,14 +7,14 @@ public class S2_Status: Photon.MonoBehaviour {
 
 	PlayerStatusUI statusUI;
 
-	short health = 100;
+	float health = 100;
 
-	public short Health {
+	public float Health {
 		get{ return health; }
 		set { health = value; }
 	}
 
-	public void Damage(short dmg){
+	public void Damage(float dmg){
 		health -= dmg;
 		statusUI.Health = health;
 		photonView.RPC ("SyncHP", PhotonTargets.Others, health);
