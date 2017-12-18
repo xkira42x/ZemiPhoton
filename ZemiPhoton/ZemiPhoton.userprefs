@@ -4,11 +4,11 @@
     <Files>
       <File FileName="Assets\Resources\Kaede\Scripts\Test\Enemy.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Ik\Scripts\N8_SyncMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Network\Server.cs" Line="124" Column="28" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\Server.cs" Line="56" Column="21" />
       <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\Player\S1_Move.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" Line="10" Column="38" />
       <File FileName="Assets\Resources\Nemoto\Scripts\A_Enemy_Base.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Nemoto\Scripts\A_normal_enemy_move.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Ik\Unuses\Target.cs" Line="1" Column="1" />

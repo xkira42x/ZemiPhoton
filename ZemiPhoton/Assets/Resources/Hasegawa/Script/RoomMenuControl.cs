@@ -80,8 +80,10 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		//　部屋の入室最大人数
 		ro.MaxPlayers = 5;
 		string roomname = RoomNane.text;
-		if (!string.IsNullOrEmpty (roomname))
+		if (string.IsNullOrEmpty (roomname)) {
 			roomname = "Room" + (RoomNum + 1).ToString ();
+			RoomNane.text=roomname;
+		}
 		// ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (RoomNane.text, ro, TypedLobby.Default);
 
