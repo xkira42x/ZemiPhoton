@@ -13,9 +13,9 @@ public class PlayerStatusUI : MonoBehaviour {
 	public string UserName { set { userNameUI.text = value; } }
 
 //	public short Health { set { hpSlider.value = value; } }
-	public short Health {
+	public float Health {
 		set {
-			hp = value / 100;
+			hp = (value / 100);
 			hpImage.fillAmount = hp;
 			hpImage.color = new Color (1f, hp, 1f, 1f);
 		}
