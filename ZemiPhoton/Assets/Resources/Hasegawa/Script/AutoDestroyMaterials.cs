@@ -6,12 +6,11 @@
 public class AutoDestroyMaterials : MonoBehaviour {
 
 	#region Parameters
-
 	// 重複登録防止のためのルートフラグ
 	[System.NonSerialized] public bool IsRoot = true;
-
 	#endregion
 
+	/// 初期化
 	void Start(){
 		if(IsRoot){
 			// 配下のレンダラすべてに追加
@@ -25,6 +24,7 @@ public class AutoDestroyMaterials : MonoBehaviour {
 		}
 	}
 
+	/// 削除された時のコールバック
 	void OnDestroy(){
 		// レンダラのマテリアルを破棄(パーティクルシステムのレンダラも含まれる)
 		var thisRenderer = this.GetComponent<Renderer>();
@@ -34,6 +34,7 @@ public class AutoDestroyMaterials : MonoBehaviour {
 			}
 		}
 
+		// 自身のオブジェクトをnull化してメモリ開放になる
 		var obj = gameObject.GetComponent<GameObject> ();
 		obj = null;
 	}
