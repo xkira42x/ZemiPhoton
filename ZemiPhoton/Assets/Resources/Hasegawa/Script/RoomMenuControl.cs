@@ -81,7 +81,6 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		ro.MaxPlayers = 5;
 		string roomname = RoomNane.text;
 		// ルーム名の空白判定
-		if (!string.IsNullOrEmpty (roomname))
 		if (string.IsNullOrEmpty (roomname)) {
 			roomname = "Room" + (RoomNum + 1).ToString ();
 			RoomNane.text=roomname;
