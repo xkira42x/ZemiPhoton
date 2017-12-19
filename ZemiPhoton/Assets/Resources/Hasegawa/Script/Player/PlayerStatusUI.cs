@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerStatusUI : MonoBehaviour {
 
-	[SerializeField]Text userNameUI;
-//	[SerializeField]Slider hpSlider;
-	[SerializeField]Image hpImage;
-	float hp = 1;
+	[SerializeField]Text userNameUI;	// ユーザ名の表示UI
+	[SerializeField]Image hpImage;		// ヒットポイントの表示UI 
+	float hp = 1;						// ヒットポイント
 
+	/// ユーザ名の設定
 	public string UserName { set { userNameUI.text = value; } }
 
-//	public short Health { set { hpSlider.value = value; } }
+	/// ヒットポイントの設定
+	/// 1～0までの間で保存をするため、代入の際に(/100)する
+	/// 同時にHPゲージを更新する
 	public float Health {
 		set {
 			hp = (value / 100);
