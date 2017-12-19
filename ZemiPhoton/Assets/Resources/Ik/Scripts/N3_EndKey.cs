@@ -26,6 +26,7 @@ public class N3_EndKey : Photon.MonoBehaviour {
 		}
 	}
 	public void EndButton(){
+		PhotonNetwork.Disconnect ();
 		SceneManager.LoadScene ("title");
 /*		GameObject.Find ("PlayerName").SetActive (false);
 		Camera =GameObject.Find ("PhotonManager").transform.Find("Camera").gameObject;

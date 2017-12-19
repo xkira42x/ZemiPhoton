@@ -74,6 +74,7 @@ public class MenuManager : Photon.MonoBehaviour {
 		GameObject player = PhotonNetwork.Instantiate ("FPSPlayer", Vector3.up, Quaternion.identity, 0);
 		player.name = "Player" + (PlayerInfo.playerNumber+1).ToString();
 		player.GetPhotonView ().RPC ("SetName", PhotonTargets.AllBuffered, PlayerInfo.playerName);
+		MenuItems[2].GetComponent<Image>().color=new Color(0,0,0,0);
 		foreach (GameObject obj in MenuItems)
 			obj.SetActive (false);
 
