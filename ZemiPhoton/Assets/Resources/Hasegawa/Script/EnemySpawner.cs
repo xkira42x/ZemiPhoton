@@ -10,10 +10,18 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField] int maxNum = 20;//最大湧数
 	[SerializeField] int numGenerated = 0;
 
+	bool startflg=false;
 	void Start(){
-		StartCoroutine ("GenerateIntervals");
+//		StartCoroutine ("GenerateIntervals");
 	}
 		
+	void Update(){
+		//startflgがfalseの最初だけコルーチンを動かす
+		if (PlayerInfo.Spawn && !startflg) {
+			StartCoroutine ("GenerateIntervals");
+			startflg = true;
+		}
+	}
 	void Spawn () {
 		if (PlayerInfo.Spawn) {
 			int index = Random.Range (0, 4);
@@ -27,9 +35,9 @@ public class EnemySpawner : MonoBehaviour {
 
 	public IEnumerator GenerateIntervals(){
 		while (true) {
+			yield return new WaitForSeconds (10f);
 			numGenerated = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 			Spawn ();
-			yield return new WaitForSeconds (10f);
 		}
 	}
 }

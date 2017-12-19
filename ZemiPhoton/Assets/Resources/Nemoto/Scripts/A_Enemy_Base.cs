@@ -187,8 +187,8 @@ public class A_Enemy_Base : Photon.MonoBehaviour {
 	[PunRPC]
 	protected void TargetSet(int ss){
 		//数字に応じたプレイヤーをターゲットに代入
-		A_Player = PlayerList.GetPlayerList(ss);//GameObject.Find ("Player" + ss);
-
+		//A_Player = PlayerList.GetPlayerList(ss);
+		A_Player = GameObject.Find ("Player" + ss);
 		if (A_Player == null) {
 			Debug.Log ("プレイヤーがみつかりません");
 		}
