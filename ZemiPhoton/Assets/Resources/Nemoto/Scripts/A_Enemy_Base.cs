@@ -180,14 +180,15 @@ public class A_Enemy_Base : Photon.MonoBehaviour {
     protected virtual void A_Player_Select(sbyte player_num)
     {
         //A_Player = GameObject.Find("FPSPlayer(Clone)");//仮組み→テスト
-        //A_Player = GameObject.Find("Player" + player_num.ToString());   
+        //A_Player = GameObject.Find("Player" + player_num.ToString());  
+		if(PhotonNetwork.player.IsMasterClient)
 		photonView.RPC ("TargetSet",PhotonTargets.AllBuffered, Random.Range (1, PhotonNetwork.playerList.Length));
     }
 	[PunRPC]
 	protected void TargetSet(int ss){
 		//数字に応じたプレイヤーをターゲットに代入
-		A_Player = PlayerList.GetPlayerList(ss);//GameObject.Find ("Player" + ss);
-
+		//A_Player = PlayerList.GetPlayerList(ss);
+		A_Player = GameObject.Find ("Player" + ss);
 		if (A_Player == null) {
 			Debug.Log ("プレイヤーがみつかりません");
 		}
