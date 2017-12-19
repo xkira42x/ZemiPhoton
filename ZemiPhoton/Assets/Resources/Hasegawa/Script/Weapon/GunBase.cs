@@ -9,28 +9,18 @@ using UnityEngine;
 /// </summary>
 public class GunBase : MonoBehaviour {
 
-	// 銃の名前
-	public string WeaponName;
-	// カメラのTransform情報
-	protected Transform CameraT;
-	// 弾丸オブジェクト
-	[SerializeField]protected GameObject AmmoObj;
-	// 所持総弾数
-	[SerializeField]protected int MaxAmmo;
-	// マガジンの最大数
-	[SerializeField]protected int MaxMagazine;
-	// 今のマガジン内弾数
-	protected int Magazine;
+	public string WeaponName;						// 銃の名前
+	protected Transform CameraT;					// カメラのTransform情報
+	[SerializeField]protected GameObject AmmoObj;	// 弾丸オブジェクト
+	[SerializeField]protected int MaxAmmo;			// 所持総弾数
+	[SerializeField]protected int MaxMagazine;		// マガジンの最大数
+	protected int Magazine;							// 今のマガジン内弾数
     public int GetMagazine() { return Magazine; }
-	[SerializeField]protected float ReloadTime = 1;
-	// 攻撃の間隔フラグ
-	protected bool Next = true;
-	// マズルフラッシュエフェクト
-	[SerializeField]public ParticleSystem[] MuzzleFlash;
-	// 銃を取得した際の向きを指定
-	[SerializeField]Vector3 Rotate;
-	// 物理処理
-	[SerializeField]Rigidbody myRigidbody;
+	[SerializeField]protected float ReloadTime = 1;	// リロードする時間
+	protected bool Next = true;						// 次に攻撃する時間間隔(フラグ)
+	[SerializeField]public ParticleSystem[] MuzzleFlash;	// マズルフラッシュエフェクト
+	[SerializeField]Vector3 Rotate;					// 銃を取得した際の向きを指定
+	[SerializeField]Rigidbody myRigidbody;			// 物理処理コンポーネントのキャッシュ
 
 	/// <summary>
 	/// <para>名前　Start</para>
@@ -51,13 +41,17 @@ public class GunBase : MonoBehaviour {
 	/// </summary>
 	public virtual void Action(){
 		if (Next) {
+			// 残弾があれば
 			if (Magazine > 0) {
+				// 残弾を減らす
 				Magazine--;
+				// 弾を生成
 				Instantiate (AmmoObj, CameraT.position, CameraT.rotation);
+				// エフェクトの再生
 				PlayEffect ();
 				Next = false;
 				Delay (.1f);
-			} else
+			} else // 弾切れの際のメッセージ
 				gameObject.SendMessageUpwards ("OutOfAmmoMSG", SendMessageOptions.DontRequireReceiver);
 		}
 	}
@@ -112,12 +106,18 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値　なし</para>
 	/// </summary>
 	public void ShotSetting(S3_Shot S_Shot){
+		// 重力を無効化
 		myRigidbody.useGravity = false;
+		// 物理処理を無効化
 		myRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+		// 銃の向き・座標を初期化
 		transform.localRotation = Quaternion.Euler (Rotate);
 		transform.localPosition = Vector3.zero;
+		// カメラ位置の設定（弾の撃たれる位置）
 		CameraT = S_Shot.CameraT;
+		// 残弾の初期化
 		Magazine = MaxMagazine;
+		// レイヤー変更（衝突する対象のいないレイヤー）
 		gameObject.layer = LayerMask.NameToLayer ("Possessing");
 	}
 
@@ -128,9 +128,13 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値　なし</para>
 	/// </summary>
 	public void ThrowAway(){
+		// 重力を有効化
 		myRigidbody.useGravity = true;
+		// 物理処理を有効化
 		myRigidbody.constraints = RigidbodyConstraints.None;
+		// 銃とプレイヤーの親子関係を切る
 		transform.parent = null;
+		// レイヤーを変更（拾えるアイテムの当たり判定を与える）
 		gameObject.layer = LayerMask.NameToLayer ("Item");
 	}
 

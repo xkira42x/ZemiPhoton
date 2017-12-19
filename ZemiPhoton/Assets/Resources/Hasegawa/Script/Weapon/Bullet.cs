@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-	[SerializeField]protected float speed = 1;
-	Vector3 movement;
-	[SerializeField]protected short pow = 50;
+	[SerializeField]protected float speed = 1;	// 弾速
+	Vector3 movement;							// 移動量
+	[SerializeField]protected short pow = 50;	// 威力
 	public short Pow{ get { return pow; } set { pow = value; } }
-	[SerializeField]protected float LifeTime = 1;
-	float time;
+	[SerializeField]protected float LifeTime = 1;	// 削除されるまでの時間
+	float time;									// 経過時間
 
+	/// 弾の向きから移動量を計算して保存する
 	void Start () {
 		// 角度の保持
 		Vector3 angle = transform.localEulerAngles;
@@ -21,15 +22,16 @@ public class Bullet : MonoBehaviour {
 		// 削除処理
 		Destroy (gameObject, LifeTime);
 	}
-	
+
+	/// 経過時間分弾が落ちていく
 	void Update () {
 		time += Time.deltaTime;
 		// 移動
 		transform.position += new Vector3(movement.x,movement.y - ((9.8f * time)/200),movement.z);
 	}
 
+	/// 当たり判定（自分を消す）
 	void OnCollisionEnter(){
-		Debug.Log ("Destroy bullet.");
 		Destroy (gameObject);
 	}
 

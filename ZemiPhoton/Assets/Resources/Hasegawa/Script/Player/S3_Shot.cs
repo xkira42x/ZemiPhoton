@@ -80,19 +80,24 @@ public class S3_Shot : Photon.MonoBehaviour {
 			WriteUIText ("I do not have weapons");
 	}
 
-	/// 
+	/// アイテムの取得・その前にアイテムを持っていたら捨てる
 	public void PickUpItemMSG(GameObject obj){
+		// アイテムを捨てる
 		if (MyGun != null)
 			MyGun.ThrowAway ();
+		// アイテムを取得する
 		obj.transform.parent = GunSpot;
 		MyGun = obj.GetComponent<GunBase> ();
 		MyGun.ShotSetting (shot);
 	}
 
+	/// リロードの催促
 	void OutOfAmmoMSG(){
 		WriteUIText ("Reload with R key");
 	}
 
+	/// UIテキストの書き込み処理
+	/// 引数の文字を表示して、一定時間で消す
 	void WriteUIText(string UIText){
 		if (UI != null) {
 			UI.text = UIText;
@@ -100,6 +105,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 			ShowUI = true;
 		}
 	}
+	/// UIテキストをクリアする
 	IEnumerator ClearUIText(){
 		yield return new WaitForSeconds (1);
 		if (ShowUI)
