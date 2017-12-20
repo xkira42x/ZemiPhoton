@@ -1,17 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\EnemySpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs">
     <Files>
-      <File FileName="Assets\Resources\Ik\Scripts\bpstestobjscript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Nemoto\Scripts\A_normal_enemy_move1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Nemoto\Scripts\A_Enemy_Base.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Shihara\Script\UI\Timer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Weapon\AssaultRifle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Weapon\GunBase.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Weapon\HandGun.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Weapon\ShotGun.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Player\PlayerStatusUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs" Line="47" Column="32" />
       <File FileName="Assets\Resources\Hasegawa\Script\MenuManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="22" Column="17" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Network\myPhotonManager.cs" Line="52" Column="34" />
-      <File FileName="Assets\Resources\Hasegawa\Script\PlayerList.cs" Line="32" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
