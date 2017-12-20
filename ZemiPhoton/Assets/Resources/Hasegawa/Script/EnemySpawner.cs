@@ -11,9 +11,6 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField] int numGenerated = 0;
 
 	bool startflg=false;
-	void Start(){
-//		StartCoroutine ("GenerateIntervals");
-	}
 		
 	void Update(){
 		//startflgがfalseの最初だけコルーチンを動かす
@@ -23,13 +20,25 @@ public class EnemySpawner : MonoBehaviour {
 		}
 	}
 	void Spawn () {
-		if (PlayerInfo.Spawn) {
-			int index = Random.Range (0, 4);
-			for (int i = numGenerated; i < maxNum; i++) {
-				PhotonNetwork.Instantiate (enemy [0].name,
-					new Vector3 (Random.Range (-3f, 3f), 3, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
-					Quaternion.identity, 0).gameObject.name = enemy [0].name + (i + 1).ToString ();
+		int index = 0;
+		Vector3 pos, target;
+		float dist;
+
+		target = PlayerList.GetPlayerPosition_Shuffle ();
+		dist = Vector3.Distance (target, SpawnPosition [0].position);
+
+		for(int ii = 1;ii < SpawnPosition.Length;ii++){
+			float dd = Vector3.Distance (target, SpawnPosition [ii].position);
+			if (dd < dist) {
+				dist = dd;
+				index = ii;
 			}
+		}
+		
+		for (int jj = numGenerated; jj < maxNum; jj++) {
+			PhotonNetwork.Instantiate (enemy [0].name,
+				new Vector3 (Random.Range (-3f, 3f), 3, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
+				Quaternion.identity, 0).gameObject.name = enemy [0].name + (jj + 1).ToString ();
 		}
 	}
 
@@ -37,7 +46,8 @@ public class EnemySpawner : MonoBehaviour {
 		while (true) {
 			yield return new WaitForSeconds (10f);
 			numGenerated = GameObject.FindGameObjectsWithTag ("Enemy").Length;
-			Spawn ();
+			if (numGenerated < maxNum)
+				Spawn ();
 		}
 	}
 }

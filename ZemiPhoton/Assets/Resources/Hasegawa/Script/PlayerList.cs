@@ -22,13 +22,15 @@ public class PlayerList : Photon.MonoBehaviour {
 			return Player [index];
 	}
 
-	// Use this for initialization
-	void Start () {
-			
+	public static Vector3 GetPlayerPosition_Shuffle(){
+		int index = Random.Range (0, Player.Count);
+		return Player [index].transform.position;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public static Vector3 GetPlayerPosition(int index){
+		if (0 < index || index > Player.Count)
+			return Player [0].transform.position;
+		else
+			return Player [index].transform.position;
 	}
 }
