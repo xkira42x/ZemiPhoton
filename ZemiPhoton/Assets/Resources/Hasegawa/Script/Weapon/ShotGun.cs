@@ -24,7 +24,7 @@ public class ShotGun : GunBase {
 				PlayEffect ();
 				// 次弾装填
 				Next = false;
-				Delay (.5f);
+				Delay ();
 			}
 		}else // リロードの催促メッセージ
 			gameObject.SendMessageUpwards ("OutOfAmmoMSG", SendMessageOptions.DontRequireReceiver);

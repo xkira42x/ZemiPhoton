@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-	public GameObject[] enemy;     //敵オブジェクト
-	[SerializeField]Transform[] SpawnPosition;
+	public GameObject[] enemy;					// 敵オブジェクト
+	[SerializeField]Transform[] SpawnPosition;	// 生成位置
 
-	[SerializeField] int maxNum = 20;//最大湧数
-	[SerializeField] int numGenerated = 0;
+	[SerializeField] int maxNum = 20;			// 最大生成数
+	[SerializeField] int numGenerated = 0;		// 現在の敵数
 
 	bool startflg=false;
 		

@@ -21,6 +21,7 @@ public class GunBase : MonoBehaviour {
 	[SerializeField]public ParticleSystem[] MuzzleFlash;	// マズルフラッシュエフェクト
 	[SerializeField]Vector3 Rotate;					// 銃を取得した際の向きを指定
 	[SerializeField]Rigidbody myRigidbody;			// 物理処理コンポーネントのキャッシュ
+	[SerializeField]protected float interval = .1f;
 
 	/// <summary>
 	/// <para>名前　Start</para>
@@ -50,7 +51,7 @@ public class GunBase : MonoBehaviour {
 				// エフェクトの再生
 				PlayEffect ();
 				Next = false;
-				Delay (.1f);
+				Delay ();
 			} else // 弾切れの際のメッセージ
 				gameObject.SendMessageUpwards ("OutOfAmmoMSG", SendMessageOptions.DontRequireReceiver);
 		}
@@ -83,7 +84,7 @@ public class GunBase : MonoBehaviour {
 	/// <para>引数　float interval　遅延時間(秒)</para>
 	/// <para>戻り値　なし</para>
 	/// </summary>
-	public void Delay(float interval){
+	public void Delay(){
 		StartCoroutine ("Del", interval);
 	}
 
