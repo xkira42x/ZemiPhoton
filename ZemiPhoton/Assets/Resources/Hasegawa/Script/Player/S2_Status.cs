@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class S2_Status: Photon.MonoBehaviour {
 
+	string userName = "Default";	// ユーザ名
+	public string UserName{ get { return userName; } set { userName = value; } }
+
 	PlayerStatusUI statusUI;		// ステータス表示UI
 
 	float health = 100;				// ヒットポイント(0～100まで)
@@ -40,6 +43,7 @@ public class S2_Status: Photon.MonoBehaviour {
 	[PunRPC]
 	void SyncPlayerID(int id){
 		string name = "Player" + id.ToString ();
+		userName = name;
 		gameObject.name = name;
 		PlayerList.AddPlayerList (name);
 	}

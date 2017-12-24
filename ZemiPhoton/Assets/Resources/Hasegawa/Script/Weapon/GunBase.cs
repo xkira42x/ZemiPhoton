@@ -146,8 +146,14 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値　なし</para>
 	/// </summary>
 	public void PlayEffect(){
+		try{
 		for (int i = 0; i < MuzzleFlash.Length; i++)
 			MuzzleFlash [i].Play ();
+		}
+		catch{
+			for (int i = 0; i < MuzzleFlash.Length; i++)
+				MuzzleFlash [i] = null;
+		}
 	}
 
 }
