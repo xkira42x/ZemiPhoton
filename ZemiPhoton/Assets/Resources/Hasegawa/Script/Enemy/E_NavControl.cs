@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class E_NavControl : MonoBehaviour {
 
+	/// AIに当たる部分のソースを取得
 	[SerializeField]E_AI ai;
+	/// ナビメッシュコンポーネントを取得
 	[SerializeField]NavMeshAgent agent;
 
 	/// 時間経過でナビゲーションを起動させる
@@ -15,6 +17,8 @@ public class E_NavControl : MonoBehaviour {
 		StartCoroutine (SetNaviControl ());
 	}
 
+	/// 時間経過でナビゲーションを起動させる
+	/// その後、このソースは不要なので削除する
 	IEnumerator SetNaviControl(){
 		yield return new WaitForSeconds (1);
 		agent.enabled = true;
