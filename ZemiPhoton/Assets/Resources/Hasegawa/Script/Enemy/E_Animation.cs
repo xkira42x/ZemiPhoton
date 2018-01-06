@@ -29,18 +29,19 @@ public class E_Animation : MonoBehaviour {
 		// 攻撃処理
 		if (ai.State == E_AI.ATTACK && !attacked) {
 			// アニメーションの再生時間を取得
-			float time = animator.GetCurrentAnimatorStateInfo (0).length;
+			float time = 2.2f;//animator.GetCurrentAnimatorStateInfo (0).length;
 			attacked = true;
 			// アニメーションの切り替る
 			StartCoroutine (ReturnToNormal (time));
 			// 攻撃判定する
-			StartCoroutine (Attacked (time));
+			StartCoroutine (Attacked (time - .3f));
+			//Debug.Log (time);
 		}
 
 		// 死亡処理
 		if (ai.State == E_AI.DIE && !died) {
 			// アニメーションの再生時間を取得
-			float time = animator.GetCurrentAnimatorStateInfo (0).length;
+			float time = animator.GetCurrentAnimatorStateInfo (0).length * 2;
 			died = true;
 			// 死亡後に削除する
 			StartCoroutine (Died (time));
@@ -61,7 +62,7 @@ public class E_Animation : MonoBehaviour {
 	/// 攻撃アニメーションで腕を振り切ったタイミングで
 	/// 攻撃判定が走るように調整する
 	IEnumerator Attacked(float interval){
-		yield return new WaitForSeconds (interval * .8f);
+		yield return new WaitForSeconds (interval);
 		if (ai.DistanceToTarger () <= 3f)
 			ai.AttackedTheTarget ();
 	}

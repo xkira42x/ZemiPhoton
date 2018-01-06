@@ -132,6 +132,7 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\PlayerList.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\RoomItem.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\ShowPlayerList.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\TitleManager.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\AssaultRifle.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\Bullet.cs" />

@@ -16,7 +16,7 @@ public class E_AI : Photon.MonoBehaviour {
 			agent.SetDestination (targetTransform.position);
 	}
 	/// 攻撃したかを判定
-	bool attacked = false;
+	//bool attacked = false;
 	/// 攻撃力
 	[SerializeField]float pow = 10;
 	/// 体力
@@ -37,7 +37,7 @@ public class E_AI : Photon.MonoBehaviour {
 		// ナビエージェントの取得
 		agent = GetComponent<NavMeshAgent> ();
 		// ターゲットの設定
-		SetTarget ();
+		if(photonView.isMine)SetTarget ();
 		// 目標地点の設定
 		StartCoroutine (SetDesti ());
 	}
@@ -45,20 +45,24 @@ public class E_AI : Photon.MonoBehaviour {
 	/// メインループ
 	void Update () {
 		
-		// ターゲットの設定
-		SetTarget ();
 		// ステータスの設定
 		AIState ();
+
+		if (Input.GetKeyDown (KeyCode.L))
+		if (photonView.isMine)
+			SetTarget ();
 
 	}
 
 	/// 何番目のプレイヤーをターゲットにするかを設定する
 	/// その番号を同期して、ターゲットの共有をする
 	void SetTarget(){
+		Debug.Log ("Resetting the target");
 		// ターゲットを設定していない && プレイヤー数が0以上の時
-		if (targetTransform == null && PlayerList.length > 0) {
+		if (/*targetTransform == null &&*/ PlayerList.length > 0) {
 			// ターゲット番号の設定
 			targetIndex = Random.Range (0, PlayerList.length);
+			Debug.Log ("target : " + targetIndex);
 			// ターゲットの同期
 			photonView.RPC ("SyncTarget", PhotonTargets.AllBuffered, targetIndex);
 		}
@@ -116,8 +120,14 @@ public class E_AI : Photon.MonoBehaviour {
 			// 体力を減らし、0以下になったら死亡する
 			health -= bbb.Pow;
 			if (health <= 0)
-				state = DIE;
+				photonView.RPC ("SyncDie", PhotonTargets.AllBuffered);
+				//state = DIE;
 		}
 	}
 
+	/// 死亡の同期
+	[PunRPC]
+	void SyncDie(){
+		state = DIE;
+	}
 }

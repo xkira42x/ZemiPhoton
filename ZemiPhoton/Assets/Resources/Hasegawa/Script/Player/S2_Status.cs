@@ -17,14 +17,18 @@ public class S2_Status: Photon.MonoBehaviour {
 	public void Damage(float dmg){
 		health -= dmg;
 		statusUI.Health = health;
-		photonView.RPC ("SyncHP", PhotonTargets.Others, health);
+		photonView.RPC ("SyncHP", PhotonTargets.Others, (short)health);
 	}
 
 	/// ステータス表示するオブジェクトを設定する
 	void Awake(){
+
 		// 操作しているキャラクタのステータスは必ず、右端のステータスに表示する。
 		// それ以外は、右から順に設定する
 		if (photonView.isMine) {
+			// プレイヤーリストに追加する
+			photonView.RPC("SyncPlayerList",PhotonTargets.AllBufferedViaServer);
+
 			statusUI = GameObject.Find ("PlayerStatusUI0").GetComponent<PlayerStatusUI> ();
 			photonView.RPC ("SyncPlayerID", PhotonTargets.AllBuffered, PlayerInfo.playerNumber+1);
 		}else {
@@ -44,13 +48,17 @@ public class S2_Status: Photon.MonoBehaviour {
 	void SyncPlayerID(int id){
 		string name = "Player" + id.ToString ();
 		userName = name;
-		gameObject.name = name;
-		PlayerList.AddPlayerList (name);
+		//gameObject.name = name;
 	}
 
 	/// ヒットポイントの同期して、HPのUIゲージも更新する
 	[PunRPC]
 	void SyncHP(short hp){
 		statusUI.Health = health = hp;
+	}
+
+	[PunRPC]
+	void SyncPlayerList(){
+		PlayerList.AddPlayerList (gameObject);
 	}
 }

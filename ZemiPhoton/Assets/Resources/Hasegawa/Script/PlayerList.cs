@@ -30,6 +30,20 @@ public class PlayerList : Photon.MonoBehaviour {
 		Debug.Log ("Add player id : " + _length + " name : " + Player [_length - 1].name);
 	}
 
+	/// リストに追加する
+	/// 受け取った名前で検索して、リストに追加する
+	public static void AddPlayerList(GameObject obj){
+		
+		// オブジェクトをリストに追加する
+		Player.Add (obj);
+
+		_length = Player.Count;
+//		Debug.Log ("Add player id : " + _length + " name : " + Player [_length - 1].name);
+		for (int i = 0; i < _length; i++) {
+			Debug.Log ("Show.. Add player id : " + i + " name : " + Player [i].name);
+		}
+	}
+
 	/// ランダムにリストからオブジェクトを取得
 	public static GameObject GetPlayerList_Shuffle(){
 		int index = Random.Range (0, _length);
@@ -38,7 +52,7 @@ public class PlayerList : Photon.MonoBehaviour {
 
 	/// リスト番号からオブジェクトを取得
 	public static GameObject GetPlayerList(int index){
-		if (0 < index || index > _length)
+		if (0 > index || index > _length)
 			return null;
 		else
 			return Player [index];
