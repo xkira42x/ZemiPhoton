@@ -15,8 +15,6 @@ public class E_AI : Photon.MonoBehaviour {
 		if (targetTransform != null)
 			agent.SetDestination (targetTransform.position);
 	}
-	/// 攻撃したかを判定
-	//bool attacked = false;
 	/// 攻撃力
 	[SerializeField]float pow = 10;
 	/// 体力
@@ -30,6 +28,7 @@ public class E_AI : Photon.MonoBehaviour {
 	Vector3 targetPos;
 	/// ターゲットの識別番号
 	int targetIndex;
+
 
 	/// 初期化
 	void Start () {
@@ -64,7 +63,7 @@ public class E_AI : Photon.MonoBehaviour {
 			targetIndex = Random.Range (0, PlayerList.length);
 			Debug.Log ("target : " + targetIndex);
 			// ターゲットの同期
-			photonView.RPC ("SyncTarget", PhotonTargets.AllBuffered, targetIndex);
+			photonView.RPC ("SyncTarget", PhotonTargets.AllBufferedViaServer, targetIndex);
 		}
 	}
 
@@ -102,6 +101,7 @@ public class E_AI : Photon.MonoBehaviour {
 	/// ターゲットの同期
 	[PunRPC]
 	void SyncTarget(int index){
+		targetIndex = index;
 		targetTransform = PlayerList.GetPlayerList (index).transform;
 	}
 
@@ -121,7 +121,6 @@ public class E_AI : Photon.MonoBehaviour {
 			health -= bbb.Pow;
 			if (health <= 0)
 				photonView.RPC ("SyncDie", PhotonTargets.AllBuffered);
-				//state = DIE;
 		}
 	}
 

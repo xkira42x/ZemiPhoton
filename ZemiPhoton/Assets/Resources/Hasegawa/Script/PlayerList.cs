@@ -27,7 +27,9 @@ public class PlayerList : Photon.MonoBehaviour {
 			Player.Add (obj);
 
 		_length = Player.Count;
-		Debug.Log ("Add player id : " + _length + " name : " + Player [_length - 1].name);
+
+		for (int i = 0; i < _length; i++)
+			Debug.Log ("Show.. Add player id : " + i + " name : " + Player [i].name);
 	}
 
 	/// リストに追加する
@@ -38,10 +40,9 @@ public class PlayerList : Photon.MonoBehaviour {
 		Player.Add (obj);
 
 		_length = Player.Count;
-//		Debug.Log ("Add player id : " + _length + " name : " + Player [_length - 1].name);
-		for (int i = 0; i < _length; i++) {
+
+		for (int i = 0; i < _length; i++)
 			Debug.Log ("Show.. Add player id : " + i + " name : " + Player [i].name);
-		}
 	}
 
 	/// ランダムにリストからオブジェクトを取得
@@ -75,7 +76,7 @@ public class PlayerList : Photon.MonoBehaviour {
 
 	/// リスト番号から座標を取得
 	public static Vector3 GetPlayerPosition(int index){
-		if (0 < index || index > _length)
+		if (0 > index || index > _length)
 			return Player [0].transform.position;
 		else
 			return Player [index].transform.position;

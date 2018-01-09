@@ -34,7 +34,7 @@ public class MenuManager : Photon.MonoBehaviour {
 	public void OnClickReadyButton(){
 		// 一度だけ、準備できたことを送信する
 		if (!doOnce_Ready) {
-			photonView.RPC ("Ready", PhotonTargets.AllBuffered, PlayerInfo.playerNumber);
+			photonView.RPC ("Ready", PhotonTargets.AllBufferedViaServer, PlayerInfo.playerNumber);
 			doOnce_Ready = true;
 		}
 	}

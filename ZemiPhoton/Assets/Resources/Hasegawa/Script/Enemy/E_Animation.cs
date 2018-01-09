@@ -26,10 +26,13 @@ public class E_Animation : MonoBehaviour {
 	/// この中でやっている
 	void Update () {
 
+		// アニメーション再生
+		animator.SetBool (anm_name [(int)ai.State], true);
+
 		// 攻撃処理
 		if (ai.State == E_AI.ATTACK && !attacked) {
 			// アニメーションの再生時間を取得
-			float time = 2.2f;//animator.GetCurrentAnimatorStateInfo (0).length;
+			float time = animator.GetCurrentAnimatorStateInfo (0).length;// 2.2f;
 			attacked = true;
 			// アニメーションの切り替る
 			StartCoroutine (ReturnToNormal (time));
@@ -41,14 +44,12 @@ public class E_Animation : MonoBehaviour {
 		// 死亡処理
 		if (ai.State == E_AI.DIE && !died) {
 			// アニメーションの再生時間を取得
-			float time = animator.GetCurrentAnimatorStateInfo (0).length * 2;
+			float time = animator.GetCurrentAnimatorStateInfo (0).length;
 			died = true;
 			// 死亡後に削除する
 			StartCoroutine (Died (time));
 		}
 
-		// アニメーション再生
-		animator.SetBool (anm_name [(int)ai.State], true);
 	}
 
 	/// 通常行動のステータスに戻る（走る）
