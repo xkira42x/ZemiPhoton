@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
+
+	public int ID;
+
 	[SerializeField]protected float speed = 1;	// 弾速
 	Vector3 movement;							// 移動量
 	[SerializeField]protected short pow = 50;	// 威力

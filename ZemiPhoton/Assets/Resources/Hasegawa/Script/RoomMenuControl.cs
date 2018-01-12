@@ -88,12 +88,16 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		// ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (RoomNane.text, ro, TypedLobby.Default);
 
+		// ルームメニュー関係を非表示
 		RoomSettings.SetActive (false);
 		RoomSelectinView.SetActive (false);
 		CreateRoomButton.SetActive (false);
 		CreateRoomCancelButton.SetActive (false);
 	}
 
+	/// <summary>
+	/// ルーム参加をした時、ルームメニュー関係を非表示
+	/// </summary>
 	public void JoinRoom(){
 		RoomSettings.SetActive (false);
 		RoomSelectinView.SetActive (false);

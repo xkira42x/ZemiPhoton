@@ -6,16 +6,6 @@ public class CallAndResponse : Photon.MonoBehaviour {
 
 	bool check = false;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	/// <summary>
 	/// 接続が確立されているかを判定する
 	/// </summary>
