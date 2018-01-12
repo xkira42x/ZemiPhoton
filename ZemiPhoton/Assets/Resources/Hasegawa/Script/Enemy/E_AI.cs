@@ -119,8 +119,13 @@ public class E_AI : Photon.MonoBehaviour {
 
 			// 体力を減らし、0以下になったら死亡する
 			health -= bbb.Pow;
-			if (health <= 0)
-				photonView.RPC ("SyncDie", PhotonTargets.AllBuffered);
+            if (health <= 0){
+                photonView.RPC("SyncDie", PhotonTargets.AllBuffered);
+
+                /*if( collision.gameObject.GetComponent<Bullet>().ID == PlayerInfo.playerNumber.ID) { 
+                  PlayerInfo.killCount++ ;
+                }*/
+            }
 		}
 	}
 
