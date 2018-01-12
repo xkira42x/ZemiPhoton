@@ -2,11 +2,17 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Ik\Scripts\N3_EndKey.cs">
     <Files>
-      <File FileName="Assets\Resources\Shihara\Script\UI\Timer.cs" Line="80" Column="1" />
-      <File FileName="Assets\Resources\Nemoto\Scripts\A_normal_enemy_move1.cs" Line="17" Column="33" />
-      <File FileName="Assets\Resources\Nemoto\Scripts\A_Enemy_Base.cs" Line="17" Column="63" />
-      <File FileName="Assets\Resources\Hasegawa\Script\MenuManager.cs" Line="83" Column="3" />
-      <File FileName="Assets\Resources\Ik\Scripts\N3_EndKey.cs" Line="27" Column="3" />
+      <File FileName="Assets\Resources\Shihara\Script\UI\Timer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Nemoto\Scripts\A_normal_enemy_move1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Nemoto\Scripts\A_Enemy_Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\MenuManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Ik\Scripts\N3_EndKey.cs" Line="55" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\Server.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\myPhotonManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Player\PlayerInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Network\N2_NetworkSetting.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

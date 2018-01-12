@@ -16,9 +16,9 @@ public class Timer : MonoBehaviour {
 	Image panelimage;
 	// Use this for initialization
 	void Start () {
-        Gauge = GameObject.Find("Timer").GetComponent<Image>();
-        Gauge_T_max = Gauge_T;
-        StartCoroutine(TimeCount());
+		Gauge = GameObject.Find ("Timer").GetComponent<Image> ();
+		Gauge_T_max = Gauge_T;
+		StartCoroutine (TimeCount ());
 
 		panelimage = Panel.GetComponent<Image> ();
 	}
@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-    }
+	}
 
     private IEnumerator TimeCount()
     {
@@ -63,6 +63,7 @@ public class Timer : MonoBehaviour {
 	//ゲーム終了処理
 	//敵の生成を止め、出ている敵を消す
 	void GameEnd(){
+		Debug.Log ("TimerEnd");
 		PlayerInfo.Spawn = false;
 		int enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
 		if (enemies != 0) {

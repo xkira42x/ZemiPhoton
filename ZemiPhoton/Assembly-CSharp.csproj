@@ -136,6 +136,7 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\HandGun.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\ShotGun.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\myNamespace.cs" />
+     <Compile Include="Assets\Resources\Ik\Scripts\DisconnectedFromPhoton.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N15_SizeOf.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_EndKey.cs" />
      <Compile Include="Assets\Resources\Ik\Scripts\N3_LineSet.cs" />
