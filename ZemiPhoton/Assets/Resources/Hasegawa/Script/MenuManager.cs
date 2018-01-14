@@ -13,7 +13,14 @@ public class MenuManager : Photon.MonoBehaviour {
 	byte index = 0;				// ユーザ名番号
 	bool doOnce_Ready = false;	// 準備判定
 
-
+	// 初期位置
+	[SerializeField]Vector3[] Pos = new Vector3[] {
+		new Vector3 (0, 1, 0),
+		new Vector3 (0, 1, 2),
+		new Vector3 (0, 1, 4),
+		new Vector3 (0, 1, 6),
+		new Vector3 (0, 1, 8)
+	};
 
 	/// ユーザ名の設定と同期
 	public void SetName(string name){
@@ -85,10 +92,13 @@ public class MenuManager : Photon.MonoBehaviour {
 
 	/// プレイヤー生成
 	void PlayerSpawn(){
+		
+		int nn = PlayerInfo.playerNumber;	// 番号のキャッシュ（ID）
+
 		// プレイヤーの生成
-		GameObject player = PhotonNetwork.Instantiate ("FPSPlayer", Vector3.up, Quaternion.identity, 0);
+		GameObject player = PhotonNetwork.Instantiate ("FPSPlayer", Pos[nn], Quaternion.identity, 0);
 		// オブジェクト名を設定
-		player.name = "Player" + (PlayerInfo.playerNumber+1).ToString();
+		//player.name = "Player" + (nn + 1).ToString();
 		// ユーザ名を同期する
 		player.GetPhotonView ().RPC ("SetName", PhotonTargets.AllBuffered, PlayerInfo.playerName);
 		// 表示しているメニューを非表示にする
@@ -97,5 +107,8 @@ public class MenuManager : Photon.MonoBehaviour {
 		// プレイヤーを生成した設定にする
 		if (photonView.isMine)
 			PlayerInfo.Spawn = true;
+
+		// 最後の処理が終了したらソースを削除する
+		Destroy (this);
 	}
 }
