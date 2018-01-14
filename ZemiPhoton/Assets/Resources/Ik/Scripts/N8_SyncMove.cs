@@ -10,6 +10,9 @@ public class N8_SyncMove : Photon.MonoBehaviour {
 	N15_SizeOf SO;
 
 	PhotonView phview;
+
+//	[SerializeField]
+	short pointup=100;
 	//通信量を計測するコンポーネントの取得
 	void Awake(){SO=GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();
 		phview=GameObject.Find("PhotonManager").GetPhotonView();
@@ -27,12 +30,12 @@ public class N8_SyncMove : Photon.MonoBehaviour {
 	IEnumerator SyncPos(){
 		while (true) {
 			Debug.Log ("N8.SyncPosition:送信");
-/*			short[] hoge = new short[3] {(short)transform.position.x,
-				(short)transform.position.y, (short)transform.position.z
+			short[] hoge = new short[3] {(short)(transform.position.x*pointup),
+				(short)(transform.position.y*pointup), (short)(transform.position.z*pointup)
 			};
-			photonView.RPC ("SyncPosition", PhotonTargets.Others, hoge[0]);
-*/
-			photonView.RPC ("SyncPosition", PhotonTargets.Others, transform.position);
+			photonView.RPC ("SyncPosition", PhotonTargets.Others, hoge[0],hoge[1],hoge[2]);
+
+//			photonView.RPC ("SyncPosition", PhotonTargets.Others, transform.position);
 			yield return new WaitForSeconds (0.25f);
 		}
 	}
@@ -42,14 +45,13 @@ public class N8_SyncMove : Photon.MonoBehaviour {
 	/// </summary>
 	/// <param name="pos">同期する座標.</param>
 	[PunRPC]
-	void SyncPosition(Vector3 pos){
-//		transform.position = new Vector3((float)pos[0],(float)pos[1],(float)pos[2]);
-		transform.position = pos;
+	void SyncPosition(short[] pos){
+		transform.position = new Vector3(((float)pos[0])/pointup,((float)pos[1])/pointup,((float)pos[2])/pointup);
 
 		//送信したバイト数を保存する
-		SO.AddSize((int)pos[0]);
-		SO.AddSize((int)pos[1]);
-		SO.AddSize((int)pos[2]);
+		SO.AddSize((int)pos[0]/pointup);
+		SO.AddSize((int)pos[1]/pointup);
+		SO.AddSize((int)pos[2]/pointup);
 		SO.AddSize(3);
 
 		//送信された返答を送る
