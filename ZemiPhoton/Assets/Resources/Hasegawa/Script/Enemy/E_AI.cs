@@ -16,22 +16,23 @@ public class E_AI : Photon.MonoBehaviour {
 			agent.SetDestination (targetTransform.position);
 	}
 	/// 攻撃力
-	[SerializeField]float pow = 10;
+	[SerializeField]protected float pow = 10;
 	/// 体力
-	[SerializeField]float health = 100;
+	[SerializeField]protected float health = 100;
 
 	/// ナビメッシュエージェント（コンポーネント）
-	[SerializeField]NavMeshAgent agent;
+	[SerializeField]protected NavMeshAgent agent;
 	/// ターゲットのトランスフォーム
-	[SerializeField]Transform targetTransform;
+	[SerializeField]protected Transform targetTransform;
 	/// ターゲットの座標
-	Vector3 targetPos;
+	protected Vector3 targetPos;
 	/// ターゲットの識別番号
-	int targetIndex;
-
+	protected int targetIndex;
+	/// 射程
+	[SerializeField]protected float range = 2.2f;
 
 	/// 初期化
-	void Start () {
+	public void Start () {
 
 		// ナビエージェントの取得
 		agent = GetComponent<NavMeshAgent> ();
@@ -42,20 +43,15 @@ public class E_AI : Photon.MonoBehaviour {
 	}
 
 	/// メインループ
-	void Update () {
+	public void Update () {
 		
 		// ステータスの設定
 		AIState ();
-
-		if (Input.GetKeyDown (KeyCode.L))
-		if (photonView.isMine)
-			SetTarget ();
-
 	}
 
 	/// 何番目のプレイヤーをターゲットにするかを設定する
 	/// その番号を同期して、ターゲットの共有をする
-	void SetTarget(){
+	public void SetTarget(){
 		Debug.Log ("Resetting the target");
 		// ターゲットを設定していない && プレイヤー数が0以上の時
 		if (/*targetTransform == null &&*/ PlayerList.length > 0) {
@@ -74,9 +70,9 @@ public class E_AI : Photon.MonoBehaviour {
 
 	/// ステータス制御
 	/// 攻撃範囲外なら走り、範囲内に入ったら攻撃をする
-	void AIState(){
+	public void AIState(){
 		if (state != ATTACK) {
-			if (DistanceToTarger() > 2.2f)
+			if (DistanceToTarger () > range)
 				state = RUN;
 			else
 				state = ATTACK;
@@ -85,7 +81,7 @@ public class E_AI : Photon.MonoBehaviour {
 
 	/// 移動のための目的地を設定する
 	/// 処理が重いとの事でコルーチンで回数制御をする
-	IEnumerator SetDesti(){
+	public IEnumerator SetDesti(){
 		while (true) {
 			// ターゲットが設定されている && ステータスが走る状態の時
 			if (targetTransform != null && state == RUN) {
@@ -100,18 +96,18 @@ public class E_AI : Photon.MonoBehaviour {
 
 	/// ターゲットの同期
 	[PunRPC]
-	void SyncTarget(int index){
+	public void SyncTarget(int index){
 		targetIndex = index;
 		targetTransform = PlayerList.GetPlayerList (index).transform;
 	}
 
 	/// プレイヤーにダメージを与える
-	public void AttackedTheTarget(){
+	public virtual void AttackedTheTarget(){
 		PlayerList.GetPlayerList (targetIndex).GetComponent<S2_Status> ().Damage (pow);
 	}
 
 	/// 当たり判定
-	void OnCollisionEnter(Collision collision){
+	public void OnCollisionEnter(Collision collision){
 		// 弾と当たった時
 		if (collision.gameObject.tag == "Bullet" && state != DIE) {
 			// 弾情報を取得
@@ -119,19 +115,25 @@ public class E_AI : Photon.MonoBehaviour {
 
 			// 体力を減らし、0以下になったら死亡する
 			health -= bbb.Pow;
-            if (health <= 0){
-                photonView.RPC("SyncDie", PhotonTargets.AllBuffered);
+			if (health <= 0) {
+				photonView.RPC ("SyncDie", PhotonTargets.AllBuffered);
 
-                /*if( collision.gameObject.GetComponent<Bullet>().ID == PlayerInfo.playerNumber.ID) { 
-                  PlayerInfo.killCount++ ;
-                }*/
-            }
+
+				if (collision.gameObject.GetComponent<Bullet> ().ID == PlayerInfo.playerNumber) {
+					PlayerInfo.killCount++;
+				}
+			}
 		}
 	}
 
 	/// 死亡の同期
 	[PunRPC]
-	void SyncDie(){
+	public void SyncDie(){
+		OnDied ();
 		state = DIE;
+	}
+
+	/// 倒された時に呼ばれる
+	public virtual void OnDied(){
 	}
 }

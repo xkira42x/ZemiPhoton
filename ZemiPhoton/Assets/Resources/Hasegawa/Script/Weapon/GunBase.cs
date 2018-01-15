@@ -16,6 +16,7 @@ public class GunBase : MonoBehaviour {
 	[SerializeField]protected int MaxMagazine;		// マガジンの最大数
 	protected int Magazine;							// 今のマガジン内弾数
     public int GetMagazine() { return Magazine; }
+	public bool Reloading = false;					// リロード判定
 	[SerializeField]protected float ReloadTime = 1;	// リロードする時間
 	protected bool Next = true;						// 次に攻撃する時間間隔(フラグ)
 	[SerializeField]public ParticleSystem[] MuzzleFlash;	// マズルフラッシュエフェクト
@@ -41,7 +42,7 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値 なし</para>
 	/// </summary>
 	public virtual void Action(){
-		if (Next) {
+		if (Next && !Reloading) {
 			// 残弾があれば
 			if (Magazine > 0) {
 				// 残弾を減らす
@@ -64,6 +65,7 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値　なし</para>
 	/// </summary>
 	public void ReloadRequest(){
+		Reloading = true;
 		StartCoroutine ("Reload", ReloadTime);
 	}
 
@@ -76,6 +78,7 @@ public class GunBase : MonoBehaviour {
 	IEnumerator Reload(float il){
 		yield return new WaitForSeconds (il);
 		Magazine = MaxMagazine;
+		Reloading = false;
 	}
 
 	/// <summary>

@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour {
 		int index = 0;			// スポーン位置のインデックス
 		Vector3 target;			// ターゲット座標
 		float dist;				// スポーン位置とターゲットの距離
+		int type;				// 敵のタイプ
 
 		// ターゲット（プレイヤー）の座標をランダムで取得
 		target = PlayerList.GetPlayerPosition_Shuffle ();
@@ -40,11 +41,13 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		}
 
+		type = Random.Range (0, enemy.Length);
+
 		// フィールド上にいる敵の数が最大生成数になるまで生成する
 		for (int jj = numGenerated; jj < maxNum; jj++) {
-			PhotonNetwork.Instantiate (enemy [0].name,
+			PhotonNetwork.Instantiate (enemy [type].name,
 				new Vector3 (Random.Range (-3f, 3f), 3, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
-				Quaternion.identity, 0).gameObject.name = enemy [0].name + (jj + 1).ToString ();
+				Quaternion.identity, 0).gameObject.name = enemy [type].name + (jj + 1).ToString ();
 			Debug.Log ("Spawn");
 		}
 	}

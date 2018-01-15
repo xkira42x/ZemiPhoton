@@ -14,7 +14,7 @@ public class ShotGun : GunBase {
 	public override void Action (){
 		// 残弾があり、次の弾が装填されたら攻撃する
 		if (Magazine > 0) {
-			if (Next) {
+			if (Next && !Reloading) {
 				// 残弾を減らす
 				Magazine--;
 				// 弾をランダムな方向に弾を生成する

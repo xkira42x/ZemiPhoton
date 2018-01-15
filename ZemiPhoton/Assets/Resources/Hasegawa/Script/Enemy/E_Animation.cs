@@ -5,16 +5,16 @@ using UnityEngine;
 public class E_Animation : MonoBehaviour {
 
 	/// アニメーター格納
-	[SerializeField]Animator animator;
+	[SerializeField]protected Animator animator;
 	/// AIソースの格納
-	[SerializeField]E_AI ai;
+	[SerializeField]protected E_AI ai;
 
 	/// アニメーションの名前格納
-	string[] anm_name = new string[] { "Idle", "Run", "Attack", "Hit", "Die" };
+	protected string[] anm_name = new string[] { "Idle", "Run", "Attack", "Hit", "Die" };
 	/// 攻撃制限のフラグ
-	bool attacked = false;
+	protected bool attacked = false;
 	/// 死亡制限のフラグ
-	bool died = false;
+	protected bool died = false;
 
 	/// アニメーションの取得
 	void Start () {
@@ -32,7 +32,7 @@ public class E_Animation : MonoBehaviour {
 		// 攻撃処理
 		if (ai.State == E_AI.ATTACK && !attacked) {
 			// アニメーションの再生時間を取得
-			float time = animator.GetCurrentAnimatorStateInfo (0).length;// 2.2f;
+			float time = animator.GetCurrentAnimatorStateInfo (0).length;
 			attacked = true;
 			// アニメーションの切り替る
 			StartCoroutine (ReturnToNormal (time));
@@ -64,7 +64,7 @@ public class E_Animation : MonoBehaviour {
 	/// 攻撃判定が走るように調整する
 	IEnumerator Attacked(float interval){
 		yield return new WaitForSeconds (interval);
-		if (ai.DistanceToTarger () <= 3f)
+		if (ai.DistanceToTarger () <= 1f)
 			ai.AttackedTheTarget ();
 	}
 

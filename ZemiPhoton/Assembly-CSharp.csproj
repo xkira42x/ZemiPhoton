@@ -111,6 +111,7 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\Demo.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_AI.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Boomer.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_NavControl.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MenuManager.cs" />

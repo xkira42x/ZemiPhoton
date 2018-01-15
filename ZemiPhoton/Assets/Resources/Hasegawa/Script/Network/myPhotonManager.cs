@@ -11,6 +11,8 @@ public class myPhotonManager : Photon.MonoBehaviour {
 
 	void Start () {
 		Cursor.lockState = CursorLockMode.None;
+		// クライアントが生成したオブジェクトを退出時に削除するか
+		PhotonNetwork.autoCleanUpPlayerObjects = false;
 		//　ロビーに自動で入る
 		PhotonNetwork.autoJoinLobby = true;
 		//　ゲームのバージョン設定
