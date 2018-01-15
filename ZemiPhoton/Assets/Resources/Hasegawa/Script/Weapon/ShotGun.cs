@@ -19,7 +19,7 @@ public class ShotGun : GunBase {
 				Magazine--;
 				// 弾をランダムな方向に弾を生成する
 				for (int i = 0; i < 10; i++)
-					Instantiate (AmmoObj, CameraT.position, Quaternion.Euler (Vec3Rand) * CameraT.rotation);
+					Instantiate (AmmoObj, CameraT.position, Quaternion.Euler (Vec3Rand) * CameraT.rotation).GetComponent<Bullet> ().ID = PlayerInfo.playerNumber;
 				// エフェクトの再生
 				PlayEffect ();
 				// 次弾装填

@@ -47,7 +47,7 @@ public class GunBase : MonoBehaviour {
 				// 残弾を減らす
 				Magazine--;
 				// 弾を生成
-				Instantiate (AmmoObj, CameraT.position, CameraT.rotation);
+				Instantiate (AmmoObj, CameraT.position, CameraT.rotation).GetComponent<Bullet>().ID = PlayerInfo.playerNumber;
 				// エフェクトの再生
 				PlayEffect ();
 				Next = false;

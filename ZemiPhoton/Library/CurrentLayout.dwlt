@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 22
+  controlID: 36
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 95
+  controlID: 37
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 96
+  controlID: 38
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -176,8 +176,8 @@ MonoBehaviour:
     y: 0
     width: 324
     height: 453
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -201,8 +201,8 @@ MonoBehaviour:
     y: 0
     width: 763
     height: 453
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 104, y: 121}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -438,9 +438,9 @@ MonoBehaviour:
     height: 432
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2a28feff
+    m_SelectedIDs: 6c070000
     m_LastClickedID: 0
-    m_ExpandedIDs: ac27feff2828feff2a28feffce28feff3430feff00000000
+    m_ExpandedIDs: e6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.013611064, y: 0.943564, z: -0.039084688, w: -0.328594}
     speed: 2
-    m_Value: {x: -0.013611065, y: 0.94356406, z: -0.03908469, w: -0.32859403}
+    m_Value: {x: -0.013611064, y: 0.94356406, z: -0.03908469, w: -0.32859403}
   m_Size:
     m_Target: 17.43545
     speed: 2
@@ -600,19 +600,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Resources/Ik/Resources
+    - Assets/Resources/Hasegawa/Script/Enemy
   m_ViewMode: 1
   m_StartGridSize: 75
   m_LastFolders:
-  - Assets/Resources/Ik/Resources
+  - Assets/Resources/Hasegawa/Script/Enemy
   m_LastFoldersGridSize: 75
   m_LastProjectPath: C:\Users\nwuser.DA\Documents\ZemiPhoton\ZemiPhoton
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 207}
-    m_SelectedIDs: 5a490000
-    m_LastClickedID: 18778
-    m_ExpandedIDs: 000000005a470000164800005a480000a4480000b4480000ba480000ee480000f848000074490000784900007a49000090490000ee490000024a00009e4a0000d44a0000de4a00005c4b0000644b000000ca9a3bffffff7f
+    m_SelectedIDs: 822a0000
+    m_LastClickedID: 10882
+    m_ExpandedIDs: 000000005c270000d8290000c42a0000b42b0000f62b0000fe2b00005e2c00006c2c00009c2e0000a22e0000a82e0000f62e00005a310000a23100009033000086340000ac340000003700003037000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -640,7 +640,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005a470000164800005a480000a4480000b4480000ba480000ee480000f848000074490000784900007a49000090490000ee490000024a00009e4a0000d44a0000de4a00005c4b0000644b0000
+    m_ExpandedIDs: 000000005c270000d8290000c42a0000b42b0000f62b0000fe2b00005e2c00006c2c00009c2e0000a22e0000a82e0000f62e00005a310000a23100009033000086340000ac3400000037000030370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -747,7 +747,7 @@ MonoBehaviour:
     y: 92
     width: 447
     height: 750
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 1556.9551}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 163
