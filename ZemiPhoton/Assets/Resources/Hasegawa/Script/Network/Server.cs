@@ -14,7 +14,7 @@ public class Server : Photon.MonoBehaviour {
 	string ServerAddress;	//サーバアドレス格納用
 
 	void Start () {
-		
+
 	}
 	
 	void Update () {
@@ -145,4 +145,10 @@ public class Server : Photon.MonoBehaviour {
 		yield return null;
 	}
 
+    //ゲーム終了時(Timer.cs)にスコアをデータベースに送る
+    public void Score()
+    {
+        //プレイヤーごとの撃破数
+        //PlayerInfo.killCount;        
+    }
 }
