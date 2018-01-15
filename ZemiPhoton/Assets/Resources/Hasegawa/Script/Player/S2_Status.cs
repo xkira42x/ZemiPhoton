@@ -53,7 +53,7 @@ public class S2_Status: Photon.MonoBehaviour {
 
 	/// ヒットポイントの同期して、HPのUIゲージも更新する
 	[PunRPC]
-	void SyncHP(short hp){
+	void SyncHP(float hp){
 		statusUI.Health = health = hp;
 	}
 

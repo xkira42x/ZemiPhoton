@@ -26,6 +26,10 @@ public class N3_EndKey : Photon.MonoBehaviour {
 		}
 	}
 	public void EndButton(){
+		//このオブジェクトが自分のオブジェクトなら
+		if(photonView.isMine)
+			photonView.RPC ("CubeInstant", PhotonTargets.MasterClient, this.transform.position);
+		PhotonNetwork.Disconnect ();
 		SceneManager.LoadScene ("title");
 /*		GameObject.Find ("PlayerName").SetActive (false);
 		Camera =GameObject.Find ("PhotonManager").transform.Find("Camera").gameObject;
@@ -39,6 +43,12 @@ public class N3_EndKey : Photon.MonoBehaviour {
 		PhotonNetwork.LeaveRoom ();
 		Destroy(this.gameObject);
 */
+	}
+	[PunRPC]
+	void CubeInstant(Vector3 pos){
+		Debug.Log ("CubeInstant");
+		//退出キューブを生成
+		PhotonNetwork.Instantiate ("DisconCube", pos,new Quaternion(0,0,0,0),1);
 	}
 	public void ContnButton(){
 		EndUI = GameObject.Find ("EndUI");
