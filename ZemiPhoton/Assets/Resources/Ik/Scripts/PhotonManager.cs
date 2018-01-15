@@ -37,8 +37,8 @@ public class PhotonManager : Photon.MonoBehaviour {
 
 	private GameObject player;
 
-	[SerializeField]
-	bool dbdebug=true;
+//	[SerializeField]
+//	bool dbdebug=true;
 
 
 	void Start () {

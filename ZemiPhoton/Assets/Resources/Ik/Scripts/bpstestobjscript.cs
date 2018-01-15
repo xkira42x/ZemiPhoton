@@ -16,7 +16,7 @@ public class bpstestobjscript : Photon.MonoBehaviour {
 	int moveflg;		//移動状態を格納
 
 	string myname;
-	public string name{set{myname = value;}}
+	public string nameset{set{myname = value;}}
 	short[] pos;
 
 	[SerializeField]
