@@ -17,7 +17,8 @@ public class E_Boomer : E_AI {
 		base.AttackedTheTarget ();
 	}
 
-	public override void OnDied (){
-		Debug.Log ("Call Die method");
+	public override void OnDied ()
+	{
+		
 	}
 }

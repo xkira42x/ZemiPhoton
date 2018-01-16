@@ -106,14 +106,15 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
-     <Compile Include="Assets\Resources\Hasegawa\Demo\LogText.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\AutoDestroyMaterials.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Demo.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_AI.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Boomer.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_NavControl.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Spitter.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\LogText.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MenuManager.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\MyLOD.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\CallAndResponse.cs" />

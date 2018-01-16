@@ -16,6 +16,8 @@ public class E_Animation : MonoBehaviour {
 	/// 死亡制限のフラグ
 	protected bool died = false;
 
+	public float aa;
+
 	/// アニメーションの取得
 	void Start () {
 		animator = GetComponent<Animator> ();
@@ -35,10 +37,9 @@ public class E_Animation : MonoBehaviour {
 			float time = animator.GetCurrentAnimatorStateInfo (0).length;
 			attacked = true;
 			// アニメーションの切り替る
-			StartCoroutine (ReturnToNormal (time));
+			//StartCoroutine (ReturnToNormal (time));
 			// 攻撃判定する
-			StartCoroutine (Attacked (time - .3f));
-			//Debug.Log (time);
+			StartCoroutine (Attacked (time));
 		}
 
 		// 死亡処理
@@ -55,17 +56,24 @@ public class E_Animation : MonoBehaviour {
 	/// 通常行動のステータスに戻る（走る）
 	IEnumerator ReturnToNormal(float interval){
 		yield return new WaitForSeconds (interval);
-		ai.MakeThenRun ();
-		attacked = false;
+		//ai.MakeThenRun ();
+		//attacked = false;
 	}
 
 	/// 一定時間後に攻撃処理をする
 	/// 攻撃アニメーションで腕を振り切ったタイミングで
 	/// 攻撃判定が走るように調整する
 	IEnumerator Attacked(float interval){
-		yield return new WaitForSeconds (interval);
-		if (ai.DistanceToTarger () <= 1f)
-			ai.AttackedTheTarget ();
+		float tt = interval / 2;
+
+		yield return new WaitForSeconds (tt);
+		ai.AttackedTheTarget ();
+
+		yield return new WaitForSeconds (tt);
+		ai.MakeThenRun ();
+		ai.AttackedTheTarget ();
+		attacked = false;
+
 	}
 
 	/// 倒された際のアニメーションが終わったタイミングで自身を削除する

@@ -14,9 +14,10 @@ public class E_AI : Photon.MonoBehaviour {
 		state = RUN;
 		if (targetTransform != null)
 			agent.SetDestination (targetTransform.position);
+		AttackOnlyOnce = false;
 	}
 	/// 攻撃力
-	[SerializeField]protected float pow = 10;
+	[SerializeField]public float pow = 10;
 	/// 体力
 	[SerializeField]protected float health = 100;
 
@@ -30,6 +31,8 @@ public class E_AI : Photon.MonoBehaviour {
 	protected int targetIndex;
 	/// 射程
 	[SerializeField]protected float range = 2.2f;
+
+	public bool AttackOnlyOnce = false;
 
 	/// 初期化
 	public void Start () {
@@ -52,12 +55,10 @@ public class E_AI : Photon.MonoBehaviour {
 	/// 何番目のプレイヤーをターゲットにするかを設定する
 	/// その番号を同期して、ターゲットの共有をする
 	public void SetTarget(){
-		Debug.Log ("Resetting the target");
 		// ターゲットを設定していない && プレイヤー数が0以上の時
 		if (/*targetTransform == null &&*/ PlayerList.length > 0) {
 			// ターゲット番号の設定
 			targetIndex = Random.Range (0, PlayerList.length);
-			Debug.Log ("target : " + targetIndex);
 			// ターゲットの同期
 			photonView.RPC ("SyncTarget", PhotonTargets.AllBufferedViaServer, targetIndex);
 		}
@@ -103,7 +104,10 @@ public class E_AI : Photon.MonoBehaviour {
 
 	/// プレイヤーにダメージを与える
 	public virtual void AttackedTheTarget(){
-		PlayerList.GetPlayerList (targetIndex).GetComponent<S2_Status> ().Damage (pow);
+		Collider[] hit = Physics.OverlapSphere (transform.position, 1);
+		for (int ii = 0; ii < hit.Length; ii++)
+			if (hit [ii].gameObject.layer == 10)
+				hit [ii].GetComponent<S2_Status> ().Damage (pow);
 	}
 
 	/// 当たり判定
