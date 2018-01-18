@@ -40,11 +40,13 @@ public class E_Animation : MonoBehaviour {
 
 		// 死亡処理
 		if (ai.State == E_AI.DIE && !died) {
-			// アニメーションの再生時間を取得
-			float time = animator.GetCurrentAnimatorStateInfo (0).length;
-			died = true;
-			// 死亡後に削除する
-			StartCoroutine (Died (time));
+			//if (animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Die"))) {
+				// アニメーションの再生時間を取得
+				float time = animator.GetCurrentAnimatorStateInfo (0).length;
+				died = true;
+				// 死亡後に削除する
+				StartCoroutine (Died (time));
+			//}
 		}
 
 	}
@@ -81,16 +83,24 @@ public class E_Animation : MonoBehaviour {
 
 	}
 
+	/// 倒された際のアニメーションが終わったタイミングで自身を削除する
+	IEnumerator Died(float interval){
+
+		while (!animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Die")))
+			yield return null;
+
+		// アニメーションのステータスを取得
+		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
+		yield return new WaitForSeconds (stateInfo.length);
+		//yield return new WaitForSeconds (interval);
+		Destroy (gameObject);
+	}
+
+
 	/// アニメーションが変わったかをハッシュ比較でする
 	/// 戻り値　true:変わった　false:変わっていない
 	bool ChangeAnimation(AnimatorStateInfo info){
 		return info.nameHash != animator.GetCurrentAnimatorStateInfo (0).nameHash;
-	}
-
-	/// 倒された際のアニメーションが終わったタイミングで自身を削除する
-	IEnumerator Died(float interval){
-		yield return new WaitForSeconds (interval);
-		Destroy (gameObject);
 	}
 
 }

@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Enemy\E_Boomer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs">
     <Files>
-      <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_AI.cs" Line="50" Column="25" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs" Line="85" Column="33" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_AI.cs" Line="34" Column="39" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs" Line="49" Column="6" />
       <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Boomer.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Spitter.cs" Line="1" Column="1" />

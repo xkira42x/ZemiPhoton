@@ -73,7 +73,7 @@ public class E_AI : Photon.MonoBehaviour {
 	/// ステータス制御
 	/// 攻撃範囲外なら走り、範囲内に入ったら攻撃をする
 	public void AIState(){
-		if (state != ATTACK) {
+		if (state != ATTACK && state != DIE) {
 			if (DistanceToTarger () > range)
 				state = RUN;
 			else {
@@ -118,7 +118,7 @@ public class E_AI : Photon.MonoBehaviour {
 	/// 当たり判定
 	public void OnCollisionEnter(Collision collision){
 		// 弾と当たった時
-		if (collision.gameObject.tag == "Bullet" && state != DIE) {
+		if (collision.gameObject.tag == "Bullet" && health > 0) {
 			// 弾情報を取得
 			Bullet bbb = collision.gameObject.GetComponent<Bullet> ();
 
