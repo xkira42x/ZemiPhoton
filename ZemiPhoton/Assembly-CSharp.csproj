@@ -111,6 +111,8 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_AI.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Boomer.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Effect.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Explosion.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_NavControl.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Enemy\E_Spitter.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" />
@@ -137,6 +139,7 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\RoomItem.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\TitleManager.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\WaitForAnimation.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\AssaultRifle.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\Bullet.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Weapon\GunBase.cs" />

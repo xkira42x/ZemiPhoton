@@ -15,6 +15,7 @@ public class E_AI : Photon.MonoBehaviour {
 		if (targetTransform != null)
 			agent.SetDestination (targetTransform.position);
 		AttackOnlyOnce = false;
+		agent.Resume ();
 	}
 	/// 攻撃力
 	[SerializeField]public float pow = 10;
@@ -75,8 +76,10 @@ public class E_AI : Photon.MonoBehaviour {
 		if (state != ATTACK) {
 			if (DistanceToTarger () > range)
 				state = RUN;
-			else
+			else {
 				state = ATTACK;
+				agent.Stop ();
+			}
 		}
 	}
 
@@ -104,7 +107,9 @@ public class E_AI : Photon.MonoBehaviour {
 
 	/// プレイヤーにダメージを与える
 	public virtual void AttackedTheTarget(){
+		// 当たり判定で衝突したオブジェクトを格納
 		Collider[] hit = Physics.OverlapSphere (transform.position, 1);
+		// プレイヤーが当たっていたらダメージを与える
 		for (int ii = 0; ii < hit.Length; ii++)
 			if (hit [ii].gameObject.layer == 10)
 				hit [ii].GetComponent<S2_Status> ().Damage (pow);
@@ -122,10 +127,9 @@ public class E_AI : Photon.MonoBehaviour {
 			if (health <= 0) {
 				photonView.RPC ("SyncDie", PhotonTargets.AllBuffered);
 
-
-				if (collision.gameObject.GetComponent<Bullet> ().ID == PlayerInfo.playerNumber) {
+				// 撃破数を保存
+				if (collision.gameObject.GetComponent<Bullet> ().ID == PlayerInfo.playerNumber)
 					PlayerInfo.killCount++;
-				}
 			}
 		}
 	}

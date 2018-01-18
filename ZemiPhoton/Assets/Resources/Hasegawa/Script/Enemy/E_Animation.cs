@@ -16,8 +16,6 @@ public class E_Animation : MonoBehaviour {
 	/// 死亡制限のフラグ
 	protected bool died = false;
 
-	public float aa;
-
 	/// アニメーションの取得
 	void Start () {
 		animator = GetComponent<Animator> ();
@@ -27,7 +25,7 @@ public class E_Animation : MonoBehaviour {
 	/// アニメーション以外の処理（攻撃の当たり判定・死亡時の処理）も
 	/// この中でやっている
 	void Update () {
-
+		
 		// アニメーション再生
 		animator.SetBool (anm_name [(int)ai.State], true);
 
@@ -36,8 +34,6 @@ public class E_Animation : MonoBehaviour {
 			// アニメーションの再生時間を取得
 			float time = animator.GetCurrentAnimatorStateInfo (0).length;
 			attacked = true;
-			// アニメーションの切り替る
-			//StartCoroutine (ReturnToNormal (time));
 			// 攻撃判定する
 			StartCoroutine (Attacked (time));
 		}
@@ -53,27 +49,42 @@ public class E_Animation : MonoBehaviour {
 
 	}
 
-	/// 通常行動のステータスに戻る（走る）
-	IEnumerator ReturnToNormal(float interval){
-		yield return new WaitForSeconds (interval);
-		//ai.MakeThenRun ();
-		//attacked = false;
-	}
-
 	/// 一定時間後に攻撃処理をする
 	/// 攻撃アニメーションで腕を振り切ったタイミングで
 	/// 攻撃判定が走るように調整する
 	IEnumerator Attacked(float interval){
-		float tt = interval / 2;
 
+		// アニメーションのステータスを取得
+		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
+
+		// 残骸・・・見せしめに残しておく
+/*		float tt = animator.GetCurrentAnimatorStateInfo (0).length / 2;//interval / 2;
+		animator.SetBool (anm_name [(int)E_AI.ATTACK], false);
 		yield return new WaitForSeconds (tt);
 		ai.AttackedTheTarget ();
-
 		yield return new WaitForSeconds (tt);
 		ai.MakeThenRun ();
 		ai.AttackedTheTarget ();
+		attacked = false;*/
+
+		// ダメージ処理
+		ai.AttackedTheTarget ();
+		// アニメーションが終了するまで１フレームずつ待つ
+		while (!ChangeAnimation (stateInfo))
+			yield return null;
+		// アニメーションの攻撃を無効化
+		animator.SetBool (anm_name [(int)E_AI.ATTACK], false);
+		// 追尾状態にシフト
+		ai.MakeThenRun ();
+		// 次の攻撃ができるようにする
 		attacked = false;
 
+	}
+
+	/// アニメーションが変わったかをハッシュ比較でする
+	/// 戻り値　true:変わった　false:変わっていない
+	bool ChangeAnimation(AnimatorStateInfo info){
+		return info.nameHash != animator.GetCurrentAnimatorStateInfo (0).nameHash;
 	}
 
 	/// 倒された際のアニメーションが終わったタイミングで自身を削除する

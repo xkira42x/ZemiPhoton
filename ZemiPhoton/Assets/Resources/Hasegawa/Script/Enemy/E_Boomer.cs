@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class E_Boomer : E_AI {
 
+	/// 死ぬ際の爆発に使うオブジェクトを登録
+	[SerializeField] GameObject Explosion;
+
 	void Start () {
 		base.Start ();
 	}
@@ -19,6 +22,6 @@ public class E_Boomer : E_AI {
 
 	public override void OnDied ()
 	{
-		
+		Instantiate (Explosion, transform.position, Quaternion.identity);
 	}
 }
