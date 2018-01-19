@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
+	const int Zombie = 0,Boomer = 1,Spitter = 2;
 	public GameObject[] enemy;					// 敵オブジェクト
 	[SerializeField]Transform[] SpawnPosition;	// 生成位置
 
@@ -11,6 +12,13 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField] int numGenerated = 0;		// 現在の敵数
 
 	bool DoOnce = false;						// 一度だけ実行するフラグ
+
+	bool ZombieOnly = true;
+
+	/// 初期化
+	void Start(){
+		
+	}
 
 	/// メインループ
 	void Update(){
@@ -41,14 +49,24 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		}
 
-		type = Random.Range (0, enemy.Length);
+		type = 0;
 
 		// フィールド上にいる敵の数が最大生成数になるまで生成する
 		for (int jj = numGenerated; jj < maxNum; jj++) {
+
+			if (!ZombieOnly) {
+				int rand = Random.Range (0, 100);
+				if (rand < 80)
+					type = Zombie;
+				else if (rand >= 80 && rand < 90)
+					type = Boomer;
+				else if (rand >= 90 && rand < 100)
+					type = Spitter;
+			}
+			
 			PhotonNetwork.Instantiate (enemy [type].name,
 				new Vector3 (Random.Range (-3f, 3f), 3, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
 				Quaternion.identity, 0).gameObject.name = enemy [type].name + (jj + 1).ToString ();
-			Debug.Log ("Spawn");
 		}
 	}
 

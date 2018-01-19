@@ -1,15 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Player\PlayerInfo.cs">
     <Files>
       <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_AI.cs" Line="34" Column="39" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs" Line="49" Column="6" />
-      <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Animation.cs" Line="49" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\EnemySpawner.cs" Line="26" Column="37" />
       <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Boomer.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Spitter.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Explosion.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\Enemy\E_Effect.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\Hasegawa\Script\WaitForAnimation.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Hasegawa\Script\Player\PlayerInfo.cs" Line="21" Column="2" />
+      <File FileName="Assets\Resources\Hasegawa\Script\RoomMenuControl.cs" Line="84" Column="41" />
+      <File FileName="Assets\Resources\Hasegawa\Script\RoomItem.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

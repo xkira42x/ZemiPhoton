@@ -32,20 +32,18 @@ public class E_Animation : MonoBehaviour {
 		// 攻撃処理
 		if (ai.State == E_AI.ATTACK && !attacked) {
 			// アニメーションの再生時間を取得
-			float time = animator.GetCurrentAnimatorStateInfo (0).length;
+//			float time = animator.GetCurrentAnimatorStateInfo (0).length;
 			attacked = true;
 			// 攻撃判定する
-			StartCoroutine (Attacked (time));
+			StartCoroutine (Attacked ());
 		}
 
 		// 死亡処理
 		if (ai.State == E_AI.DIE && !died) {
-			//if (animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Die"))) {
 				// アニメーションの再生時間を取得
-				float time = animator.GetCurrentAnimatorStateInfo (0).length;
+//				float time = animator.GetCurrentAnimatorStateInfo (0).length;
 				died = true;
-				// 死亡後に削除する
-				StartCoroutine (Died (time));
+				StartCoroutine (Died ());
 			//}
 		}
 
@@ -54,21 +52,10 @@ public class E_Animation : MonoBehaviour {
 	/// 一定時間後に攻撃処理をする
 	/// 攻撃アニメーションで腕を振り切ったタイミングで
 	/// 攻撃判定が走るように調整する
-	IEnumerator Attacked(float interval){
+	IEnumerator Attacked(){
 
 		// アニメーションのステータスを取得
 		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
-
-		// 残骸・・・見せしめに残しておく
-/*		float tt = animator.GetCurrentAnimatorStateInfo (0).length / 2;//interval / 2;
-		animator.SetBool (anm_name [(int)E_AI.ATTACK], false);
-		yield return new WaitForSeconds (tt);
-		ai.AttackedTheTarget ();
-		yield return new WaitForSeconds (tt);
-		ai.MakeThenRun ();
-		ai.AttackedTheTarget ();
-		attacked = false;*/
-
 		// ダメージ処理
 		ai.AttackedTheTarget ();
 		// アニメーションが終了するまで１フレームずつ待つ
@@ -84,15 +71,15 @@ public class E_Animation : MonoBehaviour {
 	}
 
 	/// 倒された際のアニメーションが終わったタイミングで自身を削除する
-	IEnumerator Died(float interval){
+	IEnumerator Died(){
 
+		// アニメーションがDieになるまで待つ
 		while (!animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Die")))
 			yield return null;
-
-		// アニメーションのステータスを取得
+		// アニメーションのステータスを取得して、再生時間分遅延させる
 		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
-		yield return new WaitForSeconds (stateInfo.length);
-		//yield return new WaitForSeconds (interval);
+		yield return new WaitForSeconds (stateInfo.length - .5f);
+		// 削除
 		Destroy (gameObject);
 	}
 
