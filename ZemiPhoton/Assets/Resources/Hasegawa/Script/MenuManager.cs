@@ -111,4 +111,5 @@ public class MenuManager : Photon.MonoBehaviour {
 		// 最後の処理が終了したらソースを削除する
 		Destroy (this);
 	}
+
 }

@@ -39,6 +39,10 @@ public class myPhotonManager : Photon.MonoBehaviour {
 	//　部屋に入室した時に呼ばれるメソッド
 	void OnJoinedRoom() {
 		Debug.Log ("入室");
+
+		if (photonView.isMine)
+			photonView.RPC ("SyncRoomID", PhotonTargets.OthersBuffered, PlayerInfo.roomID);
+		
 		if (PlayerInfo.isClient ()) {
 			Debug.Log ("クライアント入室");
 			PlayerInfo.playerNumber = PhotonNetwork.player.ID - 1;
@@ -63,5 +67,11 @@ public class myPhotonManager : Photon.MonoBehaviour {
 		ro.MaxPlayers = 4;
 		//　入室に失敗したらDefaultRoomを作成し入室
 		PhotonNetwork.JoinOrCreateRoom ("DefaultRoom", ro, TypedLobby.Default);*/
+	}
+
+	/// ルームIDを同期する
+	[PunRPC]
+	void SyncRoomID(string ss){
+		PlayerInfo.roomID = ss;
 	}
 }

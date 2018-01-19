@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour {
 
+	public static string roomID = "";				// ルーム番号
 	public static string playerName = "default";	// ユーザー名
 	public static int playerNumber = 1;				// ユーザー番号
 	public static int statusCount = 1;				// UIテキストの参照番号

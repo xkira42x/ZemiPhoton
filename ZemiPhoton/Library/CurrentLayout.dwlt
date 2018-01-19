@@ -71,7 +71,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 136
+  controlID: 160
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -93,7 +93,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 821
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
 MonoBehaviour:
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 70
+  controlID: 159
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 71
+  controlID: 77
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 25
+  controlID: 54
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,8 +226,8 @@ MonoBehaviour:
     y: 0
     width: 349
     height: 451
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -494,9 +494,9 @@ MonoBehaviour:
     height: 430
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 54060000
     m_LastClickedID: 0
-    m_ExpandedIDs: 1076ffffe276ffffdc78ffffe278ffff447effff167fffff1081ffff1681ffff109dfffff09dffffee9ffffff89fffff16ccffff12efffffe6fbffff000000000e460000
+    m_ExpandedIDs: e6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -656,19 +656,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Resources/Ik/Resources
+    - Assets/Resources/Hasegawa/Script/Player
   m_ViewMode: 1
   m_StartGridSize: 75
   m_LastFolders:
-  - Assets/Resources/Ik/Resources
+  - Assets/Resources/Hasegawa/Script/Player
   m_LastFoldersGridSize: 75
   m_LastProjectPath: C:\Users\nwuser.DA\Documents\ZemiPhoton\ZemiPhoton
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 438}
-    m_SelectedIDs: 822e0000
-    m_LastClickedID: 11906
-    m_ExpandedIDs: 00000000662700001e2a0000c82a0000102b0000062c00004a2c0000522c0000ae2c0000b42c0000c22c00007e2d00000e2f0000142f00001a2f00006a2f0000e03100002a3200002a340000ce340000323500005835000074370000be370000f0370000fc45000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 342}
+    m_SelectedIDs: f2320000
+    m_LastClickedID: 13042
+    m_ExpandedIDs: 000000006a270000222a0000cc2a0000142b00000a2c00004e2c0000562c0000b22c0000b82c0000c62c0000822d0000122f0000182f00001e2f00006e2f0000e43100002e3200002e340000d2340000363500005c35000078370000c2370000f4370000a248000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -696,7 +696,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000662700001e2a0000c82a0000102b0000062c00004a2c0000522c0000ae2c0000b42c0000c22c00007e2d00000e2f0000142f00001a2f00006a2f0000e03100002a3200002a340000ce340000323500005835000074370000be370000f0370000fc450000
+    m_ExpandedIDs: 000000006a270000222a0000cc2a0000142b00000a2c00004e2c0000562c0000b22c0000b82c0000c62c0000822d0000122f0000182f00001e2f00006e2f0000e43100002e3200002e340000d2340000363500005c35000078370000c2370000f4370000a2480000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -775,7 +775,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 543
-    width: 871
+    width: 930
     height: 299
 --- !u!114 &22
 MonoBehaviour:
