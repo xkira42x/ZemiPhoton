@@ -31,20 +31,16 @@ public class E_Animation : MonoBehaviour {
 
 		// 攻撃処理
 		if (ai.State == E_AI.ATTACK && !attacked) {
-			// アニメーションの再生時間を取得
-//			float time = animator.GetCurrentAnimatorStateInfo (0).length;
 			attacked = true;
 			// 攻撃判定する
 			StartCoroutine (Attacked ());
+			StartCoroutine (ReturnToNormal ());
 		}
 
 		// 死亡処理
 		if (ai.State == E_AI.DIE && !died) {
-				// アニメーションの再生時間を取得
-//				float time = animator.GetCurrentAnimatorStateInfo (0).length;
-				died = true;
-				StartCoroutine (Died ());
-			//}
+			died = true;
+			StartCoroutine (Died ());
 		}
 
 	}
@@ -54,10 +50,17 @@ public class E_Animation : MonoBehaviour {
 	/// 攻撃判定が走るように調整する
 	IEnumerator Attacked(){
 
-		// アニメーションのステータスを取得
-		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
+		// アニメーションがAttackになるまで待つ
+		while (!animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Attack")))
+			yield return null;
+		float time = animator.GetCurrentAnimatorStateInfo (0).length / 2;
+		yield return new WaitForSeconds (time);
 		// ダメージ処理
 		ai.AttackedTheTarget ();
+	}
+	IEnumerator ReturnToNormal(){
+		// アニメーションのステータスを取得
+		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
 		// アニメーションが終了するまで１フレームずつ待つ
 		while (!ChangeAnimation (stateInfo))
 			yield return null;
@@ -67,7 +70,6 @@ public class E_Animation : MonoBehaviour {
 		ai.MakeThenRun ();
 		// 次の攻撃ができるようにする
 		attacked = false;
-
 	}
 
 	/// 倒された際のアニメーションが終わったタイミングで自身を削除する
