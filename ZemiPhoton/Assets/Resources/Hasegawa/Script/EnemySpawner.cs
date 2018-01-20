@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	bool DoOnce = false;						// 一度だけ実行するフラグ
 
-	bool ZombieOnly = true;
+	[SerializeField] bool ZombieOnly = true;
 
 	/// 初期化
 	void Start(){
@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	/// 生成する敵の最大数から、足りない分の敵を生成する
-	void Spawn () {
+	IEnumerator Spawn () {
 		int index = 0;			// スポーン位置のインデックス
 		Vector3 target;			// ターゲット座標
 		float dist;				// スポーン位置とターゲットの距離
@@ -53,7 +53,6 @@ public class EnemySpawner : MonoBehaviour {
 
 		// フィールド上にいる敵の数が最大生成数になるまで生成する
 		for (int jj = numGenerated; jj < maxNum; jj++) {
-
 			if (!ZombieOnly) {
 				int rand = Random.Range (0, 100);
 				if (rand < 80)
@@ -65,8 +64,10 @@ public class EnemySpawner : MonoBehaviour {
 			}
 			
 			PhotonNetwork.Instantiate (enemy [type].name,
-				new Vector3 (Random.Range (-3f, 3f), 3, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
+				new Vector3 (Random.Range (-3f, 3f), 0, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
 				Quaternion.identity, 0).gameObject.name = enemy [type].name + (jj + 1).ToString ();
+
+			yield return new WaitForSeconds (.1f);
 		}
 	}
 
@@ -76,7 +77,7 @@ public class EnemySpawner : MonoBehaviour {
 			yield return new WaitForSeconds (10f);
 			numGenerated = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 			if (numGenerated < maxNum && PlayerList.length > 0)
-				Spawn ();
+				StartCoroutine (Spawn ());
 		}
 	}
 }
