@@ -49,7 +49,6 @@ public class E_Animation : MonoBehaviour {
 	/// 攻撃アニメーションで腕を振り切ったタイミングで
 	/// 攻撃判定が走るように調整する
 	IEnumerator Attacked(){
-
 		// アニメーションがAttackになるまで待つ
 		while (!animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Attack")))
 			yield return null;
@@ -59,6 +58,9 @@ public class E_Animation : MonoBehaviour {
 		ai.AttackedTheTarget ();
 	}
 	IEnumerator ReturnToNormal(){
+		// アニメーションがAttackになるまで待つ
+		while (!animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Attack")))
+			yield return null;
 		// アニメーションのステータスを取得
 		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
 		// アニメーションが終了するまで１フレームずつ待つ

@@ -139,6 +139,7 @@ public class E_AI : Photon.MonoBehaviour {
 	public void SyncDie(){
 		OnDied ();
 		state = DIE;
+		agent.Stop ();
 	}
 
 	/// 倒された時に呼ばれる
