@@ -22,6 +22,8 @@ public class ShotGun : GunBase {
 					Instantiate (AmmoObj, CameraT.position, Quaternion.Euler (Vec3Rand) * CameraT.rotation).GetComponent<Bullet> ().ID = PlayerInfo.playerNumber;
 				// エフェクトの再生
 				PlayEffect ();
+				// 音の再生
+				audioSource.PlayOneShot(ShotSound);
 				// 次弾装填
 				Next = false;
 				Delay ();
