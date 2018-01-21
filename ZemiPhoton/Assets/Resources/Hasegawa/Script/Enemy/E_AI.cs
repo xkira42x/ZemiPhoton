@@ -17,6 +17,8 @@ public class E_AI : Photon.MonoBehaviour {
 		AttackOnlyOnce = false;
 		agent.Resume ();
 	}
+	/// 速度
+	[SerializeField]public float speed = 3.5f;
 	/// 攻撃力
 	[SerializeField]public float pow = 10;
 	/// 体力
@@ -44,6 +46,10 @@ public class E_AI : Photon.MonoBehaviour {
 		if(photonView.isMine)SetTarget ();
 		// 目標地点の設定
 		StartCoroutine (SetDesti ());
+		// 速度の設定
+		agent.speed = speed;
+	}
+	public void Init(){
 	}
 
 	/// メインループ
@@ -140,6 +146,13 @@ public class E_AI : Photon.MonoBehaviour {
 		OnDied ();
 		state = DIE;
 		agent.Stop ();
+	}
+
+	[PunRPC]
+	public void SyncSpeed(float spd){
+		speed = spd;
+		if (agent != null)
+			agent.speed = speed;
 	}
 
 	/// 倒された時に呼ばれる

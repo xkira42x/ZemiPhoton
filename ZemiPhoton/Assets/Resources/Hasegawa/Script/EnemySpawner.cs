@@ -63,9 +63,10 @@ public class EnemySpawner : MonoBehaviour {
 					type = Spitter;
 			}
 			
-			PhotonNetwork.Instantiate (enemy [type].name,
-				new Vector3 (Random.Range (-3f, 3f), 0, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
-				Quaternion.identity, 0).gameObject.name = enemy [type].name + (jj + 1).ToString ();
+			GameObject obj = PhotonNetwork.Instantiate (enemy [type].name,
+				                 new Vector3 (Random.Range (-3f, 3f), 0, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
+				                 Quaternion.identity, 0);//.gameObject.name = enemy [type].name + (jj + 1).ToString ();
+			obj.GetPhotonView ().RPC ("SyncSpeed", PhotonTargets.All, Random.Range (2.5f, 6.5f));
 
 			yield return new WaitForSeconds (.1f);
 		}
