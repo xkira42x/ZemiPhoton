@@ -76,6 +76,8 @@ public class Timer : MonoBehaviour {
 		Panel.SetActive (true);
 		panelimage.color += new Color (0, 0, 0, 0.1f);
 		if (panelimage.color.a >= 1) {
+			PlayerInfo.onTimer = false;
+			PlayerList.ReleaseAll ();
 			Cursor.lockState=CursorLockMode.None;	//ロックなし
 			Cursor.visible=true;
 			PhotonNetwork.Disconnect ();

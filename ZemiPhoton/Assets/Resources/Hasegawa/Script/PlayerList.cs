@@ -81,4 +81,9 @@ public class PlayerList : Photon.MonoBehaviour {
 		else
 			return Player [index].transform.position;
 	}
+
+	/// リストの情報を全開放
+	public static void ReleaseAll(){Player.Clear();}
+	/// 指定したリストの情報を開放
+	public static void ReleaseAt(int index){Player.RemoveAt (index);}
 }
