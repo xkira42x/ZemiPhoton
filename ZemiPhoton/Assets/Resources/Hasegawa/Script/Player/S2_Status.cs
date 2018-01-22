@@ -41,13 +41,15 @@ public class S2_Status: Photon.MonoBehaviour {
 	[PunRPC]
 	void SetName(string name) {
 		statusUI.UserName = name;
+		userName = name;
 	}
 
 	/// ユーザIDからキャラクタの名前IDを設定する(初期呼び出し)
 	[PunRPC]
 	void SyncPlayerID(int id){
-		string name = "Player" + id.ToString ();
-		userName = name;
+//		string name = statusUI.UserName;
+//		string name = "Player" + id.ToString ();
+//		userName = name;
 		//gameObject.name = name;
 	}
 

@@ -26,6 +26,11 @@ public class N3_SyncMove : Photon.MonoBehaviour {
 			if (Vector3.Distance (transform.position, lastPosition) > .1f) {
                 // 座標の送信
 				photonView.RPC ("SyncPosition", PhotonTargets.Others, transform.position);
+				//IK追記 送信量を取得
+				SO.AddSize ((int)transform.position.x);
+				SO.AddSize ((int)transform.position.y);
+				SO.AddSize ((int)transform.position.z);
+				SO.AddSize (3);
                 // 最後に同期した座標の更新
 				lastPosition = transform.position;
 			}
@@ -44,7 +49,7 @@ public class N3_SyncMove : Photon.MonoBehaviour {
         // 同期受信した座標の更新
 		syncPosition = pos;
 
-		//IK追記
+		//IK追記　受信量を取得
 		SO.AddSize ((int)pos.x);
 		SO.AddSize ((int)pos.y);
 		SO.AddSize ((int)pos.z);
