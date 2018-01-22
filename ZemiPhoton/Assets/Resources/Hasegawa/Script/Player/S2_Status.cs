@@ -8,6 +8,7 @@ public class S2_Status: Photon.MonoBehaviour {
 	string userName = "Default";	// ユーザ名
 	public string UserName{ get { return userName; } set { userName = value; } }
 
+	S1_Move move;					// 移動
 	PlayerStatusUI statusUI;		// ステータス表示UI
 
 	float health = 100;				// ヒットポイント(0～100まで)
@@ -18,6 +19,9 @@ public class S2_Status: Photon.MonoBehaviour {
 		health -= dmg;
 		statusUI.Health = health;
 		photonView.RPC ("SyncHP", PhotonTargets.Others, (short)health);
+
+		if (health <= 0)
+			move.Died ();
 	}
 
 	/// ステータス表示するオブジェクトを設定する
@@ -35,6 +39,8 @@ public class S2_Status: Photon.MonoBehaviour {
 			statusUI = GameObject.Find ("PlayerStatusUI" + (PlayerInfo.statusCount).ToString ()).GetComponent<PlayerStatusUI> ();
 			PlayerInfo.statusCount++;
 		}
+
+		move = GetComponent<S1_Move> ();
 	}
 
 	/// ユーザ名の同期(初期呼び出し)
