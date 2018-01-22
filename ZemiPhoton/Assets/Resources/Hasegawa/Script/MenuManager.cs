@@ -97,6 +97,15 @@ public class MenuManager : Photon.MonoBehaviour {
 
 		// プレイヤーの生成
 		GameObject player = PhotonNetwork.Instantiate ("FPSPlayer", Pos[nn], Quaternion.identity, 0);
+		//既に自分がいれば生成をしない
+		if (GameObject.Find (PlayerInfo.playerName)) {
+			//　元の情報を取得
+			Transform MyInstanceTrans = GameObject.Find (PlayerInfo.playerName).transform;
+			//　座標を元いた場所に移動
+			player.transform.position = new Vector3(MyInstanceTrans.position.x,Pos[nn].y,MyInstanceTrans.position.z);
+			PhotonNetwork.Destroy (GameObject.Find (PlayerInfo.playerName));
+		}
+		
 		// オブジェクト名を設定
 		//player.name = "Player" + (nn + 1).ToString();
 		// ユーザ名を同期する
@@ -109,7 +118,9 @@ public class MenuManager : Photon.MonoBehaviour {
 			PlayerInfo.Spawn = true;
 
 		// 最後の処理が終了したらソースを削除する
-		Destroy (this);
+		// 再入室で使う為,非アクティブ化に変更
+//		Destroy (this);
+//		this.gameObject.SetActive(false);
 	}
 
 }

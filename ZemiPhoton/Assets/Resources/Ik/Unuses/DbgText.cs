@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DbgText : MonoBehaviour {
+public class DbgText : Photon.MonoBehaviour {
 	[SerializeField]
 	GameObject TextBox;
 	Text settext;
@@ -14,6 +14,6 @@ public class DbgText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		settext.text = PlayerInfo.playerNumber.ToString();
+		settext.text = "PhotonConnectState:"+PhotonNetwork.connectionState.ToString();
 	}
 }

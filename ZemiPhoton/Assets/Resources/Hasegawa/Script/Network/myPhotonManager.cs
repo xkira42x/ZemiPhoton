@@ -50,6 +50,7 @@ public class myPhotonManager : Photon.MonoBehaviour {
 			menu.SetActive (true);
 			Cursor.lockState = CursorLockMode.Confined;
 			roomMenuControl.JoinRoom ();
+//			Debug.Log()
 		} else {
 			GetComponent<Server> ().StartUp ();
 		}
