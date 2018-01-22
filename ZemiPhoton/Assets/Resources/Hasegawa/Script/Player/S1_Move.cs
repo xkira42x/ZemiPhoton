@@ -9,7 +9,6 @@ public class S1_Move : MonoBehaviour {
 	const byte IDLE = 0,WALK = 1,JUMP = 2,CROUCH = 3,CROUCHMOVE = 4,DIE = 5;// 行動ステート定数
 	[SerializeField]byte status = IDLE;										// 行動ステート保存
 	public byte Status{ get { return status; } }							// 行動ステートのゲッタ
-	public void Died(){ status = DIE; }
 
 	[SerializeField]Transform myCollection;	// カメラなどのまとめているオブジェクト
 
@@ -82,5 +81,10 @@ public class S1_Move : MonoBehaviour {
 		} else
 			isCrouch = false;
 		myCollection.localPosition = new Vector3 (0, width, 0);
+	}
+
+	/// 死亡ステートに変更
+	public void Died(){
+		status = DIE;
 	}
 }
