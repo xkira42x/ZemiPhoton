@@ -14,7 +14,7 @@ public class Server : Photon.MonoBehaviour {
 	string ServerAddress;	//サーバアドレス格納用
 
 	void Start () {
-		
+
 	}
 	
 	void Update () {
@@ -66,7 +66,6 @@ public class Server : Photon.MonoBehaviour {
 		Debug.Log ("ipAddress=" + ipAddress);
 		ServerAddress = ipAddress + "/3zemi/DB_test_unity_select_name.php";
 		StartCoroutine ("Access");	//Accessコルーチンの開始
-
 	}
 
 	//新規作成処理
@@ -108,9 +107,14 @@ public class Server : Photon.MonoBehaviour {
 				//DBから送られてきた情報のbyte量で処理振り分け
 				switch (www.bytesDownloaded) {
 				case 8://DBに名前が存在してログイン成功
-					//ログイン時の処理がここに必要な場合以下に追記
-
-					break;
+                       //ログイン時の処理がここに必要な場合以下に追記
+                        float ScoreData = PlayerPrefs.GetFloat("Score");
+                        if (ScoreData > 0){
+                            //データベースにスコアを送信、スコアはプラスしていく
+                            //ScoreDataにスコアが保存されてます。
+                        }
+                        PlayerPrefs.SetFloat("Score", 0);
+                        break;
 				case 9://DBに名前が存在せず、ログイン失敗－＞新規作成の関数を実行
 					NewData_Button_Push ();
 					break;
@@ -125,6 +129,7 @@ public class Server : Photon.MonoBehaviour {
 					Debug.Log ("Unknown Error");
 					break;
 				}
+
 			}
 		}
 	}
@@ -145,4 +150,17 @@ public class Server : Photon.MonoBehaviour {
 		yield return null;
 	}
 
+    //ゲーム終了時(Timer.cs)にスコアをデータベースに送る
+    public void Score()
+    {
+        //プレイヤーごとの撃破数
+        //PlayerInfo.killCount;
+
+        //スコアの送信
+
+        /*if (データベースに送信できなかったら)
+        {
+            PlayerPrefs.SetFloat("Score", PlayerInfo.killCount);
+        }*/
+    }
 }

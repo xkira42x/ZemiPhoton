@@ -204,7 +204,7 @@ public class A_Enemy_Base : Photon.MonoBehaviour {
     /// 弾との当たり判定
     /// </summary>
     /// <param name="col"></param>
-    protected void OnCollisionEnter(Collision col)
+    /*protected void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Bullet" && A_state != A_enemy_state.A_death)
         {
@@ -232,7 +232,7 @@ public class A_Enemy_Base : Photon.MonoBehaviour {
             }
 
         }
-    }
+    }*/
     
     /////////////////////ナビに変えるー＞テスト/////////////////////////////////////
     protected virtual Vector3 A_Unique_Move()

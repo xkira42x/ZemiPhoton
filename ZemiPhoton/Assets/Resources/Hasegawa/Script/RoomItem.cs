@@ -26,11 +26,11 @@ public class RoomItem : Photon.MonoBehaviour {
 
 	/// ルーム参加ボタン
 	public void OnClickJoinButton(){
-		//　ルームオプションを設定
+		// ルームオプションを設定
 		RoomOptions ro = new RoomOptions ();
-		//　ルームを見えるようにする
+		// ルームを見えるようにする
 		ro.IsVisible = true;
-		//　部屋の入室最大人数
+		// 部屋の入室最大人数
 		ro.MaxPlayers = _maxnumofPeople;
 		// ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (_roomName, ro, TypedLobby.Default);

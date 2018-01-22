@@ -6,11 +6,12 @@ using System.Runtime.InteropServices;
 
 public class S1_Move : MonoBehaviour {
 
-	const byte IDLE = 0,WALK = 1,JUMP = 2,CROUCH = 3,CROUCHMOVE = 4;	// 行動ステート定数
-	[SerializeField]byte status = IDLE;									// 行動ステート保存
-	public byte Status{ get { return status; } }						// 行動ステートのゲッタ
+	const byte IDLE = 0,WALK = 1,JUMP = 2,CROUCH = 3,CROUCHMOVE = 4,DIE = 5;// 行動ステート定数
+	[SerializeField]byte status = IDLE;										// 行動ステート保存
+	public byte Status{ get { return status; } }							// 行動ステートのゲッタ
+	public void Died(){ status = DIE; }
 
-	[SerializeField]Transform myCollection;		// カメラなどのまとめているオブジェクト
+	[SerializeField]Transform myCollection;	// カメラなどのまとめているオブジェクト
 
 	[SerializeField]float speed = 0.1f;		// 移動速度
 	float motion = 0;						// 移動判定（0:停止	1:移動）
@@ -31,21 +32,22 @@ public class S1_Move : MonoBehaviour {
 
 	/// メインループ
 	void Update(){
+		if (status != DIE) {
+			// キー移動
+			S_KeyMove ();
 
-		// キー移動
-		S_KeyMove ();
+			// ジャンプ
+			S_Jump ();
 
-		// ジャンプ
-		S_Jump();
+			// しゃがみ
+			Crouch ();
 
-		// しゃがみ
-		Crouch ();
+			// 着地判定
+			IsGround ();
 
-		// 着地判定
-		IsGround ();
-
-		// 行動ステートを設定する
-		status = (!isGround) ? JUMP : (motion == 1) ? WALK : (isCrouch) ? CROUCH : IDLE;
+			// 行動ステートを設定する
+			status = (!isGround) ? JUMP : (motion == 1) ? WALK : (isCrouch) ? CROUCH : IDLE;
+		}
 	}
 
 	/// キー移動判定

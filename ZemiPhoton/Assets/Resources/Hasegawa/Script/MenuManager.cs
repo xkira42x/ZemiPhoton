@@ -122,4 +122,5 @@ public class MenuManager : Photon.MonoBehaviour {
 //		Destroy (this);
 //		this.gameObject.SetActive(false);
 	}
+
 }

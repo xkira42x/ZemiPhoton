@@ -5,16 +5,16 @@ using UnityEngine;
 public class E_Animation : MonoBehaviour {
 
 	/// アニメーター格納
-	[SerializeField]Animator animator;
+	[SerializeField]protected Animator animator;
 	/// AIソースの格納
-	[SerializeField]E_AI ai;
+	[SerializeField]protected E_AI ai;
 
 	/// アニメーションの名前格納
-	string[] anm_name = new string[] { "Idle", "Run", "Attack", "Hit", "Die" };
+	protected string[] anm_name = new string[] { "Idle", "Run", "Attack", "Hit", "Die" };
 	/// 攻撃制限のフラグ
-	bool attacked = false;
+	protected bool attacked = false;
 	/// 死亡制限のフラグ
-	bool died = false;
+	protected bool died = false;
 
 	/// アニメーションの取得
 	void Start () {
@@ -25,53 +25,73 @@ public class E_Animation : MonoBehaviour {
 	/// アニメーション以外の処理（攻撃の当たり判定・死亡時の処理）も
 	/// この中でやっている
 	void Update () {
-
+		
 		// アニメーション再生
 		animator.SetBool (anm_name [(int)ai.State], true);
 
 		// 攻撃処理
 		if (ai.State == E_AI.ATTACK && !attacked) {
-			// アニメーションの再生時間を取得
-			float time = animator.GetCurrentAnimatorStateInfo (0).length;// 2.2f;
 			attacked = true;
-			// アニメーションの切り替る
-			StartCoroutine (ReturnToNormal (time));
 			// 攻撃判定する
-			StartCoroutine (Attacked (time - .3f));
-			//Debug.Log (time);
+			StartCoroutine (Attacked ());
+			StartCoroutine (ReturnToNormal ());
 		}
 
 		// 死亡処理
 		if (ai.State == E_AI.DIE && !died) {
-			// アニメーションの再生時間を取得
-			float time = animator.GetCurrentAnimatorStateInfo (0).length;
 			died = true;
-			// 死亡後に削除する
-			StartCoroutine (Died (time));
+			StartCoroutine (Died ());
 		}
 
-	}
-
-	/// 通常行動のステータスに戻る（走る）
-	IEnumerator ReturnToNormal(float interval){
-		yield return new WaitForSeconds (interval);
-		ai.MakeThenRun ();
-		attacked = false;
 	}
 
 	/// 一定時間後に攻撃処理をする
 	/// 攻撃アニメーションで腕を振り切ったタイミングで
 	/// 攻撃判定が走るように調整する
-	IEnumerator Attacked(float interval){
-		yield return new WaitForSeconds (interval);
-		if (ai.DistanceToTarger () <= 3f)
-			ai.AttackedTheTarget ();
+	IEnumerator Attacked(){
+		// アニメーションがAttackになるまで待つ
+		while (!animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Attack")))
+			yield return null;
+		float time = animator.GetCurrentAnimatorStateInfo (0).length / 2;
+		yield return new WaitForSeconds (time);
+		// ダメージ処理
+		ai.AttackedTheTarget ();
+	}
+	IEnumerator ReturnToNormal(){
+		// アニメーションがAttackになるまで待つ
+		while (!animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Attack")))
+			yield return null;
+		// アニメーションのステータスを取得
+		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
+		// アニメーションが終了するまで１フレームずつ待つ
+		while (!ChangeAnimation (stateInfo))
+			yield return null;
+		// アニメーションの攻撃を無効化
+		animator.SetBool (anm_name [(int)E_AI.ATTACK], false);
+		// 追尾状態にシフト
+		ai.MakeThenRun ();
+		// 次の攻撃ができるようにする
+		attacked = false;
 	}
 
 	/// 倒された際のアニメーションが終わったタイミングで自身を削除する
-	IEnumerator Died(float interval){
-		yield return new WaitForSeconds (interval);
+	IEnumerator Died(){
+
+		// アニメーションがDieになるまで待つ
+		while (!animator.GetCurrentAnimatorStateInfo (0).shortNameHash.Equals (Animator.StringToHash("Die")))
+			yield return null;
+		// アニメーションのステータスを取得して、再生時間分遅延させる
+		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
+		yield return new WaitForSeconds (stateInfo.length - .5f);
+		// 削除
 		Destroy (gameObject);
+	}
+
+
+	/// アニメーションが変わったかをハッシュ比較でする
+	/// 戻り値　true:変わった　false:変わっていない
+	bool ChangeAnimation(AnimatorStateInfo info){
+		return info.nameHash != animator.GetCurrentAnimatorStateInfo (0).nameHash;
 	}
 
 }

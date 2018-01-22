@@ -73,6 +73,8 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		
 		PlayerInfo.role = (RoleDropdown.value == 0) ? PlayerInfo.Server : PlayerInfo.Client;
 
+		PlayerInfo.roomID = System.DateTime.Now.ToString ();
+
 		//　ルームオプションを設定
 		RoomOptions ro = new RoomOptions ();
 		//　ルームを見えるようにする

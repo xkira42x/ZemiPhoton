@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour {
 		StartCoroutine (TimeCount ());
 
 		panelimage = Panel.GetComponent<Image> ();
+
 	}
 	
 	// Update is called once per frame
@@ -62,7 +63,7 @@ public class Timer : MonoBehaviour {
     }
 	//ゲーム終了処理
 	//敵の生成を止め、出ている敵を消す
-	void GameEnd(){
+	 void GameEnd(){
 		Debug.Log ("TimerEnd");
 		PlayerInfo.Spawn = false;
 		int enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
@@ -75,10 +76,15 @@ public class Timer : MonoBehaviour {
 		Panel.SetActive (true);
 		panelimage.color += new Color (0, 0, 0, 0.1f);
 		if (panelimage.color.a >= 1) {
+			PlayerInfo.onTimer = false;
+			PlayerList.ReleaseAll ();
 			Cursor.lockState=CursorLockMode.None;	//ロックなし
 			Cursor.visible=true;
 			PhotonNetwork.Disconnect ();
 			UnityEngine.SceneManagement.SceneManager.LoadScene ("title");
 		}
+
+        //Sever.csの撃破数の更新(Score())を呼び出す
+        gameObject.GetComponent<Server>().Score();
 	}
 }

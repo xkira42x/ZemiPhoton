@@ -10,7 +10,7 @@ public class UnityChanAnimatio : MonoBehaviour {
 	// アニメーターを取得
 	Animator animator;
 	// アニメーションの名前を格納
-	readonly string[] AnimationName = { "Idol", "Walk", "Jump", "Crouch", "CrouchMove" };
+	readonly string[] AnimationName = { "Idol", "Walk", "Jump", "Crouch", "CrouchMove","Die" };
 
 	/// 初期化
 	void Start () {

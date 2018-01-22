@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(AudioSource))]
 /// <summary>
 /// <para>名前　GunBase</para>
 /// <para>概要　銃の派生親、銃の動作に必要な</para>
@@ -12,10 +13,15 @@ public class GunBase : MonoBehaviour {
 	public string WeaponName;						// 銃の名前
 	protected Transform CameraT;					// カメラのTransform情報
 	[SerializeField]protected GameObject AmmoObj;	// 弾丸オブジェクト
+	protected AudioSource audioSource;				// 音の再生窓口
+	[SerializeField]protected AudioClip ShotSound;	// ショット音
+
 	[SerializeField]protected int MaxAmmo;			// 所持総弾数
 	[SerializeField]protected int MaxMagazine;		// マガジンの最大数
 	protected int Magazine;							// 今のマガジン内弾数
     public int GetMagazine() { return Magazine; }
+	public float GetMagazineRatio(){ return (float)Magazine / (float)MaxMagazine; }
+	public bool Reloading = false;					// リロード判定
 	[SerializeField]protected float ReloadTime = 1;	// リロードする時間
 	protected bool Next = true;						// 次に攻撃する時間間隔(フラグ)
 	[SerializeField]public ParticleSystem[] MuzzleFlash;	// マズルフラッシュエフェクト
@@ -32,6 +38,7 @@ public class GunBase : MonoBehaviour {
 	public virtual void Awake(){
 		myRigidbody = GetComponent<Rigidbody> ();
 		gameObject.name = WeaponName;
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	/// <summary>
@@ -41,15 +48,17 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値 なし</para>
 	/// </summary>
 	public virtual void Action(){
-		if (Next) {
+		if (Next && !Reloading) {
 			// 残弾があれば
 			if (Magazine > 0) {
 				// 残弾を減らす
 				Magazine--;
 				// 弾を生成
-				Instantiate (AmmoObj, CameraT.position, CameraT.rotation);
+				Instantiate (AmmoObj, CameraT.position, CameraT.rotation).GetComponent<Bullet>().ID = PlayerInfo.playerNumber;
 				// エフェクトの再生
 				PlayEffect ();
+				// 音の再生
+				audioSource.PlayOneShot(ShotSound);
 				Next = false;
 				Delay ();
 			} else // 弾切れの際のメッセージ
@@ -64,6 +73,7 @@ public class GunBase : MonoBehaviour {
 	/// <para>戻り値　なし</para>
 	/// </summary>
 	public void ReloadRequest(){
+		Reloading = true;
 		StartCoroutine ("Reload", ReloadTime);
 	}
 
@@ -76,6 +86,7 @@ public class GunBase : MonoBehaviour {
 	IEnumerator Reload(float il){
 		yield return new WaitForSeconds (il);
 		Magazine = MaxMagazine;
+		Reloading = false;
 	}
 
 	/// <summary>
