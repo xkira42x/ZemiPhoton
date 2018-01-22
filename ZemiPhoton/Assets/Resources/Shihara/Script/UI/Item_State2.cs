@@ -25,6 +25,7 @@ public class Item_State2 : MonoBehaviour
     float Rec_sel = 0.3f;
 
 	public int Number_of_remaining_bullets;
+	public float Number_of_remainig_bullets_bar;
 
     void Start()
     {
@@ -66,6 +67,8 @@ public class Item_State2 : MonoBehaviour
 
         //弾の円ゲージ（＝　残りの弾数　/　弾の最大所持数）
         //Gun_bar.fillAmount = Camera_Spot.tama / Camera_Spot.tama_max;
+		Gun_bar.fillAmount = Number_of_remainig_bullets_bar;
+
 
         //残り弾数表示テキスト
         //Bullet.text = "" + Camera_Spot.tama.ToString();

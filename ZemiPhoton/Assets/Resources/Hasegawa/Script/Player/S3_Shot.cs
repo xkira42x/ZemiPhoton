@@ -11,6 +11,8 @@ public class S3_Shot : Photon.MonoBehaviour {
 	[SerializeField]public Transform CameraT;			// カメラの位置情報
 	[SerializeField]Text UI;							// 弾切れなどを表示するUI
     [SerializeField]Text NumberofRemainingBullets;		// 残弾数の表示
+	[SerializeField]Image NumberofRemainingBulletsImage;// 残弾数のゲージ表示
+	int lastAmmoNum = 0;
     bool ShowUI = false;								// UIの表示判定
 	[SerializeField]S3_Shot shot;						// S3_Shotクラスのキャッシュ
 
@@ -57,10 +59,7 @@ public class S3_Shot : Photon.MonoBehaviour {
 					gameObject.SendMessage ("PickUpItemMSG", hitInfo.collider.gameObject, SendMessageOptions.DontRequireReceiver);
 				}
 			}
-
-			// 銃を持っている間、残弾数を表示する
-			if (MyGun != null)
-				iState.Number_of_remaining_bullets = MyGun.GetMagazine ();
+			ShowBulletUI ();
 		}
 	}
 
@@ -112,6 +111,17 @@ public class S3_Shot : Photon.MonoBehaviour {
 			ShowUI = false;
 		else
 			UI.text = "";
+	}
+
+	/// 銃を持っている間、残弾数を表示する
+	void ShowBulletUI(){
+		if (MyGun != null) {
+			if (lastAmmoNum != MyGun.GetMagazine ()) {
+				iState.Number_of_remaining_bullets = MyGun.GetMagazine ();
+				lastAmmoNum = MyGun.GetMagazine ();
+				iState.Number_of_remainig_bullets_bar = MyGun.GetMagazineRatio ();
+			}
+		}
 	}
 
 }
