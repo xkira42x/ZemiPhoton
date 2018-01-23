@@ -185,6 +185,7 @@
     <Compile Include="Assets\Resource\Hasegawa\Script\PlayerList.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\RoomItem.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\RoomMenuControl.cs" />
+    <Compile Include="Assets\Resource\Hasegawa\Script\ShowResult.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\TitleManager.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\WaitForAnimation.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\AssaultRifle.cs" />

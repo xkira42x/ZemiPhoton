@@ -76,7 +76,7 @@ public class Timer : MonoBehaviour {
 		Panel.SetActive (true);
 		panelimage.color += new Color (0, 0, 0, 0.1f);
 		if (panelimage.color.a >= 1) {
-			PlayerInfo.onTimer = false;
+            PlayerInfo.Init();
 			PlayerList.ReleaseAll ();
 			Cursor.lockState=CursorLockMode.None;	//ロックなし
 			Cursor.visible=true;
@@ -85,6 +85,6 @@ public class Timer : MonoBehaviour {
 		}
 
         //Sever.csの撃破数の更新(Score())を呼び出す
-        gameObject.GetComponent<Server>().Score();
+        //gameObject.GetComponent<Server>().Score();
 	}
 }

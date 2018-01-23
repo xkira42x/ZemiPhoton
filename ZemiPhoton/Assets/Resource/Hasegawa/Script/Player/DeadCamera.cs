@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadCamera : MonoBehaviour {
+public class DeadCamera : MonoBehaviour
+{
 
     Transform myTransform;
+    [SerializeField]
     Transform otherTransform;
     int index;
 
-	void Start () {
+    void Start()
+    {
         index = PlayerInfo.playerNumber;
+        myTransform = transform;
         otherTransform = PlayerList.GetPlayerList(index).transform;
-	}
+    }
 
     void Update()
     {

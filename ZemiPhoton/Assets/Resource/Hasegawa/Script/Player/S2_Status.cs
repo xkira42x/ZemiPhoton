@@ -18,12 +18,15 @@ public class S2_Status : Photon.MonoBehaviour
     /// 体力を引数分減らし、HPのUIゲージ更新と同期を行う
     public void Damage(float dmg)
     {
-        health -= dmg;
-        statusUI.Health = health;
-        photonView.RPC("SyncHP", PhotonTargets.Others, (short)health);
-        // 死亡処理
-        if (health <= 0)
-            move.Died();
+        if (photonView.isMine && !PlayerInfo.isDied)
+        {
+            health -= dmg;
+            statusUI.Health = health;
+            photonView.RPC("SyncHP", PhotonTargets.Others, health);
+            // 死亡処理
+            if (health <= 0)
+                move.Died();
+        }
     }
 
     /// ステータス表示するオブジェクトを設定する
