@@ -100,7 +100,7 @@ public class E_AI : Photon.MonoBehaviour {
 				// 目的地の設定
 				agent.SetDestination (targetTransform.position);
 			}
-			yield return new WaitForSeconds (1);
+            yield return new WaitForSeconds(.5f);
 		}
 	}
 
