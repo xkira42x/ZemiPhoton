@@ -1,13 +1,8 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Hasegawa\Script\Player\S1_Move.cs">
+﻿<Properties StartupItem="ZemiPhoton.CSharp.Plugins.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resource\Hasegawa\Script\Network\Server.cs">
     <Files>
-      <File FileName="Assets\Resources\Hasegawa\Script\Player\S1_Move.cs" Line="52" Column="4" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Player\S2_Status.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Network\N2_NetworkSetting.cs" Line="20" Column="27" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Network\N4_SyncAnimation.cs" Line="32" Column="19" />
-      <File FileName="Assets\Resources\Hasegawa\Script\Player\PlayerInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Hasegawa\Script\PlayerList.cs" Line="57" Column="15" />
+      <File FileName="Assets\Resource\Hasegawa\Script\Network\Server.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

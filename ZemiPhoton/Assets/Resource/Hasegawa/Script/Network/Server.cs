@@ -9,12 +9,18 @@ public class Server : Photon.MonoBehaviour {
 	// 型枠だけを作った感じです。追加/改変OK
 	// サーバー接続→ログイン・新規作成の流れをここに記述してください
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
+	[SerializeField]GameObject DBlog;
 	[System.NonSerialized]public string ipAddress;
 
 	string ServerAddress;	//サーバアドレス格納用
 
-	void Start () {
+	//bool Score_UP;
+	int Player_ID;
+	//string sscore;
 
+	void Start () {
+		//Score_UP = true;
+		//PlayerInfo.killCount += 5;
 	}
 	
 	void Update () {
@@ -25,6 +31,7 @@ public class Server : Photon.MonoBehaviour {
 	/// サーバーとして接続した時に、呼ばれるメソッド
 	/// </summary>
 	public void StartUp(){
+		DBlog.SetActive (true);
 		Debug.Log("StartUp");
 		GetIpAddress ();	//ホストのみの処理
 		//↓ipAdress送信処理
@@ -63,7 +70,7 @@ public class Server : Photon.MonoBehaviour {
 	//ログイン処理
 	void LogIn_Button_Push(){
 		Debug.Log("LogInPush");
-		Debug.Log ("ipAddress=" + ipAddress);
+		//Debug.Log ("ipAddress=" + ipAddress);
 		ServerAddress = ipAddress + "/3zemi/DB_test_unity_select_name.php";
 		StartCoroutine ("Access");	//Accessコルーチンの開始
 	}
@@ -73,15 +80,36 @@ public class Server : Photon.MonoBehaviour {
 		Debug.Log("NewDataPush");
 		ServerAddress = ipAddress+"/3zemi/DB_test_unity_input.php";
 		StartCoroutine ("Access");
-
 	}
+
+	void DataSelect(){
+		Debug.Log ("DataSelect");
+		ServerAddress = ipAddress + "/3zemi/DB_test_unity_select_name2.php";
+		StartCoroutine ("Access");
+	}
+
+	/*void ScoreUP(){
+		Debug.Log ("ScoreUP");
+		PlayerInfo.killCount++;
+		//Score_UP = true;
+		//PlayerInfo.killCount = 5;
+		sscore = PlayerInfo.killCount.ToString();
+		ServerAddress = ipAddress + "/3zemi/DB_test_unity_score.php";
+		StartCoroutine ("Access");
+	}*/
 		
 	//DBへの接続と名前の送信
 	IEnumerator Access(){
 		Debug.Log("Access");
 		Dictionary<string,string> dic = new Dictionary<string,string> ();
-
 		dic.Add ("name", PlayerInfo.playerName);
+		//Debug.Log (sscore);
+		//if (ServerAddress != ipAddress + "/3zemi/DB_test_unity_score.php") {
+			dic.Add ("room_info", PlayerInfo.roomID);
+		//}else{
+		/*	Debug.Log ("eee");
+			dic.Add ("score", sscore);//PlayerInfo.killCount.ToString ());
+		}*/
 		StartCoroutine(DataPost(ServerAddress,dic));
 		yield return 0;
 	}
@@ -92,13 +120,16 @@ public class Server : Photon.MonoBehaviour {
 		WWWForm form = new WWWForm ();
 		foreach (KeyValuePair<string,string>post_arg in post) {
 			form.AddField (post_arg.Key, post_arg.Value);
-
 			WWW www = new WWW (url, form);
 
 			yield return StartCoroutine (CheckTimeOut (www, 10f));	//TimeOutSecond=3s
 
 			if (www.error != null) {
 				Debug.Log ("HttpPost NG: " + www.error);
+				/*if (ServerAddress == ipAddress + "/3zemi/DB_test_unity_score.php") {
+					Debug.Log("Score_UP=false");
+					Score_UP = false;
+				}*/
 				//そもそも接続ができていないとき
 			}
 			else if (www.isDone) 
@@ -108,13 +139,22 @@ public class Server : Photon.MonoBehaviour {
 				switch (www.bytesDownloaded) {
 				case 8://DBに名前が存在してログイン成功
                        //ログイン時の処理がここに必要な場合以下に追記
-                        float ScoreData = PlayerPrefs.GetFloat("Score");
-                        if (ScoreData > 0){
-                            //データベースにスコアを送信、スコアはプラスしていく
-                            //ScoreDataにスコアが保存されてます。
-                        }
-                        PlayerPrefs.SetFloat("Score", 0);
-                        break;
+					//if (!PlayerPrefs.HasKey ("Score"))
+						//PlayerPrefs.SetInt ("Score", 0);
+					/*int ScoreData = PlayerPrefs.GetInt ("Score");
+					if (ScoreData > 0) {
+						/// ScoreDataがこれまでの撃破数（前に行った１ゲームの）
+						/// ScoreDataが1以上の時はデータベースのスコアを更新できなかったっていう意味です
+						/// なので、1以上の時はScoreData分のデータベースを更新してください
+						/// ちなみに　DB.Score += DB.Score + ScoreData;こんな風にスコア分を加算していく想定です
+						ScoreUP ();
+						// スコアの一時保存場所の初期化
+						PlayerPrefs.SetInt ("Score", 10);
+					}*/
+					///　以下ログ表示の関数
+					DataSelect ();    
+					//ScoreUP ();
+					break;
 				case 9://DBに名前が存在せず、ログイン失敗－＞新規作成の関数を実行
 					NewData_Button_Push ();
 					break;
@@ -126,7 +166,9 @@ public class Server : Photon.MonoBehaviour {
 					break;
 				default:
 					//DBから送られてくる情報が以上以外の場合
-					Debug.Log ("Unknown Error");
+					photonView.RPC("ThrowDBLog",PhotonTargets.MasterClient,www.text);
+					Debug.Log (www.text);
+					Debug.Log (www.bytesDownloaded);
 					break;
 				}
 
@@ -144,6 +186,9 @@ public class Server : Photon.MonoBehaviour {
 			else 
 			{
 				Debug.Log ("TimeOut");
+				/*if (PlayerInfo.killCount != 0) {
+					Score_UP = false;
+				}*/
 				break;
 			}
 		}
@@ -151,16 +196,25 @@ public class Server : Photon.MonoBehaviour {
 	}
 
     //ゲーム終了時(Timer.cs)にスコアをデータベースに送る
-    public void Score()
+   /* public void Score()
     {
         //プレイヤーごとの撃破数
         //PlayerInfo.killCount;
 
-        //スコアの送信
+		ScoreUP ();
 
-        /*if (データベースに送信できなかったら)
+        //スコアの送信
+		//データベースに送信できなかったら
+		/*if (Score_UP==false)
         {
-            PlayerPrefs.SetFloat("Score", PlayerInfo.killCount);
-        }*/
-    }
+			PlayerPrefs.SetInt("Score", PlayerInfo.killCount);
+        }
+    }*/
+	//ログの送信口
+	//サーバ以外が呼んだらサーバへデータを送信する
+	[PunRPC]
+	void ThrowDBLog(string ss){
+		LogText.UpdateLog (ss);
+	}
+
 }
