@@ -129,6 +129,7 @@
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\PhotonNetworkTest.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\Server.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Network\myPhotonManager.cs" />
+     <Compile Include="Assets\Resources\Hasegawa\Script\Player\DeadCamera.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Player\PlayerInfo.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Player\PlayerStatusUI.cs" />
      <Compile Include="Assets\Resources\Hasegawa\Script\Player\S1_Move.cs" />
