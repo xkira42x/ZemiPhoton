@@ -14,8 +14,8 @@ public class Timer : MonoBehaviour {
     public Text Time_T;
 	[SerializeField]GameObject Panel;
 	Image panelimage;
-	// Use this for initialization
-	void Start () {
+
+    void Start () {
 		Gauge = GameObject.Find ("Timer").GetComponent<Image> ();
 		Gauge_T_max = Gauge_T;
 		StartCoroutine (TimeCount ());
@@ -23,9 +23,8 @@ public class Timer : MonoBehaviour {
 		panelimage = Panel.GetComponent<Image> ();
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Update () {
         
 	}
 
@@ -61,30 +60,34 @@ public class Timer : MonoBehaviour {
         Time_T.color = new Color(Gauge_G / Gauge_T_max, Gauge_T / Gauge_T_max, 0.0f, 1.0f);
 
     }
-	//ゲーム終了処理
-	//敵の生成を止め、出ている敵を消す
-	 void GameEnd(){
-		Debug.Log ("TimerEnd");
-        PlayerInfo.Init();
-		int enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-		if (enemies != 0) {
-			for (int i = 0; i < enemies; i++) {
-				PhotonNetwork.Destroy (GameObject.FindGameObjectsWithTag("Enemy") [i]);
-//			GameObject.FindGameObjectsWithTag("Enemy") [i].GetComponent<A_normal_enemy_move1>().A_state=0;
-			}
-		}
-		Panel.SetActive (true);
-		panelimage.color += new Color (0, 0, 0, 0.1f);
-		if (panelimage.color.a >= 1) {
+    //ゲーム終了処理
+    //敵の生成を止め、出ている敵を消す
+    void GameEnd()
+    {
+        Debug.Log("TimerEnd");
+        int enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if (enemies != 0)
+        {
+            for (int i = 0; i < enemies; i++)
+            {
+                PhotonNetwork.Destroy(GameObject.FindGameObjectsWithTag("Enemy")[i]);
+                //			GameObject.FindGameObjectsWithTag("Enemy") [i].GetComponent<A_normal_enemy_move1>().A_state=0;
+            }
+        }
+        Panel.SetActive(true);
+        panelimage.color += new Color(0, 0, 0, 0.1f);
+        if (panelimage.color.a >= 1)
+        {
+            PlayerInfo.timeOut = true;
             PlayerInfo.Init();
-			PlayerList.ReleaseAll ();
-			Cursor.lockState=CursorLockMode.None;	//ロックなし
-			Cursor.visible=true;
-			PhotonNetwork.Disconnect ();
-			UnityEngine.SceneManagement.SceneManager.LoadScene ("title");
-		}
+            PlayerList.ReleaseAll();
+            Cursor.lockState = CursorLockMode.None; //ロックなし
+            Cursor.visible = true;
+            PhotonNetwork.Disconnect();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("title");
+        }
 
         //Sever.csの撃破数の更新(Score())を呼び出す
         //gameObject.GetComponent<Server>().Score();
-	}
+    }
 }

@@ -19,6 +19,7 @@ public class PlayerInfo : MonoBehaviour {
 	public static bool isClient(){return role == Client;} // クライアント判定
 
 	public static bool onTimer = false;				// タイマの起動判定
+    public static bool timeOut = false;             // タイムアウト判定
 
     /// 初期化
     public static void Init() {
@@ -27,6 +28,7 @@ public class PlayerInfo : MonoBehaviour {
         Spawn = false;
         isDied = false;
         onTimer = false;
+        timeOut = false;
     }
 
 }
