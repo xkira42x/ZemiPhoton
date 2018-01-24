@@ -153,7 +153,6 @@
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Demo\Animation.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\AutoDestroyMaterials.cs" />
-    <Compile Include="Assets\Resource\Hasegawa\Script\Demo.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_AI.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_Animation.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_Boomer.cs" />

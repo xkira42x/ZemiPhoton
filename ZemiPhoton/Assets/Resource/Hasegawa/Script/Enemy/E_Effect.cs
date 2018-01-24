@@ -2,23 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E_Effect : MonoBehaviour {
+public class E_Effect : MonoBehaviour
+{
 
-	ParticleSystem[] particles = null;
-	float time = 0;
+    [SerializeField]
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip[] audioClip;
 
-	void Start () {
-		particles = GetComponentsInChildren<ParticleSystem> ();
+    ParticleSystem[] particles = null;
+    float time = 0;
 
-		for (int ii = 0; ii < particles.Length; ii++) {
-			if (time < particles [ii].duration)
-				time = particles [ii].duration;
-		}
-		StartCoroutine (EndPlayback (time));
-	}
+    void Start()
+    {           
 
-	IEnumerator EndPlayback(float interval){
-		yield return new WaitForSeconds (interval);
-		Destroy (gameObject);
-	}
+        particles = GetComponentsInChildren<ParticleSystem>();
+
+        for (int ii = 0; ii < particles.Length; ii++)
+        {
+            if (time < particles[ii].duration)
+                time = particles[ii].duration;
+        }
+        
+        if (audioSource != null)
+        {
+            int ii = Random.Range(0, audioClip.Length);
+            audioSource.PlayOneShot(audioClip[ii]);
+            if (time < audioClip[ii].length) time = audioClip[ii].length;
+        }
+
+        StartCoroutine(EndPlayback(time));
+
+    }
+
+    IEnumerator EndPlayback(float interval)
+    {
+        yield return new WaitForSeconds(interval);
+        Destroy(gameObject);
+    }
 }
