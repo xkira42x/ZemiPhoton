@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 	string rmName;
 	MenuManager MM;		//メニューマネージャ
+	[SerializeField]
+	bool Disconflg=true;	//途中退室の処理の有り無し
 
 	//自分が切断した時
 	void OnDisconnectedFromPhoton(){
@@ -16,14 +18,16 @@ public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 	}
 	//ルーム内のだれかが切断した時
 	void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer){
-		if (PhotonNetwork.player.IsMasterClient) {
-			Debug.Log ("PlayerDisconnected");
-			Debug.Log (this.gameObject.name + "の通信が切断された");
-			Debug.Log ("otherID:" + otherPlayer.ID);
-			Debug.Log ("playerID:" + PhotonNetwork.player.ID);
-			Debug.Log ("ThisID:" + this.gameObject.GetComponent<PhotonView> ().viewID / 1000);
-			if (otherPlayer.ID == this.gameObject.GetComponent<PhotonView> ().viewID / 1000) {
-				CubeInstant (this.transform.position);
+		if (Disconflg) {		
+			if (PhotonNetwork.player.IsMasterClient) {
+				Debug.Log ("PlayerDisconnected");
+				Debug.Log (this.gameObject.name + "の通信が切断された");
+				Debug.Log ("otherID:" + otherPlayer.ID);
+				Debug.Log ("playerID:" + PhotonNetwork.player.ID);
+				Debug.Log ("ThisID:" + this.gameObject.GetComponent<PhotonView> ().viewID / 1000);
+				if (otherPlayer.ID == this.gameObject.GetComponent<PhotonView> ().viewID / 1000) {
+					CubeInstant (this.transform.position);
+				}
 			}
 		}
 	}
