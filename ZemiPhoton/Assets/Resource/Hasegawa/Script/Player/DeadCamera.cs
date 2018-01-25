@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class DeadCamera : MonoBehaviour
 {
-
+	/// transformのキャッシュ
     Transform myTransform;
     [SerializeField]
     Transform otherTransform;
+	/// プレイヤー番号
     int index;
 
+	/// 初期化
     void Start()
     {
         index = PlayerInfo.playerNumber;
@@ -17,8 +19,10 @@ public class DeadCamera : MonoBehaviour
         otherTransform = PlayerList.GetPlayerList(index).transform;
     }
 
+	/// メインループ
     void Update()
     {
+		// キー入力でカメラフォーカスを当てる対象を変える
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             index++;
@@ -33,6 +37,7 @@ public class DeadCamera : MonoBehaviour
             else { index = PlayerList.length - 1; }
             otherTransform = PlayerList.GetPlayerList(index).transform;
         }
+		// 座標の更新
         myTransform.position = otherTransform.position + new Vector3(0, 4, 0);
     }
 }

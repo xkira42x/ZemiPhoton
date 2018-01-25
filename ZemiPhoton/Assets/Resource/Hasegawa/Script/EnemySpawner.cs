@@ -57,15 +57,15 @@ public class EnemySpawner : MonoBehaviour {
 				int rand = Random.Range (0, 100);
 				if (rand < 80)
 					type = Zombie;
-				else if (rand >= 80 && rand < 90)
+				else if (rand >= 80 && rand < 100)
 					type = Boomer;
-				else if (rand >= 90 && rand < 100)
-					type = Spitter;
+				//else if (rand >= 90 && rand < 100)
+					//type = Spitter;
 			}
 			
 			GameObject obj = PhotonNetwork.Instantiate (enemy [type].name,
 				                 new Vector3 (Random.Range (-3f, 3f), 0, Random.Range (-3f, 3f)) + SpawnPosition [index].position,
-				                 Quaternion.identity, 0);//.gameObject.name = enemy [type].name + (jj + 1).ToString ();
+				                 Quaternion.identity, 0);
 			obj.GetPhotonView ().RPC ("SyncSpeed", PhotonTargets.All, Random.Range (2.5f, 6.5f));
 
 			yield return new WaitForSeconds (.1f);

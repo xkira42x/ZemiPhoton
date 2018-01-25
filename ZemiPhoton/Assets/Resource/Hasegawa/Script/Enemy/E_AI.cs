@@ -49,9 +49,8 @@ public class E_AI : Photon.MonoBehaviour
     public bool AttackOnlyOnce = false;
 
     /// 初期化
-    public void Start()
+	public virtual void Start()
     {
-
         // ナビエージェントの取得
         agent = GetComponent<NavMeshAgent>();
         // ターゲットの設定
@@ -62,14 +61,10 @@ public class E_AI : Photon.MonoBehaviour
         agent.speed = speed;
         myTransform = transform;
     }
-    public void Init()
-    {
-    }
 
     /// メインループ
-    public void Update()
+	public virtual void Update()
     {
-
         // ステータスの設定
         AIState();
 
@@ -137,7 +132,8 @@ public class E_AI : Photon.MonoBehaviour
     {
         targetIndex = index;
         targetTransform = PlayerList.GetPlayerList(index).transform;
-    }
+		agent.SetDestination(targetTransform.position);
+	}
 
     /// プレイヤーにダメージを与える
     public virtual void AttackedTheTarget()
@@ -152,30 +148,30 @@ public class E_AI : Photon.MonoBehaviour
 
     /// 当たり判定
     public void OnCollisionEnter(Collision collision)
-    {
-        // 弾と当たった時
-        if (collision.gameObject.tag == "Bullet" )
-        {
-            var trns = collision.transform;
-            Instantiate(Blood, trns.position, transform.rotation);
+	{
+		// 弾と当たった時
+		if (collision.gameObject.tag == "Bullet") {
+			var trns = collision.transform;
+			Instantiate (Blood, trns.position, transform.rotation);
 
-            if (health > 0)
-            {
-                // 弾情報を取得
-                Bullet bbb = collision.gameObject.GetComponent<Bullet>();
-                // 体力を減らし、0以下になったら死亡する
-                health -= bbb.Pow;
-                if (health <= 0)
-                {
-                    photonView.RPC("SyncDie", PhotonTargets.All);
+			if (health >= 0) {
+				// 弾情報を取得
+				Bullet bbb = collision.gameObject.GetComponent<Bullet> ();
+				// 体力を減らし、0以下になったら死亡する
+				health -= bbb.Pow;
+				if (health <= 0) {
+					agent.Stop ();
+					state = DIE;
+					OnDied ();
+					photonView.RPC ("SyncDie", PhotonTargets.Others);
 
-                    // 撃破数を保存
-                    if (collision.gameObject.GetComponent<Bullet>().ID == PlayerInfo.playerNumber)
-                        PlayerInfo.killCount++;
-                }
-            }
-        }
-    }
+					// 撃破数を保存
+					if (collision.gameObject.GetComponent<Bullet> ().ID == PlayerInfo.playerNumber)
+						PlayerInfo.killCount++;
+				}
+			}
+		}
+	}
 
     /// 死亡の同期
     [PunRPC]

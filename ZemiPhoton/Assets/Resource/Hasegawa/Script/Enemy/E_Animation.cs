@@ -70,6 +70,7 @@ public class E_Animation : MonoBehaviour {
 		animator.SetBool (anm_name [(int)E_AI.ATTACK], false);
 		// 追尾状態にシフト
 		ai.MakeThenRun ();
+		Debug.Log ("Call ReturnToNormal");
 		// 次の攻撃ができるようにする
 		attacked = false;
 	}

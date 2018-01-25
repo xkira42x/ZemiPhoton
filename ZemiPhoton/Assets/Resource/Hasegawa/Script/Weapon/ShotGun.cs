@@ -22,13 +22,15 @@ public class ShotGun : GunBase {
 					Instantiate (AmmoObj, CameraT.position, Quaternion.Euler (Vec3Rand) * CameraT.rotation).GetComponent<Bullet> ().ID = PlayerInfo.playerNumber;
 				// エフェクトの再生
 				PlayEffect ();
+				// フラッシュの再生
+				StartCoroutine (PlayFlash ());
 				// 音の再生
-				audioSource.PlayOneShot(ShotSound);
+				audioSource.PlayOneShot (ShotSound);
 				// 次弾装填
 				Next = false;
 				Delay ();
 			}
-		}else // リロードの催促メッセージ
+		} else // リロードの催促メッセージ
 			gameObject.SendMessageUpwards ("OutOfAmmoMSG", SendMessageOptions.DontRequireReceiver);
 	}
 	/// ランダムにベクトルを吐き出す

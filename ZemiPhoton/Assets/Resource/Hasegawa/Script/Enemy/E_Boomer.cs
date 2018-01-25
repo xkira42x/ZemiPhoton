@@ -8,15 +8,17 @@ public class E_Boomer : E_AI {
 	[SerializeField] GameObject Explosion;
 
 	/// 初期化
-	void Start () {
+/*	public override void Start ()
+	{
 		base.Start ();
 	}
 
 	/// メインループ
-	void Update () {
+	public override void Update ()
+	{
 		base.Update ();
 	}
-
+*/
 	/// ダメージを与える処理
 	public override void AttackedTheTarget (){
 		base.AttackedTheTarget ();
