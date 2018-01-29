@@ -96,7 +96,7 @@ public class MenuManager : Photon.MonoBehaviour {
 		int nn = PlayerInfo.playerNumber;	// 番号のキャッシュ（ID）
 
 		// プレイヤーの生成
-		GameObject player = PhotonNetwork.Instantiate ("FPSPlayer", Pos[nn], Quaternion.identity, 0);
+		GameObject player = PhotonNetwork.Instantiate ("FPSPlayer", Pos[nn], Quaternion.Euler(new Vector3(0,-90,0)), 0);
 		//既に自分がいれば生成をしない
 		if (GameObject.Find (PlayerInfo.playerName)) {
 			//　元の情報を取得

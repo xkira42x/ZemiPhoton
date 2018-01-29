@@ -10,5 +10,6 @@ public class E_Explosion : MonoBehaviour {
 		if (obj.layer == 10) {
 			obj.GetComponent<S2_Status> ().Damage (dmg);
 		}
+        Debug.Log("Explosion Collision " + obj.gameObject.name);
 	}
 }

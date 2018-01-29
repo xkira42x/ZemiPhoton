@@ -7,7 +7,7 @@ public class E_AI : Photon.MonoBehaviour
 {
     [SerializeField]
     GameObject Blood;
-    Transform myTransform;
+	protected Transform myTransform;
     /// ステータス
     public const byte IDOL = 0, RUN = 1, ATTACK = 2, HIT = 3, DIE = 4;
     [SerializeField]
@@ -20,7 +20,7 @@ public class E_AI : Photon.MonoBehaviour
         if (targetTransform != null)
             agent.SetDestination(targetTransform.position);
         AttackOnlyOnce = false;
-        agent.Resume();
+		agent.Resume();
     }
     /// 速度
     [SerializeField]
@@ -49,7 +49,7 @@ public class E_AI : Photon.MonoBehaviour
     public bool AttackOnlyOnce = false;
 
     /// 初期化
-	public virtual void Start()
+	public void Start()
     {
         // ナビエージェントの取得
         agent = GetComponent<NavMeshAgent>();
@@ -63,7 +63,7 @@ public class E_AI : Photon.MonoBehaviour
     }
 
     /// メインループ
-	public virtual void Update()
+	public void Update()
     {
         // ステータスの設定
         AIState();
@@ -102,7 +102,7 @@ public class E_AI : Photon.MonoBehaviour
                 state = RUN;
             else
             {
-                state = ATTACK;
+				state = ATTACK;
                 agent.Stop();
             }
         }
@@ -136,7 +136,7 @@ public class E_AI : Photon.MonoBehaviour
 	}
 
     /// プレイヤーにダメージを与える
-    public virtual void AttackedTheTarget()
+    public void AttackedTheTarget()
     {
         // 当たり判定で衝突したオブジェクトを格納
         Collider[] hit = Physics.OverlapSphere(transform.position, 1);
@@ -159,10 +159,9 @@ public class E_AI : Photon.MonoBehaviour
 				Bullet bbb = collision.gameObject.GetComponent<Bullet> ();
 				// 体力を減らし、0以下になったら死亡する
 				health -= bbb.Pow;
-				if (health <= 0) {
+				if (health <= 0 && state != DIE) {
 					agent.Stop ();
 					state = DIE;
-					OnDied ();
 					photonView.RPC ("SyncDie", PhotonTargets.Others);
 
 					// 撃破数を保存
@@ -179,7 +178,6 @@ public class E_AI : Photon.MonoBehaviour
     {
         agent.Stop();
         state = DIE;
-        OnDied();
     }
 
     [PunRPC]
@@ -190,8 +188,4 @@ public class E_AI : Photon.MonoBehaviour
             agent.speed = speed;
     }
 
-    /// 倒された時に呼ばれる
-    public virtual void OnDied()
-    {
-    }
 }

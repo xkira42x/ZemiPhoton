@@ -2,30 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E_Boomer : E_AI {
+public class E_Boomer : E_Animation {
 
 	/// 死ぬ際の爆発に使うオブジェクトを登録
 	[SerializeField] GameObject Explosion;
 
-	/// 初期化
-/*	public override void Start ()
-	{
-		base.Start ();
-	}
-
-	/// メインループ
-	public override void Update ()
-	{
-		base.Update ();
-	}
-*/
-	/// ダメージを与える処理
-	public override void AttackedTheTarget (){
-		base.AttackedTheTarget ();
-	}
-
 	/// 自分が死んだ際のコールバック
 	public override void OnDied (){
-		Instantiate (Explosion, transform.position, Quaternion.identity);
+		Instantiate (Explosion, new Vector3 (transform.position.x, 1, transform.position.z), Quaternion.identity);
 	}
 }

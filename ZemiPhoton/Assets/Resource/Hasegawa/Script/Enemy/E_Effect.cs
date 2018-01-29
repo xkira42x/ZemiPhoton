@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class E_Effect : MonoBehaviour
 {
 
-    [SerializeField]
     AudioSource audioSource;
-    [SerializeField]
-    AudioClip[] audioClip;
+    [SerializeField]AudioClip[] audioClip;
 
     ParticleSystem[] particles = null;
     float time = 0;
@@ -23,10 +22,12 @@ public class E_Effect : MonoBehaviour
             if (time < particles[ii].duration)
                 time = particles[ii].duration;
         }
+
+		audioSource = GetComponent<AudioSource> ();
         
         if (audioSource != null)
         {
-            int ii = Random.Range(0, audioClip.Length);
+			int ii = Random.Range (0, audioClip.Length);
             audioSource.PlayOneShot(audioClip[ii]);
             if (time < audioClip[ii].length) time = audioClip[ii].length;
         }
@@ -38,6 +39,6 @@ public class E_Effect : MonoBehaviour
     IEnumerator EndPlayback(float interval)
     {
         yield return new WaitForSeconds(interval);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

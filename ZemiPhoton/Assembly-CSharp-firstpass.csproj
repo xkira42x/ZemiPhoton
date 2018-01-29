@@ -66,6 +66,7 @@
      <None Include="Assets\Resource\Kaede\UnityChan\Stage\Shader\AlphaMask.shader" />
      <None Include="Assets\Resource\Ogiyama\PHPについて.txt" />
      <None Include="Assets\Resource\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
+     <None Include="Assets\Resource\Hasegawa\AssetStore\Max\Document\readme.txt" />
      <None Include="Assets\Resource\Kaede\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
      <None Include="Assets\Resource\Kaede\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />

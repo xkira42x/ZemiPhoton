@@ -14,10 +14,11 @@ public class S2_Angle : MonoBehaviour
     Transform S_Collection; // カメラのトランスフォーム格納
 
     /// 初期化
-    void Awake()
+    void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;   // カーソルを固定
         Cursor.visible = true;                      // カーソルを隠す
+		S_MouseAngle = new Vector3(transform.eulerAngles.x,transform.eulerAngles.y,0);
     }
 
     /// メインループ

@@ -70,7 +70,6 @@ public class E_Animation : MonoBehaviour {
 		animator.SetBool (anm_name [(int)E_AI.ATTACK], false);
 		// 追尾状態にシフト
 		ai.MakeThenRun ();
-		Debug.Log ("Call ReturnToNormal");
 		// 次の攻撃ができるようにする
 		attacked = false;
 	}
@@ -84,6 +83,7 @@ public class E_Animation : MonoBehaviour {
 		// アニメーションのステータスを取得して、再生時間分遅延させる
 		AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo (0);
 		yield return new WaitForSeconds (stateInfo.length - .5f);
+        OnDied();
 		// 削除
 		Destroy (gameObject);
 	}
@@ -93,6 +93,11 @@ public class E_Animation : MonoBehaviour {
 	/// 戻り値　true:変わった　false:変わっていない
 	bool ChangeAnimation(AnimatorStateInfo info){
 		return info.nameHash != animator.GetCurrentAnimatorStateInfo (0).nameHash;
+	}
+
+	/// 倒された際のコールバック
+	public virtual void OnDied()
+	{
 	}
 
 }
