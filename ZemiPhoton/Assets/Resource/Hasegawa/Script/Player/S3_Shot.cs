@@ -66,7 +66,7 @@ public class S3_Shot : Photon.MonoBehaviour
             {
 
                 // Eキーを入力してもらう事を促すテキストを表示する
-                WriteUIText("Pick up with E key");
+                WriteUIText("武器を拾う(E)");
 
                 // アイテム取得(メッセージを送る)
                 if (Input.GetKeyDown(KeyCode.E))
@@ -94,7 +94,7 @@ public class S3_Shot : Photon.MonoBehaviour
         if (MyGun != null)
             MyGun.Action();
         else
-            WriteUIText("I do not have weapons");
+            WriteUIText("武器を持っていません");
     }
 
     /// アイテムの取得・その前にアイテムを持っていたら捨てる
@@ -112,7 +112,7 @@ public class S3_Shot : Photon.MonoBehaviour
     /// リロードの催促
     void OutOfAmmoMSG()
     {
-        WriteUIText("Reload with R key");
+        WriteUIText("リロードして下さい(R)");
     }
 
     /// UIテキストの書き込み処理
