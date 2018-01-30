@@ -24,7 +24,7 @@ public class E_AI : Photon.MonoBehaviour
     }
     /// 速度
     [SerializeField]
-    public float speed = 3.5f;
+    public float maxSpeed = 3.5f, minSpeed = 1f;
     /// 攻撃力
     [SerializeField]
     public float pow = 10;
@@ -39,7 +39,7 @@ public class E_AI : Photon.MonoBehaviour
     [SerializeField]
     protected Transform targetTransform;
     /// ターゲットの座標
-    protected Vector3 targetPos;
+    public Vector3 targetPos;
     /// ターゲットの識別番号
     protected int targetIndex;
     /// 射程
@@ -58,7 +58,9 @@ public class E_AI : Photon.MonoBehaviour
         // 目標地点の設定
         StartCoroutine(SetDesti());
         // 速度の設定
-        agent.speed = speed;
+        if (photonView.isMine)
+            photonView.RPC("SyncSpeed", PhotonTargets.AllBufferedViaServer, Random.Range(minSpeed, maxSpeed));
+        
         myTransform = transform;
     }
 
@@ -183,9 +185,8 @@ public class E_AI : Photon.MonoBehaviour
     [PunRPC]
     public void SyncSpeed(float spd)
     {
-        speed = spd;
         if (agent != null)
-            agent.speed = speed;
+            agent.speed = spd;
     }
 
 }

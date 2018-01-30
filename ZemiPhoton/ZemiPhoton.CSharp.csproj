@@ -161,6 +161,7 @@
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_Explosion.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_GeroPuddle.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_NavControl.cs" />
+    <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_SpitOut.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_Spitter.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\EnemySpawner.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\LogText.cs" />

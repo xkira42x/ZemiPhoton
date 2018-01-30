@@ -17,7 +17,7 @@ public class SpitOutDemo : MonoBehaviour {
 
 	void Start () {
         myTrns = transform;
-        StartCoroutine(GERO());
+        //StartCoroutine(GERO());
 	}
 
     IEnumerator GERO() {
