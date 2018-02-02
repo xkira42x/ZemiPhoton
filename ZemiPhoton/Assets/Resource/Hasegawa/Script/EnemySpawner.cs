@@ -57,10 +57,10 @@ public class EnemySpawner : MonoBehaviour {
 				int rand = Random.Range (0, 100);
 				if (rand < 80)
 					type = Zombie;
-				else if (rand >= 80 && rand < 100)
+				else if (rand >= 80 && rand < 90)
 					type = Boomer;
-				//else if (rand >= 90 && rand < 100)
-					//type = Spitter;
+				else if (rand >= 90 && rand < 100)
+					type = Spitter;
 			}
 			
 			/*GameObject obj =*/ PhotonNetwork.Instantiate (enemy [type].name,
