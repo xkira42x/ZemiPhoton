@@ -43,7 +43,7 @@ public class S1_Move : MonoBehaviour
     /// メインループ
     void Update()
     {
-        if (!PlayerInfo.isDied)
+        if (!PlayerInfo.isDied && PlayerInfo.timeOut == false)
         {
             // キー移動
             S_KeyMove();

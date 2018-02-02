@@ -25,7 +25,7 @@ public class S2_Angle : MonoBehaviour
     void Update()
     {
         // 視線移動
-        if (!PlayerInfo.isDied)
+        if (!PlayerInfo.isDied && PlayerInfo.timeOut == false)
             S_Eye();
     }
 
