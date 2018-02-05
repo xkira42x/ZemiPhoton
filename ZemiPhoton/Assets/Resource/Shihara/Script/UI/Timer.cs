@@ -79,12 +79,12 @@ public class Timer : MonoBehaviour {
         if (panelimage.color.a >= 1)
         {
             PlayerInfo.timeOut = true;
-            PlayerInfo.Init();
+            /*PlayerInfo.Init();
             PlayerList.ReleaseAll();
             Cursor.lockState = CursorLockMode.None; //ロックなし
             Cursor.visible = true;
             PhotonNetwork.Disconnect();
-            UnityEngine.SceneManagement.SceneManager.LoadScene("title");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("title");*/
         }
 
         //Sever.csの撃破数の更新(Score())を呼び出す

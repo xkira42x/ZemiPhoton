@@ -7,7 +7,7 @@ public class PlayerInfo : MonoBehaviour {
 	public static int playerNumber = 1;				// ユーザー番号
 	public static int statusCount = 1;				// UIテキストの参照番号
 
-	public static float killCount = 0;				// 撃破数
+	public static int killCount = 0;				// 撃破数
 
 	public static bool Spawn = false;				// プレイヤー生成
     public static bool isDied = false;              // プレイヤーの死亡判定

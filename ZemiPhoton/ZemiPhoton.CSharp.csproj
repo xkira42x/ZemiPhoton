@@ -275,6 +275,10 @@
     <Compile Include="Assets\Resource\Nemoto\Graph\Bar_Del.cs" />
     <Compile Include="Assets\Resource\Nemoto\Graph\Graph_Bar.cs" />
     <Compile Include="Assets\Resource\Nemoto\Graph\Traffic_Dis.cs" />
+    <Compile Include="Assets\Resource\Nemoto\Result\Script\Blur.cs" />
+    <Compile Include="Assets\Resource\Nemoto\Result\Script\Result_Date.cs" />
+    <Compile Include="Assets\Resource\Nemoto\Result\Script\Result_false.cs" />
+    <Compile Include="Assets\Resource\Nemoto\Result\Script\Text_Dis.cs" />
     <Compile Include="Assets\Resource\Nemoto\Scripts\A_Boomer_move.cs" />
     <Compile Include="Assets\Resource\Nemoto\Scripts\A_Enemy_Base.cs" />
     <Compile Include="Assets\Resource\Nemoto\Scripts\A_explosion.cs" />
@@ -290,6 +294,7 @@
     <Compile Include="Assets\Resource\Ogiyama\Catch.cs" />
     <Compile Include="Assets\Resource\Ogiyama\NameCatch.cs" />
     <Compile Include="Assets\Resource\Ogiyama\NewData.cs" />
+    <Compile Include="Assets\Resource\Shihara\Script\NameSpace.cs" />
     <Compile Include="Assets\Resource\Shihara\Script\Player_Start.cs" />
     <Compile Include="Assets\Resource\Shihara\Script\UI\Camera_Spot.cs" />
     <Compile Include="Assets\Resource\Shihara\Script\UI\Enemy_test.cs" />
