@@ -1,15 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class E_Boomer : E_Animation {
+public class E_Boomer : E_Animation
+{
 
-	/// 死ぬ際の爆発に使うオブジェクトを登録
-	[SerializeField] GameObject Explosion;
+    /// 死ぬ際の爆発に使うオブジェクトを登録
+    [SerializeField]
+    GameObject Explosion;
 
-	/// 自分が死んだ際のコールバック
-	public override void OnDied (){
+    /// 自分が死んだ際のコールバック
+    public override void OnDied()
+    {
         // 爆発させる
-		Instantiate (Explosion, new Vector3 (transform.position.x, 1, transform.position.z), Quaternion.identity);
-	}
+        Instantiate(Explosion, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
+    }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HandGun : GunBase {
 
@@ -15,6 +13,4 @@ public class HandGun : GunBase {
 			base.Action ();
 		}
 	}
-
-
 }

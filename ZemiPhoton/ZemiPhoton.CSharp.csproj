@@ -152,7 +152,6 @@
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Demo\Animation.cs" />
-    <Compile Include="Assets\Resource\Hasegawa\Demo\SpitOutDemo.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\AutoDestroyMaterials.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_AI.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Enemy\E_Animation.cs" />
@@ -166,7 +165,6 @@
     <Compile Include="Assets\Resource\Hasegawa\Script\EnemySpawner.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\LogText.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\MenuManager.cs" />
-    <Compile Include="Assets\Resource\Hasegawa\Script\MyLOD.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Network\CallAndResponse.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Network\N2_NetworkSetting.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Network\N2_SyncStatus.cs" />
@@ -187,15 +185,12 @@
     <Compile Include="Assets\Resource\Hasegawa\Script\PlayerList.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\RoomItem.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\RoomMenuControl.cs" />
-    <Compile Include="Assets\Resource\Hasegawa\Script\ShowResult.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\TitleManager.cs" />
-    <Compile Include="Assets\Resource\Hasegawa\Script\WaitForAnimation.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\AssaultRifle.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\Bullet.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\GunBase.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\HandGun.cs" />
     <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\ShotGun.cs" />
-    <Compile Include="Assets\Resource\Hasegawa\Script\myNamespace.cs" />
     <Compile Include="Assets\Resource\Ik\Scripts\DisconnectedFromPhoton.cs" />
     <Compile Include="Assets\Resource\Ik\Scripts\N15_SizeOf.cs" />
     <Compile Include="Assets\Resource\Ik\Scripts\N3_EndKey.cs" />

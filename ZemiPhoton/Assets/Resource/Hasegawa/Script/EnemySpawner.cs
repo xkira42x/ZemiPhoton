@@ -1,12 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
 
     const int Zombie = 0, Boomer = 1, Spitter = 2;
-    public GameObject[] enemy;                  // 敵オブジェクト
+    public GameObject[] enemy;  // 敵オブジェクト
     [SerializeField]
     Transform[] SpawnPosition;  // 生成位置
 
@@ -15,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     int numGenerated = 0;       // 現在の敵数
 
-    bool DoOnce = false;                        // 一度だけ実行するフラグ
+    bool DoOnce = false;        // 一度だけ実行するフラグ
 
     [SerializeField]
     bool ZombieOnly = true;

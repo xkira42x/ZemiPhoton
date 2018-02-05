@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Verification;
 public class Target: MonoBehaviour {
 	A_normal_enemy_move_typeR AER;
 	[SerializeField]

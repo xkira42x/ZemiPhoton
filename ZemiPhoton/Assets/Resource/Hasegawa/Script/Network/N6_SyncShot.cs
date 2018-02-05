@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class N6_SyncShot : Photon.MonoBehaviour {
 
@@ -10,26 +8,31 @@ public class N6_SyncShot : Photon.MonoBehaviour {
 	//IK追記
 	N15_SizeOf SO;
 
+    /// 初期化
 	void Awake(){
 		SO = GameObject.Find ("PhotonManager").GetComponent<N15_SizeOf> ();
 
 		S_Shot = GetComponent<S3_Shot> ();
 	}
 
+    /// 銃攻撃メッセージ
 	void ToAttackMSG(){
 		photonView.RPC ("SyncShotAction", PhotonTargets.Others);
 	}
 
+    /// 銃の取得メッセージ
 	void PickUpItemMSG(GameObject obj){
 		photonView.RPC ("SyncPickUpIten", PhotonTargets.Others,obj.name);
 	}
 
+    /// 銃攻撃の同期
 	[PunRPC]
 	void SyncShotAction(){
 		S_Shot.ToAttackMSG ();
 		SO.AddSize (3);
 	}
 
+    /// 銃の取得同期
 	[PunRPC]
 	void SyncPickUpIten(string name){
 		S_Shot.PickUpItemMSG (Instantiate (Resources.Load (name, typeof(GameObject))as GameObject));

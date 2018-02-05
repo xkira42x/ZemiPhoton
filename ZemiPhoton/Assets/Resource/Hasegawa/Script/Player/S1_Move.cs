@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
-using System.Runtime.InteropServices;
 
 public class S1_Move : MonoBehaviour
 {
@@ -104,9 +101,13 @@ public class S1_Move : MonoBehaviour
     /// 死亡ステートに変更
     public void Died()
     {
+        // 死亡時のカメラを生成
         Instantiate(DieCamera, myTransform.position + new Vector3(0, 4, 0), Quaternion.Euler(new Vector3(90, 0, 0)));
+        // プレイヤカメラを非アクティブにする
         GetComponentInChildren<Camera>().gameObject.SetActive(false);
+        // キャラを表示
         Body.SetActive(true);
+        // 死亡ステートに変更
         status = DIE;
         PlayerInfo.isDied = true;
     }

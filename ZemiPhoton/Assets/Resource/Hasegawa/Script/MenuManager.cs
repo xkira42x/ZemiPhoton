@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -117,9 +116,6 @@ public class MenuManager : Photon.MonoBehaviour {
 		if (photonView.isMine)
 			PlayerInfo.Spawn = true;
 
-		// 最後の処理が終了したらソースを削除する
-		// 再入室で使う為,非アクティブ化に変更
-//		Destroy (this);
 //		this.gameObject.SetActive(false);
 	}
 

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShotGun : GunBase {
 	[SerializeField]float Diffusivity = 4; // 拡散率

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class E_SpitOut : MonoBehaviour {
 
@@ -43,7 +41,7 @@ public class E_SpitOut : MonoBehaviour {
             collisionEvents = new ParticleCollisionEvent[safeLength];
 
         // パーティクルに当たったオブジェクトとコリジョンイベントの情報を照合して、要素数を取得する
-        int numCollisionEvents = particleSystem.GetCollisionEvents(other, collisionEvents);
+        ///int numCollisionEvents = particleSystem.GetCollisionEvents(other, collisionEvents);
         // 当たった座標からげろ溜を生成する
         int ii = 0;
         while (ii < safeLength)

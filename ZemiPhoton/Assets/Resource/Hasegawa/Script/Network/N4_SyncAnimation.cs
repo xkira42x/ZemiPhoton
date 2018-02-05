@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class N4_SyncAnimation : Photon.MonoBehaviour
 {
@@ -18,6 +16,7 @@ public class N4_SyncAnimation : Photon.MonoBehaviour
     //IK追記
     N15_SizeOf SO;
 
+    /// 初期化
     void Awake()
     {
         SO = GameObject.Find("PhotonManager").GetComponent<N15_SizeOf>();
@@ -26,6 +25,7 @@ public class N4_SyncAnimation : Photon.MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    /// メインループ
     void Update()
     {
         if (photonView.isMine)
@@ -46,10 +46,7 @@ public class N4_SyncAnimation : Photon.MonoBehaviour
         }
     }
 
-    /// <summary>
     /// アニメーションステータスの同期（受信）
-    /// </summary>
-    /// <param name="status"></param>
     [PunRPC]
     void SyncAnimation(byte status)
     {

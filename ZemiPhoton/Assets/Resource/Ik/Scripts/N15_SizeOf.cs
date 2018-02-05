@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
-using Verification;
 using UnityEngine.UI;
 
 public class N15_SizeOf : MonoBehaviour {

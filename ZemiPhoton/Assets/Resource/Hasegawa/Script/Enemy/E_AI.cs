@@ -1,13 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class E_AI : Photon.MonoBehaviour
 {
+    /// Transformのキャッシュ
+    protected Transform myTransform;
+    /// 出血フラグ
     [SerializeField]
     GameObject Blood;
-	protected Transform myTransform;
     /// ステータス
     public const byte IDOL = 0, RUN = 1, ATTACK = 2, HIT = 3, DIE = 4;
     [SerializeField]
@@ -19,7 +20,6 @@ public class E_AI : Photon.MonoBehaviour
         state = RUN;
         if (targetTransform != null)
             agent.SetDestination(targetTransform.position);
-        AttackOnlyOnce = false;
 		agent.Resume();
     }
     /// 速度
@@ -45,8 +45,6 @@ public class E_AI : Photon.MonoBehaviour
     /// 射程
     [SerializeField]
     protected float range = 2.2f;
-
-    public bool AttackOnlyOnce = false;
 
     /// 初期化
 	public void Start()
