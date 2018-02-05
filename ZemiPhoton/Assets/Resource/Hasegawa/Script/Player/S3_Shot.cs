@@ -43,7 +43,7 @@ public class S3_Shot : Photon.MonoBehaviour
     {
 
         // プレイヤーコントロール設定
-        if (photonView.isMine && !PlayerInfo.isDied)
+        if (photonView.isMine && !PlayerInfo.isDied && PlayerInfo.timeOut == false)
         {
 
             // アタック(メッセージを送る)
