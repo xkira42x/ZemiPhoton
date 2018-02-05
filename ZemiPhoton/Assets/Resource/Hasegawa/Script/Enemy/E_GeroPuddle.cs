@@ -27,8 +27,10 @@ public class E_GeroPuddle : MonoBehaviour
         if (trns.localScale.y <= 0.05f) Destroy(gameObject);
     }
 
+    /// 当たり判定
     void OnTriggerEnter(Collider other)
     {
+        // プレイヤーに当たったらダメージを与える
         if (other.gameObject.layer == 10)
             other.gameObject.GetComponent<S2_Status>().Damage(dmg);
     }

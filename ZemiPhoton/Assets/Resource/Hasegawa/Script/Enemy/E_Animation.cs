@@ -63,10 +63,6 @@ public class E_Animation : MonoBehaviour
 
         StartCoroutine(ReturnToNormal());
         StartCoroutine(OnAttack());
-        //		float time = animator.GetCurrentAnimatorStateInfo (0).length / 2;
-        //		yield return new WaitForSeconds (time);
-        // ダメージ処理
-        //		ai.AttackedTheTarget ();
     }
 
     /// 攻撃のコールバック
