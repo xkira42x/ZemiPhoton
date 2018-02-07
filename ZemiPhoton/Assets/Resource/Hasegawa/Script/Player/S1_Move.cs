@@ -57,6 +57,7 @@ public class S1_Move : MonoBehaviour
             // 行動ステートを設定する
             status = (!isGround) ? JUMP : (motion == 1) ? WALK : (isCrouch) ? CROUCH : IDLE;
         }
+        else status = DIE;
     }
 
     /// キー移動判定

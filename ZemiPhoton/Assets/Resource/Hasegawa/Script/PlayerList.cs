@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlayerList : Photon.MonoBehaviour {
 
 	public static List<GameObject> Player = new List<GameObject>();		// プレイヤーリスト
-	static int _length = -1;													// リストの長さ
+    public static List<S1_Move> Status = new List<S1_Move>();
+	static int _length = 0;											// リストの長さ
 	public static int length{ get { return _length; } set { _length = value; } }
 
 	/// リストに追加する
@@ -23,20 +24,23 @@ public class PlayerList : Photon.MonoBehaviour {
 
 		// オブジェクトが見つかればリストに追加する
 		if (obj != null)
-			Player.Add (obj);
+        {
+            Player.Add(obj);
+        }
 
-		_length = Player.Count;
+        _length = Player.Count;
 
 		for (int i = 0; i < _length; i++)
 			Debug.Log ("Show.. Add player id : " + i + " name : " + Player [i].name);
 	}
 
-	/// リストに追加する
-	/// 受け取った名前で検索して、リストに追加する
-	public static void AddPlayerList(GameObject obj){
+    /// リストに追加する
+    /// 受け取った名前で検索して、リストに追加する
+    public static void AddPlayerList(GameObject obj){
 		
 		// オブジェクトをリストに追加する
 		Player.Add (obj);
+        Status.Add(obj.GetComponent<S1_Move>());
 
 		_length = Player.Count;
 
@@ -44,8 +48,8 @@ public class PlayerList : Photon.MonoBehaviour {
 			Debug.Log ("Show.. Add player id : " + i + " name : " + Player [i].name);
 	}
 
-	/// ランダムにリストからオブジェクトを取得
-	public static GameObject GetPlayerList_Shuffle(){
+    /// ランダムにリストからオブジェクトを取得
+    public static GameObject GetPlayerList_Shuffle(){
 		int index = Random.Range (0, _length);
 		return Player [index];
 	}
@@ -80,6 +84,13 @@ public class PlayerList : Photon.MonoBehaviour {
         else
             return Player[index].transform.position;
 	}
+
+    public static bool isDied(int index)
+    {
+        if (0 > index || index > _length)
+            return true;
+        else return Status[index].Status == S1_Move.DIE;
+    }
 
 	/// リストの情報を全開放
 	public static void ReleaseAll(){Player.Clear();}

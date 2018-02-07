@@ -21,6 +21,7 @@ public class E_AI : Photon.MonoBehaviour
         if (targetTransform != null)
             agent.SetDestination(targetTransform.position);
 		agent.Resume();
+        if (PlayerList.isDied(targetIndex)) SetTarget();
     }
     /// 速度
     [SerializeField]
@@ -117,6 +118,8 @@ public class E_AI : Photon.MonoBehaviour
             // ターゲットが設定されている && ステータスが走る状態の時
             if (targetTransform != null && state == RUN)
             {
+
+                if (PlayerList.isDied(targetIndex)) SetTarget();
                 // このオブジェクトがナビメッシュが設定された場所にいるかを判定する
                 //if (agent.pathStatus != NavMeshPathStatus.PathInvalid)
                 // 目的地の設定

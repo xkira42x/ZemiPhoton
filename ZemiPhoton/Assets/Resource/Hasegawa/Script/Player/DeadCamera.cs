@@ -14,7 +14,7 @@ public class DeadCamera : MonoBehaviour
     {
         index = PlayerInfo.playerNumber;
         myTransform = transform;
-        otherTransform = PlayerList.GetPlayerList(index).transform;
+        otherTransform = PlayerList.GetPlayerList(PlayerInfo.playerNumber).transform;
     }
 
 	/// メインループ

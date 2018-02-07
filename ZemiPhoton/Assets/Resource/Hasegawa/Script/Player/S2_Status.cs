@@ -29,14 +29,13 @@ public class S2_Status : Photon.MonoBehaviour
     /// ステータス表示するオブジェクトを設定する
     void Awake()
     {
+        // プレイヤーリストに追加する
+        photonView.RPC("SyncPlayerList", PhotonTargets.AllBufferedViaServer);
 
         // 操作しているキャラクタのステータスは必ず、右端のステータスに表示する。
         // それ以外は、右から順に設定する
         if (photonView.isMine)
         {
-            // プレイヤーリストに追加する
-            photonView.RPC("SyncPlayerList", PhotonTargets.AllBufferedViaServer);
-
             statusUI = GameObject.Find("PlayerStatusUI0").GetComponent<PlayerStatusUI>();
             photonView.RPC("SyncPlayerID", PhotonTargets.AllBuffered, PlayerInfo.playerNumber + 1);
         }
@@ -48,7 +47,7 @@ public class S2_Status : Photon.MonoBehaviour
 
         move = GetComponent<S1_Move>();
     }
-
+   
     /// ユーザ名の同期(初期呼び出し)
     [PunRPC]
     void SetName(string name)
