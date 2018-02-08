@@ -34,7 +34,10 @@ public class Timer : MonoBehaviour {
         {
             yield return new WaitForSeconds(1f);
 			if (PlayerInfo.onTimer)
-				EnGauge_Time ();
+            {
+                EnGauge_Time();
+                if (PlayerList.isDiedAll()) Gauge_T = .1f;
+            }
         }
     }
 

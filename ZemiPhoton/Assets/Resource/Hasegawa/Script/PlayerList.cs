@@ -92,6 +92,15 @@ public class PlayerList : Photon.MonoBehaviour {
         else return Status[index].Status == S1_Move.DIE;
     }
 
+    public static bool isDiedAll()
+    {
+        for (int i = 0; i < _length; i++)
+        {
+            if (Status[i].Status != S1_Move.DIE) return false;
+        }
+        return true;
+    }
+
 	/// リストの情報を全開放
 	public static void ReleaseAll(){Player.Clear();}
 	/// 指定したリストの情報を開放
