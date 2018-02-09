@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class S2_Status : Photon.MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class S2_Status : Photon.MonoBehaviour
 
     float health = 100;             // ヒットポイント(0～100まで)
     public float Health { get { return health; } set { health = value; } }
+
+    public Text Name;
 
     /// 体力を引数分減らし、HPのUIゲージ更新と同期を行う
     public void Damage(float dmg)
@@ -54,6 +57,7 @@ public class S2_Status : Photon.MonoBehaviour
     {
         statusUI.UserName = name;
         userName = name;
+        Name.text = name;
     }
 
     /// ユーザIDからキャラクタの名前IDを設定する(初期呼び出し)
