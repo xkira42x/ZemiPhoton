@@ -13,6 +13,7 @@ public class S1_Move : MonoBehaviour
     [SerializeField]
     byte status = IDLE;                                    // 行動ステート保存
     public byte Status { get { return status; } }          // 行動ステートのゲッタ
+    public bool IsDied { get { return status == DIE; } }   // 死亡判定
 
     [SerializeField]
     Transform myCollection; // カメラなどのまとめているオブジェクト
@@ -40,7 +41,7 @@ public class S1_Move : MonoBehaviour
     /// メインループ
     void Update()
     {
-        if (!PlayerInfo.isDied && PlayerInfo.timeOut == false)
+        if (IsDied && PlayerInfo.timeOut == false)
         {
             // キー移動
             S_KeyMove();

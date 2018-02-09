@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerList : Photon.MonoBehaviour {
 
 	public static List<GameObject> Player = new List<GameObject>();		// プレイヤーリスト
-    public static List<S1_Move> Status = new List<S1_Move>();
-	static int _length = 0;											// リストの長さ
+    public static List<S1_Move> Status = new List<S1_Move>();           // Moveソースリスト
+	static int _length = 0;											    // リストの長さ
 	public static int length{ get { return _length; } set { _length = value; } }
 
 	/// リストに追加する
@@ -85,6 +85,7 @@ public class PlayerList : Photon.MonoBehaviour {
             return Player[index].transform.position;
 	}
 
+    /// プレイヤの死亡判定
     public static bool isDied(int index)
     {
         if (0 > index || index > _length)
@@ -92,6 +93,7 @@ public class PlayerList : Photon.MonoBehaviour {
         else return Status[index].Status == S1_Move.DIE;
     }
 
+    /// プレイヤ全員の死亡判定
     public static bool isDiedAll()
     {
         for (int i = 0; i < _length; i++)

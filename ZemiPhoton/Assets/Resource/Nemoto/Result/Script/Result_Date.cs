@@ -107,6 +107,6 @@ public class Result_Date : Photon.MonoBehaviour
     [PunRPC]
     void SyncScore(string name,bool LifeAndDeath, int score)
     {
-        Result_Column(name, LifeAndDeath, score);
+        Result_Column(name, !LifeAndDeath, score);
     }
 }
