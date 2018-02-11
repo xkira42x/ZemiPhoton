@@ -21,7 +21,7 @@ public class Timer : MonoBehaviour {
 		StartCoroutine (TimeCount ());
 
 		panelimage = Panel.GetComponent<Image> ();
-
+        //StartCoroutine(DiedCheck());
 	}
 
     void Update () {
@@ -92,5 +92,17 @@ public class Timer : MonoBehaviour {
 
         //Sever.csの撃破数の更新(Score())を呼び出す
         //gameObject.GetComponent<Server>().Score();
+    }
+
+    IEnumerator DiedCheck()
+    {
+        while (!PlayerInfo.onTimer) { yield return null; }
+
+        while (true)
+        {
+            yield return new WaitForSeconds(5);
+            if (PlayerList.isDiedAll()) Gauge_T = .1f;
+        }
+
     }
 }

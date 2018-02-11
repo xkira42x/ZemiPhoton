@@ -7,6 +7,7 @@ public class NameSpace : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!PlayerInfo.isDied)
         transform.rotation = Camera.main.transform.rotation;
 	}
 }

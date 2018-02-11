@@ -12,7 +12,7 @@ public class S1_Move : MonoBehaviour
     public const byte IDLE = 0, WALK = 1, JUMP = 2, CROUCH = 3, CROUCHMOVE = 4, DIE = 5;// 行動ステート定数
     [SerializeField]
     byte status = IDLE;                                    // 行動ステート保存
-    public byte Status { get { return status; } }          // 行動ステートのゲッタ
+    public byte Status { get { return status; } set { status = value; } }          // 行動ステートのゲッタ
     public bool IsDied { get { return status == DIE; } }   // 死亡判定
 
     [SerializeField]
@@ -31,7 +31,6 @@ public class S1_Move : MonoBehaviour
 
     Rigidbody myRigidbody;  // 物理処理の格納
 
-    /// 初期化
     void Start()
     {
         myTransform = transform;
@@ -41,22 +40,25 @@ public class S1_Move : MonoBehaviour
     /// メインループ
     void Update()
     {
-        if (IsDied && PlayerInfo.timeOut == false)
+        if (!IsDied)
         {
-            // キー移動
-            S_KeyMove();
+            if (PlayerInfo.timeOut == false)
+            {
+                // キー移動
+                S_KeyMove();
 
-            // ジャンプ
-            S_Jump();
+                // ジャンプ
+                S_Jump();
 
-            // しゃがみ
-            Crouch();
+                // しゃがみ
+                Crouch();
 
-            // 着地判定
-            IsGround();
+                // 着地判定
+                IsGround();
 
-            // 行動ステートを設定する
-            status = (!isGround) ? JUMP : (motion == 1) ? WALK : (isCrouch) ? CROUCH : IDLE;
+                // 行動ステートを設定する
+                status = (!isGround) ? JUMP : (motion == 1) ? WALK : (isCrouch) ? CROUCH : IDLE;
+            }
         }
         else status = DIE;
     }

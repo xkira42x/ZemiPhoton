@@ -10,6 +10,7 @@ public class S2_Status : Photon.MonoBehaviour
     S1_Move move;                   // 移動
     PlayerStatusUI statusUI;        // ステータス表示UI
 
+    [SerializeField]
     float health = 100;             // ヒットポイント(0～100まで)
     public float Health { get { return health; } set { health = value; } }
 

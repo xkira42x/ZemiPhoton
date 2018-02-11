@@ -45,7 +45,9 @@ public class PlayerList : Photon.MonoBehaviour {
 		_length = Player.Count;
 
 		for (int i = 0; i < _length; i++)
-			Debug.Log ("Show.. Add player id : " + i + " name : " + Player [i].name);
+        {
+            Debug.Log("Show.. Add player id : " + i + " name : " + Player[i].name + " status : " + Status[i].Status);
+        }
 	}
 
     /// ランダムにリストからオブジェクトを取得
@@ -96,15 +98,21 @@ public class PlayerList : Photon.MonoBehaviour {
     /// プレイヤ全員の死亡判定
     public static bool isDiedAll()
     {
+        //Debug.Log("PlayerList length =>" + _length);
         for (int i = 0; i < _length; i++)
         {
+            //Debug.Log("Player Status => " + Status[i].Status);
             if (Status[i].Status != S1_Move.DIE) return false;
         }
         return true;
     }
 
-	/// リストの情報を全開放
-	public static void ReleaseAll(){Player.Clear();}
+    /// リストの情報を全開放
+    public static void ReleaseAll()
+    {
+        Player.Clear();
+        Status.Clear();
+    }
 	/// 指定したリストの情報を開放
 	public static void ReleaseAt(int index){Player.RemoveAt (index);}
 
