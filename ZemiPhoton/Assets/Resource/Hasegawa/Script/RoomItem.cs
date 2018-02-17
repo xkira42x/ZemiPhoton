@@ -10,16 +10,15 @@ public class RoomItem : Photon.MonoBehaviour {
 	int _numofPeople;						// ルーム内人数
 	byte _maxnumofPeople;					// ルーム内最大人数
 
-
-	/// ルーム情報の設定
-	public void SetRoomInfo(string name,int num,byte maxnum){
-		_roomName = name;			// ルーム名の格納
-		_numofPeople = num;			// ルーム内人数の格納
-		_maxnumofPeople = maxnum;	// ルーム内最大人数の格納
+    /// ルーム情報の設定
+    public void SetRoomInfo(RoomInfo room) {
+        _roomName = room.Name;			    // ルーム名の格納
+        _numofPeople = room.PlayerCount;	// ルーム内人数の格納
+        _maxnumofPeople = room.MaxPlayers;	// ルーム内最大人数の格納
 
 		// ルーム名の設定・ルーム内人数の設定・ルーム内最大人数の設定
-		RoomName.text = "ルーム名" + _roomName;
-		NumberofPeople.text = "人数" + (_numofPeople - 1).ToString () + "/" + (_maxnumofPeople - 1).ToString ();
+		RoomName.text = "ルーム名 " + _roomName;
+		NumberofPeople.text = "人数 " + (_numofPeople - 1).ToString () + " / " + (_maxnumofPeople - 1).ToString ();
 	}
 
 	/// ルーム参加ボタン
@@ -30,7 +29,7 @@ public class RoomItem : Photon.MonoBehaviour {
 		ro.IsVisible = true;
 		// 部屋の入室最大人数
 		ro.MaxPlayers = _maxnumofPeople;
-		// ルーム作成、もしくは参加
+        // ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (_roomName, ro, TypedLobby.Default);
 
 		PlayerInfo.role = PlayerInfo.Client;

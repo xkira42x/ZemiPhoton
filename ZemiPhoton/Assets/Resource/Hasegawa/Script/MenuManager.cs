@@ -8,6 +8,7 @@ public class MenuManager : Photon.MonoBehaviour {
 	[SerializeField]Text[] Status;				// 準備ステート
 	[SerializeField]Text timerText;				// スタートカウントダウン
 	[SerializeField]GameObject[] MenuItems;		// メニュー画面の一覧
+    [SerializeField]Text ReadyButtonText;
 
 	byte index = 0;				// ユーザ名番号
 	bool doOnce_Ready = false;	// 準備判定
@@ -42,18 +43,19 @@ public class MenuManager : Photon.MonoBehaviour {
 		if (!doOnce_Ready) {
 			photonView.RPC ("Ready", PhotonTargets.AllBufferedViaServer, PlayerInfo.playerNumber);
 			doOnce_Ready = true;
+            ReadyButtonText.text = "待機中";
 		}
 	}
 
 	/// 受信した番号から、誰がReadyしたかをＵＩに反映する
 	[PunRPC]
 	void Ready(int no){
-		Status[no].text = "Ready";
+		Status[no].text = "準備完了";
 
 		// 全員の準備が完了したか判定
 		bool flg = true;
 		for (int i = 0; i < PhotonNetwork.playerList.Length - 1; i++) {
-			if (Status [i].text != "Ready") {
+			if (Status [i].text != "準備完了") {
 				flg = false;
 				break;
 			}

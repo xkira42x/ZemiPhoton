@@ -8,6 +8,10 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 	[SerializeField]InputField RoomNane;
 	[SerializeField]Dropdown RoleDropdown;
 
+    // ルーム作成UI
+    [SerializeField]
+    GameObject CreateRoomUI;
+
 	// ルーム選択画面
 	[SerializeField]GameObject RoomSelectinView;
 	[SerializeField]Transform Content;
@@ -33,14 +37,16 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		RoomNum = PhotonNetwork.GetRoomList().Length;
 		if (RoomNum == 0) {
 			Debug.Log ("部屋なし");
+            CreateRoomUI.SetActive(true);
 			return false;
 		} else {
 			// ルーム情報を取得して、表示用のオブジェクトに入れる
 			foreach (RoomInfo room in PhotonNetwork.GetRoomList()) {
 				GameObject obj = Instantiate (RoomListTemplate, new Vector3 (0, 0, 0), Quaternion.identity);
-				obj.GetComponent<RoomItem> ().SetRoomInfo (room.Name, room.PlayerCount, room.MaxPlayers);
+                obj.GetComponent<RoomItem>().SetRoomInfo(room);
 				obj.transform.parent = Content;
 			}
+            CreateRoomUI.SetActive(false);
 			return true;
 		}
 	}
@@ -53,6 +59,7 @@ public class RoomMenuControl : Photon.MonoBehaviour {
 		RoomSettings.SetActive (true);
 		CreateRoomButton.SetActive (false);
 		CreateRoomCancelButton.SetActive (true);
+        CreateRoomUI.SetActive(false);
 	}
 	/// <summary>
 	/// ルーム作成キャンセルボタン
