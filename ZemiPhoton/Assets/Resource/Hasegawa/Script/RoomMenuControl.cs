@@ -112,6 +112,8 @@ public class RoomMenuControl : Photon.MonoBehaviour
     /// </summary>
     public void OnClickRoomSettingCompleteButton()
     {
+        flg = false;
+        CreateRoomUI.SetActive(false);
 
         PlayerInfo.roomID = System.DateTime.Now.ToString();
 
