@@ -13,7 +13,7 @@ public class PlayerInfo : MonoBehaviour {
     public static bool isDied = false;              // プレイヤーの死亡判定
 
 	public const byte Server = 0,Client = 1;		// サーバークライアントの振り分け
-	public static byte role;						// サバクラの振り分けを保存
+	public static byte role = Client;						// サバクラの振り分けを保存
 	public static bool isClient(){return role == Client;} // クライアント判定
 
 	public static bool onTimer = false;				// タイマの起動判定
@@ -27,6 +27,7 @@ public class PlayerInfo : MonoBehaviour {
         isDied = false;
         onTimer = false;
         timeOut = false;
+        role = Client;
     }
 
 }

@@ -75,13 +75,13 @@ public class MenuManager : Photon.MonoBehaviour {
 		int time = 4;		// カウント時間(秒)
 
 		// タイムテキストの初期化
-		timerText.text = time.ToString ();
+		timerText.text = "開始まで " + time.ToString ();
 
 		while(true){
 			yield return new WaitForSeconds (1);
 			// タイムの更新・表示
 			time--;
-			timerText.text = time.ToString ();
+			timerText.text = "開始まで " + time.ToString ();
 			// タイムが0になったらループを抜ける
 			if (time < 0)
 				break;
