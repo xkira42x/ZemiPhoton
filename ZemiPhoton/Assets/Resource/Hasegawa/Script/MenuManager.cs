@@ -151,9 +151,12 @@ public class MenuManager : Photon.MonoBehaviour
                 
         // ユーザ名を同期する
         player.GetPhotonView().RPC("SetName", PhotonTargets.AllBuffered, PlayerInfo.playerName);
+        player.GetPhotonView().RPC("SyncFindEvacuationPlace", PhotonTargets.AllBuffered);
         // 表示しているメニューを非表示にする
         foreach (GameObject obj in MenuItems)
             obj.SetActive(false);
-    }
 
+
+    }
+    
 }
