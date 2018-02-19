@@ -103,9 +103,9 @@ public class Server : Photon.MonoBehaviour {
 		Debug.Log("Access");
 		Dictionary<string,string> dic = new Dictionary<string,string> ();
 		dic.Add ("name", PlayerInfo.playerName);
-		//Debug.Log (sscore);
-		//if (ServerAddress != ipAddress + "/3zemi/DB_test_unity_score.php") {
-			dic.Add ("room_info", PlayerInfo.roomID);
+        //Debug.Log (sscore);
+        //if (ServerAddress != ipAddress + "/3zemi/DB_test_unity_score.php") {
+        dic.Add("room_info", PlayerInfo.roomID);
 		//}else{
 		/*	Debug.Log ("eee");
 			dic.Add ("score", sscore);//PlayerInfo.killCount.ToString ());

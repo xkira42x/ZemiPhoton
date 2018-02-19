@@ -36,8 +36,8 @@ public class myPhotonManager : Photon.MonoBehaviour {
 	void OnJoinedRoom() {
 		Debug.Log ("入室");
 
-		if (photonView.isMine)
-			photonView.RPC ("SyncRoomID", PhotonTargets.OthersBuffered, PlayerInfo.roomID);
+		//if (photonView.isMine)
+		//	photonView.RPC ("SyncRoomID", PhotonTargets.OthersBuffered, PlayerInfo.roomID);
 		
 		if (PlayerInfo.isClient ()) {
 			Debug.Log ("クライアント入室");
@@ -66,8 +66,8 @@ public class myPhotonManager : Photon.MonoBehaviour {
 	}
 
 	/// ルームIDを同期する
-	[PunRPC]
-	void SyncRoomID(string ss){
-		PlayerInfo.roomID = ss;
-	}
+	//[PunRPC]
+	//void SyncRoomID(string ss){
+	//	PlayerInfo.roomID = ss;
+	//}
 }

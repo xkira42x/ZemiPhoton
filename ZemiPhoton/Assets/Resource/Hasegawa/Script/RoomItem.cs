@@ -13,11 +13,12 @@ public class RoomItem : Photon.MonoBehaviour {
     /// ルーム情報の設定
     public void SetRoomInfo(RoomInfo room) {
         _roomName = room.Name;			    // ルーム名の格納
+        string[] ss = _roomName.Split("_"[0]);
         _numofPeople = room.PlayerCount;	// ルーム内人数の格納
-        _maxnumofPeople = room.MaxPlayers;	// ルーム内最大人数の格納
+        _maxnumofPeople = room.MaxPlayers;  // ルーム内最大人数の格納
 
-		// ルーム名の設定・ルーム内人数の設定・ルーム内最大人数の設定
-		RoomName.text = "ルーム名 " + _roomName;
+        // ルーム名の設定・ルーム内人数の設定・ルーム内最大人数の設定
+        RoomName.text = "ルーム名 " + ss[0];//_roomName;
 		NumberofPeople.text = "人数 " + (_numofPeople - 1).ToString () + " / " + (_maxnumofPeople - 1).ToString ();
 	}
 
@@ -31,6 +32,7 @@ public class RoomItem : Photon.MonoBehaviour {
 		ro.MaxPlayers = _maxnumofPeople;
         // ルーム作成、もしくは参加
 		PhotonNetwork.JoinOrCreateRoom (_roomName, ro, TypedLobby.Default);
+        PlayerInfo.roomID = _roomName;
 
 		PlayerInfo.role = PlayerInfo.Client;
 	}

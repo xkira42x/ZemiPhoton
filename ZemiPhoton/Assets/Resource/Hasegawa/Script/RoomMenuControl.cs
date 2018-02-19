@@ -115,23 +115,26 @@ public class RoomMenuControl : Photon.MonoBehaviour
         flg = false;
         CreateRoomUI.SetActive(false);
 
-        PlayerInfo.roomID = System.DateTime.Now.ToString();
-
+        //PlayerInfo.roomID = System.DateTime.Now.ToString();
+        
         //　ルームオプションを設定
         RoomOptions ro = new RoomOptions();
         //　ルームを見えるようにする
         ro.IsVisible = true;
         //　部屋の入室最大人数
         ro.MaxPlayers = 5;
-        string roomname = RoomNane.text;
+        string ss = RoomNane.text;
         // ルーム名の空白判定
-        if (string.IsNullOrEmpty(roomname))
+        if (string.IsNullOrEmpty(ss))
         {
-            roomname = "Room" + (RoomNum + 1).ToString();
-            RoomNane.text = roomname;
+            ss = "Room" + (RoomNum + 1).ToString();
+//            RoomNane.text = ss;
         }
+        ss += "_" + System.DateTime.Now.ToLongTimeString();
+
         // ルーム作成、もしくは参加
-        PhotonNetwork.JoinOrCreateRoom(RoomNane.text, ro, TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(ss, ro, TypedLobby.Default);
+        PlayerInfo.roomID = ss;
 
         // ルームメニュー関係を非表示
         RoomSettings.SetActive(false);
