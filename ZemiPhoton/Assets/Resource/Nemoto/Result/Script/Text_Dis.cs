@@ -6,10 +6,12 @@ using UnityEngine.UI;
 /// リザルトテキスト描画
 /// </summary>
 public class Text_Dis : MonoBehaviour {
-
+    
     int player_num = 1;//プレイヤーのナンバー
     GameObject Player_result;
     GameObject child_obj;
+
+    public Text survive;
 
     public Result_Date RD;
     string player_name;
@@ -40,11 +42,18 @@ public class Text_Dis : MonoBehaviour {
                 if (retext.name == "Player" + player_num + "_Name".ToString())
                 {
                     retext.text = player_name;
+                    print(PlayerInfo.playerName);
                 }
                 if (retext.name == "Player" + player_num + "_SD".ToString())
                 {
                     if (sd) retext.text = "生存";
                     else retext.text = "死亡";
+
+                    if (player_name == PlayerInfo.playerName)
+                    {
+                        if (sd) survive.text = "生存した！おめでとう！";
+                        else survive.text = "あなたは死んでしまった！";
+                    }
                 }
                 if (retext.name == "Player" + player_num + "_Kill".ToString())
                 {

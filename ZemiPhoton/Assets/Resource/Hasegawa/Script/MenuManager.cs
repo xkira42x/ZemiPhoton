@@ -52,7 +52,7 @@ public class MenuManager : Photon.MonoBehaviour
         // 一度だけ、準備できたことを送信する
         if (!doOnce_Ready)
         {
-            photonView.RPC("Ready", PhotonTargets.AllBufferedViaServer, PlayerInfo.playerNumber);
+            photonView.RPC("Ready", PhotonTargets.AllViaServer, PlayerInfo.playerNumber);
             doOnce_Ready = true;
             ReadyButtonText.text = "待機中";
         }
