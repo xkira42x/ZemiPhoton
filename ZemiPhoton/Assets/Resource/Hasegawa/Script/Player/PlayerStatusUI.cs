@@ -7,6 +7,7 @@ public class PlayerStatusUI : MonoBehaviour {
 	[SerializeField]Image hpImage;		// ヒットポイントの表示UI 
 	float hp = 1;						// ヒットポイント
 
+
 	/// ユーザ名の設定
 	public string UserName { set { userNameUI.text = value; } }
 

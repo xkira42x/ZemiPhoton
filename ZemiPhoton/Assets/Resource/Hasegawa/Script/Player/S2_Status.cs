@@ -9,7 +9,7 @@ public class S2_Status : Photon.MonoBehaviour
 
     S1_Move move;                   // 移動
     PlayerStatusUI statusUI;        // ステータス表示UI
-    PlayerStatusUI StatusUI { get { return statusUI; } set { statusUI = value; } }
+    public PlayerStatusUI StatusUI { get { return statusUI; } set { statusUI = value; } }
 
     [SerializeField]
     float health = 100;             // ヒットポイント(0～100まで)
@@ -94,9 +94,9 @@ public class S2_Status : Photon.MonoBehaviour
         {
             if (userName == objects[ii].name)
             {
-                //hoge status = objects[ii].GetComponent<hoge>();
-                //statusUI = status.statusUI;
-                //health = status.health;
+				DisconObjSetting status = objects[ii].GetComponent<DisconObjSetting>();
+                statusUI = status.statusUI;
+                health = status.health;
             }
         }
     }

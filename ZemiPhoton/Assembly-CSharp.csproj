@@ -46,8 +46,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ContinueLogin.cs" />
-     <Compile Include="Assets\DisconObjSetting.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -148,6 +146,8 @@
      <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\GunBase.cs" />
      <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\HandGun.cs" />
      <Compile Include="Assets\Resource\Hasegawa\Script\Weapon\ShotGun.cs" />
+     <Compile Include="Assets\Resource\Ik\Scripts\ContinueLogin.cs" />
+     <Compile Include="Assets\Resource\Ik\Scripts\DisconObjSetting.cs" />
      <Compile Include="Assets\Resource\Ik\Scripts\DisconnectedFromPhoton.cs" />
      <Compile Include="Assets\Resource\Ik\Scripts\N15_SizeOf.cs" />
      <Compile Include="Assets\Resource\Ik\Scripts\N3_EndKey.cs" />
