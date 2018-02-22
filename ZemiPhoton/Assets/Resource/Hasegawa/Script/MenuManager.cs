@@ -113,7 +113,6 @@ public class MenuManager : Photon.MonoBehaviour
     /// プレイヤー生成
     void PlayerSpawn()
     {
-
         int nn = PlayerInfo.playerNumber;   // 番号のキャッシュ（ID）
 
         // プレイヤーの生成

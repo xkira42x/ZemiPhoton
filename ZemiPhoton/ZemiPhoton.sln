@@ -1,11 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemiPhoton.CSharp.Plugins", "ZemiPhoton.CSharp.Plugins.csproj", "{6787A242-D48D-3CB9-2FF2-76378BF6C209}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemiPhoton", "Assembly-CSharp-firstpass.csproj", "{1BBBFCDC-538B-4668-D2B0-32A0468BFC3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemiPhoton.CSharp", "ZemiPhoton.CSharp.csproj", "{9D3843C1-35FF-CBEE-CB85-E14DDAB8B096}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemiPhoton", "Assembly-CSharp.csproj", "{A1129DE2-3A4A-B741-CE9D-5B29976C4907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemiPhoton.CSharp.Editor", "ZemiPhoton.CSharp.Editor.csproj", "{898AC44A-2519-93E0-F745-2914D40DF4EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemiPhoton", "Assembly-CSharp-Editor.csproj", "{24EB199F-DF8F-5CFA-C347-4586D30616D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +13,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6787A242-D48D-3CB9-2FF2-76378BF6C209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6787A242-D48D-3CB9-2FF2-76378BF6C209}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6787A242-D48D-3CB9-2FF2-76378BF6C209}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6787A242-D48D-3CB9-2FF2-76378BF6C209}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D3843C1-35FF-CBEE-CB85-E14DDAB8B096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D3843C1-35FF-CBEE-CB85-E14DDAB8B096}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D3843C1-35FF-CBEE-CB85-E14DDAB8B096}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D3843C1-35FF-CBEE-CB85-E14DDAB8B096}.Release|Any CPU.Build.0 = Release|Any CPU
-		{898AC44A-2519-93E0-F745-2914D40DF4EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{898AC44A-2519-93E0-F745-2914D40DF4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{898AC44A-2519-93E0-F745-2914D40DF4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{898AC44A-2519-93E0-F745-2914D40DF4EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BBBFCDC-538B-4668-D2B0-32A0468BFC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BBBFCDC-538B-4668-D2B0-32A0468BFC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BBBFCDC-538B-4668-D2B0-32A0468BFC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BBBFCDC-538B-4668-D2B0-32A0468BFC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1129DE2-3A4A-B741-CE9D-5B29976C4907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1129DE2-3A4A-B741-CE9D-5B29976C4907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1129DE2-3A4A-B741-CE9D-5B29976C4907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1129DE2-3A4A-B741-CE9D-5B29976C4907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24EB199F-DF8F-5CFA-C347-4586D30616D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24EB199F-DF8F-5CFA-C347-4586D30616D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24EB199F-DF8F-5CFA-C347-4586D30616D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24EB199F-DF8F-5CFA-C347-4586D30616D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

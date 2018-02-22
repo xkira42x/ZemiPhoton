@@ -153,6 +153,7 @@ public class RoomMenuControl : Photon.MonoBehaviour
         RoomSelectinView.SetActive(false);
         CreateRoomButton.SetActive(false);
         CreateRoomCancelButton.SetActive(false);
+
     }
 
 }

@@ -89,6 +89,9 @@ public class Result_Date : Photon.MonoBehaviour
         }
         player_Num = 1;
 
+		GameObject.Find("PhotonManager").GetComponent<ContinueLogin> ().
+		WriteLoginData ("");//部屋名をローカル保存
+
         // ゲームの初期化
         PlayerInfo.Init();
         PlayerList.ReleaseAll();

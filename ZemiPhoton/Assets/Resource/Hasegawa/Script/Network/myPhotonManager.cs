@@ -23,6 +23,9 @@ public class myPhotonManager : Photon.MonoBehaviour {
 	//　ロビーに入った時に呼ばれる
 	void OnJoinedLobby (){
 		Debug.Log ("ロビーに入る");
+
+		//前回のゲームデータを参照し途中退室したかを判定
+		this.gameObject.GetComponent<ContinueLogin> ().Continue();
 	}
 
 	//　部屋が更新された時の処理
@@ -46,6 +49,9 @@ public class myPhotonManager : Photon.MonoBehaviour {
 			menu.SetActive (true);
 			Cursor.lockState = CursorLockMode.Confined;
 			roomMenuControl.JoinRoom ();
+
+			GameObject.Find("PhotonManager").GetComponent<ContinueLogin> ().
+			WriteLoginData (PhotonNetwork.room.Name+System.Environment.NewLine+PlayerInfo.playerName);//部屋名をローカル保存
 		} else {
 			GetComponent<Server> ().StartUp ();
 		}

@@ -9,12 +9,15 @@ public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 	MenuManager MM;		//メニューマネージャ
 	[SerializeField]
 	bool Disconflg=true;	//途中退室の処理の有り無し
+	GameObject PhotonManagerObj;
 
+	GameObject Disconcube;
 	//自分が切断した時
 	void OnDisconnectedFromPhoton(){
 		Debug.Log ("DisconeFromPhoton");
 		Debug.Log (this.gameObject.name+"の通信が切断された");
-		MM = GameObject.Find("PhotonManager").GetComponent<MenuManager> ();
+		PhotonManagerObj = GameObject.Find("PhotonManager");
+		MM = PhotonManagerObj.GetComponent<MenuManager> ();
 	}
 	//ルーム内のだれかが切断した時
 	void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer){
@@ -24,23 +27,34 @@ public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 				Debug.Log (this.gameObject.name + "の通信が切断された");
 				Debug.Log ("otherID:" + otherPlayer.ID);
 				Debug.Log ("playerID:" + PhotonNetwork.player.ID);
-				Debug.Log ("ThisID:" + this.gameObject.GetComponent<PhotonView> ().viewID / 1000);
+				Debug.Log ("ThisViewID:" + this.gameObject.GetComponent<PhotonView> ().viewID / 1000);
 				if (otherPlayer.ID == this.gameObject.GetComponent<PhotonView> ().viewID / 1000) {
 					CubeInstant (this.transform.position);
+					DestroyPlayerObj ();
 				}
 			}
 		}
 	}
 	//退出キューブを生成
 	void CubeInstant(Vector3 pos){
-		Debug.Log ("CubeInstant");
-		GameObject Disconcube = PhotonNetwork.Instantiate ("DisconCube", pos,new Quaternion(0,0,0,0),0).gameObject;
+		Debug.Log ("CubeInstant()");
+		Disconcube = PhotonNetwork.Instantiate ("DisconCube", pos,new Quaternion(0,0,0,0),0).gameObject;
 	
-		Disconcube.GetComponent<PhotonView>().RPC ("DisconName",PhotonTargets.AllBuffered, this.gameObject.GetComponent<S2_Status> ().UserName);
-//		Invoke ("Reconnect", 2f);
-		//オリジナルオブジェクトを消す
-		PhotonNetwork.Destroy (this.gameObject);
+		Disconcube.GetComponent<PhotonView> ().RPC ("DisconName", PhotonTargets.AllBuffered, this.gameObject.GetComponent<S2_Status> ().UserName);
 
+		GetPlayerState ();
+		//Invoke ("Reconnect", 2f);
+
+	}
+	//オリジナルオブジェクトを消す
+	void DestroyPlayerObj(){
+		PhotonNetwork.Destroy (this.gameObject);
+	}
+
+	//退出キューブにプレイヤーステータスを
+	void GetPlayerState(){
+		Debug.Log("GetPlayerState()");
+		Disconcube.GetPhotonView().RPC("DisconHP",PhotonTargets.AllBuffered,this.gameObject.GetComponent<S2_Status> ().Health);
 	}
 
 	void Update(){
@@ -55,7 +69,7 @@ public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 		rmName = PhotonNetwork.room.Name;
 		Debug.Log ("RoomName:"+rmName);
 		PhotonNetwork.Disconnect();
-		Invoke("ConnectPhoton",2f);
+//		Invoke("ConnectPhoton",2f);
 	}
 	void ConnectPhoton(){
 		//　ゲームのバージョン設定
