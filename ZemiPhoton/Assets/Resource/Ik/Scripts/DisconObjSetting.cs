@@ -32,7 +32,6 @@ public class DisconObjSetting : Photon.MonoBehaviour {
 			for (int i = 0; i < players.Length; i++) {
 				
 //				Debug.Log (players [i].GetComponent<S2_Status> ().UserName + ":" + this.transform.name);
-				Debug.Log("復帰");
 				//退出キューブとPLyaerオブジェクトの名前が一致していたら
 				if (players [i].GetComponent<S2_Status> ().UserName == this.transform.name) {
 

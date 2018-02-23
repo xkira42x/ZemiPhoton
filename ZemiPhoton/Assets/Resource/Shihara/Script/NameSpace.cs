@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
-public class NameSpace : MonoBehaviour {
-	
-	// Update is called once per frame
-	void Update () {
-        if(!PlayerInfo.isDied)
-        transform.rotation = Camera.main.transform.rotation;
-	}
+public class NameSpace : MonoBehaviour
+{
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!PlayerInfo.isDied && Camera.main != null)
+            transform.rotation = Camera.main.transform.rotation;
+    }
 }

@@ -42,13 +42,15 @@ public class PlayerList : Photon.MonoBehaviour {
 		Player.Add (obj);
         Status.Add(obj.GetComponent<S1_Move>());
 
-		_length = Player.Count;
+//		_length = Player.Count;
 
-		for (int i = 0; i < _length; i++)
+		for (int i = 0; i < Player.Count; i++)
         {
-            Debug.Log("Show.. Add player id : " + i + " name : " + Player[i].name + " status : " + Status[i].Status);
+            if(Player[i] == null) { Player.RemoveAt(i); Status.RemoveAt(i); }
+            //Debug.Log("Show.. Add player id : " + i + " name : " + Player[i].name + " status : " + Status[i].Status);
         }
-	}
+        _length = Player.Count;
+    }
 
     /// ランダムにリストからオブジェクトを取得
     public static GameObject GetPlayerList_Shuffle(){
@@ -114,7 +116,7 @@ public class PlayerList : Photon.MonoBehaviour {
         Status.Clear();
     }
 	/// 指定したリストの情報を開放
-	public static void ReleaseAt(int index){Player.RemoveAt (index);}
+	public static void ReleaseAt(int index){Player.RemoveAt (index);Status.RemoveAt(index); }
 
     public static bool Check(int index)
     {

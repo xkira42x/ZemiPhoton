@@ -147,16 +147,14 @@ public class MenuManager : Photon.MonoBehaviour
     {
         // プレイヤーの生成
         GameObject player = PhotonNetwork.Instantiate("FPSPlayer", Pos[0], Quaternion.Euler(new Vector3(0, -90, 0)), 0);
-                
-        // ユーザ名を同期する
-		player.GetPhotonView().RPC("SyncABCDE",PhotonTargets.All);
-        player.GetPhotonView().RPC("SetName", PhotonTargets.AllBuffered, PlayerInfo.playerName);
-        player.GetPhotonView().RPC("SyncFindEvacuationPlace", PhotonTargets.AllBuffered);
+
         // 表示しているメニューを非表示にする
         foreach (GameObject obj in MenuItems)
             obj.SetActive(false);
 
-
+        // ユーザ名を同期する
+        player.GetPhotonView().RPC("SetName", PhotonTargets.AllBuffered, PlayerInfo.playerName);
+        player.GetPhotonView().RPC("SyncFindEvacuationPlace", PhotonTargets.AllBuffered);
     }
     
 }
