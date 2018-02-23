@@ -14,6 +14,7 @@ public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 	void OnDisconnectedFromPhoton(){
 		Debug.Log ("DisconeFromPhoton");
 		Debug.Log (this.gameObject.name+"の通信が切断された");
+		PlayerInfo.statusCount=1;
 	}
 
 	//ルーム内のだれかが切断した時
@@ -25,12 +26,14 @@ public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 				Debug.Log ("otherID:" + otherPlayer.ID);						//切断したプレイヤーのID
 				Debug.Log ("playerID:" + PhotonNetwork.player.ID);				//自分のプレイヤーID
 				Debug.Log ("ThisViewID:" + 
-					this.gameObject.GetComponent<PhotonView> ().viewID / 1000);	//このオブジェクトのID
-				if (otherPlayer.ID == this.gameObject.GetComponent<PhotonView> ().viewID / 1000) {
+					this.gameObject.GetPhotonView ().viewID / 1000);	//このオブジェクトのID
+				if (otherPlayer.ID == this.gameObject.GetPhotonView ().viewID / 1000) {
 					CubeInstant (this.transform.position);						//待機キューブの生成
+					GetPlayerState ();
 					DestroyPlayerObj ();										//このオブジェクトを消す
 				}
 			}
+
 		}
 	}
 
@@ -38,10 +41,7 @@ public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 	void CubeInstant(Vector3 pos){
 		Debug.Log ("CubeInstant()");
 		Disconcube = PhotonNetwork.Instantiate ("DisconCube", pos,new Quaternion(0,0,0,0),0).gameObject;
-		DisconView = Disconcube.GetPhotonView ();
-		DisconView.RPC ("DisconName", PhotonTargets.AllBuffered, this.gameObject.GetComponent<S2_Status> ().UserName);
 
-		GetPlayerState ();
 	}
 
 	//オリジナルオブジェクトを消す
@@ -53,10 +53,12 @@ public class DisconnectedFromPhoton : Photon.MonoBehaviour {
 	void GetPlayerState(){
 		Debug.Log("GetPlayerState()");
 
+		DisconView = Disconcube.GetPhotonView ();
+		DisconView.RPC ("DisconName", PhotonTargets.AllBuffered, this.gameObject.GetComponent<S2_Status> ().UserName);
 		//HPの同期
 		DisconView.RPC("DisconHP",PhotonTargets.AllBuffered,this.gameObject.GetComponent<S2_Status> ().Health);
 		//ステータスUIの同期
-//		DisconView.RPC("DisconStatusUI",PhotonTargets.AllBuffered, this.gameObject.GetComponent<S2_Status> ().StatusUI);
+		DisconView.RPC("DisconStatusUI",PhotonTargets.AllBuffered);
 	}
 
 	void Update(){

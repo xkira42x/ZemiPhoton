@@ -1,13 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resource\Hasegawa\Script\Player\PlayerStatusUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resource\Ik\Scripts\DisconnectedFromPhoton.cs">
     <Files>
-      <File FileName="Assets\DisconObjSetting.cs" Line="5" Column="30" />
-      <File FileName="Assets\Resource\Ik\Scripts\DisconnectedFromPhoton.cs" Line="3" Column="19" />
-      <File FileName="Assets\Resource\Hasegawa\Script\MenuManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resource\Hasegawa\Script\Network\myPhotonManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resource\Hasegawa\Script\Player\S2_Status.cs" Line="99" Column="40" />
-      <File FileName="Assets\Resource\Hasegawa\Script\Player\PlayerStatusUI.cs" Line="8" Column="31" />
+      <File FileName="Assets\Resource\Ik\Scripts\DisconnectedFromPhoton.cs" Line="34" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

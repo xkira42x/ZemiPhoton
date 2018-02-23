@@ -8,6 +8,7 @@ public class S2_Status : Photon.MonoBehaviour
     public string UserName { get { return userName; } set { userName = value; } }
 
     S1_Move move;                   // 移動
+	[SerializeField]
     PlayerStatusUI statusUI;        // ステータス表示UI
     public PlayerStatusUI StatusUI { get { return statusUI; } set { statusUI = value; } }
 
@@ -16,6 +17,8 @@ public class S2_Status : Photon.MonoBehaviour
     public float Health { get { return health; } set { health = value; } }
 
     public Text Name;
+
+	bool flg=true;
 
     /// 体力を引数分減らし、HPのUIゲージ更新と同期を行う
     public void Damage(float dmg)
@@ -34,22 +37,24 @@ public class S2_Status : Photon.MonoBehaviour
     /// ステータス表示するオブジェクトを設定する
     void Awake()
     {
+		Debug.Log ("初期化"+statusUI);
         // プレイヤーリストに追加する
         photonView.RPC("SyncPlayerList", PhotonTargets.AllBufferedViaServer);
 
-        // 操作しているキャラクタのステータスは必ず、右端のステータスに表示する。
-        // それ以外は、右から順に設定する
-        if (photonView.isMine)
-        {
-            statusUI = GameObject.Find("PlayerStatusUI0").GetComponent<PlayerStatusUI>();
-            photonView.RPC("SyncPlayerID", PhotonTargets.AllBuffered, PlayerInfo.playerNumber + 1);
-        }
-        else
-        {
-            statusUI = GameObject.Find("PlayerStatusUI" + (PlayerInfo.statusCount).ToString()).GetComponent<PlayerStatusUI>();
-            PlayerInfo.statusCount++;
-        }
+		// 操作しているキャラクタのステータスは必ず、右端のステータスに表示する。
+		// それ以外は、右から順に設定する
+		if (flg) {
 
+			if (photonView.isMine) {
+				statusUI = GameObject.Find ("PlayerStatusUI0").GetComponent<PlayerStatusUI> ();
+				photonView.RPC ("SyncPlayerID", PhotonTargets.AllBuffered, PlayerInfo.playerNumber + 1);
+			} else {
+				statusUI = GameObject.Find ("PlayerStatusUI" + (PlayerInfo.statusCount).ToString ()).GetComponent<PlayerStatusUI> ();
+				PlayerInfo.statusCount++;
+			}
+			statusUI.UserName = name;
+
+		}
         move = GetComponent<S1_Move>();
     }
    
@@ -57,7 +62,6 @@ public class S2_Status : Photon.MonoBehaviour
     [PunRPC]
     void SetName(string name)
     {
-        statusUI.UserName = name;
         userName = name;
         Name.text = name;
     }
@@ -95,9 +99,31 @@ public class S2_Status : Photon.MonoBehaviour
             if (userName == objects[ii].name)
             {
 				DisconObjSetting status = objects[ii].GetComponent<DisconObjSetting>();
-                statusUI = status.statusUI;
-                health = status.health;
+
+//				StartCoroutine ("SyncstatusUI",status);
+				statusUI = status.statusUI;
+
+				health = status.health;
+				statusUI.UserName = name;
+
             }
         }
     }
+	[PunRPC]
+	void SyncABCDE(){
+		flg = false;
+	}
+/*	//ステータスUIが
+	System.Collections.IEnumerator SyncstatusUI(DisconObjSetting status){
+		while (true) {
+//			Debug.Log (statusUI +":"+ status.statusUI);
+			if (status.statusUI != null) {
+				statusUI = status.statusUI;
+				Debug.Log ("SyncFind");
+				yield break;
+			}
+			yield return new WaitForSeconds (0.5f);
+		}
+	}
+	*/
 }

@@ -7,6 +7,7 @@ public class DbgText : Photon.MonoBehaviour {
 	[SerializeField]
 	GameObject TextBox;
 	Text settext;
+
 	// Use this for initialization
 	void Start () {
 		settext = TextBox.GetComponent<Text> ();

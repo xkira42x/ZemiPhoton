@@ -13,7 +13,6 @@ public class N3_EndKey : Photon.MonoBehaviour {
 
 //	GameObject Camera;
 	// Update is called once per frame
-
 	GameObject MyGameObject;
 	void Start(){
 		EndUI=GameObject.Find ("UI").transform.Find("EndUI").gameObject;

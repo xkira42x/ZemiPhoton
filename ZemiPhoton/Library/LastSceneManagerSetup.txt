@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Resource/Ik/Resources/title.unity
+- path: Assets/Resource/Ik/Resources/main.unity
   isLoaded: 1
   isActive: 1
