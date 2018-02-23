@@ -111,6 +111,8 @@ public class S2_Status : Photon.MonoBehaviour
 				statusUI = status.statusUI;
                 health = status.health;
                 statusUI.UserName = userName;
+
+                Destroy(objects[ii]);
             }
         }
     }
