@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class ContinueLogin : Photon.MonoBehaviour {
 
@@ -52,20 +53,28 @@ public class ContinueLogin : Photon.MonoBehaviour {
 	public void ContinButton(){
 
 		RoomInfo[] RoomList = PhotonNetwork.GetRoomList ();//部屋一覧を取得
+		ContinUI.transform.FindChild ("ContenText").GetComponent<Text> ().text = "前回のプレイデータが残っています\n合流しますか？";
 		//部屋の全検索
-		for (int i = 0; i < RoomList.Length; i++) {
-			Debug.Log (RoomList [i].Name+":"+readtextData[0]);
-			if (RoomList [i].Name == readtextData[0]) {	//前回の部屋と同じ部屋名があれば
-				PhotonNetwork.JoinRoom (readtextData[0]);	//その部屋に入室
-				StartCoroutine("ReSpawnPlayer");
-				break;
-			} else {
-				Debug.Log ("部屋なし");
-				//部屋が無かった場合の処理
+		if (RoomList.Length > 0) {			//もしも部屋があれば
+			
+			for (int i = 0; i < RoomList.Length; i++) {
+				Debug.Log (RoomList [i].Name + ":" + readtextData [0]);
+				if (RoomList [i].Name == readtextData [0]) {	//前回の部屋と同じ部屋名があれば
+					PhotonNetwork.JoinRoom (readtextData [0]);	//その部屋に入室
+					StartCoroutine ("ReSpawnPlayer");
+					WriteLoginData ("");	//使用済みなので部屋のデータを初期化
+					ContinUI.SetActive (false);
+					break;
+				} else {
+					Debug.Log ("部屋なし");
+					ContinUI.transform.FindChild ("ContenText").GetComponent<Text> ().text = "合流する部屋がありませんでした";
+					//部屋が無かった場合の処理
+				}
 			}
+		} else {		//もしも部屋が無ければ
+			Debug.Log ("部屋なし");
+			ContinUI.transform.FindChild ("ContenText").GetComponent<Text> ().text = "合流する部屋がありませんでした";
 		}
-		WriteLoginData ("");	//使用済みなので部屋のデータを初期化
-		ContinUI.SetActive(false);
 	}
 	IEnumerator ReSpawnPlayer(){
 		yield return new WaitForSeconds (2f);	//処理が早いとロビーでこの関数が実行サれてしまうため
